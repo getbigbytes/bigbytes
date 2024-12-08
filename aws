@@ -6,15 +6,15 @@ import boto3
 import requests
 
 AWS_CREDENTIALS_FILE_PATH = os.path.expanduser('~/.aws/credentials')
-IAM_USER_NAME = 'MageDeployer'
-IAM_USER_NAME_CICD = 'MageContinuousIntegrationDeployer'
-TERRAFORM_AWS_URL = 'https://raw.githubusercontent.com/mage-ai/mage-ai-terraform-templates/master/aws/policies'
-TERRAFORM_APPLY_URL = f'{TERRAFORM_AWS_URL}/TerraformApplyDeployMage.json'
+IAM_USER_NAME = 'BigbytesDeployer'
+IAM_USER_NAME_CICD = 'BigbytesContinuousIntegrationDeployer'
+TERRAFORM_AWS_URL = 'https://raw.githubusercontent.com/digitranslab/bigbytes-terraform-templates/master/aws/policies'
+TERRAFORM_APPLY_URL = f'{TERRAFORM_AWS_URL}/TerraformApplyDeployBigbytes.json'
 TERRAFORM_DESTROY_URL = f'{TERRAFORM_AWS_URL}/TerraformDestroyDeleteResources.json'
 GITHUB_ACTIONS_DEPLOY_URL = f'{TERRAFORM_AWS_URL}/GitHubActionsDeploy.json'
-POLICY_NAME_TERRAFORM_APPLY_DEPLOY_MAGE = 'TerraformApplyDeployMage'
+POLICY_NAME_TERRAFORM_APPLY_DEPLOY_BIGBYTES = 'TerraformApplyDeployBigbytes'
 POLICY_NAME_TERRAFORM_DESTROY_DELETE_RESOURCES = 'TerraformDestroyDeleteResources'
-POLICY_NAME_GITHUB_ACTIONS_DEPLOY_MAGE = 'ContinuousIntegrationContinuousDeployment'
+POLICY_NAME_GITHUB_ACTIONS_DEPLOY_BIGBYTES = 'ContinuousIntegrationContinuousDeployment'
 
 
 def update_boto3_client(profile_name: Optional[str] = None) -> None:
@@ -234,8 +234,8 @@ def delete_all_access_keys_for_user(user_name):
 
 def reset(user_name: str):
     delete_access_key_for_user(user_name)
-    detach_policy_from_user(user_name, POLICY_NAME_TERRAFORM_APPLY_DEPLOY_MAGE)
+    detach_policy_from_user(user_name, POLICY_NAME_TERRAFORM_APPLY_DEPLOY_BIGBYTES)
     detach_policy_from_user(user_name, POLICY_NAME_TERRAFORM_DESTROY_DELETE_RESOURCES)
-    delete_policy(POLICY_NAME_TERRAFORM_APPLY_DEPLOY_MAGE)
+    delete_policy(POLICY_NAME_TERRAFORM_APPLY_DEPLOY_BIGBYTES)
     delete_policy(POLICY_NAME_TERRAFORM_DESTROY_DELETE_RESOURCES)
     delete_user(user_name)

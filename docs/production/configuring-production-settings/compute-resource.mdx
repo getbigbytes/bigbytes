@@ -9,11 +9,11 @@ import { ProBanner } from '/snippets/pro/banner.mdx';
 
 <ProBanner
   source="compute-resources"
-  description="Mage Pro will automatically scale your workloads to handle any volume of pipeline runs, while optimizing resource utilization and minimizing costs."
+  description="Bigbytes Pro will automatically scale your workloads to handle any volume of pipeline runs, while optimizing resource utilization and minimizing costs."
 />
 
 Follow the instructions in this [document](/production/deploying-to-cloud/using-terraform) to deploy
-Mage in a production environment. When running Mage in production,
+Bigbytes in a production environment. When running Bigbytes in production,
 you can customize the compute resource for the following services:
 
 1. Front-end application
@@ -22,24 +22,24 @@ you can customize the compute resource for the following services:
 
 ## Front-end application
 
-Customize the compute resource of the Mage web service.
+Customize the compute resource of the Bigbytes web service.
 
-The Mage web service is responsible for running Mage web backend, scheduler service
+The Bigbytes web service is responsible for running Bigbytes web backend, scheduler service
 and local block executions.
 
-You can customize the CPU and memory of the Mage web
+You can customize the CPU and memory of the Bigbytes web
 service by updating the Terraform variables and then running `terraform apply`.
 
 ### Amazon Web Services (AWS)
 
 Update the `ecs_task_cpu` and `ecs_task_memory` variables in the
-[`mage-ai-terraform-templates/aws/variables.tf`](https://github.com/mage-ai/mage-ai-terraform-templates/blob/master/aws/variables.tf)
+[`bigbytes-terraform-templates/aws/variables.tf`](https://github.com/digitranslab/bigbytes-terraform-templates/blob/master/aws/variables.tf)
 file.
 
 ### Google Cloud Platform (GCP)
 
 Update the `container_cpu` and `container_memory` variables in the
-[`mage-ai-terraform-templates/gcp/variables.tf`](https://github.com/mage-ai/mage-ai-terraform-templates/blob/master/gcp/variables.tf)
+[`bigbytes-terraform-templates/gcp/variables.tf`](https://github.com/digitranslab/bigbytes-terraform-templates/blob/master/gcp/variables.tf)
 file.
 
 ---
@@ -61,7 +61,7 @@ You can set the executor type for all the blocks in a pipeline by specifying the
 
 ## Block executor
 
-Mage provides multiple executors to execute blocks.
+Bigbytes provides multiple executors to execute blocks.
 Here are the available executor types:
 
 * `local_python`
@@ -72,5 +72,5 @@ Here are the available executor types:
 
 ### Default for all blocks
 
-Mage uses `local_python` executor type by default. If you want to specify another executor_type as the default executor type for blocks,
+Bigbytes uses `local_python` executor type by default. If you want to specify another executor_type as the default executor type for blocks,
 you can set the environment variable `DEFAULT_EXECUTOR_TYPE` to one executor type mentioned above.

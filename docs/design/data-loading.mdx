@@ -3,7 +3,7 @@ title: "Data loader utilities"
 sidebarTitle: "Utilities"
 ---
 
-Mage provides data loading clients that simplify loading and exporting data in your pipelines, allowing you to spend more time analyzing and transforming your data for ML tasks. Currently, Mage includes clients for the following data sources:
+Bigbytes provides data loading clients that simplify loading and exporting data in your pipelines, allowing you to spend more time analyzing and transforming your data for ML tasks. Currently, Bigbytes includes clients for the following data sources:
 
 -   [AWS Redshift](#redshift)
 -   [AWS S3](#s3)
@@ -18,7 +18,7 @@ Mage provides data loading clients that simplify loading and exporting data in y
 -   [PostgreSQL](#postgresql)
 -   [Snowflake](#snowflake)
 
-Mage's data loading clients fall into two categories:
+Bigbytes's data loading clients fall into two categories:
 
 -   **File-Loading Clients** - import/export data between files and your pipeline. Includes both local filesystem storage and external filesystem storage (like AWS S3)
 -   **Database Clients** - imports data from an external database into your pipeline and exports data frames back into that database. These database clients include the `execute` method which execute your queries in the connected database. The Google BigQuery client follows this structure.
@@ -26,7 +26,7 @@ Mage's data loading clients fall into two categories:
 
 ## Example: Loading data from a file
 
-While traditional Pandas IO procedures can be utilized to load files into your pipeline, Mage provides the `mage_ai.io.file.FileIO` client as a convenience wrapper.
+While traditional Pandas IO procedures can be utilized to load files into your pipeline, Bigbytes provides the `bigbytes.io.file.FileIO` client as a convenience wrapper.
 
 The following code uses the `load` function of the `FileIO` client to load the Titanic survival dataset from a CSV file into a Pandas DataFrame for use in your pipeline. All data loaders can be initialized with the `verbose = True` parameter, which will print the current action the data loading client is performing. This parameter defaults to `False`.
 
@@ -57,13 +57,13 @@ See the [FileIO](#fileio) API to learn more about loading data from filesystem.
 
 ## Example: Loading data from Snowflake warehouse
 
-Loading data from a Snowflake data warehouse is made easy using the `mage_ai.io.snowflake.Snowflake` data loading client. In order to authenticate access to a Snowflake warehouse, the client requires the associated Snowflake credentials:
+Loading data from a Snowflake data warehouse is made easy using the `bigbytes.io.snowflake.Snowflake` data loading client. In order to authenticate access to a Snowflake warehouse, the client requires the associated Snowflake credentials:
 
 -   Account Username
 -   Account Password
 -   Account ID (including your region) (Ex: _example.us-west-2_)
 
-These parameters can be manually specified as input to the data loading client (see [Snowflake](#snowflake) API). However we recommend using a [Configuration Loader](#configuration-settings) to handle loading these secrets. If you used `mage init` to create your project repository, you can store these values in your `io_config.yaml` file and use `mage_ai.io.config.ConfigFileLoader` to construct the data loader client.
+These parameters can be manually specified as input to the data loading client (see [Snowflake](#snowflake) API). However we recommend using a [Configuration Loader](#configuration-settings) to handle loading these secrets. If you used `bigbytes init` to create your project repository, you can store these values in your `io_config.yaml` file and use `bigbytes.io.config.ConfigFileLoader` to construct the data loader client.
 
 An example `io_config.yaml` file in this instance would be:
 
@@ -108,9 +108,9 @@ This section covers the API for using the following data loaders.
 
 ## Redshift
 
-`mage_ai.io.redshift.Redshift`
+`bigbytes.io.redshift.Redshift`
 
-Handles data transfer between a Redshift cluster and the Mage app. Mage uses temporary credentials to authenticate access to a Redshift cluster. There are two ways to specify these credentials:
+Handles data transfer between a Redshift cluster and the Bigbytes app. Bigbytes uses temporary credentials to authenticate access to a Redshift cluster. There are two ways to specify these credentials:
 
 1. Pre-generate temporary credentials and specify them in the configuration settings. Add the following keys to the configuration settings for `Redshift` to use the temporary credentials:
     ```yaml
@@ -254,9 +254,9 @@ Sample data from a table in the selected database in the Redshift cluster. Sampl
 
 ## S3
 
-`mage_ai.io.s3.S3`
+`bigbytes.io.s3.S3`
 
-Handles data transfer between an S3 bucket and the Mage app. The `S3` client supports importing and exporting with the following file formats:
+Handles data transfer between an S3 bucket and the Bigbytes app. The `S3` client supports importing and exporting with the following file formats:
 
 -   CSV
 -   JSON
@@ -265,7 +265,7 @@ Handles data transfer between an S3 bucket and the Mage app. The `S3` client sup
 -   XML
 -   Excel
 
-If an IAM profile is not set up using `aws configure`, then AWS credentials for accesses the S3 bucket can be manually specified through either Mage's [configuration loader](#configuration-settings) system or through keyword arguments in the constructor (see constructor).
+If an IAM profile is not set up using `aws configure`, then AWS credentials for accesses the S3 bucket can be manually specified through either Bigbytes's [configuration loader](#configuration-settings) system or through keyword arguments in the constructor (see constructor).
 
 If using configuration settings, specify the following keys:
 
@@ -283,7 +283,7 @@ Initializes the S3 data loading client.
 
 -   **Args**
     -   `verbose (bool)`: Enables verbose output printing. Defaults to False.
-    -   If IAM profile is not set up using `aws configure` and Mage's configuration loader is not used, then specify your AWS credentials through the following keyword arguments:
+    -   If IAM profile is not set up using `aws configure` and Bigbytes's configuration loader is not used, then specify your AWS credentials through the following keyword arguments:
         -   `aws_access_key_id (str)`: AWS Access Key ID credential
         -   `aws_secret_access_key (str)`: AWS Secret Access Key credential
         -   `aws_region (str)`: Region associated with AWS IAM profile
@@ -349,9 +349,9 @@ Loads data from object in S3 bucket into a Pandas data frame. This function will
 
 ## FileIO
 
-`mage_ai.io.file.FileIO`
+`bigbytes.io.file.FileIO`
 
-Handles data transfer between the filesystem and the Mage app. The `FileIO` client currently supports importing and exporting with the following file formats:
+Handles data transfer between the filesystem and the Bigbytes app. The `FileIO` client currently supports importing and exporting with the following file formats:
 
 -   CSV
 -   JSON
@@ -417,9 +417,9 @@ Loads the data frame from the filepath specified. This function will load at max
 
 ## GoogleCloudStorage
 
-`mage_ai.io.google_cloud_storage.GoogleCloudStorage`
+`bigbytes.io.google_cloud_storage.GoogleCloudStorage`
 
-Handles data transfer between a Google Cloud Storage bucket and the Mage app. Supports loading files of any of the following types:
+Handles data transfer between a Google Cloud Storage bucket and the Bigbytes app. Supports loading files of any of the following types:
 
 -   CSV
 -   JSON
@@ -511,9 +511,9 @@ Loads data from object in GoogleCloudStorage bucket into a Pandas data frame. Th
 
 ## AzureBlobStorage
 
-`mage_ai.io.azure_blob_storage.AzureBlobStorage`
+`bigbytes.io.azure_blob_storage.AzureBlobStorage`
 
-Handles data transfer between an Azure Blob Storage conatiner and Mage. Supports loading files of the following types:
+Handles data transfer between an Azure Blob Storage conatiner and Bigbytes. Supports loading files of the following types:
 -   CSV
 -   JSON
 -   Parquet
@@ -578,19 +578,19 @@ Loads data from object in Azure Blob Storage into a Pandas data frame. This func
 
 ## GoogleSheets
 
-`mage_ai.io.google_sheets.GoogleSheets`
+`bigbytes.io.google_sheets.GoogleSheets`
 
-Handles data transfer between a Google Sheets spreadsheet and the Mage app.
+Handles data transfer between a Google Sheets spreadsheet and the Bigbytes app.
 
 Authentication is the same for our other Google Cloud data loaders. Read more about configuration [here](integrations/databases/GoogleSheets#configuration).
 
-The Google Sheets class is defined [here](https://github.com/mage-ai/mage-ai/blob/master/mage_ai/io/google_sheets.py).
+The Google Sheets class is defined [here](https://github.com/digitranslab/bigbytes/blob/master/bigbytes/io/google_sheets.py).
 
 ## BigQuery
 
-`mage_ai.io.bigquery.BigQuery`
+`bigbytes.io.bigquery.BigQuery`
 
-Handles data transfer between a BigQuery data warehouse and the Mage app.
+Handles data transfer between a BigQuery data warehouse and the Bigbytes app.
 
 Authentication with a Google BigQuery warehouse requires specifying the service account key for the service account that has access to the BigQuery warehouse. There are four ways to provide this service key:
 
@@ -691,9 +691,9 @@ Sample data from a table in the BigQuery warehouse. Sample is not guaranteed to 
 
 ## PostgreSQL
 
-`mage_ai.io.postgres.Postgres`
+`bigbytes.io.postgres.Postgres`
 
-Handles data transfer between a PostgreSQL database and the Mage app. The `Postgres` client utilizes the following keys to connect the PostgreSQL database.
+Handles data transfer between a PostgreSQL database and the Bigbytes app. The `Postgres` client utilizes the following keys to connect the PostgreSQL database.
 
 ```yaml
 POSTGRES_DBNAME: PostgreSQL database name
@@ -895,9 +895,9 @@ Opens a connection to OracleDB database.
 
 ## MySQL
 
-`mage_ai.io.mysql.MySQL`
+`bigbytes.io.mysql.MySQL`
 
-Handles data transfer between a MySQL database and the Mage app. The `MySQL` client utilizes the following keys to connect the MySQL database.
+Handles data transfer between a MySQL database and the Bigbytes app. The `MySQL` client utilizes the following keys to connect the MySQL database.
 
 ```yaml
 MYSQL_DATABASE: MySQL database name
@@ -1002,9 +1002,9 @@ Sample data from a table in the MySQL database. Sample is not guaranteed to be r
 
 ## DuckDB
 
-`mage_ai.io.duckdb`
+`bigbytes.io.duckdb`
 
-Handles data transfer between DuckDB database and the Mage app.
+Handles data transfer between DuckDB database and the Bigbytes app.
 DuckDB client utilizes the following keys to connect:
 
 
@@ -1082,9 +1082,9 @@ Convert data from input type into DuckDB type.
 
 ## Snowflake
 
-`mage_ai.io.snowflake.Snowflake`
+`bigbytes.io.snowflake.Snowflake`
 
-Handles data transfer between a Snowflake data warehouse and the Mage app. The `Snowflake` client utilizes the following keys to authenticate access and connect to Snowflake servers.
+Handles data transfer between a Snowflake data warehouse and the Bigbytes app. The `Snowflake` client utilizes the following keys to authenticate access and connect to Snowflake servers.
 
 ```yaml
 SNOWFLAKE_USER: username
@@ -1212,13 +1212,13 @@ Sample data from a table in the Snowflake warehouse. Sample is not guaranteed to
 
 Connections to third-party data storage require you to specify confidential information such as login information or access keys. While you can manually specify this information code while constructing data loading clients, it is recommended to not store the secrets directly in code.
 
-Instead, Mage provides **configuration loaders** which allow data loading clients to use your secrets without explicitly writing them in code.
+Instead, Bigbytes provides **configuration loaders** which allow data loading clients to use your secrets without explicitly writing them in code.
 
 <Warning>
-  Currently Mage only supports AWS Secrets Manager as a configuration loader. If you need to use secrets from Azure Key Vault
+  Currently Bigbytes only supports AWS Secrets Manager as a configuration loader. If you need to use secrets from Azure Key Vault
   or GCP Secret Manager, you can reference the following docs:
-    - [Azure Key Vault](https://docs.mage.ai/production/deploying-to-cloud/secrets/Azure)
-    - [GCP Secret Manager](https://docs.mage.ai/production/deploying-to-cloud/secrets/GCP)
+    - [Azure Key Vault](https://docs.bigbytes.io/production/deploying-to-cloud/secrets/Azure)
+    - [GCP Secret Manager](https://docs.bigbytes.io/production/deploying-to-cloud/secrets/GCP)
 </Warning>
 
 Currently, the following sources (and their corresponding configuration loader) can be used to load configuration settings:
@@ -1230,14 +1230,14 @@ s
 For example, the code below constructs a Redshift data loading client using secrets stored in AWS Secrets Manager
 
 ```python
-from mage_ai.io.config import AWSSecretLoader
-from mage_ai.io.redshift import Redshift
+from bigbytes.io.config import AWSSecretLoader
+from bigbytes.io.redshift import Redshift
 
 config = AWSSecretLoader()
 loader = Redshift.from_config(config)
 ```
 
-The following are the set of allowed key names that you must name your secrets with in order for Mage's configuration loaders to recognize your secrets. In code you can refer to these keys by their string name or using the `mage_ai.io.config.ConfigKey` enum. Not all keys need be specified at once - only use the keys related to the services you utilize.
+The following are the set of allowed key names that you must name your secrets with in order for Bigbytes's configuration loaders to recognize your secrets. In code you can refer to these keys by their string name or using the `bigbytes.io.config.ConfigKey` enum. Not all keys need be specified at once - only use the keys related to the services you utilize.
 
 | Key Name                        | Service                      | Client Constructor Parameter | Description                                                             | Notes                                       |
 | ------------------------------- | ---------------------------- | ---------------------------- | ----------------------------------------------------------------------- | ------------------------------------------- |
@@ -1298,7 +1298,7 @@ Loads configuration settings from a configuration file.
 **Example**:
 
 ```python
-from mage_ai.io.config import ConfigKey, ConfigFileLoader
+from bigbytes.io.config import ConfigKey, ConfigFileLoader
 
 config = ConfigFileLoader('path/to/my/config.yaml', 'my_profile')
 postgres_db = config[ConfigKey.POSTGRES_DBNAME]
@@ -1377,7 +1377,7 @@ Loads configuration settings from environment variables in your current environm
 **Example**:
 
 ```python
-from mage_ai.io.config import ConfigKey, EnvironmentVariableLoader
+from bigbytes.io.config import ConfigKey, EnvironmentVariableLoader
 
 config = EnvironmentVariableLoader()
 postgres_db = config[ConfigKey.POSTGRES_DBNAME]
@@ -1421,7 +1421,7 @@ Loads secrets from AWS Secrets Manager. To authenticate access to AWS Secrets Ma
 **Example**:
 
 ```python
-from mage_ai.io.config import ConfigKey, AWSSecretLoader
+from bigbytes.io.config import ConfigKey, AWSSecretLoader
 
 config = AWSSecretLoader()
 postgres_db = config[ConfigKey.POSTGRES_DBNAME]

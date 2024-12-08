@@ -2,7 +2,7 @@
 title: "Make dbt magical"
 sidebarTitle: "New project"
 icon: "arrows-spin"
-description: "⏰ Run dbt models in Mage in under a minute."
+description: "⏰ Run dbt models in Bigbytes in under a minute."
 ---
 
 <Frame>
@@ -11,7 +11,7 @@ description: "⏰ Run dbt models in Mage in under a minute."
 
 ## About
 
-Our demo dbt repo currently offers two quickstarts: one that runs a simple dbt pipeline and one that runs a dbt pipeline from an external repo. At this time, running dbt in Mage requires Docker, so both of our demos are `docker compose` based.
+Our demo dbt repo currently offers two quickstarts: one that runs a simple dbt pipeline and one that runs a dbt pipeline from an external repo. At this time, running dbt in Bigbytes requires Docker, so both of our demos are `docker compose` based.
 
 ## Prerequisites
 
@@ -20,28 +20,28 @@ Our demo dbt repo currently offers two quickstarts: one that runs a simple dbt p
 
 ## Configuration
 
-The following command will clone the [demo repo](https://github.com/mage-ai/dbt-quickstart), copy `dev.env` to `.env` and run `docker compose up` to start Mage _and_ a Postgres database.
+The following command will clone the [demo repo](https://github.com/digitranslab/dbt-quickstart), copy `dev.env` to `.env` and run `docker compose up` to start Bigbytes _and_ a Postgres database.
 
 <CodeGroup>
 ```bash Mac/Linux
-git clone https://github.com/mage-ai/dbt-quickstart mage-dbt-quickstart \
-&& cd mage-dbt-quickstart \
+git clone https://github.com/digitranslab/dbt-quickstart bigbytes-dbt-quickstart \
+&& cd bigbytes-dbt-quickstart \
 && cp dev.env .env && rm dev.env \
 && docker compose up
 ```
 
 ```bash Windows
-git clone https://github.com/mage-ai/dbt-quickstart mage-dbt-quickstart
-cd mage-dbt-quickstart
+git clone https://github.com/digitranslab/dbt-quickstart bigbytes-dbt-quickstart
+cd bigbytes-dbt-quickstart
 cp dev.env .env
 rm dev.env
 docker compose up
 ```
 </CodeGroup>
 
-After running the above command, open the Mage overview page at http://localhost:6789. Click the pipelines icon on the left to enter the pipelines overview.
+After running the above command, open the Bigbytes overview page at http://localhost:6789. Click the pipelines icon on the left to enter the pipelines overview.
 
-![Open Pipelines](https://github.com/mage-ai/assets/blob/main/dbt/setup-dbt/go-to-pipelines.gif?raw=True)
+![Open Pipelines](https://github.com/digitranslab/assets/blob/main/dbt/setup-dbt/go-to-pipelines.gif?raw=True)
 
 ## Tutorial
 
@@ -53,7 +53,7 @@ then select the "code" icon from the side nav.
 
 Scroll to the bottom-most cell and click _Execute with all upstream blocks_.
 
-![Run simple pipeline](https://github.com/mage-ai/assets/blob/main/dbt/setup-dbt/simple-pipeline.png?raw=True)
+![Run simple pipeline](https://github.com/digitranslab/assets/blob/main/dbt/setup-dbt/simple-pipeline.png?raw=True)
 
 You just:
 
@@ -84,17 +84,17 @@ Select the `dynamic_dbt_pipeline` by double-clicking the row from the list of pi
 
 Scroll to the bottom-most cell and click _Execute and run all upstream blocks_.
 
-![Compile external pipeline](https://github.com/mage-ai/assets/blob/main/dbt/setup-dbt/external-pipeline.png?raw=True)
+![Compile external pipeline](https://github.com/digitranslab/assets/blob/main/dbt/setup-dbt/external-pipeline.png?raw=True)
 
 You just:
 
-- Pulled a GitHub repo and wrote it to your local Mage directory
+- Pulled a GitHub repo and wrote it to your local Bigbytes directory
 - Wrote a demo `profiles.yaml` file that interpolated environment variables from your instance
 - Compiled `dbt build` to write data to your local postgres database.
 
 To run this pipeline, click the name of the pipeline to open the _Triggers_ page and select _Run @once_ to trigger a pipeline run. Select the _logs_ icon to see the run in realtime!
 
-![Trigger dbt](https://github.com/mage-ai/assets/blob/main/dbt/setup-dbt/trigger-dbt.gif?raw=True)
+![Trigger dbt](https://github.com/digitranslab/assets/blob/main/dbt/setup-dbt/trigger-dbt.gif?raw=True)
 
 Now, in addition to pulling the external Jaffle Shop demo and writing the necessary profiles, you'll perform [`dbt build`](https://docs.getdbt.com/reference/commands/build), which will: run models, test tests, snapshot snapshots, and seed seeds. 🥳
 

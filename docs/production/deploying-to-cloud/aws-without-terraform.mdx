@@ -1,8 +1,8 @@
 ---
-title: "Mage and Native Cloud Environments"
+title: "Bigbytes and Native Cloud Environments"
 sidebarTitle: "Deploy without Terraform"
 description:
-  "Just like a traditional notebook, Mage supports execution in native cloud
+  "Just like a traditional notebook, Bigbytes supports execution in native cloud
   environments. Below are guides on how to integrate with native cloud
   resources."
 ---
@@ -15,7 +15,7 @@ description:
 
 # Amazon EC2
 
-Mage can be run in an Amazon EC2 instance, either by
+Bigbytes can be run in an Amazon EC2 instance, either by
 
 - using SSH to port forward localhost requests to your EC2 instance
 - opening port 6789 on your EC2 instance for access
@@ -67,13 +67,13 @@ sudo apt update && \
   sudo apt install -y python3-pip
 ```
 
-### Run script to start Mage
+### Run script to start Bigbytes
 
-We provide the `scripts/run_ec2.sh` script to launch Mage in an EC2 instance.
-Currently only connections via SSH are supported. To access [this script](https://github.com/mage-ai/mage-ai/blob/master/scripts/run_ec2.sh) 
-clone this [repository](https://github.com/mage-ai/mage-ai).
+We provide the `scripts/run_ec2.sh` script to launch Bigbytes in an EC2 instance.
+Currently only connections via SSH are supported. To access [this script](https://github.com/digitranslab/bigbytes/blob/master/scripts/run_ec2.sh)
+clone this [repository](https://github.com/digitranslab/bigbytes).
 
-To run Mage in an EC2 instance, you need to provide
+To run Bigbytes in an EC2 instance, you need to provide
 
 - Path to the key pair used with the EC2 instance
 - Your EC2 instance username
@@ -98,51 +98,51 @@ An example command could look like this:
 This script will
 
 1. Connect to your EC2 instance
-2. Install Mage if not already installed on instance
+2. Install Bigbytes if not already installed on instance
 3. Create a default repository (default repository name is 'default_repo', use
    `--name` to specify your own custom repository name)
-4. Launch the Mage tool pointing at this repository
+4. Launch the Bigbytes tool pointing at this repository
 
-To access the Mage tool, open [localhost:6789](http://localhost:6789). All
+To access the Bigbytes tool, open [localhost:6789](http://localhost:6789). All
 actions made here will be forwarded to your EC2 instance for execution.
 
-To quit out of Mage, stop execution in your current terminal window (Ctrl+C).
-This will shutdown the Mage tool alongside closing the connection to your EC2
+To quit out of Bigbytes, stop execution in your current terminal window (Ctrl+C).
+This will shutdown the Bigbytes tool alongside closing the connection to your EC2
 instance.
 
 ---
 
 ## Manual connection via Open Port
 
-You can also connect to the Mage app running on your EC2 instance by editing
-your security group to expose the port that Mage runs on.
+You can also connect to the Bigbytes app running on your EC2 instance by editing
+your security group to expose the port that Bigbytes runs on.
 
 1. When creating your EC2 instance, edit your security group rules to allow a
-   Custom TCP connection to port 6789 (the port that Mage runs on).
-2. Connect to your EC2 instance via SSH and install Mage if you haven't already:
+   Custom TCP connection to port 6789 (the port that Bigbytes runs on).
+2. Connect to your EC2 instance via SSH and install Bigbytes if you haven't already:
    ```bash
    ssh -i path/to/key/pair.pem ec2_username@ec2_public_dns_name
-   pip install mage-ai
+   pip install bigbytes
    ```
-3. Start Mage on your EC2 instance:
+3. Start Bigbytes on your EC2 instance:
 
    ```bash
-   mage init <your_repo_name>
-   mage start <your_repo_name>
+   bigbytes init <your_repo_name>
+   bigbytes start <your_repo_name>
    ```
 
 4. Then from your browser, access `<ec2-instance-public-ip>:6789` to access the
-   Mage app, where `ec2-instance-public-ip` is the Public IPv4 address of your
+   Bigbytes app, where `ec2-instance-public-ip` is the Public IPv4 address of your
    EC2 instance.
 
    ***
 
 ## Manual connection via SSH
 
-You can also manually start a connection to the Mage tool running on an EC2
+You can also manually start a connection to the Bigbytes tool running on an EC2
 instance. This process involves opening two separate SSH connections:
 
-1. Connect to the EC2 instance to run the Mage Tool. First, open an SSH
+1. Connect to the EC2 instance to run the Bigbytes Tool. First, open an SSH
    connection with your EC2 Key Pair and your EC2 login information to connect
    the EC2 instance.
 
@@ -150,29 +150,29 @@ instance. This process involves opening two separate SSH connections:
    ssh -i path/to/key/pair.pem ec2_username@ec2_public_dns_name
    ```
 
-   If the Mage tool is not installed, install Mage using `pip`. It is
+   If the Bigbytes tool is not installed, install Bigbytes using `pip`. It is
    recommended to use a virtual environment to store the Python packages to
    isolate your Python dependencies per project.
 
    ```bash
    python3 -m venv env
    source ./env/bin/activate
-   pip3 install mage-ai
+   pip3 install bigbytes
    ```
 
-   Next, initalize your Mage repository using `mage init`. You can change your
+   Next, initalize your Bigbytes repository using `bigbytes init`. You can change your
    repository name as per your preference.
 
    ```bash
-   mage init default_repo
+   bigbytes init default_repo
    ```
 
-   Then start the Mage app. This will start the notebook at
+   Then start the Bigbytes app. This will start the notebook at
    [localhost:6789](http://localhost:6789), but you can't directly access it yet
    as this notebook is started and is executed on the EC2 instance
 
    ```bash
-   mage start default_repo
+   bigbytes start default_repo
    ```
 
 2. Forward all requests sent to [localhost:6789](http://localhost:6789) on
@@ -188,38 +188,38 @@ instance. This process involves opening two separate SSH connections:
      server through this connection since this connection is only for port
      forwarding
 
-Now you can access the Mage tool at [localhost:6789](http://localhost:6789) on
+Now you can access the Bigbytes tool at [localhost:6789](http://localhost:6789) on
 your computer, and all executions will be processed on your EC2 instance!
 
 ---
 
 # Amazon ECS
 
-You can launch Mage in an Amazon Elastic Container Service (ECS) cluster,
+You can launch Bigbytes in an Amazon Elastic Container Service (ECS) cluster,
 allowing you to perform tasks like:
 
-- [Using the Mage code editor in the ECS cluster](#running-the-mage-app-in-ecs)
-- [Running a Mage ETL pipeline in production](#running-mage-pipeline-in-ecs)
+- [Using the Bigbytes code editor in the ECS cluster](#running-the-bigbytes-app-in-ecs)
+- [Running a Bigbytes ETL pipeline in production](#running-bigbytes-pipeline-in-ecs)
 
-## Running the Mage App in ECS
+## Running the Bigbytes App in ECS
 
-Follow the steps below to launch the Mage app on your ECS cluster:
+Follow the steps below to launch the Bigbytes app on your ECS cluster:
 
-1. Create a new Docker image for launching the Mage App— you can start with [our template](https://github.com/mage-ai/docker/blob/master/Dockerfile). Upload this Docker image to a repository like Amazon ECR so ECS tasks can pull and create Docker containers using this image.
+1. Create a new Docker image for launching the Bigbytes App— you can start with [our template](https://github.com/digitranslab/docker/blob/master/Dockerfile). Upload this Docker image to a repository like Amazon ECR so ECS tasks can pull and create Docker containers using this image.
 
 2. Create a new ECS cluster. Both Fargate and EC2 based clusters work for this
    task.
 3. Create a new task definition based off the template below. This task, when
    run:
 
-   1. Creates a new Mage repository named "default_repo".
-   2. Starts the Mage app, serving requests sent to "localhost:6789"
+   1. Creates a new Bigbytes repository named "default_repo".
+   2. Starts the Bigbytes app, serving requests sent to "localhost:6789"
 
    ```json
    {
      "containerDefinitions": [
        {
-         "name": "mage-data-prep-start",
+         "name": "bigbytes-data-prep-start",
          "image": "[aws-account-id].dkr.ecr.[region].amazonaws.com/[your-image-repo-name]:[tag]",
          "portMappings": [
            {
@@ -230,12 +230,12 @@ Follow the steps below to launch the Mage app on your ECS cluster:
          ],
          "essential": true,
          "entryPoint": ["sh", "-c"],
-         "command": ["mage init default_repo && mage start default_repo"],
+         "command": ["bigbytes init default_repo && bigbytes start default_repo"],
          "interactive": true,
          "pseudoTerminal": true
        }
      ],
-     "family": "mage-data-prep",
+     "family": "bigbytes-data-prep",
      "networkMode": "awsvpc",
      "requiresCompatibilities": ["FARGATE", "EC2"],
      "cpu": "256",
@@ -276,43 +276,43 @@ Follow the steps below to launch the Mage app on your ECS cluster:
      assigned. Allows you to connect to the ECS task and use the code editor.
    - Task security group allows an inbound TCP connection to port 6789 from your
      IP (or the IP with which the app will be accessed). Enables you to connect
-     to port 6789 where the Mage app is running.
+     to port 6789 where the Bigbytes app is running.
    - The task has network routes to any service that you plan to connect to,
      such as data warehouses or Amazon ECR. Simplest way to add these network
      routes are to add outbound connection rules to the security group.
-5. Find the public IP of your task. Then to access the Mage app, go to
+5. Find the public IP of your task. Then to access the Bigbytes app, go to
    `your-public-ip:6789`. If you followed the previous steps correctly, you
-   should be able to access the Mage app running in your cluster.
+   should be able to access the Bigbytes app running in your cluster.
 
-## Running Mage Pipeline in ECS
+## Running Bigbytes Pipeline in ECS
 
-If you already have a Mage pipeline developed, you can deploy the pipeline as an
+If you already have a Bigbytes pipeline developed, you can deploy the pipeline as an
 ECS task that periodically executes.
 
-Follow the steps below to setup running a Mage pipeline in ECS.
+Follow the steps below to setup running a Bigbytes pipeline in ECS.
 
-**Prerequisite:** You must have already created a Mage repository containing the
+**Prerequisite:** You must have already created a Bigbytes repository containing the
 pipeline you wish to deploy to ECS. Make sure this repository includes any data
 files and configuration setting files needed for the pipeline to run.
 
-1. Create a new Docker image for running your pipeline— you can start with [our template](https://github.com/mage-ai/docker/blob/master/Dockerfile). Make sure to add any other environment variables defined locally to the image to be able to access those secrets in the cluster. Upload this Docker image to a repository like Amazon ECR so ECS tasks can pull and deploy containers using the image.
+1. Create a new Docker image for running your pipeline— you can start with [our template](https://github.com/digitranslab/docker/blob/master/Dockerfile). Make sure to add any other environment variables defined locally to the image to be able to access those secrets in the cluster. Upload this Docker image to a repository like Amazon ECR so ECS tasks can pull and deploy containers using the image.
 2. If not already created, create a new ECS cluster. This task can be run on both Fargate and EC2 based instances
-3. Create a new task definition based off the template below. This task calls `mage run` on your pipeline when started.
+3. Create a new task definition based off the template below. This task calls `bigbytes run` on your pipeline when started.
 
    ```json
    {
      "containerDefinitions": [
        {
-         "name": "mage-data-prep-deploy",
+         "name": "bigbytes-data-prep-deploy",
          "image": "[aws-account-id].dkr.ecr.[region].amazonaws.com/[your-image-repo-name]:[tag]",
          "essential": true,
          "entryPoint": ["sh", "-c"],
-         "command": ["mage run default_repo [your-pipeline-name]"],
+         "command": ["bigbytes run default_repo [your-pipeline-name]"],
          "interactive": true,
          "pseudoTerminal": true
        }
      ],
-     "family": "mage-data-prep",
+     "family": "bigbytes-data-prep",
      "networkMode": "awsvpc",
      "requiresCompatibilities": ["FARGATE"],
      "cpu": "1024",

@@ -71,7 +71,7 @@ use Kafka locally:
    $KAFKA_HOME/bin/kafka-console-producer.sh --broker-list kafka:9092 --topic=test
    ```
 9. Send messages to the topic named `test` by typing the following JSON strings in the
-   terminal (Note that Kafka messages in Mage are assumed to be in JSON format):
+   terminal (Note that Kafka messages in Bigbytes are assumed to be in JSON format):
    ```bash
    >{ "hello": 1 }
    >{ "this is a test": 1 }
@@ -105,11 +105,11 @@ $KAFKA_HOME/bin/kafka-console-consumer.sh --from-beginning --bootstrap-server ka
 
 ## Build streaming pipeline
 
-### Start Mage
+### Start Bigbytes
 
 #### Using Kafka locally in a Docker container
 
-Start Mage using Docker. Run the following command to run Docker in network
+Start Bigbytes using Docker. Run the following command to run Docker in network
 mode:
 
 ```bash
@@ -118,7 +118,7 @@ docker run -it -p 6789:6789 -v $(pwd):/home/src \
   --env AWS_SECRET_ACCESS_KEY=your_secret_access_key \
   --env AWS_REGION=your_region \
   --network kafka-docker_default \
-  mageai/mageai /app/run_app.sh  mage start default_repo
+  bigbytes/bigbytes /app/run_app.sh  bigbytes start default_repo
 ```
 
 <Note>
@@ -139,11 +139,11 @@ docker network ls
 
 ---
 
-If you can’t connect to Kafka locally in a Docker container using Mage in a
+If you can’t connect to Kafka locally in a Docker container using Bigbytes in a
 Docker container, do the following:
 
-1. Clone Mage: `git clone https://github.com/mage-ai/mage-ai.git`.
-2. Change directory into Mage: `cd mage-ai`.
+1. Clone Bigbytes: `git clone https://github.com/digitranslab/bigbytes.git`.
+2. Change directory into Bigbytes: `cd bigbytes`.
 3. Edit the `docker-compose.yml` file to match this:
    ```yaml
    version: '3'
@@ -161,17 +161,17 @@ Docker container, do the following:
    ```
 4. Run the following script in your terminal: `./scripts/dev.sh`.
 
-This will run Mage in development mode; which runs it in a Docker container
+This will run Bigbytes in development mode; which runs it in a Docker container
 using `docker compose` instead of `docker run`.
 
 #### Using Kafka without a Docker container
 
-Start Mage using Docker. If you haven’t done this before, refer to the
+Start Bigbytes using Docker. If you haven’t done this before, refer to the
 [setup guide](/getting-started/setup).
 
 ### Create a new pipeline
 
-1. Open Mage in your browser.
+1. Open Bigbytes in your browser.
 2. Click <b>`+ New pipeline`</b>, then select `Streaming`.
 3. Add a data loader block, select `Kafka`, and paste the following:
    ```yaml
@@ -184,7 +184,7 @@ Start Mage using Docker. If you haven’t done this before, refer to the
    batch_size: 100
    ```
    1. By default, the `bootstrap_server` is set to `localhost:9092`. If you’re
-      running Mage in a docker container, the `bootstrap_server` should be
+      running Bigbytes in a docker container, the `bootstrap_server` should be
       `kafka:9093`.
    1. Messages are consumed from source in micro batch mode for better efficiency.
       The default batch size is 100. You can adjust the batch size in the source config.
@@ -194,7 +194,7 @@ Start Mage using Docker. If you haven’t done this before, refer to the
    from typing import Dict, List
 
    if 'transformer' not in globals():
-       from mage_ai.data_preparation.decorators import transformer
+       from bigbytes.data_preparation.decorators import transformer
 
 
    @transformer
@@ -264,7 +264,7 @@ You should see an output like this:
    publish_messages(5)
    ```
 
-Once you run the code snippet above, go back to your streaming pipeline in Mage
+Once you run the code snippet above, go back to your streaming pipeline in Bigbytes
 and the output should look like this:
 
 ```

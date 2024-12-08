@@ -41,7 +41,7 @@ SERVER_LOGGING_TEMPLATE=$'%(asctime)s\t[%(name)25.25s]\t%(levelname)5s: %(messag
     1. Use `export SERVER_LOGGING_TEMPLATE=$'%(asctime)s\t[%(name)25.25s]\t%(levelname)5s: %(message)s'` syntax for local
     python deployment or docker compose with exported env variables
     2. Use combination of `.env` file and `-e` flag for plain docker deployment
-    `docker run -d --env-file .env -e SERVER_LOGGING_TEMPLATE=$'%(asctime)s\t\t[%(name)25.25s]\t%(levelname)5s: %(message)s' mageai/mageai:latest`
+    `docker run -d --env-file .env -e SERVER_LOGGING_TEMPLATE=$'%(asctime)s\t\t[%(name)25.25s]\t%(levelname)5s: %(message)s' bigbytes/bigbytes:latest`
 </Warning>
 
 ### JSON format
@@ -89,7 +89,7 @@ logging_config:
   retention_period: '15d'
 ```
 
-Then you can run command `mage clean-old-logs [project_path]` to clean up old logs
+Then you can run command `bigbytes clean-old-logs [project_path]` to clean up old logs
 
 ### Block logging
 A logger is available in the block's context. You can use it to log messages to the block's log file. The logger is passed into

@@ -5,10 +5,10 @@ sidebarTitle: "Architecture"
 
 ## Overview
 
-The most common AWS deployment of Mage is with AWS ECS. Our Terraform scripts manage the process of creating an ECS cluster, a load balancer, and a database. [Here's a link](/production/deploying-to-cloud/aws/resources) to the default output of `terraform plan` on AWS ECS.
+The most common AWS deployment of Bigbytes is with AWS ECS. Our Terraform scripts manage the process of creating an ECS cluster, a load balancer, and a database. [Here's a link](/production/deploying-to-cloud/aws/resources) to the default output of `terraform plan` on AWS ECS.
 
-<Frame height="400" caption="An architecture diagram of a Mage AWS ECS deployment.">
-  <img alt="Contributing" src="https://github.com/mage-ai/assets/blob/main/architecture/aws-ecs.png?raw=True" />
+<Frame height="400" caption="An architecture diagram of a Bigbytes AWS ECS deployment.">
+  <img alt="Contributing" src="https://github.com/digitranslab/assets/blob/main/architecture/aws-ecs.png?raw=True" />
 </Frame>
 
 
@@ -20,7 +20,7 @@ Amazon ECS is a service provided by AWS for managing and deploying containerized
 
 ECS allows you to run containers at scale, and the Terraform configuration for ECS service includes specifying the task definition, desired task count, launch type, and other settings related to container orchestration.
 
-The Mage application runs as multiple containers in an Amazon ECS service. 
+The Bigbytes application runs as multiple containers in an Amazon ECS service.
 
 ## Application Load Balancer (ALB)
 
@@ -34,13 +34,13 @@ Our ALB is configured to route traffic to the ECS cluster and provides a public 
 
 Amazon EFS provides a fully managed, scalable, and shared file storage service that can be used with AWS services and on-premises resources. 
 
-We use EFS to store a persistent volume where the `mage_data` for your project is stored. You can learn more about what is stored in `mage_data` [here](/design/abstractions/project-structure#project-data). Without EFS, your project data would be lost when your ECS service is terminated. EFS allows us to persist data between containers within ECS.
+We use EFS to store a persistent volume where the `bigbytes_data` for your project is stored. You can learn more about what is stored in `bigbytes_data` [here](/design/abstractions/project-structure#project-data). Without EFS, your project data would be lost when your ECS service is terminated. EFS allows us to persist data between containers within ECS.
 
 ## Relational Database Service (RDS)
 
 The RDS Instance resource is used to define and configure a specific database instance within the Amazon RDS service. 
 
-We use a Postgres RDS to hold the the backend database for your Mage instance. This database contains the metadata that powers Mage. Read more [here](/design/abstractions/project-structure#project-data).
+We use a Postgres RDS to hold the the backend database for your Bigbytes instance. This database contains the metadata that powers Bigbytes. Read more [here](/design/abstractions/project-structure#project-data).
 
 ## Virtual Private Cloud (VPC)
 
@@ -48,7 +48,7 @@ Amazon VPC allows you to create a virtual network within AWS, enabling you to is
 
 The VPC resource in Terraform is used to define and configure the virtual network, including its subnets, route tables, security groups, and other networking-related settings.
 
-The Mage application, ALB, ECS, EFS, and RDS are all deployed within a VPC in our Terraform scripts.
+The Bigbytes application, ALB, ECS, EFS, and RDS are all deployed within a VPC in our Terraform scripts.
 
 ## Read More
 

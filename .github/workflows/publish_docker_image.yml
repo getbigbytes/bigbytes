@@ -14,7 +14,7 @@ on:
       name:
         description: 'Docker image name'
         required: true
-        default: mageai
+        default: bigbytes
       tag:
         description: 'Docker image tag'
         required: true
@@ -40,7 +40,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: mageai/${{ github.event.inputs.name }}:${{ github.event.inputs.tag }}
+          images: bigbytes/${{ github.event.inputs.name }}:${{ github.event.inputs.tag }}
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -54,7 +54,7 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: mageai/${{ github.event.inputs.name }}:${{ github.event.inputs.tag }}
+          tags: bigbytes/${{ github.event.inputs.name }}:${{ github.event.inputs.tag }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             FEATURE_BRANCH=${{ github.event.inputs.feature_branch }}

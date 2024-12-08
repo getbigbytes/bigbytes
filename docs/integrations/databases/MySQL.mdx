@@ -75,16 +75,16 @@ df.to_csv('default_repo/users.csv', index=False)
 
 ---
 
-### Using Mage's MySQL python blocks
+### Using Bigbytes's MySQL python blocks
 
 1. Create a Data Loader block from the MySQL Template
 
 Example snippet:
 
 ```python
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.config import ConfigFileLoader
-from mage_ai.io.mysql import MySQL
+from bigbytes.settings.repo import get_repo_path
+from bigbytes.io.config import ConfigFileLoader
+from bigbytes.io.mysql import MySQL
 from os import path
 
 @data_loader
@@ -93,7 +93,7 @@ def load_data_from_mysql(*args, **kwargs):
     Template for loading data from a MySQL database.
     Specify your configuration settings in 'io_config.yaml'.
 
-    Docs: https://docs.mage.ai/design/data-loading#mysql
+    Docs: https://docs.bigbytes.io/design/data-loading#mysql
     """
     query = 'Your MySQL query'  # Specify your SQL query here
     config_path = path.join(get_repo_path(), 'io_config.yaml')
@@ -109,14 +109,14 @@ def load_data_from_mysql(*args, **kwargs):
 Example snippet:
 
 ```python
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.config import ConfigFileLoader
-from mage_ai.io.mysql import MySQL
+from bigbytes.settings.repo import get_repo_path
+from bigbytes.io.config import ConfigFileLoader
+from bigbytes.io.mysql import MySQL
 from pandas import DataFrame
 from os import path
 
 if 'data_exporter' not in globals():
-    from mage_ai.data_preparation.decorators import data_exporter
+    from bigbytes.data_preparation.decorators import data_exporter
 
 
 @data_exporter
@@ -125,7 +125,7 @@ def export_data_to_mysql(df: DataFrame, **kwargs) -> None:
     Template for exporting data to a MySQL database.
     Specify your configuration settings in 'io_config.yaml'.
 
-    Docs: https://docs.mage.ai/design/data-loading#mysql
+    Docs: https://docs.bigbytes.io/design/data-loading#mysql
     """
     table_name = 'your_table_name'  # Specify the name of the table to export data to
     config_path = path.join(get_repo_path(), 'io_config.yaml')
@@ -149,14 +149,14 @@ To overwrite a column type when running a python export block, simply specify th
 Here is an example code snippet:
 
 ```python
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.config import ConfigFileLoader
-from mage_ai.io.mysql import MySQL
+from bigbytes.settings.repo import get_repo_path
+from bigbytes.io.config import ConfigFileLoader
+from bigbytes.io.mysql import MySQL
 from pandas import DataFrame
 from os import path
 
 if 'data_exporter' not in globals():
-    from mage_ai.data_preparation.decorators import data_exporter
+    from bigbytes.data_preparation.decorators import data_exporter
 
 
 @data_exporter
@@ -165,7 +165,7 @@ def export_data_to_mysql(df: DataFrame, **kwargs) -> None:
     Template for exporting data to a MySQL database.
     Specify your configuration settings in 'io_config.yaml'.
 
-    Docs: https://docs.mage.ai/design/data-loading#mysql
+    Docs: https://docs.bigbytes.io/design/data-loading#mysql
     """
     table_name = 'your_table_name'  # Specify the name of the table to export data to
     config_path = path.join(get_repo_path(), 'io_config.yaml')

@@ -1,0 +1,38 @@
+bigbytes:
+  target: mysql
+  outputs:
+    mysql:
+      password: password
+      port: 3306
+      schema: materia_development
+      server: bigbytes-development.1337.us-west-1.rds.amazonaws.com
+      ssl_disabled: True
+      type: mysql
+      username: root
+    redshift:
+      dbname: bigbytes_feature_sets
+      host: bigbytes-production.1337.us-west-1.redshift.amazonaws.com
+      password: password
+      port: 5439
+      schema: public
+      type: redshift
+      user: bigbytes_user
+    snowflake:
+      account: nqa1337.us-west-2
+      database: DEMO_DB
+      password: super
+      query_tag: bigbytes_dbt
+      schema: BIGBYTES
+      threads: 1
+      type: snowflake
+      user: bigbytes
+      warehouse: COMPUTE_WH
+    trino:
+      database: postgresql
+      host: host.docker.internal
+      port: 8080
+      retries: 3
+      schema: trino
+      threads: 1
+      type: trino
+      user: postgres

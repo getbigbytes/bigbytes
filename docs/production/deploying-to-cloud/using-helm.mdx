@@ -5,7 +5,7 @@ icon: "anchor"
 
 ![](https://avatars.githubusercontent.com/u/15859888?s=200&v=4)
 
-Deploy Mage to Kubernetes cluster with Helm.
+Deploy Bigbytes to Kubernetes cluster with Helm.
 
 ---
 
@@ -49,18 +49,18 @@ Follow the [guide](https://cloud.google.com/kubernetes-engine/docs/deploy-app-cl
 
 ---
 
-# Deploy Mage using Helm
+# Deploy Bigbytes using Helm
 
-Mage helm repo: https://mage-ai.github.io/helm-charts/
+Bigbytes helm repo: https://bigbytes.github.io/helm-charts/
 
 ### Add Helm repository
 ```bash
-helm repo add mageai https://mage-ai.github.io/helm-charts
+helm repo add bigbytes https://bigbytes.github.io/helm-charts
 ```
 
 ### Install Helm charts with default config
 ```
-helm install my-mageai mageai/mageai
+helm install my-bigbytes bigbytes/bigbytes
 ```
 
 ### Customize deployment 
@@ -69,38 +69,38 @@ You can customize the deployment by updating the `values.yaml` file.
 - Get the `values.yaml` with the command
     
     ```bash
-    helm show values mageai/mageai > values.yaml
+    helm show values bigbytes/bigbytes > values.yaml
     ```
     
 - Customize the mount volume
-  - **Local**: Edit the `volumes` config in `values.yaml` to mount to your Mage project path
-  - **AWS EKS**: Provision the Elastic File System and create the [PersistentVolumeClaim](https://github.com/mage-ai/mage-ai-terraform-templates/blob/master/aws-eks/kube/efs-pvc.yaml) (using ReadWriteMany access mode). Then edit the `volumes` config to 
+  - **Local**: Edit the `volumes` config in `values.yaml` to mount to your Bigbytes project path
+  - **AWS EKS**: Provision the Elastic File System and create the [PersistentVolumeClaim](https://github.com/digitranslab/bigbytes-terraform-templates/blob/master/aws-eks/kube/efs-pvc.yaml) (using ReadWriteMany access mode). Then edit the `volumes` config to
     ```
     volumes:
-      - name: mage-fs
+      - name: bigbytes-fs
         persistentVolumeClaim:
             claimName: pvc-name
     ```
   - **GKE**: Provision the [PersistentVolume](https://cloud.google.com/kubernetes-engine/docs/concepts/persistent-volumes#dynamic_provisioning) and create the PersistentVolumeClaim (using ReadWriteMany access mode) and edit the `volumes` config to 
     ```
     volumes:
-      - name: mage-fs
+      - name: bigbytes-fs
         persistentVolumeClaim:
             claimName: pvc-name
     ```
   - **Azure**: Provision the [PersistentVolume](https://learn.microsoft.com/en-us/azure/aks/concepts-storage#persistent-volume-claims) and create the PersistentVolumeClaim (using ReadWriteMany access mode) and edit the `volumes` config to
     ```
     volumes:
-      - name: mage-fs
+      - name: bigbytes-fs
         persistentVolumeClaim:
             claimName: pvc-name
     ```
 
 - Install the Helm charts with updated `values.yaml`
     ```bash
-    helm install --values path/to/values.yaml my-mageai mageai/mageai
+    helm install --values path/to/values.yaml my-bigbytes bigbytes/bigbytes
     ```
     
 ## Releases
 
-https://github.com/mage-ai/helm-charts/releases
+https://github.com/digitranslab/helm-charts/releases

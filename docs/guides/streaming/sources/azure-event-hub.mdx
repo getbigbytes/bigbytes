@@ -1,13 +1,13 @@
 ---
 title: "Azure Event Hub"
-description: "This guide provides step-by-step instructions to set up and use Azure Event Hub with Mage. By following these instructions, 
-you can create a new streaming pipeline in Mage, authenticate with Azure Event Hub, and configure your data loader, transformer, 
+description: "This guide provides step-by-step instructions to set up and use Azure Event Hub with Bigbytes. By following these instructions,
+you can create a new streaming pipeline in Bigbytes, authenticate with Azure Event Hub, and configure your data loader, transformer,
 and exporter blocks to process and manage your data efficiently."
 ---
 
-**Start Mage**
+**Start Bigbytes**
 
-1. Open Mage in your browser and then navigate to the pipelines page.
+1. Open Bigbytes in your browser and then navigate to the pipelines page.
 2. Create a new pipeline by clicking the “+ New” button and then select “Streaming.”
 3. Enter a name for the pipeline and click “Create.”
 
@@ -15,7 +15,7 @@ and exporter blocks to process and manage your data efficiently."
 To authenticate with Azure Event Hub, complete the following actions:
 
 1. Configure your io_config.yml file with the account variables below. If you need further information about how to store secrets in 
-Mage check out the [documentation](https://docs.mage.ai/production/deploying-to-cloud/secrets/Azure).
+Bigbytes check out the [documentation](https://docs.bigbytes.io/production/deploying-to-cloud/secrets/Azure).
 
 ```YAML
   AZURE_CLIENT_ID: "{{ env_var('AZURE_CLIENT_ID') }}"
@@ -44,7 +44,7 @@ Connection string: Use the `connection_str` parameter in the config as shown abo
 from typing import Dict, List
 
 if 'transformer' not in globals():
-    from mage_ai.data_preparation.decorators import transformer
+    from bigbytes.data_preparation.decorators import transformer
 
 @transformer
 def transform(messages: List[Dict], *args, **kwargs):
@@ -86,6 +86,6 @@ max_wait_time: <Wait time> # optional
 starting_position: <starting position> #optional, example '@latest'
 ```
 
-By following this guide, you can successfully set up a streaming pipeline in Mage using Azure Event Hub. This allows you to authenticate, 
-load, transform, and export data efficiently. With these steps, you can leverage Mage and Azure Event Hub to create powerful and scalable 
+By following this guide, you can successfully set up a streaming pipeline in Bigbytes using Azure Event Hub. This allows you to authenticate,
+load, transform, and export data efficiently. With these steps, you can leverage Bigbytes and Azure Event Hub to create powerful and scalable
 streaming data pipelines. 

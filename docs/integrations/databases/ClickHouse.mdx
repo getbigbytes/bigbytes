@@ -56,14 +56,14 @@ default:
    you have a different profile):
 
 ```python
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.clickhouse import ClickHouse
-from mage_ai.io.config import ConfigFileLoader
+from bigbytes.settings.repo import get_repo_path
+from bigbytes.io.clickhouse import ClickHouse
+from bigbytes.io.config import ConfigFileLoader
 from os import path
 from pandas import DataFrame
 
 if 'data_loader' not in globals():
-    from mage_ai.data_preparation.decorators import data_loader
+    from bigbytes.data_preparation.decorators import data_loader
 
 
 @data_loader
@@ -89,7 +89,7 @@ in `ClickHouse` can involve numerous details, it is strongly advised to
 create the destination table manually before loading data to ensure it
 meets specific requirements.
 
-If generating the destination table via Mage export method, one can ovewrite specific column types
+If generating the destination table via Bigbytes export method, one can ovewrite specific column types
 by using the `overwrite_types` dict setting.
 
 Example:
@@ -100,14 +100,14 @@ overwrite_types = {'column_name': 'VARCHAR(255)'}
 Here is the ClickHouse data exporter code snippet that you can use:
 
 ```python
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.config import ConfigFileLoader
-from mage_ai.io.clickhouse import ClickHouse
+from bigbytes.settings.repo import get_repo_path
+from bigbytes.io.config import ConfigFileLoader
+from bigbytes.io.clickhouse import ClickHouse
 from pandas import DataFrame
 from os import path
 
 if 'data_exporter' not in globals():
-    from mage_ai.data_preparation.decorators import data_exporter
+    from bigbytes.data_preparation.decorators import data_exporter
 
 
 @data_exporter

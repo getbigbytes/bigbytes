@@ -1,4 +1,4 @@
-FROM mageai/mageai:latest
+FROM bigbytes/bigbytes:latest
 ARG PIP=pip3
 
 RUN apt-get update && \
@@ -7,4 +7,4 @@ apt-get install -y --no-install-recommends \
 
 RUN ${PIP} install databricks-connect==11.3.0b0
 
-ENV MAGE_DATA_DIR=
+ENV BIGBYTES_DATA_DIR=

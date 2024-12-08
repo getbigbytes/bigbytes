@@ -7,13 +7,13 @@ description: "Execute SQL commands directly in your database, data warehouse, et
 
 <img
   alt="SQL blocks"
-  src="https://github.com/mage-ai/assets/blob/main/development/mage-block.png?raw=true"
+  src="https://github.com/digitranslab/assets/blob/main/development/bigbytes-block.png?raw=true"
   width="300"
 />
 
 ## Credentials
 
-Before starting, you need to add credentials so Mage can execute your SQL
+Before starting, you need to add credentials so Bigbytes can execute your SQL
 commands.
 
 Follow the steps for the database or data warehouse of your choice:
@@ -84,7 +84,7 @@ In addition to the fields mentioned in the table above. Here are some extra fiel
 
 <img
   alt="SQL block monsters"
-  src="https://github.com/mage-ai/assets/blob/main/development/sql-block-monsters.png?raw=true"
+  src="https://github.com/digitranslab/assets/blob/main/development/sql-block-monsters.png?raw=true"
   width="500"
 />
 
@@ -112,7 +112,7 @@ If you toggle this setting, you’re responsible for writing the `CREATE TABLE` 
 For example, if a table already exists then you can write the `INSERT` statement:
 
 ```sql
-INSERT INTO mage.users
+INSERT INTO bigbytes.users
 SELECT 1 AS id, 'Urza' AS username;
 ```
 
@@ -120,7 +120,7 @@ If the table doesn’t exist yet, you can write both the `CREATE TABLE` statemen
 and the `INSERT` statement:
 
 ```sql
-CREATE TABLE IF NOT EXISTS mage.users (
+CREATE TABLE IF NOT EXISTS bigbytes.users (
     id BIGINT
     , username VARCHAR(255)
 );
@@ -131,13 +131,13 @@ WITH users AS (
         , 'Urza' AS username
 )
 
-INSERT INTO mage.users
+INSERT INTO bigbytes.users
 SELECT
     *
 FROM users;
 ```
 
-This SQL query will create a table named `mage.users` with 2 columns: `id` as a `BIGINT`
+This SQL query will create a table named `bigbytes.users` with 2 columns: `id` as a `BIGINT`
 and `username` as a `VARCHAR(255)`.
 
 Then, it’ll insert a single row into that table.
@@ -274,7 +274,7 @@ Use the data from 1 or more upstream block’s output by using the `block_output
     <p align="center">
     <img
         alt="Interpolate block output dataz"
-        src="https://github.com/mage-ai/assets/blob/main/blocks/interpolate-block-output.png?raw=true"
+        src="https://github.com/digitranslab/assets/blob/main/blocks/interpolate-block-output.png?raw=true"
     />
     </p>
 </Frame>
@@ -315,14 +315,14 @@ will be interpolated as is.
     For example, if the current block has the following upstream blocks with the following output:
 
     1. `load_api_data`: `[1, 2, 3]`
-    1. `load_users_data`: `{ 'mage': 'powerful' }`
+    1. `load_users_data`: `{ 'bigbytes': 'powerful' }`
 
     Then the 1st argument in the lambda function will be the following list:
 
     ```python
     [
         [1, 2, 3],
-        { 'mage': 'powerful' },
+        { 'bigbytes': 'powerful' },
     ]
     ```
 
@@ -330,7 +330,7 @@ will be interpolated as is.
     | --- | --- |
     | Optional | ❌ |
     | Type | If `block_uuid` argument is present, then the type depends on the output from that block. If `block_uuid` isn’t present, then the type is `list`.  |
-    | Example | `{ 'mage': 'powerful' }` |
+    | Example | `{ 'bigbytes': 'powerful' }` |
 
 - `variables`
     A dictionary containing pipeline variables and runtime variables.
@@ -349,19 +349,19 @@ With `block_uuid`
 SELECT
     '{{ block_output("magic_config", parse=lambda data, _vars: data["power"]) }}' AS power
     , '{{ block_output("magic_config", parse=lambda data, _vars: data["spell"]) }}' AS spell
-FROM mage.core_spells
+FROM bigbytes.core_spells
 ```
 
 ```sql
 SELECT
     '{{ block_output("data_loader_block", parse=lambda data, variables: data["runtime"] * variables["tries"]) }}' AS data
-FROM mage.core_spells
+FROM bigbytes.core_spells
 ```
 
 ```sql
 SELECT
     '{{ block_output("load_recent_user", parse=lambda user, _variables: user["id"]) }}'
-FROM mage.core_spells
+FROM bigbytes.core_spells
 ```
 
 Without `block_uuid`
@@ -370,19 +370,19 @@ Without `block_uuid`
 SELECT
     '{{ block_output(parse=lambda data, _vars: data[0]["power"]) }}' AS power
     , '{{ block_output(parse=lambda data, _vars: data[0]["spell"]) }}' AS spell
-FROM mage.core_spells
+FROM bigbytes.core_spells
 ```
 
 ```sql
 SELECT
     '{{ block_output(parse=lambda data, variables: data[0]["runtime"] * variables[0]["tries"]) }}' AS data
-FROM mage.core_spells
+FROM bigbytes.core_spells
 ```
 
 ```sql
 SELECT
     '{{ block_output(parse=lambda user, _variables: user[0]["id"]) }}'
-FROM mage.core_spells
+FROM bigbytes.core_spells
 ```
 
 ### Variables
@@ -398,7 +398,7 @@ Interpolate values from a dictionary containing keys and values from:
 ```sql
 SELECT
     '{{ variables("mana") }}' AS mana
-FROM mage.dual_lands
+FROM bigbytes.dual_lands
 ```
 
 ### Environment variables
@@ -410,7 +410,7 @@ Interpolate values from the environment variables.
 ```sql
 SELECT
     '{{ env_var("ALLOW_POWER_9") }}' AS vintage
-FROM mage.mox
+FROM bigbytes.mox
 ```
 
 ---
@@ -421,20 +421,20 @@ FROM mage.mox
     Available in versions >= `0.9.59`
 </Note>
 
-Mage automatically pre-processes your SQL command before sending it to the final destination.
+Bigbytes automatically pre-processes your SQL command before sending it to the final destination.
 
-The pre-process extracts and structures the command so that Mage can build upstream tables and
+The pre-process extracts and structures the command so that Bigbytes can build upstream tables and
 properly display preview data.
 
 However, there are scenarios where the SQL command you write must be executed as is.
-You can disable Mage’s pre-processing by opening a SQL block and checking the box labeled
+You can disable Bigbytes’s pre-processing by opening a SQL block and checking the box labeled
 <b>Use raw SQL</b> and <b>Disable query preprocessing</b>.
 
 <Frame>
     <p align="center">
     <img
         alt="Execute pure SQl commands"
-        src="https://github.com/mage-ai/assets/blob/main/blocks/execute-pure-sql.gif?raw=true"
+        src="https://github.com/digitranslab/assets/blob/main/blocks/execute-pure-sql.gif?raw=true"
     />
     </p>
 </Frame>

@@ -2,7 +2,7 @@
 title: "Create a new destination"
 ---
 
-Here is an example PR for adding a new destination: https://github.com/mage-ai/mage-ai/pull/2277
+Here is an example PR for adding a new destination: https://github.com/digitranslab/bigbytes/pull/2277
 
 In this guide, we'll build a sample destination called `SampleDest`. When you're building your own destination, you can swap out the `SampleDest` name for the real name of your new destination.
 
@@ -16,19 +16,19 @@ In this guide, we'll build a sample destination called `SampleDest`. When you're
 
 ## 1. Create a directory for the new destination
 
-In the `mage_integrations/destinations/` directory, add a new directory named after your destination.
-Use snake case and lowercase for your directory name: `mage_integrations/destinations/sample_dest/`.
+In the `bigbytes_integrations/destinations/` directory, add a new directory named after your destination.
+Use snake case and lowercase for your directory name: `bigbytes_integrations/destinations/sample_dest/`.
 
 In this new directory, create the following subdirectories and files:
 
-- `mage_integrations/destinations/sample_dest/templates/config.json`
-- `mage_integrations/destinations/sample_dest/__init__.py`
-- `mage_integrations/destinations/sample_dest/README.md`
+- `bigbytes_integrations/destinations/sample_dest/templates/config.json`
+- `bigbytes_integrations/destinations/sample_dest/__init__.py`
+- `bigbytes_integrations/destinations/sample_dest/README.md`
 
 The directory structure should look like this:
 
 ```
-mage_integrations/
+bigbytes_integrations/
 |   destinations/
 |   |   sample_dest/
 |   |   |   templates/
@@ -64,7 +64,7 @@ This is where majority of the destination logic will exist.
 
 #### Examples
 
-[`mage_integrations/destinations/amazon_s3/__init__.py`](https://github.com/mage-ai/mage-ai/blob/master/mage_integrations/mage_integrations/destinations/amazon_s3/__init__.py)
+[`bigbytes_integrations/destinations/amazon_s3/__init__.py`](https://github.com/digitranslab/bigbytes/blob/master/bigbytes_integrations/bigbytes_integrations/destinations/amazon_s3/__init__.py)
 
 ### `README.md`
 
@@ -74,15 +74,15 @@ Document how to configure and use your destination in the `README.md` file.
 
 ## 2. Define custom destination class
 
-In the `mage_integrations/destinations/sample_dest/__init__.py`,
+In the `bigbytes_integrations/destinations/sample_dest/__init__.py`,
 create a new class named after your destination and subclass the
-[base destination class](https://github.com/mage-ai/mage-ai/blob/master/mage_integrations/mage_integrations/destinations/base.py).
+[base destination class](https://github.com/digitranslab/bigbytes/blob/master/bigbytes_integrations/bigbytes_integrations/destinations/base.py).
 
 If you're adding a destination for a SQL data warehouse or database, you can subclass the
-[base sql destination class](https://github.com/mage-ai/mage-ai/blob/master/mage_integrations/mage_integrations/destinations/sql/base.py)
+[base sql destination class](https://github.com/digitranslab/bigbytes/blob/master/bigbytes_integrations/bigbytes_integrations/destinations/sql/base.py)
 
 ```python
-from mage_integrations.destinations.base import Destination
+from bigbytes_integrations.destinations.base import Destination
 
 
 class SampleDest(Destination):
@@ -103,7 +103,7 @@ Override this method to contain the logic for exporting data that is specific to
 
 ## 3. Add main function
 
-In the file `mage_integrations/destinations/sample_dest/__init__.py`, add the main function to the bottom of the file
+In the file `bigbytes_integrations/destinations/sample_dest/__init__.py`, add the main function to the bottom of the file
 like below:
 
 ```python
@@ -117,14 +117,14 @@ if __name__ == '__main__':
 
 ## 4. Add your destination to the UI (optional)
 
-Add the new destination to the `DESTINATIONS` list constant in this file: https://github.com/mage-ai/mage-ai/blob/master/mage_ai/data_integrations/destinations/constants.py
+Add the new destination to the `DESTINATIONS` list constant in this file: https://github.com/digitranslab/bigbytes/blob/master/bigbytes/data_integrations/destinations/constants.py
 
 ## 5. Test your desination
 
-Follow this [doc](https://github.com/mage-ai/mage-ai/tree/master/mage_integrations) to test your new destination.
+Follow this [doc](https://github.com/digitranslab/bigbytes/tree/master/bigbytes_integrations) to test your new destination.
 
-To test the destination in the UI, you can install your updated `mage_integrations` module by running the following commands in Mage terminal:
+To test the destination in the UI, you can install your updated `bigbytes_integrations` module by running the following commands in Bigbytes terminal:
 ```bash
-pip uninstall -y mage_integrations
-pip install "git+https://github.com/your_repo.git@your_branch#egg=mage-integrations&subdirectory=mage_integrations"
+pip uninstall -y bigbytes_integrations
+pip install "git+https://github.com/your_repo.git@your_branch#egg=bigbytes-integrations&subdirectory=bigbytes_integrations"
 ```

@@ -6,19 +6,19 @@ We'd love to have your contribution, but first you'll need to configure your loc
 2. Installing dependencies
 3. Installing Git hooks
 4. Installing pre-commit hooks
-5. Building the Mage Docker image
+5. Building the Bigbytes Docker image
 6. Running dev!
 
 > [!WARNING]
 > _All commands below, without any notes, assume you are at the root of the repo._
 
-Mage server uses Python >=3.6 (as per `setup.py`), but the development dependencies will complain if you're not using at least Python 3.8. We [use Python 3.10](./Dockerfile).
+Bigbytes server uses Python >=3.6 (as per `setup.py`), but the development dependencies will complain if you're not using at least Python 3.8. We [use Python 3.10](./Dockerfile).
 
 As such, make sure you have Python >=3.8. Verify this with:
 
 ```bash
-git clone https://github.com/mage-ai/mage-ai mage-ai
-cd mage-ai
+git clone https://github.com/digitranslab/bigbytes bigbytes
+cd bigbytes
 python --version
 ```
 
@@ -82,7 +82,7 @@ To install dependencies:
 ```bash
 pip install -U pip
 pip install -r ./requirements.txt
-pip install toml mage-ai
+pip install toml bigbytes
 ```
 
 Install additional dev dependencies from `pyproject.toml`:
@@ -97,17 +97,17 @@ The above command uses the `toml` library to output the dev dependencies from th
 pip install $(python3 -c "import toml; print(' '.join(toml.load('pyproject.toml')['tool']['poetry']['group']['dev']['dependencies'].keys()))" | tr '\n' ' ')
 ```
 
-## Mage frontend
+## Bigbytes frontend
 
 If you'll only be contributing to backend code, this section may be omitted.
 
 > [!IMPORTANT]
 > _Even if you are only working on UIs, you would still have to have the server running at port `6789`._
 
-The Mage frontend is a Next.js project
+The Bigbytes frontend is a Next.js project
 
 ```bash
-cd mage_ai/frontend/
+cd bigbytes/frontend/
 ```
 
 that uses Yarn.
@@ -138,7 +138,7 @@ Note that this will install both pre-commit and pre-push hooks.
 
 ## Run development server
 
-To initialize a development mage project so you have a starting point:
+To initialize a development bigbytes project so you have a starting point:
 
 ```bash
 ./scripts/init.sh default_repo

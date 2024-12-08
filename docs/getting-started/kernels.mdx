@@ -23,13 +23,13 @@ pipelines to transform large datasets.
 Instructions for running PySpark kernel
 
 - Launch editor with docker:
-  `docker run -it -p 6789:6789 -v $(pwd):/home/src mageai/mageai /app/run_app.sh mage start [project_name]`
+  `docker run -it -p 6789:6789 -v $(pwd):/home/src bigbytes/bigbytes /app/run_app.sh bigbytes start [project_name]`
 - Specify PySpark kernel related [metadata](#metadata) in project's
   metadata.yaml file
-- Launch a remote AWS EMR Spark cluster. Install mage_ai library in bootstrap
+- Launch a remote AWS EMR Spark cluster. Install bigbytes library in bootstrap
   actions. Make sure the EMR cluster is publicly accessible.
   - You can use the `create_emr.py` script under
-    [scripts/spark](https://github.com/mage-ai/mage-ai/tree/master/scripts/spark)
+    [scripts/spark](https://github.com/digitranslab/bigbytes/tree/master/scripts/spark)
     folder to launch a new EMR cluster. Example:
     `python3 create_cluster.py [project_path]`. Please make sure your AWS
     crendentials are provided in `~/.aws/credentials` file or environment
@@ -72,7 +72,7 @@ Pipelines built with this kernel can be executed in PySpark environments.
 We support executing PySpark pipelines in EMR cluster automatically. You'll need
 to specify the some EMR config fields in project's metadata.yaml file. And then
 we'll launch an EMR cluster when you executing the pipeline with
-`mage run [project_name] [pipeline]` command. Example EMR config:
+`bigbytes run [project_name] [pipeline]` command. Example EMR config:
 
 ## Restart kernel
 
@@ -88,4 +88,4 @@ the UI.
 If you're switching back to the Python3 kernel, you may need to undo the
 configuration changes needed for the other kernel types.
 
-![](https://github.com/mage-ai/assets/blob/main/switch_kernels.png?raw=True)
+![](https://github.com/digitranslab/assets/blob/main/switch_kernels.png?raw=True)

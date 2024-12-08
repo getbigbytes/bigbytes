@@ -44,7 +44,7 @@ The above transformer action imputes missing values in the "age" and "hourly_sal
 This JSON formatted payload is difficult to generate so it is recommended to use the `build_transformer_action` factory to generate the payload. The above snippet generates the same payload as above:
 
 ```python
-from mage_ai.data_cleaner.transformer_actions.utils import build_transformer_action
+from bigbytes.data_cleaner.transformer_actions.utils import build_transformer_action
 
 df = pd.DataFrame({...}) # your input data frame
 payload = build_transformer_action(
@@ -68,7 +68,7 @@ transformed_df = BaseAction(payload).execute(df)
 
 **_build_transformer_action_** - `build_transformer_action(df: DataFrame, action_type: ActionType | str, arguments: List[str], action_code: str, options: Dict, axis: Axis | str, outputs: List[Dict]) -> Dict:`
 
-Source: `mage_ai.data_cleaner.transformer_actions.utils.build_transformer_action`
+Source: `bigbytes.data_cleaner.transformer_actions.utils.build_transformer_action`
 
 Builds transformer action payload from arguments. The output of this function can be passed
 as input to `transformer_actions.base.BaseAction` in order to perform the requested transformation.
@@ -217,7 +217,7 @@ or equal to the value for $A$ and (b) less than or equal to the value $A+window$
 If some (or none) of these options are specified, then the filtering is not performed. Regardless if this filtering is performed, _action_code_ filtering is still performed.
 - **_outputs_:** Specifies the metadata for each output column of the aggregation (corresponding to the aggregation created from input argument in _arguments_). This array must be the same length as _arguments_, and each entry must contain the following metadata:
     - `uuid (string)`: Name of the new column
-    - `column_type (string | ColumnType)`: Type of the new column ( See `mage_ai.data_cleaner.column_types.constants.ColumnType` for options)
+    - `column_type (string | ColumnType)`: Type of the new column ( See `bigbytes.data_cleaner.column_types.constants.ColumnType` for options)
 
 **Aggregation Functions**
 These are the possible aggregations that can be applied to each group per each input column. To use the aggregation function specify the corresponding action type in `build_transformer_action`.
@@ -647,7 +647,7 @@ Clauses can be connected using the `and` and `or` operators and grouped with par
 - If columns contain any other special characters apart from those listed above, the column cannot be filtered. This is a fundamental limitation of pandas, see [here](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.query.html?highlight=query#pandas.DataFrame.query:~:text=During%20parsing%20a,not%20be%20escaped) for more information.
 
 # Appendix: Column Types
-These are list of column types used in the Mage tool. One of these column types should be specified for every entry in the _options_ argument of a transformer action. The enum source is `mage_ai.data_cleaner.column_types.constants.ColumnType`.
+These are list of column types used in the Bigbytes tool. One of these column types should be specified for every entry in the _options_ argument of a transformer action. The enum source is `bigbytes.data_cleaner.column_types.constants.ColumnType`.
 | Type                      | Enum                                   | String Value                | Description                                                                                           |
 | ------------------------- | -------------------------------------- | --------------------------- | ----------------------------------------------------------------------------------------------------- |
 | Category                  | `ColumnType.CATEGORY`                  | "category"                  | Categorical variable that takes one of some finite set of values. This set has at most 255 entries.   |

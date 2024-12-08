@@ -130,11 +130,11 @@ dmypy.json
 .pyre/
 
 # data files
-mage_ai/server/data/files/**
+bigbytes/server/data/files/**
 default_repo
 instance_metadata.json
-~/.mage_data
-mage_data/
+~/.bigbytes_data
+bigbytes_data/
 
 # test notebook
 test.ipynb
@@ -148,7 +148,7 @@ testfiles/
 .local/
 .npm/
 .python_history
-mage_ai/frontend/package-lock.json
+bigbytes/frontend/package-lock.json
 docker-compose.override.yml
 
 # DB files
@@ -166,9 +166,9 @@ docker-compose.override.yml
 node_modules
 .env
 .npmrc
-# mage_ai/server/frontend_dist
-# mage_ai/server/frontend_dist_base_path_template
-mage_ai/server/frontend_dist_base_path
+# bigbytes/server/frontend_dist
+# bigbytes/server/frontend_dist_base_path_template
+bigbytes/server/frontend_dist_base_path
 
 # Scratch files
 scratch*
@@ -177,7 +177,7 @@ scratch*
 playwright-report/
 
 # Testing files
-!mage_ai/test/
+!bigbytes/test/
 **/TEST_CATALOG.json
 **/TEST_CONFIG*.json
 **/TEST_CONFIG_D.json

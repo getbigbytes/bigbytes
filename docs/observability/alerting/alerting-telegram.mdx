@@ -15,7 +15,7 @@ description: "Get status updates in your Telegram Group."
 
 1. Set Bot with **BotFather** for Telegram
 2. Get the chat_id of your Telegram Group
-3. Update Mage project settings
+3. Update Bigbytes project settings
 
 ---
 
@@ -32,7 +32,7 @@ to setup Bot with BotFather and **Don't Forget to add your Bot to the Group**.
 1. Open https://web.telegram.org/ and Follow the instructions
 2. Click your Telegram Group and your Group chat_id is on your url like `https://web.telegram.org/a/#-7222xxxxxx`
 
-## Update Mage project settings
+## Update Bigbytes project settings
 
 Once you’ve set up the **Bot** and get the `chat_id` of your group, you need to set the webhook like example below:
 
@@ -44,7 +44,7 @@ https://api.telegram.org/bot{your_token:from_botfather}/sendMessage?chat_id=-722
 
 Follow these steps to add that webhook URL to your project settings:
 
-1. Open the Mage tool in your browser (e.g. http://localhost:6789/).
+1. Open the Bigbytes tool in your browser (e.g. http://localhost:6789/).
 2. Open a pipeline and start editing it (e.g.
    http://localhost:6789/pipelines/example_pipeline/edit).
 3. In your left sidebar in the file browser, scroll all the way down and click
@@ -119,7 +119,7 @@ Here are the supported variables:
 1. `stacktrace`
     * available only for the `failure` message template
 
-For `pipeline_run_url`, the default host is `http://localhost:6789`. You can specify `MAGE_PUBLIC_HOST` to be
+For `pipeline_run_url`, the default host is `http://localhost:6789`. You can specify `BIGBYTES_PUBLIC_HOST` to be
 the host url you want to use in the notification messages.
 
 ---
@@ -133,4 +133,4 @@ Here is an example of what that message could look like:
 
 |                                                                                                        |
 | ------------------------------------------------------------------------------------------------------ |
-| ![Telegram](https://github.com/mage-ai/assets/blob/main/third-party/telegram-message-run-alert.jpg?raw=true) |
+| ![Telegram](https://github.com/digitranslab/assets/blob/main/third-party/telegram-message-run-alert.jpg?raw=true) |

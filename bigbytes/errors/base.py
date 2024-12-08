@@ -1,0 +1,2 @@
+class BigbytesBaseException(Exception):
+    pass

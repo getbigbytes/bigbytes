@@ -9,7 +9,7 @@ description: "Please contribute usage statistics to help improve the developer e
 <Check>
     All usage statistics are completely <b>anonymous</b>.
 
-    It’s <b>impossible</b> for Mage to know which statistics belongs to whom.
+    It’s <b>impossible</b> for Bigbytes to know which statistics belongs to whom.
 </Check>
 
 <Frame>
@@ -21,8 +21,8 @@ description: "Please contribute usage statistics to help improve the developer e
 
 ## 🙏 Why is this important?
 
-By opting into sending usage statistics to [Mage](https://www.mage.ai/),
-it’ll help the team and community of contributors (Magers) learn what’s going wrong with the tool
+By opting into sending usage statistics to [Bigbytes](https://www.bigbytes.io/),
+it’ll help the team and community of contributors (Bigbytesrs) learn what’s going wrong with the tool
 and what improvements can be made.
 
 In addition to helping reduce potential errors,
@@ -33,7 +33,7 @@ you’ll help inform which features are useful and which need work.
 ### Project UUID
 
 Each project will have a universally unique identifier.
-This will help Mage count how many projects have been created.
+This will help Bigbytes count how many projects have been created.
 
 <Note>
     It’s <b>impossible</b> to associate a UUID with a project without knowing the pair together.
@@ -45,7 +45,7 @@ located at the root of your project: `[project_name]/metadata.yaml`.
 Here is an example of what it could look like:
 
 ```yaml
-variables_dir: ~/.mage_data
+variables_dir: ~/.bigbytes_data
 
 # ...
 
@@ -74,18 +74,18 @@ This will help improve the collaboration capabilities of the tool.
 
 ### Errors
 
-When an application error occurs in Mage, the error type, error message, and offending line of code
+When an application error occurs in Bigbytes, the error type, error message, and offending line of code
 will be included in the usage statistics.
 This will help fix bugs and improve the developer experience.
 
 ### Platform
 
-The operating system, release, version, etc of the machine that Mage is running on.
+The operating system, release, version, etc of the machine that Bigbytes is running on.
 This information will help reproduce errors.
 
 ## 🤷‍♀️ How does this work?
 
-Usage statistics are anonymously sent to Mage’s online server.
+Usage statistics are anonymously sent to Bigbytes’s online server.
 
 Here’s a sample of the JSON payload containing usage statistics that could be sent:
 
@@ -109,22 +109,22 @@ Here’s a sample of the JSON payload containing usage statistics that could be 
 ### Enable
 
 To enable sending usage statistics, add a key in the project’s `metadata.yaml` file called
-`help_improve_mage` with the value `true`.
+`help_improve_bigbytes` with the value `true`.
 
 Here is an example:
 
 ```yaml
 project_uuid: 4279d28ab1f64644b1f2f4f779be7b7e
-help_improve_mage: true
+help_improve_bigbytes: true
 ```
 
 ### Disable
 
-To disable, change the value of `help_improve_mage` to `false`.
+To disable, change the value of `help_improve_bigbytes` to `false`.
 
 Here is an example:
 
 ```yaml
 project_uuid: 4279d28ab1f64644b1f2f4f779be7b7e
-help_improve_mage: false
+help_improve_bigbytes: false
 ```

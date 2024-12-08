@@ -1,0 +1,8 @@
+from bigbytes.shared.enum import StrEnum
+
+BIGBYTES_OPERATION_HISTORY_DIRECTORY_DEFAULT = '.operation_history'
+BIGBYTES_OPERATION_HISTORY_DIRECTORY_ENVIRONMENT_VARIABLE_NAME = 'BIGBYTES_OPERATION_HISTORY_DIRECTORY'
+
+
+class ResourceType(StrEnum):
+    PIPELINE = 'pipeline'

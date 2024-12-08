@@ -1,8 +1,8 @@
 {
-  "name": "Mage AI",
+  "name": "BigBytes",
   "logo": {
-    "light": "/logo/m-mage-light.svg",
-    "dark": "/logo/m-mage.svg"
+    "light": "/logo/m-bigbytes-light.svg",
+    "dark": "/logo/m-bigbytes.svg"
   },
   "favicon": "/favicons/m1.svg",
   "colors": {
@@ -45,21 +45,21 @@
   "topbarLinks": [
     {
       "name": "GitHub",
-      "url": "https://www.mage.ai/oss"
+      "url": "https://www.bigbytes.io/oss"
     },
     {
       "name": "Community",
-      "url": "https://www.mage.ai/chat"
+      "url": "https://www.bigbytes.io/chat"
     },
     {
-      "name": "Mage Pro",
-      "url": "https://www.mage.ai/pro?source=documentation-header"
+      "name": "Bigbytes Pro",
+      "url": "https://www.bigbytes.io/pro?source=documentation-header"
     }
   ],
   "topbarCtaButton": {
     "type": "link",
     "name": "Demo playground",
-    "url": "https://www.mage.ai/demo",
+    "url": "https://www.bigbytes.io/demo",
     "style": "pill",
     "arrow": true
   },
@@ -96,10 +96,10 @@
   ],
   "footer": {
     "socials": {
-      "github": "https://www.github.com/mage-ai",
-      "slack": "https://www.mage.ai/chat",
-      "linkedin": "https://www.linkedin.com/company/magetech",
-      "twitter": "https://twitter.com/mage_ai"
+      "github": "https://www.github.com/digitranslab",
+      "slack": "https://www.bigbytes.io/chat",
+      "linkedin": "https://www.linkedin.com/company/digitrans",
+      "twitter": "https://twitter.com/bigbytes"
     },
     "links": [
       {
@@ -107,20 +107,20 @@
         "links": [
           {
             "label": "Code",
-            "url": "https://www.mage.ai.oss"
+            "url": "https://www.bigbytes.io.oss"
           },
           {
             "label": "Demo playground",
-            "url": "https://www.mage.ai/demo"
+            "url": "https://www.bigbytes.io/demo"
           }
         ]
       },
       {
-        "title": "Mage Pro",
+        "title": "Bigbytes Pro",
         "links": [
           {
             "label": "Get started for free",
-            "url": "https://www.mage.ai/pro"
+            "url": "https://www.bigbytes.io/pro"
           }
         ]
       },
@@ -129,23 +129,23 @@
         "links": [
           {
             "label": "Chat",
-            "url": "https://www.mage.ai/chat"
+            "url": "https://www.bigbytes.io/chat"
           },
           {
             "label": "Facebook",
-            "url": "https://www.facebook.com/mageai"
+            "url": "https://www.facebook.com/bigbytes"
           },
           {
             "label": "Youtube",
-            "url": "https://www.youtube.com/@mage_ai"
+            "url": "https://www.youtube.com/@bigbytes"
           },
           {
             "label": "Instagram",
-            "url": "https://www.instagram.com/mage_ai"
+            "url": "https://www.instagram.com/bigbytes"
           },
           {
             "label": "Medium",
-            "url": "https://m.mage.ai"
+            "url": "https://m.bigbytes.io"
           }
         ]
       }
@@ -633,7 +633,7 @@
         "getting-started/kernels",
         "development/project/local-timezone",
         "development/settings-backend",
-        "development/updating-mage"
+        "development/updating-bigbytes"
       ]
     },
     {
@@ -823,7 +823,7 @@
       "icon": "arrow-progress",
       "pages": [
         "guides/dbt/overview",
-        "guides/dbt/developing-dbt-in-mage",
+        "guides/dbt/developing-dbt-in-bigbytes",
         "guides/dbt/setup-dbt",
         {
           "group": "Configuration",
@@ -865,7 +865,7 @@
         "production/ci-cd/local-cloud/github-actions",
         "production/ci-cd/local-cloud/gitlab-ci-cd",
         "production/ci-cd/local-cloud/buildkite",
-        "production/ci-cd/mage/pro",
+        "production/ci-cd/bigbytes/pro",
         "production/configuring-production-settings/overview"
       ]
     },
@@ -920,7 +920,7 @@
             "production/deploying-to-cloud/gcp/gcp-artifact-registry"
           ]
         },
-        "production/mage/pro"
+        "production/bigbytes/pro"
       ]
     },
     {
@@ -938,7 +938,7 @@
     {
       "group": "Secret manager",
       "pages": [
-        "production/deploying-to-cloud/secrets/mage",
+        "production/deploying-to-cloud/secrets/bigbytes",
         "production/deploying-to-cloud/secrets/AWS",
         "production/deploying-to-cloud/secrets/Azure",
         "production/deploying-to-cloud/secrets/GCP"
@@ -1072,7 +1072,7 @@
               "group": "Airflow",
               "pages": [
                 "integrations/airflow/index",
-                "integrations/airflow/integrate-mage-airflow"
+                "integrations/airflow/integrate-bigbytes-airflow"
               ]
             },
             "integrations/prefect"
@@ -1203,9 +1203,9 @@
     }
   ],
   "metadata": {
-    "og:image": "https://github.com/mage-ai/mage-ai/blob/master/docs/og.png?raw=True",
+    "og:image": "https://github.com/digitranslab/bigbytes/blob/master/docs/og.png?raw=True",
     "og:description": "The leading framework for transforming and integrating data.",
-    "og:site_name": "Mage AI Documentation",
-    "twitter:site": "@mage_ai"
+    "og:site_name": "BigBytes Documentation",
+    "twitter:site": "@bigbytes"
   }
 }

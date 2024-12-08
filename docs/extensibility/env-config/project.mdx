@@ -12,7 +12,7 @@ import { ProOnly } from '/snippets/pro/only.mdx';
 
 ### Location of project configuration
 
-Each project in Mage has a `metadata.yaml` configuration file located in the
+Each project in Bigbytes has a `metadata.yaml` configuration file located in the
 project's root directory. For example, if you had a project called `your_project`,
 the folder structure for that project might look something like this:
 
@@ -41,7 +41,7 @@ overriding properties with nested values.
 
 <Note>
 The environment name should match the environment defined in the `ENV`
-[environment variable](https://docs.mage.ai/development/variables/environment-variables).
+[environment variable](https://docs.bigbytes.io/development/variables/environment-variables).
 </Note>
 
 ### Example project config file with environment overrides
@@ -50,7 +50,7 @@ The environment name should match the environment defined in the `ENV`
 # your_project/metadata.yaml
 project_type: standalone
 
-variables_dir: ~/.mage_data
+variables_dir: ~/.bigbytes_data
 remote_variables_dir: s3://bucket/path_prefix
 
 variables_retention_period: '90d'
@@ -78,9 +78,9 @@ notification_config:
   - trigger_failure
   - trigger_passed_sla
   slack_config:
-    webhook_url: "{{ env_var('MAGE_SLACK_WEBHOOK_URL') }}"
+    webhook_url: "{{ env_var('BIGBYTES_SLACK_WEBHOOK_URL') }}"
   teams_config:
-    webhook_url: "{{ env_var('MAGE_TEAMS_WEBHOOK_URL') }}"
+    webhook_url: "{{ env_var('BIGBYTES_TEAMS_WEBHOOK_URL') }}"
 project_uuid: 123456781234abcd1234abcde123456
 features:
   add_new_block_v2: true

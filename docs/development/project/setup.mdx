@@ -1,13 +1,13 @@
 ---
 title: "Project setup"
 sidebarTitle: "Setup"
-description: "How to set up a folder containing your Mage project code and other files."
+description: "How to set up a folder containing your Bigbytes project code and other files."
 icon: "person-to-portal"
 ---
 
 ## Parent folder
 
-Create a parent folder that will contain your Mage project code:
+Create a parent folder that will contain your Bigbytes project code:
 
 ```bash
 mkdir data_monorepo
@@ -27,7 +27,7 @@ Create an empty Dockerfile:
 echo "" > Dockerfile
 ```
 
-Paste the contents from this [Dockerfile](https://github.com/mage-ai/docker/blob/master/Dockerfile)
+Paste the contents from this [Dockerfile](https://github.com/digitranslab/docker/blob/master/Dockerfile)
 into the Dockerfile you just created.
 
 ## Create a .gitignore file
@@ -46,20 +46,20 @@ Paste the following contents into the .gitignore file you just created:
 .gitkeep
 .log
 .logs/
-.mage_temp_profiles
+.bigbytes_temp_profiles
 .preferences.yaml
 .variables/
 __pycache__/
 docker-compose.override.yml
 logs/
-mage-ai.db
-mage_data/
+bigbytes.db
+bigbytes_data/
 secrets/
 ```
 
-## Create Mage project
+## Create Bigbytes project
 
-Follow these [instructions](/getting-started/setup) to create a Mage project in your
+Follow these [instructions](/getting-started/setup) to create a Bigbytes project in your
 current directory. If you named your project `demo_project`, your current folder structure
 will look like this:
 

@@ -10,14 +10,14 @@ import { ProBanner } from '/snippets/pro/banner.mdx';
 
 <ProBanner
   source="kubernetes-executor"
-  title="Use Mage Pro if you need to run your blocks in separate pods or process while developing in the code editor."
+  title="Use Bigbytes Pro if you need to run your blocks in separate pods or process while developing in the code editor."
   description={`
   Running a block from the code editor, while developing a pipeline, won’t use this executor.
   Instead, the block will be executed using the same process that the code editor is running on.
   `}
 />
 
-If your Mage app is running in a Kubernetes cluster, you can execute the blocks in separate Kubernetes pods with Kubernetes executor.
+If your Bigbytes app is running in a Kubernetes cluster, you can execute the blocks in separate Kubernetes pods with Kubernetes executor.
 
 To configure a pipeline block to use Kubernetes executor, you simply just need to update the `executor_type` of the block to `k8s` in pipeline's metadata.yaml:
 
@@ -30,7 +30,7 @@ blocks:
   executor_type: k8s
   ...
 ```
-By default, Mage uses `default` as the Kubernetes namespace. You can customize the namespace by setting the `KUBE_NAMESPACE` environment variable.
+By default, Bigbytes uses `default` as the Kubernetes namespace. You can customize the namespace by setting the `KUBE_NAMESPACE` environment variable.
 
 There're three ways to customize the Kubernetes executor config:
 
@@ -65,7 +65,7 @@ in this project. Example config:
         memory: 1024Mi
       service_account_name: default
     ```
-* The kubernetes job name is in this format: `mage-{job_name_prefix}-block-{block_run_id}`. The default `job_name_prefix` is `data-prep`. You can customize it in the k8s executor config.
+* The kubernetes job name is in this format: `bigbytes-{job_name_prefix}-block-{block_run_id}`. The default `job_name_prefix` is `data-prep`. You can customize it in the k8s executor config.
   You can interpolate the trigger name in the `job_name_prefix` field with the format `{trigger_name}`
 * If you want to use GPU resource in your k8s executor, you can configure the GPU resource in the `k8s_executor_config` like
   ```yaml
@@ -79,7 +79,7 @@ in this project. Example config:
   ```yaml
   k8s_executor_config:
     container_config:
-      image: mageai/mageai:0.9.7
+      image: bigbytes/bigbytes:0.9.7
       env:
       - name: USER_CODE_PATH
         value: /home/src/k8s_project
@@ -94,10 +94,10 @@ in this project. Example config:
 # Kubernetes Configuration Template
 metadata:
   annotations:
-    application: "mage"
+    application: "bigbytes"
     composant: "executor"
   labels:
-    application: "mage"
+    application: "bigbytes"
     type: "spark"
   namespace: "default"
 pod:
@@ -108,13 +108,13 @@ pod:
     persistent_volume_claim:
       claim_name: pvc-name
 container:
-  name: "mage-data"
+  name: "bigbytes-data"
   env:
     - name: "KUBE_NAMESPACE"
       value: "default"
     - name: "secret_key"
       value: "somesecret"
-  image: "mageai/mageai:latest"
+  image: "bigbytes/bigbytes:latest"
   image_pull_policy: "IfNotPresent"
   resources:
     limits:
@@ -128,11 +128,11 @@ container:
       name: "data-pvc"
 ```
 
-**NB:** When deploying Mage in a multi-container pod, you need to specify the environment variable `MAGE_CONTAINER_NAME`. If this variable is not set, Mage will default to using the first container in the pod. To specify the Mage container, you can use:
+**NB:** When deploying Bigbytes in a multi-container pod, you need to specify the environment variable `BIGBYTES_CONTAINER_NAME`. If this variable is not set, Bigbytes will default to using the first container in the pod. To specify the Bigbytes container, you can use:
 
 ```yaml
     env:
-      - name: MAGE_CONTAINER_NAME
+      - name: BIGBYTES_CONTAINER_NAME
         valueFrom:
           fieldRef:
             fieldPath: metadata.name

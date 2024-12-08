@@ -5,9 +5,9 @@ description: "Development (local) and production (cloud) using GitLab CI/CD."
 icon: "gitlab"
 ---
 
-## Mage project setup
+## Bigbytes project setup
 
-Follow the [Mage project setup instructions](/production/ci-cd/local-cloud/repository-setup).
+Follow the [Bigbytes project setup instructions](/production/ci-cd/local-cloud/repository-setup).
 
 ---
 
@@ -66,7 +66,7 @@ Follow the [Mage project setup instructions](/production/ci-cd/local-cloud/repos
 1. In the field labeled **Value**, enter your AWS default region.
 1. Click the button labeled **Add variable** to save.
 1. Create a new file in your repository and name it `.gitlab-ci.yml`.
-   If you followed the [Mage project setup instructions](/production/ci-cd/local-cloud/repository-setup),
+   If you followed the [Bigbytes project setup instructions](/production/ci-cd/local-cloud/repository-setup),
    then your current folder structure could look like this:
     ```
     my_team/
@@ -74,7 +74,7 @@ Follow the [Mage project setup instructions](/production/ci-cd/local-cloud/repos
     |   .gitlab-ci.yml
     |   Dockerfile
     ```
-1. Copy the contents of this [GitLab CI/CD template file](https://github.com/mage-ai/mage-ai/blob/master/templates/gitlab_cicd/aws.gitlab-ci.yml)
+1. Copy the contents of this [GitLab CI/CD template file](https://github.com/digitranslab/bigbytes/blob/master/templates/gitlab_cicd/aws.gitlab-ci.yml)
    and paste it into the file named `.gitlab-ci.yml`.
 1. Change the following values in the file named `.gitlab-ci.yml` under the key labeled `variables`:
     ```yaml
@@ -87,10 +87,10 @@ Follow the [Mage project setup instructions](/production/ci-cd/local-cloud/repos
 
     | Key                   | Description                                                                                                                                                                                                                                                                        | Sample value                         |
     | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
-    | `REPOSITORY_URL`      | The URL of the AWS ECR repository you created to store your Docker images. | `679812356111.dkr.ecr.us-west-2.amazonaws.com/mage-data` |
-    | `CLUSTER_NAME`         | The name of your AWS ECS cluster. | `mage-production-cluster` |
-    | `SERVICE_NAME`         | The name of your AWS ECS service. | `mage-production-ecs-service` |
-    | `TASK_DEFINITION_NAME` | Go to your AWS ECS task definition for the above service. Use the name of that task definition. | `mage-production-task` |
+    | `REPOSITORY_URL`      | The URL of the AWS ECR repository you created to store your Docker images. | `679812356111.dkr.ecr.us-west-2.amazonaws.com/bigbytes-data` |
+    | `CLUSTER_NAME`         | The name of your AWS ECS cluster. | `bigbytes-production-cluster` |
+    | `SERVICE_NAME`         | The name of your AWS ECS service. | `bigbytes-production-ecs-service` |
+    | `TASK_DEFINITION_NAME` | Go to your AWS ECS task definition for the above service. Use the name of that task definition. | `bigbytes-production-task` |
 
 1. If you use a different branch than `main`, for example `master`,
     you must edit the value `only` under the `build` and `deploy` key in the file `.gitlab-ci.yml`.

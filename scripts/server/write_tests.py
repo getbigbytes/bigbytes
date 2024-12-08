@@ -34,11 +34,11 @@ def build_file_path_from_import(import_line, base_path=''):
     return file_path
 
 
-def extract_mage_ai_imports(code: str) -> list[str]:
+def extract_bigbytes_imports(code: str) -> list[str]:
     """
-    Extracts lines from a string of Python code that import modules from 'mage_ai'.
+    Extracts lines from a string of Python code that import modules from 'bigbytes'.
     """
-    mage_ai_imports = []
+    bigbytes_imports = []
 
     # Split the code into lines for processing
     lines = code.splitlines()
@@ -46,10 +46,10 @@ def extract_mage_ai_imports(code: str) -> list[str]:
     for line in lines:
         # Trim whitespace for accurate starts with checking
         stripped_line = line.strip()
-        if stripped_line.startswith('import mage_ai') or stripped_line.startswith('from mage_ai'):
-            mage_ai_imports.append(stripped_line)
+        if stripped_line.startswith('import bigbytes') or stripped_line.startswith('from bigbytes'):
+            bigbytes_imports.append(stripped_line)
 
-    return mage_ai_imports
+    return bigbytes_imports
 
 
 def run_shell_command(command, raise_on_error: bool = True):
@@ -143,8 +143,8 @@ Here is an example of a unit test:
 <test>
 from unittest.mock import call, patch
 
-from mage_ai.shared.retry import retry
-from mage_ai.tests.base_test import TestCase
+from bigbytes.shared.retry import retry
+from bigbytes.tests.base_test import TestCase
 
 
 class RetryTests(TestCase):
@@ -273,7 +273,7 @@ def run_process(file_path: str):
     with open(file_path) as f:
         content = f.read()
 
-    files_imported = extract_mage_ai_imports(content)
+    files_imported = extract_bigbytes_imports(content)
     print(f'Files imported: {len(files_imported)}')
 
     imported_file_paths = []
@@ -294,9 +294,9 @@ def run_process(file_path: str):
 if __name__ == '__main__':
     # output = run_shell_command(r"""
     # git diff --name-only --diff-filter=A master...HEAD | \
-    #     grep '^mage_ai/' | \
-    #     grep -vE '^mage_ai/server/frontend_dist/' | \
-    #     grep -vE '^mage_ai/server/frontend_dist_base_path_template/' | \
+    #     grep '^bigbytes/' | \
+    #     grep -vE '^bigbytes/server/frontend_dist/' | \
+    #     grep -vE '^bigbytes/server/frontend_dist_base_path_template/' | \
     #     grep -vE '__init__.py|constants.py' | \
     #     grep -E '\.py$'
     # """)
@@ -304,8 +304,8 @@ if __name__ == '__main__':
     # file_paths = output.splitlines()
 
     file_paths = """
-    mage_ai/data_preparation/models/utils.py
-    mage_ai/system/memory/samples.py
+    bigbytes/data_preparation/models/utils.py
+    bigbytes/system/memory/samples.py
     """.split('\n')
     file_paths = [file_path.strip() for file_path in file_paths if file_path.strip()][:]
 

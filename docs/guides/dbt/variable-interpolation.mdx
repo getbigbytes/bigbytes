@@ -4,7 +4,7 @@ sidebarTitle: "Variable interpolation"
 ---
 ## Overview
 
-Mage allows users to reference variables specific to your
+Bigbytes allows users to reference variables specific to your
 [pipeline](/getting-started/runtime-variable) or
 [project](/development/variables/environment-variables).
 These variables are accessible throughout your dbt profiles, and pipelines by using the following syntax.
@@ -52,7 +52,7 @@ jaffle_shop:
 
 ### dbt targets
 
-![dbt target](https://github.com/mage-ai/assets/blob/main/connection-profiles/dbt-target.png?raw=True)
+![dbt target](https://github.com/digitranslab/assets/blob/main/connection-profiles/dbt-target.png?raw=True)
 
 Here, we've used a manually entered target to specify a postgres database dependent on the environment `postgres_{{ env_var('ENV') }}`.
 

@@ -98,23 +98,23 @@ Here is the sample output of a failed test for the above files:
 23:57:24  Done. PASS=0 WARN=0 ERROR=1 SKIP=0 TOTAL=1
 
 Traceback (most recent call last):
-  File "/home/src/mage_ai/cli/main.py", line 146, in <module>
+  File "/home/src/bigbytes/cli/main.py", line 146, in <module>
     main()
-  File "/home/src/mage_ai/cli/main.py", line 116, in main
+  File "/home/src/bigbytes/cli/main.py", line 116, in main
     ExecutorFactory.get_pipeline_executor(pipeline).execute(
-  File "/home/src/mage_ai/data_preparation/executors/pipeline_executor.py", line 28, in execute
+  File "/home/src/bigbytes/data_preparation/executors/pipeline_executor.py", line 28, in execute
     asyncio.run(self.pipeline.execute(
   File "/usr/local/lib/python3.10/asyncio/runners.py", line 44, in run
     return loop.run_until_complete(main)
   File "/usr/local/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
     return future.result()
-  File "/home/src/mage_ai/data_preparation/models/pipeline.py", line 233, in execute
+  File "/home/src/bigbytes/data_preparation/models/pipeline.py", line 233, in execute
     await execution_task
-  File "/home/src/mage_ai/data_preparation/models/block/__init__.py", line 147, in run_blocks
+  File "/home/src/bigbytes/data_preparation/models/block/__init__.py", line 147, in run_blocks
     await asyncio.gather(*remaining_tasks)
-  File "/home/src/mage_ai/data_preparation/models/block/__init__.py", line 94, in execute_and_run_tests
+  File "/home/src/bigbytes/data_preparation/models/block/__init__.py", line 94, in execute_and_run_tests
     run_dbt_tests(
-  File "/home/src/mage_ai/data_preparation/models/block/dbt/utils/__init__.py", line 466, in run_dbt_tests
+  File "/home/src/bigbytes/data_preparation/models/block/dbt/utils/__init__.py", line 466, in run_dbt_tests
     raise Exception('dbt test failed.')
 Exception: dbt test failed.
 ```

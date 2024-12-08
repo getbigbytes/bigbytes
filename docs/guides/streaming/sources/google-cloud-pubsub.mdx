@@ -27,11 +27,11 @@ path_to_credentials_json_file: "./google_credentials.json"
 The `pubsub_emulator_host` parameter is optional, which could be used when you need to test
 the Google Cloud PubSub service locally through an emulator (see more details at the bottom).
 
-## Start Mage
+## Start Bigbytes
 
 ### Create a new pipeline
 
-1. Open Mage in your browser.
+1. Open Bigbytes in your browser.
 2. Click <b>`+ New pipeline`</b>, then select `Streaming`.
 3. Add a data loader block, select `Google Cloud PubSub`, and change the settings to those of your PubSub project:
 
@@ -52,7 +52,7 @@ the Google Cloud PubSub service locally through an emulator (see more details at
     from typing import Dict, List
 
     if 'transformer' not in globals():
-        from mage_ai.data_preparation.decorators import transformer
+        from bigbytes.data_preparation.decorators import transformer
 
 
     @transformer

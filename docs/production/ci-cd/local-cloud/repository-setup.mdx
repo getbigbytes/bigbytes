@@ -1,37 +1,37 @@
 ---
 title: "Repository setup"
 sidebarTitle: "Setup repository"
-description: "Setup your Mage project respository."
+description: "Setup your Bigbytes project respository."
 icon: "list-check"
 ---
 
-1.  Create a parent folder for your Mage project (e.g. `my_team`).
-2.  Change directory (e.g. `cd my_team`) into the parent folder and start Mage
+1.  Create a parent folder for your Bigbytes project (e.g. `my_team`).
+2.  Change directory (e.g. `cd my_team`) into the parent folder and start Bigbytes
     locally: For example:
 
     ```bash
-    docker run -it -p 6789:6789 -v $(pwd):/home/src mageai/mageai \
-      /app/run_app.sh mage start demo_project
+    docker run -it -p 6789:6789 -v $(pwd):/home/src bigbytes/bigbytes \
+      /app/run_app.sh bigbytes start demo_project
     ```
 
     For more examples, read the [setup guide](/getting-started/setup).
 
 3.  Once you’re done developing, copy the contents of the this
-    [Dockerfile template](https://github.com/mage-ai/docker/blob/master/Dockerfile)
+    [Dockerfile template](https://github.com/digitranslab/docker/blob/master/Dockerfile)
     and paste it into a new `Dockerfile` located in the parent folder of your
-    Mage project (e.g. `my_team/Dockerfile`). Replace all instances of the
+    Bigbytes project (e.g. `my_team/Dockerfile`). Replace all instances of the
     string `[project_name]` with your project name. For example, if your project
     name is `demo_project`, then your Dockerfile will look like this: The
     contents of your `Dockerfile` are:
 
     ```dockerfile
-    FROM mageai/mageai:latest
+    FROM bigbytes/bigbytes:latest
 
     ARG PROJECT_NAME=[project_name]
-    ARG MAGE_CODE_PATH=/home/mage_code
-    ARG USER_CODE_PATH=${MAGE_CODE_PATH}/${PROJECT_NAME}
+    ARG BIGBYTES_CODE_PATH=/home/bigbytes_code
+    ARG USER_CODE_PATH=${BIGBYTES_CODE_PATH}/${PROJECT_NAME}
 
-    WORKDIR ${MAGE_CODE_PATH}
+    WORKDIR ${BIGBYTES_CODE_PATH}
 
     # Replace [project_name] with the name of your project (e.g. demo_project)
     COPY ${PROJECT_NAME} ${PROJECT_NAME}
@@ -46,7 +46,7 @@ icon: "list-check"
     # Install custom libraries within 3rd party libraries (e.g. dbt packages)
     RUN python3 /app/install_other_dependencies.py --path ${USER_CODE_PATH}
 
-    ENV PYTHONPATH="${PYTHONPATH}:/home/mage_code"
+    ENV PYTHONPATH="${PYTHONPATH}:/home/bigbytes_code"
 
     CMD ["/bin/sh", "-c", "/app/run_app.sh"]
     ```
@@ -57,7 +57,7 @@ icon: "list-check"
     |   demo_project/
     |   Dockerfile
     ```
-5.  Build a custom Docker image using `mageai/mageai:latest` as the base and
+5.  Build a custom Docker image using `bigbytes/bigbytes:latest` as the base and
     using the newly created Dockerfile as the additional set of instructions:
 
     ```
@@ -71,7 +71,7 @@ icon: "list-check"
 
 6.  To test the new image works, run the following command:
     ```bash
-    docker run -it -p 6789:6789 mageprod:latest /app/run_app.sh mage start demo_project
+    docker run -it -p 6789:6789 mageprod:latest /app/run_app.sh bigbytes start demo_project
     ```
 7.  Open your browser and go to http://localhost:6789/
     1. You should see all your pipelines there.

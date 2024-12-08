@@ -1,7 +1,7 @@
 ---
 title: "Contributing to the backend server"
 sidebarTitle: "Overview"
-description: "Mage backend code is written in Python 🐍 and our server uses the Tornado 🌪️ framework. Here are some guides on adding features to the Mage backend."
+description: "Bigbytes backend code is written in Python 🐍 and our server uses the Tornado 🌪️ framework. Here are some guides on adding features to the Bigbytes backend."
 ---
 
 ## Guides
@@ -39,7 +39,7 @@ To run the linter locally, execute this script:
 ### Unit tests
 
 Add unit tests for the feature in
-[mage_ai/tests](https://github.com/mage-ai/mage-ai/tree/master/mage_ai/tests) directory.
+[bigbytes/tests](https://github.com/digitranslab/bigbytes/tree/master/bigbytes/tests) directory.
 
 To run the tests locally, execute this script:
 
@@ -54,18 +54,18 @@ It is also possible to run unit tests directly in a live docker instance, as giv
  % docker container ls
 
 CONTAINER ID   IMAGE       COMMAND                  CREATED      STATUS          PORTS                    NAMES
-8dbcfbe41755   mage/data   "./scripts/install_a…"   5 days ago   Up 38 minutes   0.0.0.0:3000->3000/tcp   mage-ai-app-1
-b9d811e1e3e8   mage/data   "python mage_ai/serv…"   5 days ago   Up 38 minutes   0.0.0.0:6789->6789/tcp   mage-ai-server-1
+8dbcfbe41755   bigbytes/data   "./scripts/install_a…"   5 days ago   Up 38 minutes   0.0.0.0:3000->3000/tcp   bigbytes-app-1
+b9d811e1e3e8   bigbytes/data   "python bigbytes/serv…"   5 days ago   Up 38 minutes   0.0.0.0:6789->6789/tcp   bigbytes-server-1
 ```
 
 2. Start an interactive `bash` session with the backend server container:
 ```bash
-% docker exec -it mage-ai-server-1 /bin/bash
+% docker exec -it bigbytes-server-1 /bin/bash
 ```
 
 3. Run unit tests with the following command:
 ```bash
-root@b9d811e1e3e8:/home/src# python3 -m unittest discover -s mage_ai.tests --failfast
+root@b9d811e1e3e8:/home/src# python3 -m unittest discover -s bigbytes.tests --failfast
 ```
 
 ## Debugging

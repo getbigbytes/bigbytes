@@ -3,7 +3,7 @@ title: "Spark and PySpark"
 sidebarTitle: "Spark"
 icon: "sparkles"
 description:
-  "This is a guide for using Spark (PySpark) with Mage in different cloud
+  "This is a guide for using Spark (PySpark) with Bigbytes in different cloud
   providers or Kubernetes cluster."
 ---
 
@@ -14,11 +14,11 @@ Want to become a
 
 ## Kubernetes
 
-When you run Mage and Spark in the same Kubernetes cluster, you can set the environment variable `SPARK_MASTER_HOST`
-to the url of the master node of the Spark cluster in Mage container. Then you'll be able to connect Mage to your Spark
-cluster and execute PySpark code in Mage.
+When you run Bigbytes and Spark in the same Kubernetes cluster, you can set the environment variable `SPARK_MASTER_HOST`
+to the url of the master node of the Spark cluster in Bigbytes container. Then you'll be able to connect Bigbytes to your Spark
+cluster and execute PySpark code in Bigbytes.
 
-Here is an overview of the steps required to use Mage with Spark in Kubernetes cluster.
+Here is an overview of the steps required to use Bigbytes with Spark in Kubernetes cluster.
 
 ### 1. Run Spark cluser in Kubernetes cluster
 You can use Helm command to run Spark cluster in the Kubernetes cluster:
@@ -33,31 +33,31 @@ echo "Visit http://127.0.0.1:80 to use your application"
 ```
 Find the Spark Master URL at the top of the web page.
 
-### 2. Build Mage docker image with Spark environment
-* Download the [Dockerfile template](https://github.com/mage-ai/mage-ai/blob/master/integrations/spark/Dockerfile) for Mage with Spark environment.
-* Change the current directory to the directory that contains the `Dockerfile`. Build the docker image with the command `docker build -t mage_spark .`
+### 2. Build Bigbytes docker image with Spark environment
+* Download the [Dockerfile template](https://github.com/digitranslab/bigbytes/blob/master/integrations/spark/Dockerfile) for Bigbytes with Spark environment.
+* Change the current directory to the directory that contains the `Dockerfile`. Build the docker image with the command `docker build -t bigbytes_spark .`
 
-### 3. Run Mage in Kubernetes cluster with the `SPARK_MASTER_HOST` environment variable
+### 3. Run Bigbytes in Kubernetes cluster with the `SPARK_MASTER_HOST` environment variable
 * Use the docker image built from step 2 as the container image in your Kubernetes yaml file.
 * Add `SPARK_MASTER_HOST` environment variable with the Spark Master URL from step 1 to your the container spec
 in your Kubernetes yaml file.
-* Then deploy Mage to Kubernetes with the updated yaml file.
+* Then deploy Bigbytes to Kubernetes with the updated yaml file.
 
 Here is the example Pod config:
 ```yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: mage-server
+  name: bigbytes-server
 spec:
   containers:
-  - name: mage-server
-    image: mage_spark
+  - name: bigbytes-server
+    image: bigbytes_spark
     imagePullPolicy: Never
     ports:
     - containerPort: 6789
     volumeMounts:
-    - name: mage-fs
+    - name: bigbytes-fs
       mountPath: /home/src
     env:
       - name: KUBE_NAMESPACE
@@ -67,18 +67,18 @@ spec:
       - name: SPARK_MASTER_HOST
         value: "spark://spark_master_url:7077"
   volumes:
-  - name: mage-fs
+  - name: bigbytes-fs
     hostPath:
-      path: /path/to/mage_project
-  serviceAccountName: mage-user
+      path: /path/to/bigbytes_project
+  serviceAccountName: bigbytes-user
 ```
 
 Updates
-* In Mage version `0.8.83` and above, you don't need to specify the environment variable anymore.
+* In Bigbytes version `0.8.83` and above, you don't need to specify the environment variable anymore.
 * You can specify the spark config in the project's `metadata.yaml` file as stated in [Custom Spark Session](#custom-spark-session-at-the-project-level) section.
 
-### 4. Run PySpark code in Mage
-When Mage pod is running, you can create a "Standard (batch)" pipeline (`python` kernel) and then write PySpark code in any blocks.
+### 4. Run PySpark code in Bigbytes
+When Bigbytes pod is running, you can create a "Standard (batch)" pipeline (`python` kernel) and then write PySpark code in any blocks.
 
 In `Scratchpad` block, you'll need to manually create the Spark session with the code:
 ```python
@@ -94,16 +94,16 @@ In other blocks, you can access the Spark session from the `kwargs` via `kwargs[
 
 ## Standalone Spark cluster
 
-### 1. Build Mage docker image with Spark environment
-* Download the [Dockerfile template](https://github.com/mage-ai/mage-ai/blob/master/integrations/spark/Dockerfile) for Mage with Spark environment.
-* Change the current directory to the directory that contains the `Dockerfile`. Build the docker image with the command `docker build -t mage_spark .`
+### 1. Build Bigbytes docker image with Spark environment
+* Download the [Dockerfile template](https://github.com/digitranslab/bigbytes/blob/master/integrations/spark/Dockerfile) for Bigbytes with Spark environment.
+* Change the current directory to the directory that contains the `Dockerfile`. Build the docker image with the command `docker build -t bigbytes_spark .`
 
-### 2. Start Mage with `SPARK_MASTER_HOST` environment variable
-Type this command in your terminal to start Mage using docker
+### 2. Start Bigbytes with `SPARK_MASTER_HOST` environment variable
+Type this command in your terminal to start Bigbytes using docker
 
 ```bash
-docker run -it --name mage_spark -e SPARK_MASTER_HOST='local' -p 6789:6789 -v $(pwd):/home/src mage_spark \
-  /app/run_app.sh mage start demo_project
+docker run -it --name bigbytes_spark -e SPARK_MASTER_HOST='local' -p 6789:6789 -v $(pwd):/home/src bigbytes_spark \
+  /app/run_app.sh bigbytes start demo_project
 ```
 Notes
 * `demo_project` is the name of your project, you can change it to anything you want
@@ -111,11 +111,11 @@ Notes
   use local Spark, you can set the value of `SPARK_MASTER_HOST` to `local` or not set the environment variable.
 
 Updates
-* In Mage version `0.8.83` and above, you don't need to specify the environment variable anymore.
+* In Bigbytes version `0.8.83` and above, you don't need to specify the environment variable anymore.
 * You can specify the spark config in the project's `metadata.yaml` file as stated in [Custom Spark Session](#custom-spark-session-at-the-project-level) section.
 
-### 3. Run PySpark code in Mage
-When Mage is running, you can create a "Standard (batch)" pipeline (`python` kernel) and then write PySpark code in any blocks.
+### 3. Run PySpark code in Bigbytes
+When Bigbytes is running, you can create a "Standard (batch)" pipeline (`python` kernel) and then write PySpark code in any blocks.
 
 In `Scratchpad` block, you'll need to manually create the Spark session with the code:
 ```python
@@ -131,15 +131,15 @@ In other blocks, you can access the Spark session from the `kwargs` via `kwargs[
 
 ## Custom Spark Session at the Project Level
 
-### 1. Build Mage docker image with Spark environment
-* Download the [Dockerfile template](https://github.com/mage-ai/mage-ai/blob/master/integrations/spark/Dockerfile) for Mage with Spark environment.
-* Build the docker image with the command `docker build -t mage_spark .`
+### 1. Build Bigbytes docker image with Spark environment
+* Download the [Dockerfile template](https://github.com/digitranslab/bigbytes/blob/master/integrations/spark/Dockerfile) for Bigbytes with Spark environment.
+* Build the docker image with the command `docker build -t bigbytes_spark .`
 
-### 2. Start Mage using docker with the following command in your terminal
+### 2. Start Bigbytes using docker with the following command in your terminal
 
 ```bash
-docker run -it --name mage_spark -p 6789:6789 -v $(pwd):/home/src mage_spark \
-  /app/run_app.sh mage start demo_project
+docker run -it --name bigbytes_spark -p 6789:6789 -v $(pwd):/home/src bigbytes_spark \
+  /app/run_app.sh bigbytes start demo_project
 ```
 Notes
 * `demo_project` is the name of your project, you can change it to anything you want
@@ -167,8 +167,8 @@ spark_config:
   others: {}
 ```
 
-### 4. Run PySpark code in Mage
-When Mage is running, you can create a "Standard (batch)" pipeline (`python` kernel), and add a block,
+### 4. Run PySpark code in Bigbytes
+When Bigbytes is running, you can create a "Standard (batch)" pipeline (`python` kernel), and add a block,
 then write PySpark code using the Spark session via `kwargs['spark']`, e.g.,
 
 ```python
@@ -179,9 +179,9 @@ print(spark.sql('select 1'))
 In `Scratchpad` block, you'll need to manually create the Spark session with the code:
 
 ```python
-from mage_ai.data_preparation.repo_manager import RepoConfig, get_repo_path
-from mage_ai.services.spark.config import SparkConfig
-from mage_ai.services.spark.spark import get_spark_session
+from bigbytes.data_preparation.repo_manager import RepoConfig, get_repo_path
+from bigbytes.services.spark.config import SparkConfig
+from bigbytes.services.spark.spark import get_spark_session
 
 repo_config = RepoConfig(repo_path=get_repo_path())
 spark_config = SparkConfig.load(
@@ -195,15 +195,15 @@ print(spark.sql('select 1'))
 
 It is also possible to use different Spark Sessions in different pipelines under the same project.
 
-### 1. Build Mage docker image with Spark environment
-* Download the [Dockerfile template](https://github.com/mage-ai/mage-ai/blob/master/integrations/spark/Dockerfile) for Mage with Spark environment.
-* Build the docker image with the command `docker build -t mage_spark .`
+### 1. Build Bigbytes docker image with Spark environment
+* Download the [Dockerfile template](https://github.com/digitranslab/bigbytes/blob/master/integrations/spark/Dockerfile) for Bigbytes with Spark environment.
+* Build the docker image with the command `docker build -t bigbytes_spark .`
 
-### 2. Start Mage using docker with the following command in your terminal
+### 2. Start Bigbytes using docker with the following command in your terminal
 
 ```bash
-docker run -it --name mage_spark -p 6789:6789 -v $(pwd):/home/src mage_spark \
-  /app/run_app.sh mage start demo_project
+docker run -it --name bigbytes_spark -p 6789:6789 -v $(pwd):/home/src bigbytes_spark \
+  /app/run_app.sh bigbytes start demo_project
 ```
 Notes
 * `demo_project` is the name of your project, you can change it to anything you want
@@ -231,7 +231,7 @@ spark_config:
   others: {}
 ```
 
-### 4. Run PySpark code in Mage
+### 4. Run PySpark code in Bigbytes
 Add a block to the pipeline, then write PySpark code using the Spark session via `kwargs['spark']`, e.g.,
 
 ```python
@@ -256,7 +256,7 @@ It is also possible to create custom Spark ssesion using Python code. Here are t
     from pyspark.sql import SparkSession
 
     if 'data_loader' not in globals():
-        from mage_ai.data_preparation.decorators import data_loader
+        from bigbytes.data_preparation.decorators import data_loader
 
     @data_loader
     def load_data(*args, **kwargs):
@@ -276,21 +276,21 @@ It is also possible to create custom Spark ssesion using Python code. Here are t
 
 ## Hadoop and Yarn cluster for Spark
 
-### 1. Build Mage docker image with a Hadoop Yarn environment
-* Download the [Dockerfile template](https://github.com/mage-ai/mage-ai/blob/master/integrations/hadoop/Dockerfile) for Mage with Hadoop environment.
-* Build the docker image with the command `docker build -t mage_hadoop .`
+### 1. Build Bigbytes docker image with a Hadoop Yarn environment
+* Download the [Dockerfile template](https://github.com/digitranslab/bigbytes/blob/master/integrations/hadoop/Dockerfile) for Bigbytes with Hadoop environment.
+* Build the docker image with the command `docker build -t bigbytes_hadoop .`
 
 
-### 2. Start Mage with the following command in your terminal using docker
+### 2. Start Bigbytes with the following command in your terminal using docker
 
 ```bash
-docker run -it --name mage_hadoop -p 6789:6789 -v $(pwd):/home/src mage_hadoop \
-  /app/run_app_with_hadoop.sh mage start demo_project
+docker run -it --name bigbytes_hadoop -p 6789:6789 -v $(pwd):/home/src bigbytes_hadoop \
+  /app/run_app_with_hadoop.sh bigbytes start demo_project
 ```
 Notes
 * `demo_project` is the name of your project, you can change it to anything you want
 
-### 3. Run PySpark code in Mage using Hadoop Yarn
+### 3. Run PySpark code in Bigbytes using Hadoop Yarn
 
 * Change the `metadata.yaml` file in the main pipeline folder to include the following Spark settings:
 ```yaml
@@ -338,10 +338,10 @@ def load_data(*args, **kwargs):
 
 ## AWS
 
-Here is an overview of the steps required to use Mage locally with Spark in AWS:
+Here is an overview of the steps required to use Bigbytes locally with Spark in AWS:
 
 1. [Create an S3 bucket for Spark](#1-create-an-s3-bucket-for-spark)
-2. [Start Mage](#2-start-mage)
+2. [Start Bigbytes](#2-start-bigbytes)
 3. [Configure project’s metadata settings](#3-configure-projects-metadata-settings)
 4. [Launch EMR cluster](#4-launch-emr-cluster)
 5. [Allow EMR connection permissions](#5-allow-emr-connection-permissions)
@@ -350,7 +350,7 @@ Here is an overview of the steps required to use Mage locally with Spark in AWS:
 8. [Clean up](#8-clean-up)
 
 If you get stuck, run into problems, or just want someone to walk you through
-these steps, please join our [Slack](https://www.mage.ai/chat)
+these steps, please join our [Slack](https://www.bigbytes.io/chat)
 
 ### 1. Create an S3 bucket for Spark
 
@@ -364,17 +364,17 @@ policies to this bucket.
 Once you created an S3 bucket, note the name of the bucket (we’ll need it
 later).
 
-### 2. Start Mage
+### 2. Start Bigbytes
 
-Using Mage with Spark is much easier if you use Docker.
+Using Bigbytes with Spark is much easier if you use Docker.
 
-Type this command in your terminal to start Mage using docker (Note:
+Type this command in your terminal to start Bigbytes using docker (Note:
 `demo_project` is the name of your project, you can change it to anything you
 want):
 
 ```bash
-docker run -it -p 6789:6789 -v $(pwd):/home/src mageai/mageai \
-  /app/run_app.sh mage start demo_project
+docker run -it -p 6789:6789 -v $(pwd):/home/src bigbytes/bigbytes \
+  /app/run_app.sh bigbytes start demo_project
 ```
 
 ### 3. Configure project’s metadata settings
@@ -449,8 +449,8 @@ check out this
 You’ll need an AWS Access Key ID and an AWS Secret Access Key. This is provided
 from AWS’s IAM Management console.
 
-Once you’ve acquired those credentials, you can switch your kernel in your Mage notebook
-to `pyspark` kernel. Mage will automatically creates the EMR cluster when you switch to `pyspark`
+Once you’ve acquired those credentials, you can switch your kernel in your Bigbytes notebook
+to `pyspark` kernel. Bigbytes will automatically creates the EMR cluster when you switch to `pyspark`
 kernel. The cluster is usually created and intialized within 8~10 minutes. Then you can select
 your EMR cluster in the dropdown of your `pyspark` kernel selector.
 
@@ -469,11 +469,11 @@ You need to whitelist your IP in the security group of your EMR cluster to acces
 | ---------- | -------- | ---------- | ------ |
 | Custom TCP | TCP      | 8998       | My IP  |
 
-This will allow your locally running Mage to remotely access AWS EMR.
+This will allow your locally running Bigbytes to remotely access AWS EMR.
 
 ### 6. Sample pipeline with PySpark code
 
-If you aren’t using Docker and you installed Mage using `pip`, you must run the
+If you aren’t using Docker and you installed Bigbytes using `pip`, you must run the
 following commands in your terminal to use the `pyspark` kernel:
 
 ```bash
@@ -503,11 +503,11 @@ import requests
 
 
 if 'data_loader' not in globals():
-    from mage_ai.data_preparation.decorators import data_loader
+    from bigbytes.data_preparation.decorators import data_loader
 
 
 def data_from_internet():
-    url = 'https://raw.githubusercontent.com/mage-ai/datasets/master/restaurant_user_transactions.csv'
+    url = 'https://raw.githubusercontent.com/digitranslab/datasets/master/restaurant_user_transactions.csv'
 
     response = requests.get(url)
     return pd.read_csv(io.StringIO(response.text), sep=',')
@@ -529,7 +529,7 @@ def load_data(**kwargs) -> DataFrame:
 from pandas import DataFrame
 
 if 'data_exporter' not in globals():
-    from mage_ai.data_preparation.decorators import data_exporter
+    from bigbytes.data_preparation.decorators import data_exporter
 
 
 @data_exporter
@@ -539,7 +539,7 @@ def export_data(df: DataFrame, **kwargs) -> None:
         .option('delimiter', ',')
         .option('header', 'True')
         .mode('overwrite')
-        .csv('s3://mage-spark-cluster/demo_project/demo_pipeline/')
+        .csv('s3://bigbytes-spark-cluster/demo_project/demo_pipeline/')
     )
 ```
 
@@ -557,7 +557,7 @@ from pandas import DataFrame
 
 
 if 'data_loader' not in globals():
-    from mage_ai.data_preparation.decorators import data_loader
+    from bigbytes.data_preparation.decorators import data_loader
 
 
 @data_loader
@@ -568,7 +568,7 @@ def load_data(**kwargs) -> DataFrame:
         .option('header', 'true')
         .option('inferSchema', 'true')
         .option('delimiter', ',')
-        .load('s3://mage-spark-cluster/demo_project/demo_pipeline/*')
+        .load('s3://bigbytes-spark-cluster/demo_project/demo_pipeline/*')
     )
 
     return df
@@ -580,7 +580,7 @@ If you run into any problems, 1st thing to try is restarting the kernel: `Run` >
 `Restart kernel`.
 
 If the block is hanging when running the block, it could be due to network connection issue.
-Make sure the EMR cluster is accessible from the Mage server. You can verify whether Mage server's
+Make sure the EMR cluster is accessible from the Bigbytes server. You can verify whether Bigbytes server's
 security group or IP is whitelisted in EMR cluster's security group following section [Allow EMR connection permissions](#5-allow-emr-connection-permissions)
 
 If that doesn’t work, restart the app by stopping the docker container and

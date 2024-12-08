@@ -2,31 +2,31 @@
 title: "Run docker image as non-root user"
 sidebarTitle: "Run as non-root user"
 icon: "user"
-description: "Run Mage docker image as non-root user to restrict access to the system"
+description: "Run Bigbytes docker image as non-root user to restrict access to the system"
 ---
 
-By default, the official Mage docker images in DockerHub are using the root users. For production deployment,
+By default, the official Bigbytes docker images in DockerHub are using the root users. For production deployment,
 it's recommended to use non-root users in the docker image to restrict access to the system for better security.
-Here is the Dockerfile template that you can use to build your custom docker image that runs Mage as non-root user.
+Here is the Dockerfile template that you can use to build your custom docker image that runs Bigbytes as non-root user.
 
 ```dockerfile
 ARG VERSION
 
-FROM mageai/mageai:$VERSION
+FROM bigbytes/bigbytes:$VERSION
 
-# Add non-root user for Mage service
-RUN adduser --disabled-password --gecos '' mage && adduser mage mage
+# Add non-root user for Bigbytes service
+RUN adduser --disabled-password --gecos '' bigbytes && adduser bigbytes bigbytes
 
-# Grant the user permissions to the Mage related directories
-RUN mkdir /home/src/mage_data; chown -R mage /home/src/mage_data
-RUN mkdir /home/src/default_repo; chown -R mage /home/src/default_repo
+# Grant the user permissions to the Bigbytes related directories
+RUN mkdir /home/src/bigbytes_data; chown -R bigbytes /home/src/bigbytes_data
+RUN mkdir /home/src/default_repo; chown -R bigbytes /home/src/default_repo
 
 RUN pip3 install -r path/to/requirements.txt
 
-# Set the Mage user
-USER mage
+# Set the Bigbytes user
+USER bigbytes
 
-ENV PYTHONPATH="${PYTHONPATH}:/home/mage/.local/lib/python3.10/site-packages"
+ENV PYTHONPATH="${PYTHONPATH}:/home/bigbytes/.local/lib/python3.10/site-packages"
 
 WORKDIR /home/src
 

@@ -1,0 +1,4 @@
+include requirements.txt
+recursive-include bigbytes_integrations/destinations *
+recursive-include bigbytes_integrations/sources *
+recursive-include bigbytes_integrations/transformers *

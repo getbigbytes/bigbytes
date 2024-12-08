@@ -5,13 +5,13 @@ sidebarTitle: "Run dbt-spark"
 
 The following procedure demonstrates how to run `dbt-spark` with a pySpark session.
 
-1. Build a Mage docker image with Spark following the instructions given at
-[Build Mage docker image with Spark environment](/integrations/spark-pyspark#1-build-mage-docker-image-with-spark-environment).
+1. Build a Bigbytes docker image with Spark following the instructions given at
+[Build Bigbytes docker image with Spark environment](/integrations/spark-pyspark#1-build-bigbytes-docker-image-with-spark-environment).
 
-2. Run the following command in your terminal to start Mage using docker:
+2. Run the following command in your terminal to start Bigbytes using docker:
 ```bash
-docker run -it --name mage_spark -p 6789:6789 -v $(pwd):/home/src mage_spark \
-  /app/run_app.sh mage start demo_project
+docker run -it --name bigbytes_spark -p 6789:6789 -v $(pwd):/home/src bigbytes_spark \
+  /app/run_app.sh bigbytes start demo_project
 ```
 
 3. Create a new pipeline with a name `dbt_spark`, and add a `Scratchpad` to
@@ -35,10 +35,10 @@ It should return results similar to the following when running:
 
 <img
   alt="PySpark Scratchpad results"
-  src="https://github.com/mage-ai/assets/blob/main/pyspark-scratchpad-results.png?raw=True"
+  src="https://github.com/digitranslab/assets/blob/main/pyspark-scratchpad-results.png?raw=True"
 />
 
-4. Click the `Terminal` icon on the right side of the Mage UI, and create a dbt
+4. Click the `Terminal` icon on the right side of the Bigbytes UI, and create a dbt
 project `spark_demo`, with the following commands:
 
 ```bash
@@ -92,5 +92,5 @@ generate the results similar to the following:
 
 <img
   alt="dbt-spark testing results"
-  src="https://github.com/mage-ai/assets/blob/main/dbt-spark-testing-results.png?raw=True"
+  src="https://github.com/digitranslab/assets/blob/main/dbt-spark-testing-results.png?raw=True"
 />

@@ -9,7 +9,7 @@ sidebarTitle: "Setup"
 
 ### Setup
 
-[Download Mage maintained Terraform scripts](/production/deploying-to-cloud/using-terraform).
+[Download Bigbytes maintained Terraform scripts](/production/deploying-to-cloud/using-terraform).
 
 ### Permissions
 
@@ -25,7 +25,7 @@ need the following
 
 ## Deploy to ECS cluster
 
-Use Terraform scripts in [aws](https://github.com/mage-ai/mage-ai-terraform-templates/tree/master/aws)
+Use Terraform scripts in [aws](https://github.com/digitranslab/bigbytes-terraform-templates/tree/master/aws)
 folder to provision resources for AWS ECS cluster.
 
 ---
@@ -68,27 +68,27 @@ Alternatively, you can install the AWS CLI by following
 **Application name (optional)**
 
 In the file
-[./aws/variables.tf](https://github.com/mage-ai/mage-ai-terraform-templates/blob/master/aws/variables.tf),
+[./aws/variables.tf](https://github.com/digitranslab/bigbytes-terraform-templates/blob/master/aws/variables.tf),
 you can change the default application name that will appear in AWS ECS:
 
 ```
 variable "app_name" {
   type        = string
   description = "Application Name"
-  default     = "mage-data-prep"
+  default     = "bigbytes-data-prep"
 }
 ```
 
 **Docker image (optional)**
 
 In the file
-[./aws/variables.tf](https://github.com/mage-ai/mage-ai-terraform-templates/blob/master/aws/variables.tf),
+[./aws/variables.tf](https://github.com/digitranslab/bigbytes-terraform-templates/blob/master/aws/variables.tf),
 you can change the default Docker image:
 
 ```
 variable "docker_image" {
   description = "Docker image url used in ECS task."
-  default     = "mageai/mageai:latest"
+  default     = "bigbytes/bigbytes:latest"
 }
 ```
 
@@ -111,7 +111,7 @@ to learn more.
 **Region (optional)**
 
 In the file
-[./aws/variables.tf](https://github.com/mage-ai/mage-ai-terraform-templates/blob/master/aws/variables.tf),
+[./aws/variables.tf](https://github.com/digitranslab/bigbytes-terraform-templates/blob/master/aws/variables.tf),
 you can change the region:
 
 ```
@@ -125,7 +125,7 @@ variable "aws_region" {
 **Availability zones (optional)**
 
 In the file
-[./aws/variables.tf](https://github.com/mage-ai/mage-ai-terraform-templates/blob/master/aws/variables.tf),
+[./aws/variables.tf](https://github.com/digitranslab/bigbytes-terraform-templates/blob/master/aws/variables.tf),
 you must change the availability zones to match your region from above:
 
 ```
@@ -138,7 +138,7 @@ variable "availability_zones" {
 **More**
 
 Other variables defined in
-[./aws/variables.tf](https://github.com/mage-ai/mage-ai-terraform-templates/blob/master/aws/variables.tf)
+[./aws/variables.tf](https://github.com/digitranslab/bigbytes-terraform-templates/blob/master/aws/variables.tf)
 can also be customized to your needs.
 
 ---
@@ -146,7 +146,7 @@ can also be customized to your needs.
 ### 3. Configurable environment variables
 
 In the
-[`./aws/env_vars.json`](https://github.com/mage-ai/mage-ai-terraform-templates/blob/master/aws/env_vars.json)
+[`./aws/env_vars.json`](https://github.com/digitranslab/bigbytes-terraform-templates/blob/master/aws/env_vars.json)
 file, you can edit the following variables, which are used by the tool while
 running in the cloud:
 
@@ -203,11 +203,11 @@ the running container.
    terraform apply
    ```
 
-Once it’s finished deploying, you can access Mage in your browser.
+Once it’s finished deploying, you can access Bigbytes in your browser.
 
 1. Open your EC2 dashboard.
 2. View all load balancers.
-3. Click on the load balancer with the name `mage-data-prep` in it (if you
+3. Click on the load balancer with the name `bigbytes-data-prep` in it (if you
    changed the app name, then find the load balancer with that app name).
 4. Find the public DNS name, copy that, and paste it in your browser.
 
@@ -215,19 +215,19 @@ Once it’s finished deploying, you can access Mage in your browser.
 
 **Using Docker**
 
-From the root directory of Mage, run the following commands:
+From the root directory of Bigbytes, run the following commands:
 
 1. Initialize Terraform:
 
 ```bash
-docker run -i -t -v $(pwd):/mage --workdir="/absolute_path_to/mage-ai-terraform-templates/aws" \
+docker run -i -t -v $(pwd):/bigbytes --workdir="/absolute_path_to/bigbytes-terraform-templates/aws" \
   hashicorp/terraform:latest init
 ```
 
 2. Deploy:
 
 ```bash
-docker run -i -t -v $(pwd):/mage --workdir="/absolute_path_to/mage-ai-terraform-templates/aws" \
+docker run -i -t -v $(pwd):/bigbytes --workdir="/absolute_path_to/bigbytes-terraform-templates/aws" \
   --env AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
   --env AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
   hashicorp/terraform:latest apply
@@ -261,9 +261,9 @@ try re-building your image with the platform flag `--platform linux/amd64`.
 
 ---
 
-### Updating Mage versions
+### Updating Bigbytes versions
 
-After Mage is running in your cloud, you can update the Mage Docker image
+After Bigbytes is running in your cloud, you can update the Bigbytes Docker image
 version by running the following command in your CLI tool:
 
 ```bash
@@ -287,8 +287,8 @@ aws ecs update-service --cluster [cluster_name] --service [service_name] --force
 
 #### Security
 
-To enable other IP addresses access to Mage, open the security group named
-`mage-data-prep-sg` to whitelist IPs.
+To enable other IP addresses access to Bigbytes, open the security group named
+`bigbytes-data-prep-sg` to whitelist IPs.
 
 Add a new inbound rule for HTTP port 80 and use your IP address.
 
@@ -304,14 +304,14 @@ After you get a certificate, add a HTTPS listener in your load balancer group.
 
 1. Open your EC2 dashboard.
 2. View all load balancers.
-3. Click on the load balancer with the name `mage-data-prep` in it (if you
+3. Click on the load balancer with the name `bigbytes-data-prep` in it (if you
    changed the app name, then find the load balancer with that app name).
 4. Click "Listeners and rules" tab.
 5. Click "Add listener" button
 6. For "Protocol" and "Port", choose HTTPS and keep the default port or enter a
    different port.
 7. In "Default actions", select "Forward to target groups" and forward to the target group that
-   contains your app name (`mage-data-prep-production-tg` by default)
+   contains your app name (`bigbytes-data-prep-production-tg` by default)
 8. In "Security Policy", keep the default security policy.
 9. For "Default SSL certificate", do one of the following:
    1. If you created or imported a certificate using AWS Certificate Manager,
@@ -340,7 +340,7 @@ A sample output could look like this:
 Destroy complete! Resources: 10 destroyed.
 ```
 ### Authentication with ECS task execution role
-Mage creates an ECS task execution role with the format `{app_name}-execution-task-role`.
+Bigbytes creates an ECS task execution role with the format `{app_name}-execution-task-role`.
 You can grant the ECS task permissions to access other AWS services by attaching IAM policies to this ECS task execution role.
 
 
@@ -351,7 +351,7 @@ to your ECS task execution role.
 
 ## Deploy to EKS cluster
 
-Use Terraform scripts in [aws-eks](https://github.com/mage-ai/mage-ai-terraform-templates/tree/master/aws-eks)
+Use Terraform scripts in [aws-eks](https://github.com/digitranslab/bigbytes-terraform-templates/tree/master/aws-eks)
 folder to provision resources for AWS EKS cluster.
 
 
@@ -363,10 +363,10 @@ cd aws-eks
 terraform plan
 ```
 
-Similar with deploying to ECS cluster, you need to set up the [environment variables](/production/deploying-to-cloud/aws/setup#1-environment-variables) first, and you can customize the Terraform settings in [./aws-eks/variables.tf](https://github.com/mage-ai/mage-ai-terraform-templates/blob/master/aws-eks/variables.tf) file.
+Similar with deploying to ECS cluster, you need to set up the [environment variables](/production/deploying-to-cloud/aws/setup#1-environment-variables) first, and you can customize the Terraform settings in [./aws-eks/variables.tf](https://github.com/digitranslab/bigbytes-terraform-templates/blob/master/aws-eks/variables.tf) file.
 
 
-Then, follow the steps below to set up EKS cluster and deploy Mage.
+Then, follow the steps below to set up EKS cluster and deploy Bigbytes.
 
 <Steps>
 
@@ -397,7 +397,7 @@ parameters:
 ```
 </Note>
 
-Update the `EFS_VOLUME_ID` in [kube/efs-pvc.yaml](https://github.com/mage-ai/mage-ai-terraform-templates/blob/master/aws-eks/kube/efs-pvc.yaml) to the efs id in terraform output
+Update the `EFS_VOLUME_ID` in [kube/efs-pvc.yaml](https://github.com/digitranslab/bigbytes-terraform-templates/blob/master/aws-eks/kube/efs-pvc.yaml) to the efs id in terraform output
 </Step>
 
 <Step title="Install EFS CSI Driver">
@@ -413,13 +413,13 @@ Run command `kubectl apply -k "github.com/kubernetes-sigs/aws-efs-csi-driver/dep
 </Step>
 
 <Step title="Deploy app to EKS">
-Run `kubectl apply -f kube/` to deploy app or use Helm to deploy Mage.
+Run `kubectl apply -f kube/` to deploy app or use Helm to deploy Bigbytes.
 </Step>
 
 <Step title="Whitelist IP in EKS node's security group" />
 
-<Step title="Access Mage on EKS">
-Get the node IP via command `kubectl get nodes -o wide` and access Mage with `http://[ip]:{node_port}`
+<Step title="Access Bigbytes on EKS">
+Get the node IP via command `kubectl get nodes -o wide` and access Bigbytes with `http://[ip]:{node_port}`
 </Step>
 
 </Steps>

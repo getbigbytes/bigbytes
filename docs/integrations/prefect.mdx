@@ -1,15 +1,15 @@
 ---
-title: "Run Mage pipelines in Prefect"
+title: "Run Bigbytes pipelines in Prefect"
 sidebarTitle: "Prefect"
 description: "We support running the pipeline in Prefect flows."
 ---
 
-You need to firstly install `mage_ai` library by adding `mage_ai` to your
-requirements.txt file. Then you need to download the mage pipeline code into
+You need to firstly install `bigbytes` library by adding `bigbytes` to your
+requirements.txt file. Then you need to download the bigbytes pipeline code into
 your Prefect directory. You can achieve it by using a git submodule in your
 Prefect directory.
 
-We provide two ways to run mage pipelines in Airflow.
+We provide two ways to run bigbytes pipelines in Airflow.
 
 1. Run pipeline in as a task or ShellTask.
 2. Run pipeline as a Prefect Flow.
@@ -18,7 +18,7 @@ We provide two ways to run mage pipelines in Airflow.
 
 ```python Example code
 from prefect import task, Flow
-import mage_ai
+import bigbytes
 import os
 
 
@@ -28,9 +28,9 @@ pipeline_name = 'pipeline_name'
 
 @task
 def run_pipeline():
-    mage_ai.run(pipeline_name, project_path)
+    bigbytes.run(pipeline_name, project_path)
 
-with Flow('My Mage Flow') as flow:
+with Flow('My Bigbytes Flow') as flow:
     run_pipeline()
 
 flow.run()
@@ -42,7 +42,7 @@ flow.run()
 from prefect import task, Flow
 from prefect.tasks.shell import ShellTask
 from prefect.triggers import all_finished
-import mage_ai
+import bigbytes
 import os
 import prefect
 
@@ -50,7 +50,7 @@ ABSOLUTE_PATH = os.path.abspath(os.path.dirname(__file__))
 project_path = os.path.join(ABSOLUTE_PATH, 'project_path')
 pipeline_name = 'pipeline_name'
 
-mage_task = ShellTask(return_all=True)
+bigbytes_task = ShellTask(return_all=True)
 
 @task(trigger=all_finished)
 def output_print(output):
@@ -58,8 +58,8 @@ def output_print(output):
     for o in output:
         logger.info(o)
 
-with Flow('My Mage Flow') as flow:
-    run_pipeline = mage_task(command=f'mage run {project_path} {pipeline_name}')
+with Flow('My Bigbytes Flow') as flow:
+    run_pipeline = bigbytes_task(command=f'bigbytes run {project_path} {pipeline_name}')
     output = output_print(run_pipeline)
 
 flow.run()
@@ -69,7 +69,7 @@ flow.run()
 
 ```python Example code
 from prefect import Task, Flow
-from mage_ai.data_preparation.models.pipeline import Pipeline
+from bigbytes.data_preparation.models.pipeline import Pipeline
 import asyncio
 import os
 
@@ -91,7 +91,7 @@ class ExecuteBlock(Task):
             )
         )
 
-flow = Flow('My Mage Flow')
+flow = Flow('My Bigbytes Flow')
 blocks_by_uuid = pipeline.blocks_by_uuid
 
 for uuid, b in blocks_by_uuid.items():

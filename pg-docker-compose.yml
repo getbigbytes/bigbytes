@@ -8,13 +8,13 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=mage
+      - POSTGRES_DB=bigbytes
   server:
-    image: mage/data
+    image: bigbytes/data
     build:
       context: .
       dockerfile: ./dev.Dockerfile
-    command: "python mage_ai/server/server.py --host ${HOST} --port ${PORT} --project ${PROJECT} --manage-instance ${MANAGE_INSTANCE}"
+    command: "python bigbytes/server/server.py --host ${HOST} --port ${PORT} --project ${PROJECT} --manage-instance ${MANAGE_INSTANCE}"
     environment:
       - AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
       - AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
@@ -24,7 +24,7 @@ services:
       - ENV=dev
       - GCP_PROJECT_ID=$GCP_PROJECT_ID
       - GCP_REGION=$GCP_REGION
-      - MAGE_DATABASE_CONNECTION_URL=postgresql+psycopg2://postgres:postgres@postgres-db:5432/mage
+      - BIGBYTES_DATABASE_CONNECTION_URL=postgresql+psycopg2://postgres:postgres@postgres-db:5432/bigbytes
       - MAX_NUMBER_OF_FILE_VERSIONS=$MAX_NUMBER_OF_FILE_VERSIONS
       - REQUIRE_USER_AUTHENTICATION=$REQUIRE_USER_AUTHENTICATION
       - path_to_keyfile=$GCP_PATH_TO_CREDENTIALS
@@ -43,12 +43,12 @@ services:
     volumes:
       - .:/home/src
       - ~/.aws:/root/.aws
-      - ~/.mage_data:/root/.mage_data
+      - ~/.bigbytes_data:/root/.bigbytes_data
     restart: on-failure:5
     stdin_open: true # used for interactive debugging
     tty: true # used for interactive debugging
   app:
-    image: mage/data
+    image: bigbytes/data
     build:
       context: .
       dockerfile: ./dev.Dockerfile
@@ -58,24 +58,24 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ./mage_ai/frontend/.babelrc:/home/src/mage_ai/frontend/.babelrc
-      - ./mage_ai/frontend/.eslintrc.js:/home/src/mage_ai/frontend/.eslintrc.js
-      - ./mage_ai/frontend/api:/home/src/mage_ai/frontend/api
-      - ./mage_ai/frontend/components:/home/src/mage_ai/frontend/components
-      - ./mage_ai/frontend/context:/home/src/mage_ai/frontend/context
-      - ./mage_ai/frontend/hocs:/home/src/mage_ai/frontend/hocs
-      - ./mage_ai/frontend/interfaces:/home/src/mage_ai/frontend/interfaces
-      - ./mage_ai/frontend/next-env.d.ts:/home/src/mage_ai/frontend/next-env.d.ts
-      - ./mage_ai/frontend/next.config.js:/home/src/mage_ai/frontend/next.config.js
-      - ./mage_ai/frontend/oracle:/home/src/mage_ai/frontend/oracle
-      - ./mage_ai/frontend/package.json:/home/src/mage_ai/frontend/package.json
-      - ./mage_ai/frontend/pages:/home/src/mage_ai/frontend/pages
-      - ./mage_ai/frontend/public:/home/src/mage_ai/frontend/public
-      - ./mage_ai/frontend/scripts:/home/src/mage_ai/frontend/scripts
-      - ./mage_ai/frontend/storage:/home/src/mage_ai/frontend/storage
-      - ./mage_ai/frontend/stories:/home/src/mage_ai/frontend/stories
-      - ./mage_ai/frontend/styles:/home/src/mage_ai/frontend/styles
-      - ./mage_ai/frontend/tsconfig.json:/home/src/mage_ai/frontend/tsconfig.json
-      - ./mage_ai/frontend/utils:/home/src/mage_ai/frontend/utils
-      - ./mage_ai/frontend/yarn.lock:/home/src/mage_ai/frontend/yarn.lock
-    working_dir: /home/src/mage_ai/frontend
+      - ./bigbytes/frontend/.babelrc:/home/src/bigbytes/frontend/.babelrc
+      - ./bigbytes/frontend/.eslintrc.js:/home/src/bigbytes/frontend/.eslintrc.js
+      - ./bigbytes/frontend/api:/home/src/bigbytes/frontend/api
+      - ./bigbytes/frontend/components:/home/src/bigbytes/frontend/components
+      - ./bigbytes/frontend/context:/home/src/bigbytes/frontend/context
+      - ./bigbytes/frontend/hocs:/home/src/bigbytes/frontend/hocs
+      - ./bigbytes/frontend/interfaces:/home/src/bigbytes/frontend/interfaces
+      - ./bigbytes/frontend/next-env.d.ts:/home/src/bigbytes/frontend/next-env.d.ts
+      - ./bigbytes/frontend/next.config.js:/home/src/bigbytes/frontend/next.config.js
+      - ./bigbytes/frontend/oracle:/home/src/bigbytes/frontend/oracle
+      - ./bigbytes/frontend/package.json:/home/src/bigbytes/frontend/package.json
+      - ./bigbytes/frontend/pages:/home/src/bigbytes/frontend/pages
+      - ./bigbytes/frontend/public:/home/src/bigbytes/frontend/public
+      - ./bigbytes/frontend/scripts:/home/src/bigbytes/frontend/scripts
+      - ./bigbytes/frontend/storage:/home/src/bigbytes/frontend/storage
+      - ./bigbytes/frontend/stories:/home/src/bigbytes/frontend/stories
+      - ./bigbytes/frontend/styles:/home/src/bigbytes/frontend/styles
+      - ./bigbytes/frontend/tsconfig.json:/home/src/bigbytes/frontend/tsconfig.json
+      - ./bigbytes/frontend/utils:/home/src/bigbytes/frontend/utils
+      - ./bigbytes/frontend/yarn.lock:/home/src/bigbytes/frontend/yarn.lock
+    working_dir: /home/src/bigbytes/frontend

@@ -1,5 +1,5 @@
 ---
-title: "Metaplane in Mage"
+title: "Metaplane in Bigbytes"
 icon: "plane-circle-check"
 sidebarTitle: "Metaplane"
 description: "Run monitors in Metaplane."
@@ -20,7 +20,7 @@ Here are the following keyword arguments that can be used for configuration:
 ## Get all connections
 
 ```python
-from mage_ai.services.metaplane.metaplane import Metaplane
+from bigbytes.services.metaplane.metaplane import Metaplane
 
 
 client = Metaplane(config=dict(api_token='abc123...'))
@@ -32,7 +32,7 @@ client.connections()
 Trigger sync with `source_id`.
 
 ```python
-from mage_ai.services.metaplane.metaplane import Metaplane
+from bigbytes.services.metaplane.metaplane import Metaplane
 
 
 client = Metaplane(config=dict(api_token='abc123...'))

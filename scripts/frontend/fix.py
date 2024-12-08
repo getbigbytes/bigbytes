@@ -103,18 +103,18 @@ def fix_errors(output: str):
 if __name__ == '__main__':
     run_shell_command(r"""
     git diff --name-only master...HEAD | \
-          grep -v '^mage_ai/server/frontend_dist/' | \
-          grep -v '^mage_ai/server/frontend_dist_base_path_template/' | \
+          grep -v '^bigbytes/server/frontend_dist/' | \
+          grep -v '^bigbytes/server/frontend_dist_base_path_template/' | \
           grep -E '\.(js|jsx|ts|tsx)$' | \
-          xargs prettier --config mage_ai/frontend/.prettierrc --write
+          xargs prettier --config bigbytes/frontend/.prettierrc --write
     """)
 
     command = r"""
     git diff --name-only master...HEAD | \
-        grep -v '^mage_ai/server/frontend_dist/' | \
-        grep -v '^mage_ai/server/frontend_dist_base_path_template/' | \
+        grep -v '^bigbytes/server/frontend_dist/' | \
+        grep -v '^bigbytes/server/frontend_dist_base_path_template/' | \
         grep -E '\.(js|jsx|ts|tsx)$' | \
-        xargs eslint_d --quiet --config mage_ai/frontend/.eslintrc.js --fix --ext .js,.jsx,.ts,.tsx
+        xargs eslint_d --quiet --config bigbytes/frontend/.eslintrc.js --fix --ext .js,.jsx,.ts,.tsx
     """
 
     # Run the command

@@ -15,7 +15,7 @@ While you may pull an image directly from Docker Hub, here are our legacy instru
     - Choose any **Encryption**
     - Click **`CREATE`**
 
-2.  Click on the newly created repository (e.g. `mage-docker`).
+2.  Click on the newly created repository (e.g. `bigbytes-docker`).
 3. Near the top of the page, click the link **`SETUP INSTRUCTIONS`** or read these
     [instructions](https://cloud.google.com/artifact-registry/docs/docker/authentication)
     to set up authentication for Docker.
@@ -32,54 +32,54 @@ While you may pull an image directly from Docker Hub, here are our legacy instru
         gcloud auth configure-docker us-west2-docker.pkg.dev
         ```
 
-4. Pull the Mage Docker image:
+4. Pull the Bigbytes Docker image:
 
     ```bash
-    docker pull mageai/mageai:latest
+    docker pull bigbytes/bigbytes:latest
     ```
 
     - If your local workstation is using macOS and a silicon chip (e.g. M1, M2,
     etc), then run this command instead:
 
         ```bash
-        docker pull --platform linux/amd64 mageai/mageai:latest
+        docker pull --platform linux/amd64 bigbytes/bigbytes:latest
         ```
 
-5.  Tag the pulled Mage docker image or use a previously tagged Docker image you
+5.  Tag the pulled Bigbytes docker image or use a previously tagged Docker image you
     built when following this [CI/CD guide](/production/ci-cd):
 
-    - Sample commands if using vanilla Mage Docker image:
+    - Sample commands if using vanilla Bigbytes Docker image:
 
         ```bash
-        docker tag mageai/mageai:latest [region]-docker.pkg.dev/[project_id]/[repository]/mageai:latest
+        docker tag bigbytes/bigbytes:latest [region]-docker.pkg.dev/[project_id]/[repository]/bigbytes:latest
         ```
 
         - An example command could look like this:
 
             ```bash
-            docker tag mageai/mageai:latest us-west2-docker.pkg.dev/materia-284023/mage-docker/mageai:latest
+            docker tag bigbytes/bigbytes:latest us-west2-docker.pkg.dev/materia-284023/bigbytes-docker/bigbytes:latest
             ```
 
     - Sample commands if using previously tagged a custom Docker image using the tag `mageprod:latest`:
 
         ```bash
-        docker tag mageprod:latest [region]-docker.pkg.dev/[project_id]/[repository]/mageai:latest
+        docker tag mageprod:latest [region]-docker.pkg.dev/[project_id]/[repository]/bigbytes:latest
         ```
 
         - An example command could look like this if you previously tagged your custom Docker image with the tag `mageprod:latest`:
 
             ```bash
-            docker tag mageprod:latest us-west2-docker.pkg.dev/materia-284023/mage-docker/mageai:latest
+            docker tag mageprod:latest us-west2-docker.pkg.dev/materia-284023/bigbytes-docker/bigbytes:latest
             ```
 
 6.  Push the local Docker image to GCP Artifact Registry:
 
     ```bash
-    docker push [region]-docker.pkg.dev/[project_id]/[repository]/mageai:latest
+    docker push [region]-docker.pkg.dev/[project_id]/[repository]/bigbytes:latest
     ```
 
     - An example command could look like this:
 
         ```bash
-        docker push us-west2-docker.pkg.dev/materia-284023/mage-docker/mageai:latest
+        docker push us-west2-docker.pkg.dev/materia-284023/bigbytes-docker/bigbytes:latest
         ```

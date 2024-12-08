@@ -15,16 +15,16 @@ with open('requirements.txt') as f:
         requirements.append(line)
 
 setuptools.setup(
-    name='mage-ai',
+    name='bigbytes',
     # NOTE: when you change this, change the value of VERSION in the following file:
-    # mage_ai/server/constants.py
+    # bigbytes/server/constants.py
     version='0.9.74',
-    author='Mage',
-    author_email='eng@mage.ai',
-    description='Mage is a tool for building and deploying data pipelines.',
+    author='Bigbytes',
+    author_email='eng@bigbytes.io',
+    description='Bigbytes is a tool for building and deploying data pipelines.',
     long_description=readme(),
     long_description_content_type='text/markdown',
-    url='https://github.com/mage-ai/mage-ai',
+    url='https://github.com/digitranslab/bigbytes',
     packages=setuptools.find_packages('.'),
     include_package_data=True,
     classifiers=[
@@ -36,7 +36,7 @@ setuptools.setup(
     python_requires='>=3.7',
     entry_points={
         'console_scripts': [
-            'mage=mage_ai.cli.main:app',
+            'bigbytes=bigbytes.cli.main:app',
         ],
     },
     extras_require={

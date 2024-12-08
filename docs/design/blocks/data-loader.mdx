@@ -13,7 +13,7 @@ import requests
 
 @data_loader
 def load_data_from_api(*args, **kwargs):
-    url = 'https://raw.githubusercontent.com/mage-ai/datasets/master/restaurant_user_transactions.csv'
+    url = 'https://raw.githubusercontent.com/digitranslab/datasets/master/restaurant_user_transactions.csv'
 
     response = requests.get(url)
     return pd.read_csv(io.StringIO(response.text), sep=',')
@@ -26,5 +26,5 @@ will be made available in all blocks that depend on this block.
 
 ## Templates
 
-To read about Mage's data loading clients that interface with popular data
+To read about Bigbytes's data loading clients that interface with popular data
 storage systems, see docs on [Data loading](/design/data-loading).

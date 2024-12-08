@@ -11,12 +11,12 @@ import { ProOnly } from '/snippets/pro/only.mdx';
 ## Memory optimizations
 
 In version 1.0 of dynamic blocks,
-Mage was loading all the data of an upstream dynamic child block from disk into memory
+Bigbytes was loading all the data of an upstream dynamic child block from disk into memory
 in order to calculate how many dynamic child blocks should be created.
 This can result in using large amounts of memory.
 
 In version 2.0 of dynamic blocks,
-Mage leverages the metadata of upstream block outputs
+Bigbytes leverages the metadata of upstream block outputs
 to calculate the number of downstream blocks for dynamic blocks and dynamic child blocks.
 The metadata is only several bytes on disk and less than a kilobyte in RAM.
 

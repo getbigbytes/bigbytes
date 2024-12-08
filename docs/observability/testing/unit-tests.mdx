@@ -21,7 +21,7 @@ End-to-end test for a pipeline:
 ```python
 import unittest
 
-from mage_ai.data_preparation.models.pipeline import Pipeline
+from bigbytes.data_preparation.models.pipeline import Pipeline
 
 
 class ExamplePipelineTest(unittest.TestCase):
@@ -39,14 +39,14 @@ You can leverage this variable to change the code logic or config used in the un
 When writing unit tests, you may need to mock the IO libraries to verify that the pipeline
 is being executed properly without actually calling the database or warehouse directly.
 
-If you are using the provided Mage IO libraries, you can mock the libraries in the following way:
+If you are using the provided Bigbytes IO libraries, you can mock the libraries in the following way:
 
 ```python
 import pandas as pd
 import unittest
 from unittest.mock import patch, MagicMock, Mock
 
-from mage_ai.data_preparation.models.pipeline import Pipeline
+from bigbytes.data_preparation.models.pipeline import Pipeline
 
 
 class ExampleIOTest(unittest.TestCase):
@@ -60,7 +60,7 @@ class ExampleIOTest(unittest.TestCase):
         the project.
         """
         # import shutil
-        # from mage_ai.settings.repo import get_variables_dir
+        # from bigbytes.settings.repo import get_variables_dir
         # shutil.rmtree(get_variables_dir())
 
     def test_pipeline_execution(self):
@@ -78,8 +78,8 @@ class ExampleIOTest(unittest.TestCase):
         postgres_mock.__enter__ = Mock(return_value=postgres_mock)
 
         with patch(
-            'mage_ai.io.postgres.Postgres.with_config', return_value=postgres_mock
-        ), patch('mage_ai.io.bigquery.BigQuery.with_config', return_value=bq_mock):
+            'bigbytes.io.postgres.Postgres.with_config', return_value=postgres_mock
+        ), patch('bigbytes.io.bigquery.BigQuery.with_config', return_value=bq_mock):
             self.pipeline.execute_sync(global_vars=dict(num_rows=10))
 
             bq_mock.load.assert_called_once()
@@ -110,7 +110,7 @@ class ExampleIOTest(unittest.TestCase):
             )
         )
 
-        with patch('mage_ai.io.bigquery.BigQuery.with_config', return_value=bq_mock):
+        with patch('bigbytes.io.bigquery.BigQuery.with_config', return_value=bq_mock):
             block1.execute_sync()
 
             bq_mock.load.assert_called_once()
@@ -120,7 +120,7 @@ class ExampleIOTest(unittest.TestCase):
         postgres_mock.__enter__ = Mock(return_value=postgres_mock)
 
         with patch(
-            'mage_ai.io.postgres.Postgres.with_config', return_value=postgres_mock
+            'bigbytes.io.postgres.Postgres.with_config', return_value=postgres_mock
         ):
             block2.execute_sync()
 

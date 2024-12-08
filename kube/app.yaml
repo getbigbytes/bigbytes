@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: mage-user
+  name: bigbytes-user
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -21,11 +21,11 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: mage-job-manager
+  name: bigbytes-job-manager
   namespace: default
 subjects:
 - kind: ServiceAccount
-  name: mage-user # Name of the ServiceAccount
+  name: bigbytes-user # Name of the ServiceAccount
   namespace: default
 roleRef:
   kind: Role # This must be Role or ClusterRole
@@ -36,15 +36,15 @@ roleRef:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: mage-server
+  name: bigbytes-server
 spec:
   containers:
-  - name: mage-server
-    image: mageai/mageai:latest
+  - name: bigbytes-server
+    image: bigbytes/bigbytes:latest
     ports:
     - containerPort: 6789
     volumeMounts:
-    - name: mage-fs
+    - name: bigbytes-fs
       mountPath: /home/src
     env:
       - name: KUBE_NAMESPACE
@@ -52,7 +52,7 @@ spec:
           fieldRef:
             fieldPath: metadata.namespace
   volumes:
-  - name: mage-fs
+  - name: bigbytes-fs
     hostPath:
-      path: /path/to/mage_project
-  serviceAccountName: mage-user
+      path: /path/to/bigbytes_project
+  serviceAccountName: bigbytes-user

@@ -11,8 +11,8 @@ This document assumes you're using Terraform to modify and deploy your AWS instr
 not using Terraform yet, you can set it up by reading [this document](production/deploying-to-cloud/using-terraform).
 
 This document also assumes that you have already set up your ECS cluster, services, and tasks.
-* If you are not using ECS to run Mage, then this document will not apply for you.
-  You can submit a feature request in our [Slack channel](https://www.mage.ai/chat) if you want Mage to
+* If you are not using ECS to run Bigbytes, then this document will not apply for you.
+  You can submit a feature request in our [Slack channel](https://www.bigbytes.io/chat) if you want Bigbytes to
   support deploying to your infrastructure through AWS CodePipeline.
 * If you have not set up your ECS yet, you can check out [this document](/production/deploying-to-cloud/aws/setup#deploy-to-ecs-cluster)
   to set it up with Terraform.
@@ -20,10 +20,10 @@ This document also assumes that you have already set up your ECS cluster, servic
 ### AWS CodeCommit
 
 The pipeline that is created through the Terraform scripts has a AWS CodeCommit repo as a source. You
-will need to have a CodeCommit repo already set up that has your Mage repository code.
+will need to have a CodeCommit repo already set up that has your Bigbytes repository code.
 
 Your CodeCommit repository should have a Dockerfile in the top level of your CodeCommit.
-[Here is a reference Dockerfile](https://github.com/mage-ai/docker/blob/master/Dockerfile)
+[Here is a reference Dockerfile](https://github.com/digitranslab/docker/blob/master/Dockerfile)
 that you can use for your own Dockerfile.
 
 You will also need to add a `buildspec.yml` file to your repository.
@@ -42,7 +42,7 @@ phases:
       - echo Build started on `date`
       - echo Building the Docker image...          
       - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
-      - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG      
+      - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
   post_build:
     commands:
       - echo Build completed on `date`
@@ -57,7 +57,7 @@ AWS ECR repo. Make sure you have already created your AWS ECR repository.
 
 ## Setting up AWS CodePipeline pipeline with Terraform
 
-Use Terraform scripts in [aws-code-pipeline](https://github.com/mage-ai/mage-ai-terraform-templates/tree/master/aws-code-pipeline)
+Use Terraform scripts in [aws-code-pipeline](https://github.com/digitranslab/bigbytes-terraform-templates/tree/master/aws-code-pipeline)
 folder to provision resources for AWS CodePipeline.
 
 ---
@@ -95,7 +95,7 @@ Alternatively, you can install the AWS CLI by following
 ### 2. Customize Terraform variables
 
 In the file
-[./aws/variables.tf](https://github.com/mage-ai/mage-ai-terraform-templates/blob/master/aws-code-pipeline/variables.tf),
+[./aws/variables.tf](https://github.com/digitranslab/bigbytes-terraform-templates/blob/master/aws-code-pipeline/variables.tf),
 you will need to update the default values for the following variables:
 
 **AWS settings**
@@ -140,7 +140,7 @@ variable "s3_bucket_name" {
 variable "code_pipeline_name" {
   type        = string
   description = "Name for AWS CodePipeline"
-  default     = "mage-codepipeline"
+  default     = "bigbytes-codepipeline"
 }
 ```
 
@@ -243,11 +243,11 @@ permissions as needed.
 
 ### Results
 
-After running the Terraform script, you should see two AWS CodePipeline pipelines created, `mage-codepipeline`
-and `mage-codepipeline-ecr` (unless you changed the `code_pipeline_name` variable). The `mage-codepipeline` pipeline
-will be triggered every time a change is detected in the AWS CodeCommit repo. The `mage-codepipeline-ecr` pipeline
+After running the Terraform script, you should see two AWS CodePipeline pipelines created, `bigbytes-codepipeline`
+and `bigbytes-codepipeline-ecr` (unless you changed the `code_pipeline_name` variable). The `bigbytes-codepipeline` pipeline
+will be triggered every time a change is detected in the AWS CodeCommit repo. The `bigbytes-codepipeline-ecr` pipeline
 will be triggered every time a new image is pushed with into the AWS ECR repo. 
 
-![mage-codepipeline](https://github.com/mage-ai/assets/blob/main/mage-codepipeline.png?raw=True)
+![bigbytes-codepipeline](https://github.com/digitranslab/assets/blob/main/bigbytes-codepipeline.png?raw=True)
 
-![mage-codepipeline-ecr](https://github.com/mage-ai/assets/blob/main/mage-codepipeline-ecr.png?raw=True)
+![bigbytes-codepipeline-ecr](https://github.com/digitranslab/assets/blob/main/bigbytes-codepipeline-ecr.png?raw=True)

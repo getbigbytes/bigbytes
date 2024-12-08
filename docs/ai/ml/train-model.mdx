@@ -29,7 +29,7 @@ before starting.
 In the left sidebar (aka file browser), click on the `requirements.txt` file
 under the `demo_project/` folder.
 
-<img alt="requirements" src="https://github.com/mage-ai/assets/blob/main/requirements.png?raw=True" />
+<img alt="requirements" src="https://github.com/digitranslab/assets/blob/main/requirements.png?raw=True" />
 
 Then add the following dependencies to that file:
 
@@ -66,12 +66,12 @@ docker ps
 Sample output:
 
 ```bash Sample output
-CONTAINER ID   IMAGE       COMMAND                  CREATED         STATUS         PORTS     NAMES
-214e1155f5c3   mage/data   "python mage_ai/comm…"   5 seconds ago   Up 2 seconds             mage-ai_server_run_6f8d367ac405
+CONTAINER ID   IMAGE           COMMAND                   CREATED         STATUS         PORTS     NAMES
+214e1155f5c3   bigbytes/data   "python bigbytes/comm…"   5 seconds ago   Up 2 seconds             bigbytes_server_run_6f8d367ac405
 ```
 
 The container name in the above sample output is
-`mage-ai_server_run_6f8d367ac405`.
+`bigbytes_server_run_6f8d367ac405`.
 
 Then run this command to install Python packages in the
 `demo_project/requirements.txt` file:
@@ -93,7 +93,7 @@ pip3 install -r demo_project/requirements.txt
 In the top left corner, click `File > New pipeline`. Then, click the name of the
 pipeline next to the green dot to rename it to `titanic survivors`.
 
-![create new pipeline](https://github.com/mage-ai/assets/blob/main/create-new-pipeline.gif?raw=True)
+![create new pipeline](https://github.com/digitranslab/assets/blob/main/create-new-pipeline.gif?raw=True)
 
 ## 3. Play around with scratchpad
 
@@ -125,7 +125,7 @@ the block:
 - Control + Enter
 - Shift + Enter (run code and add a new block)
 
-![](https://github.com/mage-ai/assets/blob/main/scratchpad.gif?raw=True)
+![](https://github.com/digitranslab/assets/blob/main/scratchpad.gif?raw=True)
 
 Now that we’re done with the scratchpad, we can leave it there or delete it. To
 delete a block, click the trash can icon on the right side or use the keyboard
@@ -144,7 +144,7 @@ shortcut by typing the letter D and then D again.
 After you run the block (⌘ + Enter), you can immediately see a sample of the
 data in the block’s output.
 
-![load data](https://github.com/mage-ai/assets/blob/main/load-data.gif?raw=True)
+![load data](https://github.com/digitranslab/assets/blob/main/load-data.gif?raw=True)
 
 Here is what the code should look like:
 
@@ -155,9 +155,9 @@ import requests
 from pandas import DataFrame
 
 if 'data_loader' not in globals():
-    from mage_ai.data_preparation.decorators import data_loader
+    from bigbytes.data_preparation.decorators import data_loader
 if 'test' not in globals():
-    from mage_ai.data_preparation.decorators import test
+    from bigbytes.data_preparation.decorators import test
 
 
 @data_loader
@@ -165,7 +165,7 @@ def load_data_from_api(**kwargs) -> DataFrame:
     """
     Template for loading data from API
     """
-    url = 'https://raw.githubusercontent.com/mage-ai/datasets/master/titanic_survival.csv'
+    url = 'https://raw.githubusercontent.com/digitranslab/datasets/master/titanic_survival.csv'
 
     response = requests.get(url)
     return pd.read_csv(io.StringIO(response.text), sep=',')
@@ -195,7 +195,7 @@ import math
 
 
 if 'transformer' not in globals():
-    from mage_ai.data_preparation.decorators import transformer
+    from bigbytes.data_preparation.decorators import transformer
 
 
 def select_number_columns(df: DataFrame) -> DataFrame:
@@ -218,7 +218,7 @@ def transform_df(df: DataFrame, *args) -> DataFrame:
 After you run the block (⌘ + Enter), you can immediately see a sample of the
 data in the block’s output.
 
-![Transform data](https://github.com/mage-ai/assets/blob/main/transform-data.gif?raw=True)
+![Transform data](https://github.com/digitranslab/assets/blob/main/transform-data.gif?raw=True)
 
 ## 6. Train model
 
@@ -245,7 +245,7 @@ import os
 import pickle
 
 if 'data_exporter' not in globals():
-    from mage_ai.data_preparation.decorators import data_exporter
+    from bigbytes.data_preparation.decorators import data_exporter
 
 
 LABEL_COLUMN = 'Survived'
@@ -293,7 +293,7 @@ def export_data(df: DataFrame) -> None:
 
 Run the block (⌘ + Enter).
 
-![Train model](https://github.com/mage-ai/assets/blob/main/train-model.gif?raw=True)
+![Train model](https://github.com/digitranslab/assets/blob/main/train-model.gif?raw=True)
 
 ## 7. Run pipeline
 
@@ -307,7 +307,7 @@ following command:
 ```
 
 ```bash pip
-bash mage run demo_project titanic_survivors
+bash bigbytes run demo_project titanic_survivors
 ```
 
 </CodeGroup>
@@ -315,7 +315,7 @@ bash mage run demo_project titanic_survivors
 You can also run the pipeline from the UI. Click on the <b>Execute pipeline </b>
 from right bottom panel.
 
-![](https://github.com/mage-ai/assets/blob/main/execute-pipeline-button.png?raw=True)
+![](https://github.com/digitranslab/assets/blob/main/execute-pipeline-button.png?raw=True)
 
 Your output should look something like this:
 
@@ -336,4 +336,4 @@ You’ve successfully built an ML pipeline that consists of modular code blocks
 and is reproducible in any environment.
 
 If you have more questions or ideas, please live chat with us in
-[Slack](https://www.mage.ai/chat).
+[Slack](https://www.bigbytes.io/chat).

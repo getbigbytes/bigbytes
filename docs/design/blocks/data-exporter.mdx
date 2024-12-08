@@ -7,9 +7,9 @@ description:
 
 <img
   alt="exporter"
-  src="https://github.com/mage-ai/assets/blob/main/blocks/exporter/data-exporter.gif?raw=True"
+  src="https://github.com/digitranslab/assets/blob/main/blocks/exporter/data-exporter.gif?raw=True"
 />
-Mage natively supports integration with a variety of data storage systems. However, these integrations often 
+Bigbytes natively supports integration with a variety of data storage systems. However, these integrations often
 require specific configurations in both the exporter block and the ```io_config.yml``` file to ensure seamless operation. 
 The ```io_config.yml``` file typically includes connection details such as host, port, database name, username, and password. 
 Meanwhile, the exporter block needs to be configured with the appropriate export parameters, such as target table names, 
@@ -23,7 +23,7 @@ schema details, and conflict resolution strategies.
     - Most data exporters include a `config_profile` parameter set to `'default'` by default. This parameter can be customized 
     to use different configuration profiles if you have multiple profiles or have renamed them.
 2. **Supported Data Storage Systems**:
-    - Mage supports a wide range of storage systems including PostgreSQL, MySQL, AWS S3, Google Cloud Storage, Azure Blob Storage, and many more.
+    - Bigbytes supports a wide range of storage systems including PostgreSQL, MySQL, AWS S3, Google Cloud Storage, Azure Blob Storage, and many more.
     - Each system may have unique requirements and configurations to ensure compatibility and optimal performance.
 3. **Configuration in `io_config.yml`**:
     - This file serves as the central configuration hub for defining connection parameters.
@@ -38,9 +38,9 @@ schema details, and conflict resolution strategies.
 
 <Accordion title="Data Warehouse">
 
-Configure the `io_config.yml` file to connect your Mage pipeline to a snowflake data warehouse. While optional, 
+Configure the `io_config.yml` file to connect your Bigbytes pipeline to a snowflake data warehouse. While optional,
 depending on how your Snowflake DW is configured you may need to enter all information into the .yml file. 
-It’s recommended to store sensitive information as Secrets. See the general [Secrets documentation](https://docs.mage.ai/development/variables/secrets)
+It’s recommended to store sensitive information as Secrets. See the general [Secrets documentation](https://docs.bigbytes.io/development/variables/secrets)
 for more information.
 
 ```YAML
@@ -66,14 +66,14 @@ All other information is handled in the 'io_config.yml' file.
 Example Code:
 
 ```Python
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.config import ConfigFileLoader
-from mage_ai.io.snowflake import Snowflake
+from bigbytes.settings.repo import get_repo_path
+from bigbytes.io.config import ConfigFileLoader
+from bigbytes.io.snowflake import Snowflake
 from pandas import DataFrame
 from os import path
 
 if 'data_exporter' not in globals():
-    from mage_ai.data_preparation.decorators import data_exporter
+    from bigbytes.data_preparation.decorators import data_exporter
 
 
 @data_exporter
@@ -82,7 +82,7 @@ def export_data_to_snowflake(df: DataFrame, **kwargs) -> None:
     Template for exporting data to a Snowflake warehouse.
     Specify your configuration settings in 'io_config.yaml'.
 
-    Docs: https://docs.mage.ai/design/data-loading#snowflake
+    Docs: https://docs.bigbytes.io/design/data-loading#snowflake
     """
     table_name = 'your_table_name'
     database = 'your_database_name'
@@ -101,8 +101,8 @@ def export_data_to_snowflake(df: DataFrame, **kwargs) -> None:
 ```
 </Accordion>
 <Accordion title="Data Lake">
-Configure the `io_config.yml` file to connect your Mage pipeline to a Azure Blob Storage. Configure some Secrets and enter them into `io_config.yml` file. 
-If you need more information on entering secrets see this [documentation](https://docs.mage.ai/production/deploying-to-cloud/secrets/Azure).
+Configure the `io_config.yml` file to connect your Bigbytes pipeline to a Azure Blob Storage. Configure some Secrets and enter them into `io_config.yml` file.
+If you need more information on entering secrets see this [documentation](https://docs.bigbytes.io/production/deploying-to-cloud/secrets/Azure).
 
 ```YAML
   AZURE_CLIENT_ID: "{{ env_var('AZURE_CLIENT_ID') }}"
@@ -120,14 +120,14 @@ All other information is handled in the `io_config.yml` file.
 Example Code:
 
 ```Python
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.azure_blob_storage import AzureBlobStorage
-from mage_ai.io.config import ConfigFileLoader
+from bigbytes.settings.repo import get_repo_path
+from bigbytes.io.azure_blob_storage import AzureBlobStorage
+from bigbytes.io.config import ConfigFileLoader
 from pandas import DataFrame
 from os import path
 
 if 'data_exporter' not in globals():
-    from mage_ai.data_preparation.decorators import data_exporter
+    from bigbytes.data_preparation.decorators import data_exporter
 
 
 @data_exporter
@@ -136,7 +136,7 @@ def export_data_to_azure_blob_storage(df: DataFrame, **kwargs) -> None:
     Template for exporting data to a Azure Blob Storage.
     Specify your configuration settings in 'io_config.yaml'.
 
-    Docs: https://docs.mage.ai/design/data-loading
+    Docs: https://docs.bigbytes.io/design/data-loading
     """
     config_path = path.join(get_repo_path(), 'io_config.yaml')
     config_profile = 'default'
@@ -153,8 +153,8 @@ def export_data_to_azure_blob_storage(df: DataFrame, **kwargs) -> None:
 </Accordion>
 
 <Accordion title="Database">
-Configure the `io_config.yml` file to connect your Mage pipeline to a PostgreSQL database. Configure some Secrets and enter them into `io_config.yml` file. 
-If you need more information on entering secrets see this [documentation](https://docs.mage.ai/production/deploying-to-cloud/secrets/Azure).
+Configure the `io_config.yml` file to connect your Bigbytes pipeline to a PostgreSQL database. Configure some Secrets and enter them into `io_config.yml` file.
+If you need more information on entering secrets see this [documentation](https://docs.bigbytes.io/production/deploying-to-cloud/secrets/Azure).
 
 ```YAML
   POSTGRES_CONNECT_TIMEOUT: 10
@@ -179,14 +179,14 @@ All other information is handled in the `io_config.yml` file.
 Example Code:
 
 ```Python
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.config import ConfigFileLoader
-from mage_ai.io.postgres import Postgres
+from bigbytes.settings.repo import get_repo_path
+from bigbytes.io.config import ConfigFileLoader
+from bigbytes.io.postgres import Postgres
 from pandas import DataFrame
 from os import path
 
 if 'data_exporter' not in globals():
-    from mage_ai.data_preparation.decorators import data_exporter
+    from bigbytes.data_preparation.decorators import data_exporter
 
 
 @data_exporter
@@ -195,7 +195,7 @@ def export_data_to_postgres(df: DataFrame, **kwargs) -> None:
     Template for exporting data to a PostgreSQL database.
     Specify your configuration settings in 'io_config.yaml'.
 
-    Docs: https://docs.mage.ai/design/data-loading#postgresql
+    Docs: https://docs.bigbytes.io/design/data-loading#postgresql
     """
     schema_name = 'your_schema_name'  # Specify the name of the schema to export data to
     table_name = 'your_table_name'  # Specify the name of the table to export data to
@@ -227,7 +227,7 @@ They contain the necessary configurations within the exporter block itself. Lets
 - `'AWS_S3_ALLOW_UNSAFE_RENAME'`: This option allows unsafe rename operations on S3, which might be necessary for some workflows.
 
 <Note>
-Remember Secrets can be stored in Mage’s internal Secrets Manager, .YAML files, or sync directly with Cloud Secret Managers.
+Remember Secrets can be stored in Bigbytes’s internal Secrets Manager, .YAML files, or sync directly with Cloud Secret Managers.
 </Note>
 
 **Additional Configurations**
@@ -239,7 +239,7 @@ Example Code:
 ```Python
 from deltalake.writer import write_deltalake
 if 'data_exporter' not in globals():
-    from mage_ai.data_preparation.decorators import data_exporter
+    from bigbytes.data_preparation.decorators import data_exporter
 
 
 @data_exporter

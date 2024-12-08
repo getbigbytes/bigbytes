@@ -3,20 +3,20 @@ title: "Database"
 icon: "database"
 ---
 
-By default, Mage uses sqlite to store orchestration data (trigger, pipeline run, and block run). To use a different database, you can set the `MAGE_DATABASE_CONNECTION_URL` environment variable.
+By default, Bigbytes uses sqlite to store orchestration data (trigger, pipeline run, and block run). To use a different database, you can set the `BIGBYTES_DATABASE_CONNECTION_URL` environment variable.
 
 In production, you can set the environment variable in the corresponding Terraform script.
 
 ## PostgreSQL
-`export MAGE_DATABASE_CONNECTION_URL=postgresql+psycopg2://user:password@host:port/dbname`
+`export BIGBYTES_DATABASE_CONNECTION_URL=postgresql+psycopg2://user:password@host:port/dbname`
 
 To use a specific `schema_name` in PostgreSQL:
 
-`export MAGE_DATABASE_CONNECTION_URL="postgresql+psycopg2://user:password@host:port/dbname?options=-c%20search_path%3Dschema_name"`
+`export BIGBYTES_DATABASE_CONNECTION_URL="postgresql+psycopg2://user:password@host:port/dbname?options=-c%20search_path%3Dschema_name"`
 
 ### Get credentials from AWS Secret Manager
 
-You can also instruct Mage to fetch your Postgres DB credentials from AWS Secret Manager. You will need to
+You can also instruct Bigbytes to fetch your Postgres DB credentials from AWS Secret Manager. You will need to
 set the following environment variables:
 
 | Variable | Value |
@@ -35,4 +35,4 @@ The expected format of the secret is JSON string with the following keys:
 * dbname
 
 ## MSSQL (not officially supported)
-`export MAGE_DATABASE_CONNECTION_URL="mssql+pyodbc://?odbc_connect=DRIVER={ODBC Driver 18 for SQL Server};SERVER=host;DATABASE=dbname;UID=user;PWD=password;ENCRYPT=yes;TrustServerCertificate=yes;"`
+`export BIGBYTES_DATABASE_CONNECTION_URL="mssql+pyodbc://?odbc_connect=DRIVER={ODBC Driver 18 for SQL Server};SERVER=host;DATABASE=dbname;UID=user;PWD=password;ENCRYPT=yes;TrustServerCertificate=yes;"`

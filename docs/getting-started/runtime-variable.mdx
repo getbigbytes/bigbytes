@@ -17,7 +17,7 @@ from pandas import DataFrame
 from os import path
 
 if 'data_loader' not in globals():
-    from mage_ai.data_preparation.decorators import data_loader
+    from bigbytes.data_preparation.decorators import data_loader
 
 
 @data_loader
@@ -43,22 +43,22 @@ name, can't start with a number).
 
 ## Creating Runtime Variables
 
-### In Mage editor
+### In Bigbytes editor
 
-You can create new global variables from the Mage UI through the "Variables" tab
+You can create new global variables from the Bigbytes UI through the "Variables" tab
 in the sidekick. Click the "New" button, and configure your variable's name and
 value, and press Enter to save.
 
 To edit global variables, hover over the variable and click on the edit button.
 You can edit the variable name and/or value, and press Enter to save.
 
-![Create Global Variables](https://github.com/mage-ai/assets/blob/main/configure-runtime-variables.png?raw=True)
+![Create Global Variables](https://github.com/digitranslab/assets/blob/main/configure-runtime-variables.png?raw=True)
 
 ### In code
 
 You can also create pipeline-level variables in code by editing the pipeline's `metadata.yaml` file.
 
-![Create Pipeline Variables](https://github.com/mage-ai/assets/blob/main/configure-variables-in-code.png?raw=True)
+![Create Pipeline Variables](https://github.com/digitranslab/assets/blob/main/configure-variables-in-code.png?raw=True)
 
 If you'd like to create environment specific pipeline variables, you can format the `variables` arguments as follows:
 
@@ -88,19 +88,19 @@ def testfunc(**kwargs):
     myyvar = kwargs[env][var]
 ```
 
-A big thanks to community member [Preston Dotsey](https://mageai.slack.com/team/U061CMVAJH1) for their contribution!
+A big thanks to community member [Preston Dotsey](https://bigbytes.slack.com/team/U061CMVAJH1) for their contribution!
 
 ### In Python code
 You can also save the variable in Python code. One example usage is to save checkpoint data. 
 
 ```python
-from mage_ai.data_preparation.variable_manager import set_global_variable
+from bigbytes.data_preparation.variable_manager import set_global_variable
 set_global_variable(pipeline_uuid, key, value)
 ```
 
 ## Default Runtime Variables
 
-Mage provides some default variables to give context on the pipeline execution.
+Bigbytes provides some default variables to give context on the pipeline execution.
 
 - `execution_date`: A datetime object that the pipeline is executed at.
 - `event`: If the pipeline is triggered by event, the `event` variable contains
@@ -114,27 +114,27 @@ You can execute your pipeline with runtime variables from the command line.
 First, make sure you installed the package.
 
 ```bash
-pip install mage-ai
+pip install bigbytes
 ```
 
 Once the package is installed, you can run your pipeline through the command
 line.
 
 ```bash
-mage run <project_path> <pipeline_uuid> --runtime-vars '{"name": "value"}'...
+bigbytes run <project_path> <pipeline_uuid> --runtime-vars '{"name": "value"}'...
 
 # example with 2 runtime variables "name" and "ds":
-mage run default_repo default_pipeline --runtime-vars '{"name": "default", "ds": "2022-08-18"}'
+bigbytes run default_repo default_pipeline --runtime-vars '{"name": "default", "ds": "2022-08-18"}'
 ```
 
 ### Run from Python script
 
 If your pipeline is configured to use runtime variables, you can still execute
 your pipeline outside the code editor. Provide the runtime variables as keyword
-arguments to `mage_ai.run()`:
+arguments to `bigbytes.run()`:
 
 ```python
-mage_ai.run('sample_pipeline', 'repos/default_repo', filepath = 'path/to/my/file.csv', row_limit=1000)
+bigbytes.run('sample_pipeline', 'repos/default_repo', filepath = 'path/to/my/file.csv', row_limit=1000)
 ```
 
 ## Example - Aggregating Daily Logs
@@ -154,7 +154,7 @@ our web application produces.
 | 2022-07-27T00:42:37 | ERROR   | react-1   |
 
 Suppose we want to know the distribution of log types at the end of every day.
-Using Mage's runtime variables this is made a very simple task:
+Using Bigbytes's runtime variables this is made a very simple task:
 
 1. Create a data loader to load all log files modified on a specific date. We
    will specify the log folder and the date to load logs from using **runtime
@@ -167,7 +167,7 @@ Using Mage's runtime variables this is made a very simple task:
    import os
 
    if 'data_loader' not in globals():
-       from mage_ai.data_preparation.decorators import data_loader
+       from bigbytes.data_preparation.decorators import data_loader
 
 
    @data_loader
@@ -198,7 +198,7 @@ Using Mage's runtime variables this is made a very simple task:
    import pandas as pd
 
    if 'transformer' not in globals():
-       from mage_ai.data_preparation.decorators import transformer
+       from bigbytes.data_preparation.decorators import transformer
 
 
    @transformer
@@ -220,10 +220,10 @@ This data can then be ingested into a log statistics database.
 **Key:** As the current date and log folder are not hardcoded in the pipeline
 but instead provided as a runtime variable, your pipeline code remains reusable
 without having to change any code. Every day, the pipeline can be ran using
-`mage_ai.run()`, providing the current date and log folder as keyword arguments:
+`bigbytes.run()`, providing the current date and log folder as keyword arguments:
 
 ```python
-mage_ai.run('log_stats_ingestion', 'repos/default_repo', current_date='2022-07-29', log_folder='logs/webapp')
+bigbytes.run('log_stats_ingestion', 'repos/default_repo', current_date='2022-07-29', log_folder='logs/webapp')
 ```
 
 ## Example - Model Rockets
@@ -252,7 +252,7 @@ from pandas import DataFrame
 from os import path
 
 if 'transformer' not in globals():
-    from mage_ai.data_preparation.decorators import transformer
+    from bigbytes.data_preparation.decorators import transformer
 
 
 @transformer
@@ -272,7 +272,7 @@ from pandas import DataFrame
 from os import path
 
 if 'transformer' not in globals():
-    from mage_ai.data_preparation.decorators import transformer
+    from bigbytes.data_preparation.decorators import transformer
 
 
 @transformer
@@ -283,11 +283,11 @@ def convert_velocity(df: DataFrame, **kwargs) -> DataFrame:
 ```
 
 Now that your pipeline is complete, you can run your pipeline using
-`mage_ai.run()`. Specify values for runtime variables as keyword arguments to
+`bigbytes.run()`. Specify values for runtime variables as keyword arguments to
 this function:
 
 ```python
-mage_ai.run('model_rocket_data_ingestion', 'repos/default_repo', pi=3.1415, conversion_factor=3.6)
+bigbytes.run('model_rocket_data_ingestion', 'repos/default_repo', pi=3.1415, conversion_factor=3.6)
 ```
 
 Suppose after creating your pipeline, you instead want to store your velocity in
@@ -296,5 +296,5 @@ runtime variable, you don't have to edit your pipeline - you just have to change
 the conversion factor which your pipeline is run with!
 
 ```python
-mage_ai.run('model_rocket_data_ingestion', 'repos/default_repo', pi=3.1415, conversion_factor=2.24)
+bigbytes.run('model_rocket_data_ingestion', 'repos/default_repo', pi=3.1415, conversion_factor=2.24)
 ```

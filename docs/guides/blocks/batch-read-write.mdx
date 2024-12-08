@@ -27,7 +27,7 @@ The downstream block will only load the chunk from indigo_mountain where power e
 
     import polars as pl
 
-    from mage_ai.data.tabular.mocks import create_dataframe
+    from bigbytes.data.tabular.mocks import create_dataframe
 
 
     @data_loader
@@ -106,7 +106,7 @@ def transform(data, *args, **kwargs):
 
     import polars as pl
 
-    from mage_ai.data.tabular.mocks import create_dataframe
+    from bigbytes.data.tabular.mocks import create_dataframe
 
 
     @data_loader
@@ -138,7 +138,7 @@ def transform(data, *args, **kwargs):
 Invoke methods on the reader object directly.
 
 ```python
-from mage_ai.data.tabular.reader import (
+from bigbytes.data.tabular.reader import (
     read_metadata,
     sample_batch_datasets,
     scan_batch_datasets_generator,
@@ -172,7 +172,7 @@ import random
 
 import polars as pl
 
-from mage_ai.data.tabular.mocks import create_dataframe
+from bigbytes.data.tabular.mocks import create_dataframe
 
 
 @data_loader

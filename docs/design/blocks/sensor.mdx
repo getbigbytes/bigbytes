@@ -5,7 +5,7 @@ description: "A sensor is a block that continuously evaluates a condition until 
 
 <img
   alt="Python mecha"
-  src="https://github.com/mage-ai/assets/blob/main/blocks/grandwizard_a_big_mythical_spirit_like_eye_scanning_a_bunch_of__b030824d-801c-4f8d-a9bd-51f0681eaa78.png?raw=true"
+  src="https://github.com/digitranslab/assets/blob/main/blocks/grandwizard_a_big_mythical_spirit_like_eye_scanning_a_bunch_of__b030824d-801c-4f8d-a9bd-51f0681eaa78.png?raw=true"
   width="300"
 />
 
@@ -32,7 +32,7 @@ running until the sensor has evaluated its condition successfully.
 You can add sensors to a pipeline the same way you add other types of blocks.
 
 ```python
-from mage_ai.orchestration.run_status_checker import check_status
+from bigbytes.orchestration.run_status_checker import check_status
 
 
 @sensor
@@ -57,7 +57,7 @@ then the sensor will check the status of the pipeline for that many hours in pas
 The default value is 24 hours.
 
 Sensors can also have upstream block dependencies. The output of the upstream blocks will be passed
-into the sensor in the `args` parameter like in other Mage block types.
+into the sensor in the `args` parameter like in other Bigbytes block types.
 
 Currently, the sensor makes a check every 60 seconds.
 
@@ -79,9 +79,9 @@ Below are the code examples in those templates.
 Check the results of a BigQuery query.
 
 ```python
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.bigquery import BigQuery
-from mage_ai.io.config import ConfigFileLoader
+from bigbytes.settings.repo import get_repo_path
+from bigbytes.io.bigquery import BigQuery
+from bigbytes.io.config import ConfigFileLoader
 from os import path
 
 
@@ -107,9 +107,9 @@ def query_bigquery_and_check_condition(*args, **kwargs) -> bool:
 Check the results of a MySQL query.
 
 ```python
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.config import ConfigFileLoader
-from mage_ai.io.mysql import MySQL
+from bigbytes.settings.repo import get_repo_path
+from bigbytes.io.config import ConfigFileLoader
+from bigbytes.io.mysql import MySQL
 from os import path
 
 
@@ -136,9 +136,9 @@ def query_mysql_and_check_condition(*args, **kwargs) -> bool:
 Check the results of a PostgreSQL query.
 
 ```python
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.config import ConfigFileLoader
-from mage_ai.io.postgres import Postgres
+from bigbytes.settings.repo import get_repo_path
+from bigbytes.io.config import ConfigFileLoader
+from bigbytes.io.postgres import Postgres
 from os import path
 
 
@@ -165,9 +165,9 @@ def query_postgres_and_check_condition(*args, **kwargs) -> bool:
 Check the results of a Redshift query.
 
 ```python
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.config import ConfigFileLoader
-from mage_ai.io.redshift import Redshift
+from bigbytes.settings.repo import get_repo_path
+from bigbytes.io.config import ConfigFileLoader
+from bigbytes.io.redshift import Redshift
 from os import path
 
 
@@ -194,9 +194,9 @@ def query_redshift_and_check_condition(*args, **kwargs) -> bool:
 Check if a file or folder exists in a S3 bucket.
 
 ```python
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.config import ConfigFileLoader
-from mage_ai.io.s3 import S3
+from bigbytes.settings.repo import get_repo_path
+from bigbytes.io.config import ConfigFileLoader
+from bigbytes.io.s3 import S3
 from os import path
 
 
@@ -219,9 +219,9 @@ def check_condition(*args, **kwargs) -> bool:
 Check the results of a Snowflake query.
 
 ```python
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.config import ConfigFileLoader
-from mage_ai.io.snowflake import Snowflake
+from bigbytes.settings.repo import get_repo_path
+from bigbytes.io.config import ConfigFileLoader
+from bigbytes.io.snowflake import Snowflake
 from os import path
 
 

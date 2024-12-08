@@ -19,8 +19,8 @@ AND status = 'COMPLETED' -- Filter by status
 
 ## Query DB models via Python
 ```python
-from mage_ai.orchestration.db import db_connection
-from mage_ai.orchestration.db.models.schedules import PipelineRun, BlockRun
+from bigbytes.orchestration.db import db_connection
+from bigbytes.orchestration.db.models.schedules import PipelineRun, BlockRun
 
 db_connection.start_session()
 

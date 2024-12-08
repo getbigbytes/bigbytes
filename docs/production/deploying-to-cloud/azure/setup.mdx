@@ -7,14 +7,14 @@ sidebarTitle: "Setup"
 
 ## Overview
 
-Here is a high level diagram of how Mage interacts with various Azure resources deployed using
+Here is a high level diagram of how Bigbytes interacts with various Azure resources deployed using
 this Terraform template.
 
-![Mage Azure architecture](https://github.com/mage-ai/assets/blob/main/production/deployment/azure/architecture.png?raw=true)
+![Bigbytes Azure architecture](https://github.com/digitranslab/assets/blob/main/production/deployment/azure/architecture.png?raw=true)
 
 ## Pre-requisites
 
-- Download Mage maintained [Terraform templates](/production/deploying-to-cloud/using-terraform).
+- Download Bigbytes maintained [Terraform templates](/production/deploying-to-cloud/using-terraform).
 
 ---
 
@@ -53,7 +53,7 @@ completed, your terminal will output something like this:
     "state": "Enabled",
     "tenantId": "7712a6c4-1684-402f-8d1a-f1bb656e5d40",
     "user": {
-      "name": "eng@mage.com",
+      "name": "eng@bigbytes.io",
       "type": "user"
     }
   }
@@ -69,7 +69,7 @@ completed, your terminal will output something like this:
 The `storage_account_name` must be unique globally. Before running any Terraform
 commands, please change the `default` value of variable named
 `storage_account_name` in the
-[./azure/variables.tf](https://github.com/mage-ai/mage-ai-terraform-templates/blob/master/azure/variables.tf)
+[./azure/variables.tf](https://github.com/digitranslab/bigbytes-terraform-templates/blob/master/azure/variables.tf)
 file.
 
 ```js
@@ -84,7 +84,7 @@ variable "storage_account_name" {
 The `key_vault_name` must be unique globally. Before running any Terraform
 commands, please change the `default` value of variable named `key_vault_name`
 in the
-[./azure/variables.tf](https://github.com/mage-ai/mage-ai-terraform-templates/blob/master/azure/variables.tf)
+[./azure/variables.tf](https://github.com/digitranslab/bigbytes-terraform-templates/blob/master/azure/variables.tf)
 file.
 
 ```js
@@ -97,27 +97,27 @@ variable "key_vault_name" {
 **Virtual network name**
 
 In the file
-[./azure/variables.tf](https://github.com/mage-ai/mage-ai-terraform-templates/blob/master/azure/variables.tf),
+[./azure/variables.tf](https://github.com/digitranslab/bigbytes-terraform-templates/blob/master/azure/variables.tf),
 you can change the `default` value under `app_name`:
 
 ```js
 variable "app_name" {
   type        = string
   description = "Application Name"
-  default     = "mage-data-prep"
+  default     = "bigbytes-data-prep"
 }
 ```
 
 **Docker image**
 
 In the file
-[./azure/variables.tf](https://github.com/mage-ai/mage-ai-terraform-templates/blob/master/azure/variables.tf),
+[./azure/variables.tf](https://github.com/digitranslab/bigbytes-terraform-templates/blob/master/azure/variables.tf),
 you can change the `default` value under `docker_image`:
 
 ```js
 variable "docker_image" {
   description = "Docker image url."
-  default     = "mageai/mageai:latest"
+  default     = "bigbytes/bigbytes:latest"
 }
 ```
 
@@ -133,7 +133,7 @@ to Azure Container Registry before deploying using Terraform.
 **Region**
 
 In the file
-[./azure/main.tf](https://github.com/mage-ai/mage-ai-terraform-templates/blob/master/azure/main.tf),
+[./azure/main.tf](https://github.com/digitranslab/bigbytes-terraform-templates/blob/master/azure/main.tf),
 you can change the `location` value under `resource_group`:
 
 ```js
@@ -146,14 +146,14 @@ resource "azurerm_resource_group" "resource_group" {
 ### More
 
 Other variables defined in
-[./azure/variables.tf](https://github.com/mage-ai/mage-ai-terraform-templates/blob/master/azure/variables.tf)
+[./azure/variables.tf](https://github.com/digitranslab/bigbytes-terraform-templates/blob/master/azure/variables.tf)
 can also be customized to your needs.
 
 ### Environment variables for application
 
 Set your environment variables in your running cloud environment by adding the
 following under the resource named `azurerm_container_group` in the file
-[./azure/main.tf](https://github.com/mage-ai/mage-ai-terraform-templates/blob/master/azure/main.tf):
+[./azure/main.tf](https://github.com/digitranslab/bigbytes-terraform-templates/blob/master/azure/main.tf):
 
 ```js
 resource "azurerm_container_group" "container_group" {
@@ -236,7 +236,7 @@ resource "azurerm_container_group" "container_group" {
 
     Outputs:
 
-    id = "/subscriptions/d17fcd12-b89c-4f81-a221-40b8e768a0e8/resourceGroups/mage-data-prep2-production/providers/Microsoft.ContainerInstance/containerGroups/mage-data-prep-production"
+    id = "/subscriptions/d17fcd12-b89c-4f81-a221-40b8e768a0e8/resourceGroups/bigbytes-data-prep2-production/providers/Microsoft.ContainerInstance/containerGroups/bigbytes-data-prep-production"
     ip = "20.3.85.62"
     ```
 
@@ -249,13 +249,13 @@ resource "azurerm_container_group" "container_group" {
 
 ---
 
-## Updating Mage versions
+## Updating Bigbytes versions
 
-After Mage is running in your cloud, you can update the Mage Docker image
+After Bigbytes is running in your cloud, you can update the Bigbytes Docker image
 version by running the following command in your CLI tool:
 
 ```bash
-az container restart --name mage-data-prep-production --resource-group mage-data-prep-production
+az container restart --name bigbytes-data-prep-production --resource-group bigbytes-data-prep-production
 ```
 
 ---
@@ -267,9 +267,9 @@ az container restart --name mage-data-prep-production --resource-group mage-data
 By default, `terraform apply` will attempt to add your current workstation’s IP
 address to the above mentioned security group.
 
-In order to access Mage on Azure from another local workstation, you must add
+In order to access Bigbytes on Azure from another local workstation, you must add
 that IP address to the security group named
-`mage-data-prep-production-nsg-public`.
+`bigbytes-data-prep-production-nsg-public`.
 
 > Security group name
 >

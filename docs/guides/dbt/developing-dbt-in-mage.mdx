@@ -1,12 +1,12 @@
 ---
-title: "Develop dbt in Mage"
+title: "Develop dbt in Bigbytes"
 sidebarTitle: "Getting started"
 icon: "sliders"
-description: "Learn how to develop your favorite dbt models in Mage."
+description: "Learn how to develop your favorite dbt models in Bigbytes."
 ---
 
 <Warning>
-  dbt integration is currently only supported when using Mage in
+  dbt integration is currently only supported when using Bigbytes in
   [Docker](/getting-started/setup#using-docker).
 </Warning>
 
@@ -15,19 +15,19 @@ description: "Learn how to develop your favorite dbt models in Mage."
 </Frame>
 
 If you get stuck, run into problems, or just want someone to walk you through
-these steps, please join our [Slack](https://www.mage.ai/chat).
+these steps, please join our [Slack](https://www.bigbytes.io/chat).
 
 <Steps>
-<Step title="Set up new Mage project">
+<Step title="Set up new Bigbytes project">
 
 Read the [setup guide](/getting-started/setup) to initialize a new project and
-start the Mage tool locally.
+start the Bigbytes tool locally.
 
 For the rest of this tutorial, we’ll use the project name `demo_project`.
 </Step>
 <Step title="Set up dbt project">
 
-    - Open Mage and go to the terminal page: http://localhost:6789/terminal
+    - Open Bigbytes and go to the terminal page: http://localhost:6789/terminal
     - Initiate your dbt project using the `init` command (for this tutorial, we’ll
     use the dbt project name `demo`):
 
@@ -43,7 +43,7 @@ For the rest of this tutorial, we’ll use the project name `demo_project`.
 </Step>
 <Step title="Create standard pipeline">
 
-    - Go to the Mage dashboard and click the button
+    - Go to the Bigbytes dashboard and click the button
     **`+ New pipeline`** and select the option labeled `Standard (batch)`.
     - Click the `Pipeline settings` icon in the left pane, and change its name
     to `dbt demo pipeline`, then click the `Save pipeline settings` button.
@@ -89,7 +89,7 @@ For the rest of this tutorial, we’ll use the project name `demo_project`.
 
         @data_loader
         def load_data_from_api(**kwargs) -> DataFrame:
-            url = 'https://raw.githubusercontent.com/mage-ai/datasets/master/restaurant_user_transactions.csv'
+            url = 'https://raw.githubusercontent.com/digitranslab/datasets/master/restaurant_user_transactions.csv'
 
             response = requests.get(url)
             df = pd.read_csv(io.StringIO(response.text), sep=',')
@@ -110,7 +110,7 @@ For the rest of this tutorial, we’ll use the project name `demo_project`.
     - The model named `my_first_dbt_model` was added to
     the pipeline because `my_second_dbt_model` references it.
 
-    ![](https://github.com/mage-ai/assets/blob/main/dbt/add-dbt-model.gif?raw=true)
+    ![](https://github.com/digitranslab/assets/blob/main/dbt/add-dbt-model.gif?raw=true)
 </Step>
 <Step title="Edit my_first_dbt_model">
 
@@ -135,14 +135,14 @@ For the rest of this tutorial, we’ll use the project name `demo_project`.
     - You should see a preview of the query execution logs. To see the query results,
     click the `Expand table` link at the bottom right corner.
 
-    ![](https://github.com/mage-ai/assets/blob/main/dbt/dbt-preview.gif?raw=true)
+    ![](https://github.com/digitranslab/assets/blob/main/dbt/dbt-preview.gif?raw=true)
 
     - After previewing the results, in the top right corner of the block,
     click on the triple dots to reveal a dropdown menu.
     - Under the dropdown menu, click the option <b>Run model</b>. This command
     will execute the `dbt run` command and create the table in your data source.
 
-    ![](https://github.com/mage-ai/assets/blob/main/dbt/run-model.png?raw=true)
+    ![](https://github.com/digitranslab/assets/blob/main/dbt/run-model.png?raw=true)
 
 </Step>
 <Step title="Edit my_second_dbt_model">
@@ -158,7 +158,7 @@ For the rest of this tutorial, we’ll use the project name `demo_project`.
        , b.*
    FROM {{ ref('my_first_dbt_model') }} AS a
 
-   LEFT JOIN {{ source('mage_demo', 'dbt_demo_pipeline_load_data') }} AS b
+   LEFT JOIN {{ source('bigbytes_demo', 'dbt_demo_pipeline_load_data') }} AS b
    ON 1 = 1
 
    WHERE a.id = 1
@@ -168,7 +168,7 @@ For the rest of this tutorial, we’ll use the project name `demo_project`.
    >
    > When a dbt model depends on an upstream block that isn’t a dbt model, a
    > source for that block is automatically added to the
-   > `demo_project/dbt/demo/models/mage_sources.yml` file.
+   > `demo_project/dbt/demo/models/bigbytes_sources.yml` file.
    >
    > Read more about dbt sources in their
    > [documentation](https://docs.getdbt.com/docs/build/sources).

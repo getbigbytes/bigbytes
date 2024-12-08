@@ -21,22 +21,22 @@ In this tutorial, we'll create a data pipeline with the following steps:
 </Step>
 </Steps>
 
-If you haven't created a Mage project before, follow the [setup guide](/getting-started/setup) before starting this tutorial.
+If you haven't created a Bigbytes project before, follow the [setup guide](/getting-started/setup) before starting this tutorial.
 
 ## Quickstart
 Want to dive in? Simply run the following command to clone a pre-built repo:
 
 <CodeGroup>
 ```bash Mac/Linux
-git clone https://github.com/mage-ai/etl-demo mage-etl-demo \
-&& cd mage-etl-demo \
+git clone https://github.com/digitranslab/etl-demo bigbytes-etl-demo \
+&& cd bigbytes-etl-demo \
 && cp dev.env .env && rm dev.env \
 && docker compose up
 ```
 
 ```bash Windows
-git clone https://github.com/mage-ai/etl-demo mage-etl-demo
-cd mage-etl-demo
+git clone https://github.com/digitranslab/etl-demo bigbytes-etl-demo
+cd bigbytes-etl-demo
 cp dev.env .env
 rm dev.env
 docker compose up
@@ -49,7 +49,7 @@ Then navigate to `https://localhost:6789` in your browser to see the pipeline in
 
 <AccordionGroup>
     <Accordion title="1️⃣ Create a pipeline">
-        Open the pipelines list page (`/pipelines`). This is the default page when navigating to Mage in your web browser. If you have Mage running, just click [here](https://localhost:6789/pipelines).
+        Open the pipelines list page (`/pipelines`). This is the default page when navigating to Bigbytes in your web browser. If you have Bigbytes running, just click [here](https://localhost:6789/pipelines).
 
         In the top left corner, select the button labeled *+ New*, then select the option labeled *Standard (batch)* to create a new pipeline.
 
@@ -58,7 +58,7 @@ Then navigate to `https://localhost:6789` in your browser to see the pipeline in
         <Frame>
             <img
                 alt="Create new pipeline"
-                src="https://github.com/mage-ai/assets/blob/main/tutorials/etl/create-new-pipeline.gif?raw=true"
+                src="https://github.com/digitranslab/assets/blob/main/tutorials/etl/create-new-pipeline.gif?raw=true"
             />
         </Frame>
 
@@ -76,7 +76,7 @@ Then navigate to `https://localhost:6789` in your browser to see the pipeline in
 
         @data_loader
         def load_data_from_api(*args, **kwargs):
-            url = 'https://raw.githubusercontent.com/mage-ai/datasets/master/restaurant_user_transactions.csv'
+            url = 'https://raw.githubusercontent.com/digitranslab/datasets/master/restaurant_user_transactions.csv'
             response = requests.get(url)
             return pd.read_csv(io.StringIO(response.text), sep=',')
 
@@ -97,7 +97,7 @@ Then navigate to `https://localhost:6789` in your browser to see the pipeline in
             <Frame>
                 <img
                     alt="Load data"
-                    src="https://github.com/mage-ai/assets/blob/main/tutorials/etl/load-data.gif?raw=true"
+                    src="https://github.com/digitranslab/assets/blob/main/tutorials/etl/load-data.gif?raw=true"
                 />
             </Frame>
     </Accordion>
@@ -149,7 +149,7 @@ Then navigate to `https://localhost:6789` in your browser to see the pipeline in
         <Frame>
             <img
                 alt="Transform data"
-                src="https://github.com/mage-ai/assets/blob/main/tutorials/etl/transform-data.gif?raw=true"
+                src="https://github.com/digitranslab/assets/blob/main/tutorials/etl/transform-data.gif?raw=true"
             />
         </Frame>
     </Accordion>
@@ -169,7 +169,7 @@ Then navigate to `https://localhost:6789` in your browser to see the pipeline in
         <Frame>
             <img
                 alt="Export data"
-                src="https://github.com/mage-ai/assets/blob/main/tutorials/etl/export-data.gif?raw=true"
+                src="https://github.com/digitranslab/assets/blob/main/tutorials/etl/export-data.gif?raw=true"
             />
         </Frame>
 
@@ -201,9 +201,9 @@ transformed it, and exported it to a database.
 Now you're ready to raid the dungeons and find magical treasures with your new powers!
 
 <img
-    alt="Lightning mage"
-    src="https://raw.githubusercontent.com/mage-ai/assets/af9fafa41d823fe8e710d54f86164bef4378f5c3/mascots/earth/casting.svg"
+    alt="Lightning bigbytes"
+    src="https://raw.githubusercontent.com/digitranslab/assets/af9fafa41d823fe8e710d54f86164bef4378f5c3/mascots/earth/casting.svg"
 />
 
 If you have more questions or ideas, get real-time help in our live support
-[Slack channel](https://www.mage.ai/chat).
+[Slack channel](https://www.bigbytes.io/chat).

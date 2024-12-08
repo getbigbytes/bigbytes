@@ -2,13 +2,13 @@
 title: "Pipeline Management"
 sidebarTitle: "Pipelines"
 icon: "pipe-section"
-"og:image": "https://github.com/mage-ai/assets/blob/main/orchestration-overview.gif?raw=true"
+"og:image": "https://github.com/digitranslab/assets/blob/main/orchestration-overview.gif?raw=true"
 ---
 
 <Frame>
   <img
-    alt="Mage orchestration"
-    src="https://github.com/mage-ai/assets/blob/main/orchestration-overview.gif?raw=true"
+    alt="Bigbytes orchestration"
+    src="https://github.com/digitranslab/assets/blob/main/orchestration-overview.gif?raw=true"
   />
 </Frame>
 
@@ -31,7 +31,7 @@ This page will show all the pipelines in your project.
 > charts for visualizing data, and organizes the dependency between each block
 > of code.
 
-![Pipelines](https://github.com/mage-ai/assets/blob/main/pipelines/pipelines-index.jpg?raw=true)
+![Pipelines](https://github.com/digitranslab/assets/blob/main/pipelines/pipelines-index.jpg?raw=true)
 
 Learn more about
 [**projects and pipelines here**](/design/core-abstractions#project).
@@ -67,7 +67,7 @@ View all the runs for every pipeline in your current project.
 > was completed, any runtime variables used in the execution of the pipeline or
 > block, etc.
 
-![Pipeline runs](https://github.com/mage-ai/assets/blob/main/pipelines/pipeline-runs.jpg?raw=true)
+![Pipeline runs](https://github.com/digitranslab/assets/blob/main/pipelines/pipeline-runs.jpg?raw=true)
 
 ---
 
@@ -96,7 +96,7 @@ This page shows all the active and inactive triggers for a single pipeline.
 > A trigger is a set of instructions that determine when or how a pipeline
 > should run.
 
-![Pipeline detail](https://github.com/mage-ai/assets/blob/main/pipelines/pipeline-detail.jpg?raw=true)
+![Pipeline detail](https://github.com/digitranslab/assets/blob/main/pipelines/pipeline-detail.jpg?raw=true)
 
 ---
 
@@ -129,7 +129,7 @@ occurs, or when an API is called.
 > An API trigger will instruct the pipeline to run whenever a specific API
 > is called.
 
-![Trigger create](https://github.com/mage-ai/assets/blob/main/pipelines/trigger-create.jpg?raw=true)
+![Trigger create](https://github.com/digitranslab/assets/blob/main/pipelines/trigger-create.jpg?raw=true)
 
 <sub>
   <i>Example page for creating a schedule type trigger.</i>
@@ -149,7 +149,7 @@ it active. Pausing the trigger will prevent it from running the pipeline.
 
 ---
 
-![Trigger detail](https://github.com/mage-ai/assets/blob/main/pipelines/trigger-detail.jpg?raw=true)
+![Trigger detail](https://github.com/digitranslab/assets/blob/main/pipelines/trigger-detail.jpg?raw=true)
 
 You can also edit the trigger after creating it by clicking the
 
@@ -171,7 +171,7 @@ View the pipeline runs and block runs for a pipeline.
 > was completed, any runtime variables used in the execution of the pipeline or
 > block, etc.
 
-![Pipeline detail runs](https://github.com/mage-ai/assets/blob/main/pipelines/pipeline-detail-runs.jpg?raw=true)
+![Pipeline detail runs](https://github.com/digitranslab/assets/blob/main/pipelines/pipeline-detail-runs.jpg?raw=true)
 
 #### Retry run
 
@@ -192,7 +192,7 @@ block type, block UUID, and more.
 >
 > A log is a file that contains system output information.
 
-![Pipeline detail logs](https://github.com/mage-ai/assets/blob/main/pipelines/pipeline-detail-logs.jpg?raw=true)
+![Pipeline detail logs](https://github.com/digitranslab/assets/blob/main/pipelines/pipeline-detail-logs.jpg?raw=true)
 
 ---
 
@@ -209,7 +209,7 @@ be able to monitor aggregate metrics across all pipelines and blocks.
 
 <img
   alt="Monitoring"
-  src="https://github.com/mage-ai/assets/blob/main/monitoring.jpg?raw=true"
+  src="https://github.com/digitranslab/assets/blob/main/monitoring.jpg?raw=true"
 />
 
 Read more [here](/development/observability/monitoring).
@@ -244,25 +244,25 @@ The default value of `block_run_limit` and `pipeline_run_limit` can be set via e
 * `on_pipeline_run_limit_reached`: choose whether to `wait` or `skip` when the pipeline run limit is reached.
 
 ## Variable storage
-Mage automatically persists the output of block runs on disk. You can specify the path or the storage for block output variables
+Bigbytes automatically persists the output of block runs on disk. You can specify the path or the storage for block output variables
 in the following ways.
-* Specify the data directory path via `MAGE_DATA_DIR` environment variable. If you use Mage docker image, this environment
-  variable is set to `/home/src/mage_data` by default.
-* If the `MAGE_DATA_DIR` environment variable is not set, you can set the `variables_dir` path in project's metadata.yaml. Here is
+* Specify the data directory path via `BIGBYTES_DATA_DIR` environment variable. If you use Bigbytes docker image, this environment
+  variable is set to `/home/src/bigbytes_data` by default.
+* If the `BIGBYTES_DATA_DIR` environment variable is not set, you can set the `variables_dir` path in project's metadata.yaml. Here is
   an example:
   ```yaml
-  variables_dir: /home/src/mage_data
+  variables_dir: /home/src/bigbytes_data
   ```
 * You can also use an external storage to store the block output variables by specifying the `remote_variables_dir` path in project's
   metadata.yaml.
   * AWS S3 storage:
     ```yaml
-    variables_dir: /home/src/mage_data
+    variables_dir: /home/src/bigbytes_data
     remote_variables_dir: s3://bucket/path_prefix
     ```
   * Google Cloud Storage:
     ```yaml
-    variables_dir: /home/src/mage_data
+    variables_dir: /home/src/bigbytes_data
     remote_variables_dir: gs://bucket/path_prefix
     ```
     When using GCS for your remote variables directory, if you run into a "Your default credentials were not found"
@@ -282,12 +282,12 @@ variables_retention_period: 30d
 After configuring `variables_retention_period` in project's metadata.yaml, you can run the following command
 to clean up old variables:
 ```bash
-mage clean-cached-variables [project_path]
+bigbytes clean-cached-variables [project_path]
 ```
 
 ## Cache block output in memory
 
-By default, Mage persists block output on disk. In pipeline's metadata.yaml, you have the option to configure the pipeline to cache
+By default, Bigbytes persists block output on disk. In pipeline's metadata.yaml, you have the option to configure the pipeline to cache
 the block output in memory instead of persisting the block output on disk. The feature is only supported in standard batch
 pipeline (without dynamic blocks) for now.
 

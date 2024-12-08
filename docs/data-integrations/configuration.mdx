@@ -36,12 +36,12 @@ Here are the default variables available to interpolate:
 | `pipeline.uuid` | UUID of the current pipeline. | `etl_demo` |
 | `ds` | Execution date string. | `2023-12-25` |
 | `hr` | Execution hour string from `00` to `23`. | `12` |
-| `env` | Environment Mage is running in. | `dev`, `prod` |
+| `env` | Environment Bigbytes is running in. | `dev`, `prod` |
 | `execution_partition` | The current partition of the execution: datetime in this format `%Y%m%dT%H%M%S`. | `20231225T122520` |
 
 ### Common prefixes
 
-Mage supports table prefixes for integration sources. To add a prefix, add the following to the source configuration for a data integration pipeline:
+Bigbytes supports table prefixes for integration sources. To add a prefix, add the following to the source configuration for a data integration pipeline:
 
 ```yaml
 _patterns:
@@ -53,7 +53,7 @@ For example, configuring a PostgreSQL source:
 <Frame>
 <img
      alt="Configure data integrations"
-     src="https://github.com/mage-ai/assets/blob/main/integration-prefix.png?raw=True"
+     src="https://github.com/digitranslab/assets/blob/main/integration-prefix.png?raw=True"
   />
 </Frame>
 
@@ -68,7 +68,7 @@ For example, configuring a PostgreSQL source:
 Use the following syntax to interpolate secrets:
 
 ```
-{{ mage_secret_var('your_secret_name') }}
+{{ bigbytes_secret_var('your_secret_name') }}
 ```
 
 

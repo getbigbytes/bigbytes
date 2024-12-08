@@ -1,11 +1,11 @@
 ---
 title: "Configure Git"
 sidebarTitle: "Configurations"
-description: "This page will walk you through the process of authenticating with SSH or HTTPS and configuring Git for use with Mage Git Sync."
+description: "This page will walk you through the process of authenticating with SSH or HTTPS and configuring Git for use with Bigbytes Git Sync."
 icon: "code-pull-request-draft"
 ---
 
-If you're wondering which Git resource to use in Mage, see [this](docs/getting-started/setting-up-git) page for a high-level overview of Git functionality. If you'd like to use Mage's GitHub integration (recommended for GitHub users), there's a different method of configuration. See [this](/production/data-sync/github) page for more information.
+If you're wondering which Git resource to use in Bigbytes, see [this](docs/getting-started/setting-up-git) page for a high-level overview of Git functionality. If you'd like to use Bigbytes's GitHub integration (recommended for GitHub users), there's a different method of configuration. See [this](/production/data-sync/github) page for more information.
 
 If you've decided on a method that uses HTTPS or SSH authentication (Git Sync or Git Integration), this page will walk you through configuring one of those methods.
 
@@ -16,10 +16,10 @@ If you've decided on a method that uses HTTPS or SSH authentication (Git Sync or
 ## Configure Git settings
 
 <Note>
-    By using the Git integration through Mage, Mage will automatically set your local repo as a safe directory (i.e. `git config --global --add safe.directory <local repo path>`)
+    By using the Git integration through Bigbytes, Bigbytes will automatically set your local repo as a safe directory (i.e. `git config --global --add safe.directory <local repo path>`)
 </Note>
 
-To use the Mage Git integration, you will need to first configure Git settings. The following instructions are tailored to Github, but the Git integration can work with other Git providers as well, such as GitLab, BitBucket, or Azure DevOps:
+To use the Bigbytes Git integration, you will need to first configure Git settings. The following instructions are tailored to Github, but the Git integration can work with other Git providers as well, such as GitLab, BitBucket, or Azure DevOps:
 
 <AccordionGroup>
     <Accordion title="SSH" icon="terminal">
@@ -29,7 +29,7 @@ To use the Mage Git integration, you will need to first configure Git settings. 
 
         The Git integration currently does not support repositories that require an SSH key with a passphrase.
 
-        You can, however, use the Mage terminal and the git CLI to perform your git actions.
+        You can, however, use the Bigbytes terminal and the git CLI to perform your git actions.
         You'll still need to generate your SSH keys as normal. You can start a ssh-agent in the terminal so that
         you don't have to enter your SSH key passphrase every time you perform an action.
 
@@ -40,16 +40,16 @@ To use the Mage Git integration, you will need to first configure Git settings. 
                 Ensure that `.preferences.yaml` is added to your repo's `.gitignore` file so that your Git settings aren't pushed to Github.
             </Step>
             <Step title="Navigate to Git settings">
-                Navigate to the Wizard icon in the top right, then select _Settings_ to open your Mage settings.
+                Navigate to the Wizard icon in the top right, then select _Settings_ to open your Bigbytes settings.
                 <Frame>
-                <img src="https://github.com/mage-ai/assets/blob/main/mage-settings.png?raw=True"/>
+                <img src="https://github.com/digitranslab/assets/blob/main/bigbytes-settings.png?raw=True"/>
                 </Frame>
                 There should be an option for _Git settings_ on the left side of the settings modal.
             </Step>
             <Step title="Select SSH as the authentication type.">
                 Change the authentication type to SSH. The interface will change for you to input a remote repo url.
                 <Frame>
-                <img src="https://github.com/mage-ai/assets/blob/main/git-settings.png?raw=True"/>
+                <img src="https://github.com/digitranslab/assets/blob/main/git-settings.png?raw=True"/>
                 </Frame>
             </Step>
             <Step title="Set up your SSH key">
@@ -63,13 +63,13 @@ To use the Mage Git integration, you will need to first configure Git settings. 
                 <Snippet file="configure-git-sync.mdx"/>
             </Step>
             <Step title="Fill out the remaining fields.">
-            Filling out these fields will allow Mage to recreate your git and SSH settings if they are deleted (i.e. if your container restarts):
+            Filling out these fields will allow Bigbytes to recreate your git and SSH settings if they are deleted (i.e. if your container restarts):
             <Note>
             If you are using a AWS CodeCommit repository, you will need to set the username to the SSH Key ID of the SSH public key added to your AWS IAM user.
             </Note>
                 - `Username`: Your git username. If you push to your remote repo, this username will show up next to your commits.
                 - `Email`: Your git email. Used for the same purpose as your username.
-                - `SSH public key in base64`, `SSH public key in base64`: Enter your SSH public and private key encoded in base64. You can follow the instructions in the field description if you want to Mage to save your SSH keys.
+                - `SSH public key in base64`, `SSH public key in base64`: Enter your SSH public and private key encoded in base64. You can follow the instructions in the field description if you want to Bigbytes to save your SSH keys.
             </Step>
             <Step title="Save your Git settings">
                 Click "Save repository settings" to complete the setup.
@@ -82,9 +82,9 @@ To use the Mage Git integration, you will need to first configure Git settings. 
             Ensure that `.preferences.yaml` is added to your repo's `.gitignore` file so that your Git settings aren't pushed to Github.
             </Step>
             <Step title="Navigate to Git settings">
-                Navigate to the Wizard icon in the top right, then select _Settings_ to open your Mage settings.
+                Navigate to the Wizard icon in the top right, then select _Settings_ to open your Bigbytes settings.
                 <Frame>
-                <img src="https://github.com/mage-ai/assets/blob/main/mage-settings.png?raw=True"/>
+                <img src="https://github.com/digitranslab/assets/blob/main/bigbytes-settings.png?raw=True"/>
                 </Frame>
                 There should be an option for _Git settings_ on the left side of the settings modal.
             </Step>
@@ -113,7 +113,7 @@ To use the Mage Git integration, you will need to first configure Git settings. 
 
 ### Generate SSH Token
 
-If you're using a method that requires an SSH token in Mage, this section will walk you through generating one. If you're using a method that requires an HTTPS token, you can skip this section.
+If you're using a method that requires an SSH token in Bigbytes, this section will walk you through generating one. If you're using a method that requires an HTTPS token, you can skip this section.
 
 <AccordionGroup>
     <Accordion title="SSH" icon="terminal">

@@ -17,15 +17,15 @@ done
 # echo "The value of --stdin-filename is: $stdin_filename"
 
 # git diff --name-only master...HEAD | \
-#   grep -v '^mage_ai/server/frontend_dist/' | \
-#   grep -v '^mage_ai/server/frontend_dist_base_path_template/' | \
+#   grep -v '^bigbytes/server/frontend_dist/' | \
+#   grep -v '^bigbytes/server/frontend_dist_base_path_template/' | \
 #   grep -E '\.(js|jsx|ts|tsx)$' | \
   # xargs
-# prettier --config mage_ai/frontend/.prettierrc $stdin_filename --write
+# prettier --config bigbytes/frontend/.prettierrc $stdin_filename --write
 
 # git diff --name-only master...HEAD | \
-#   grep -v '^mage_ai/server/frontend_dist/' | \
-#   grep -v '^mage_ai/server/frontend_dist_base_path_template/' | \
+#   grep -v '^bigbytes/server/frontend_dist/' | \
+#   grep -v '^bigbytes/server/frontend_dist_base_path_template/' | \
 #   grep -E '\.(js|jsx|ts|tsx)$' | \
   # xargs
-# eslint_d --quiet --config mage_ai/frontend/.eslintrc.js $stdin_filename --fix
+# eslint_d --quiet --config bigbytes/frontend/.eslintrc.js $stdin_filename --fix

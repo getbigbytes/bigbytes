@@ -1,7 +1,7 @@
 ---
 title: "Abstractions"
 sidebarTitle: "Core abstractions"
-description: "These are the fundamental concepts that Mage uses to operate."
+description: "These are the fundamental concepts that Bigbytes uses to operate."
 "og:image": "https://user-images.githubusercontent.com/78053898/198752755-ed44ffd6-7e6c-45d3-a4ca-91f2810ce46c.svg"
 ---
 
@@ -14,7 +14,7 @@ description: "These are the fundamental concepts that Mage uses to operate."
 
 ## Project
 
-A Mage project forms the basis for all the work you do in Mage. It contains the code for your data pipelines, blocks, and other project-specific data. You can think of it like a GitHub repo— it can even track your [file history, too](https://docs.mage.ai/getting-started/file-versions#where-are-the-file-versions-stored).
+A Bigbytes project forms the basis for all the work you do in Bigbytes. It contains the code for your data pipelines, blocks, and other project-specific data. You can think of it like a GitHub repo— it can even track your [file history, too](https://docs.bigbytes.io/getting-started/file-versions#where-are-the-file-versions-stored).
 
 Check out our detailed [project structure](/design/abstractions/project-structure) docs for more info.
 
@@ -22,11 +22,11 @@ Check out our detailed [project structure](/design/abstractions/project-structur
 
 A pipeline contains references to all the blocks of code you want to run, charts for visualizing data, and organizes the dependency between each block of code.
 
-Each pipeline is represented by a YAML file (here's an [example](https://github.com/mage-ai/demo_etl_pipeline/blob/master/pipelines/etl_demo/metadata.yaml)) in the `pipelines` folder under the Mage project directory.
+Each pipeline is represented by a YAML file (here's an [example](https://github.com/digitranslab/demo_etl_pipeline/blob/master/pipelines/etl_demo/metadata.yaml)) in the `pipelines` folder under the Bigbytes project directory.
 
 <img
   alt="Pipeline"
-  src="https://github.com/mage-ai/assets/blob/main/overview/mage-build.gif?raw=True"
+  src="https://github.com/digitranslab/assets/blob/main/overview/bigbytes-build.gif?raw=True"
 />
 
 Pipelines can be filtered, tagged, and grouped by various properties. See our [docs page](/pipelines/pipeline-tagging) for more info.
@@ -57,7 +57,7 @@ There are 8 types of blocks.
 For more information, please see the [documentation on blocks](/design/blocks)
 
 Here is an example of a
-[data loader block](https://github.com/mage-ai/demo%5Fetl%5Fpipeline/blob/master/data%5Floaders/load%5Fdataset.py)
+[data loader block](https://github.com/digitranslab/demo%5Fetl%5Fpipeline/blob/master/data%5Floaders/load%5Fdataset.py)
 and a snippet of its code:
 
 ```bash
@@ -82,7 +82,7 @@ start running until the sensor has evaluated its condition successfully.
 
 Sensors can check for anything. Examples of common sensors check for:
 
-- Does a table exist (e.g. `mage.users_v1`)?
+- Does a table exist (e.g. `bigbytes.users_v1`)?
 
 - Does a partition of a table exist (e.g. `ds = 2022-12-31`)?
 
@@ -99,7 +99,7 @@ Here is an example of a sensor that will keep checking to see if pipeline
 date:
 
 ```bash
-from mage_ai.orchestration.run_status_checker import check_status
+from bigbytes.orchestration.run_status_checker import check_status
 
 @sensor
 def check_condition(**kwargs) -> bool:
@@ -120,7 +120,7 @@ def check_condition(**kwargs) -> bool:
 ## Data product
 
 Every block produces data after it's been executed. These are called **data
-products** in Mage.
+products** in Bigbytes.
 
 Data validation occurs whenever a block is executed.
 
@@ -232,10 +232,10 @@ Here is an example of a log in the
 
 <img
   alt="Log detail"
-  src="https://github.com/mage-ai/assets/blob/main/logs/log-detail.png?raw=true"
+  src="https://github.com/digitranslab/assets/blob/main/logs/log-detail.png?raw=true"
 />
 
-Logs are stored on disk wherever Mage is running. However, you can configure
+Logs are stored on disk wherever Bigbytes is running. However, you can configure
 where you want log files written to (e.g. Amazon S3, Google Storage, etc).
 
 ## Backfill

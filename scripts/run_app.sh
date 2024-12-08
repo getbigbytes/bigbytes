@@ -2,7 +2,7 @@
 set -eo pipefail
 
 PROJECT_PATH="default_repo"
-MAGE_PROJECT_TYPE="standalone"
+BIGBYTES_PROJECT_TYPE="standalone"
 
 if [[ ! -z "${FILESTORE_IP_ADDRESS}" && ! -z "${FILE_SHARE_NAME}" ]]; then
     echo "Mounting Cloud Filestore ${FILESTORE_IP_ADDRESS}:/${FILE_SHARE_NAME}"
@@ -15,7 +15,7 @@ if [[ ! -z "${USER_CODE_PATH}" ]]; then
 fi
 
 if [[ ! -z "${PROJECT_TYPE}" ]]; then
-    MAGE_PROJECT_TYPE=$PROJECT_TYPE
+    BIGBYTES_PROJECT_TYPE=$PROJECT_TYPE
 fi
 
 if [[ ! -z "${ULIMIT_NO_FILE}" ]]; then
@@ -29,25 +29,25 @@ if [ -f "$REQUIREMENTS_FILE" ]; then
     pip3 install -r $REQUIREMENTS_FILE
 fi
 
-mage_args=()
+bigbytes_args=()
 if [[ ! -z "${PROJECT_UUID}" ]]; then
-    mage_args+=( '--project-uuid' "$PROJECT_UUID" )
+    bigbytes_args+=( '--project-uuid' "$PROJECT_UUID" )
 fi
 
 if [[ ! -z "${CLUSTER_TYPE}" ]]; then
-    mage_args+=( '--cluster-type' "$CLUSTER_TYPE" )
+    bigbytes_args+=( '--cluster-type' "$CLUSTER_TYPE" )
 fi
 
 if [ "$#" -gt 0 ]; then
     echo "Execute command: ${@}"
     "$@"
 else
-    echo "Starting project at ${PROJECT_PATH}, project type ${MAGE_PROJECT_TYPE}"
+    echo "Starting project at ${PROJECT_PATH}, project type ${BIGBYTES_PROJECT_TYPE}"
     if [[ ! -z "${DBT_DOCS_INSTANCE}" ]]; then
-        mage start $PROJECT_PATH --dbt-docs-instance 1
+        bigbytes start $PROJECT_PATH --dbt-docs-instance 1
     elif [[ ! -z "${MANAGE_INSTANCE}" ]]; then
-        mage start $PROJECT_PATH --manage-instance 1
+        bigbytes start $PROJECT_PATH --manage-instance 1
     else
-        mage start $PROJECT_PATH --project-type $MAGE_PROJECT_TYPE "${mage_args[@]}"
+        bigbytes start $PROJECT_PATH --project-type $BIGBYTES_PROJECT_TYPE "${bigbytes_args[@]}"
     fi
 fi

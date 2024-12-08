@@ -28,7 +28,7 @@ default:
 
 To connect to the Microsoft SQL Server, you'll need to make sure the driver is installed.
 By default, ODBC Driver 18 is installed in the docker image.
-If you want to use other ODBC Driver versions, you'll need to build a custom docker image (use Mage image as the base image) and install the drivers.
+If you want to use other ODBC Driver versions, you'll need to build a custom docker image (use Bigbytes image as the base image) and install the drivers.
 Here is the doc for installing ODBC drivers for SQL Server: https://learn.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server
 
 ---
@@ -59,12 +59,12 @@ Here is the doc for installing ODBC drivers for SQL Server: https://learn.micros
    you have a different profile):
 
 ```python
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.config import ConfigFileLoader
-from mage_ai.io.mssql import MSSQL
+from bigbytes.settings.repo import get_repo_path
+from bigbytes.io.config import ConfigFileLoader
+from bigbytes.io.mssql import MSSQL
 from os import path
 if 'data_loader' not in globals():
-    from mage_ai.data_preparation.decorators import data_loader
+    from bigbytes.data_preparation.decorators import data_loader
 
 
 @data_loader
@@ -92,14 +92,14 @@ def load_data_from_mssql(*args, **kwargs):
 Here is an example code snippet to export a dataframe to MSSQL:
 
 ```python
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.config import ConfigFileLoader
-from mage_ai.io.mssql import MSSQL
+from bigbytes.settings.repo import get_repo_path
+from bigbytes.io.config import ConfigFileLoader
+from bigbytes.io.mssql import MSSQL
 from pandas import DataFrame
 from os import path
 
 if 'data_exporter' not in globals():
-    from mage_ai.data_preparation.decorators import data_exporter
+    from bigbytes.data_preparation.decorators import data_exporter
 
 
 @data_exporter
@@ -138,14 +138,14 @@ To overwrite a column type when running a python export block, simply specify th
 Here is an example code snippet:
 
 ```python
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.config import ConfigFileLoader
-from mage_ai.io.mssql import MSSQL
+from bigbytes.settings.repo import get_repo_path
+from bigbytes.io.config import ConfigFileLoader
+from bigbytes.io.mssql import MSSQL
 from pandas import DataFrame
 from os import path
 
 if 'data_exporter' not in globals():
-    from mage_ai.data_preparation.decorators import data_exporter
+    from bigbytes.data_preparation.decorators import data_exporter
 
 
 @data_exporter
@@ -184,4 +184,4 @@ def export_data_to_mssql(df: DataFrame, **kwargs) -> None:
     *“I changed the datetime with timezone data type to a datetime and it starting working”*
 </Check>
 
-- [Windy Martin](https://mageai.slack.com/archives/C068SHY6YG6/p1705874712639659?thread_ts=1705668895.141169&cid=C068SHY6YG6)
+- [Windy Martin](https://bigbytes.slack.com/archives/C068SHY6YG6/p1705874712639659?thread_ts=1705668895.141169&cid=C068SHY6YG6)

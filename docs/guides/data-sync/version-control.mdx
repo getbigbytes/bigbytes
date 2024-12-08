@@ -20,13 +20,13 @@ The URL could look something like this: http://localhost:6789/version-control.
 <video
     controls
     className="w-full aspect-video"
-    src="https://github.com/mage-ai/assets/raw/main/version-control/demo.mp4">
+    src="https://github.com/digitranslab/assets/raw/main/version-control/demo.mp4">
 </video>
 
 ## Setup
 
 <Frame>
-    <img alt="Setup" src="https://github.com/mage-ai/assets/blob/main/version-control/setup.png?raw=true" />
+    <img alt="Setup" src="https://github.com/digitranslab/assets/blob/main/version-control/setup.png?raw=true" />
 </Frame>
 
 ### Set Git directory
@@ -37,22 +37,22 @@ The Git directory is the local folder that will be linked to your remote reposit
 
 You will be able to authenticate with GitHub by default, but if you need to authenticate with
 GitHub Enterprise (GHE) or other providers, you will need to follow the steps below. You can
-authenticate with multiple git providers if you need to. Mage will attempt to use the oauth provider
+authenticate with multiple git providers if you need to. Bigbytes will attempt to use the oauth provider
 based on the URL of the remote.
 
 <Warning>
 
-Mage authenticates with a default GitHub OAuth application that may not be able to access
+Bigbytes authenticates with a default GitHub OAuth application that may not be able to access
 your repository depending on the repository or organization settings. If you encounter issues
 accessing your repository after authenticating with GitHub, you may need to create your own
 OAuth application that has access to the repositories you want to work with. You can follow the
-steps in the `Authenticate with GitHub or GHE` section below to connect Mage with your OAuth
+steps in the `Authenticate with GitHub or GHE` section below to connect Bigbytes with your OAuth
 application.
 
 </Warning>
 
 When creating the OAuth app for GHE, BitBucket, GitLab, you will need to set the authorized
-callback URL to `http(s)://<your-mage-url>/oauth`.
+callback URL to `http(s)://<your-bigbytes-url>/oauth`.
 
 <AccordionGroup>
 
@@ -60,9 +60,9 @@ callback URL to `http(s)://<your-mage-url>/oauth`.
 
 <Steps>
 
-<Step title="Register Mage in GitHub">
+<Step title="Register Bigbytes in GitHub">
 
-In order for Mage to authenticate with your GitHub host, you will need to add Mage as an
+In order for Bigbytes to authenticate with your GitHub host, you will need to add Bigbytes as an
 authorized oauth application. You can follow the steps [here](https://docs.github.com/en/enterprise-cloud@latest/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app)
 to set it up.
 
@@ -72,7 +72,7 @@ Make sure you copy the client id and client secret after the app is created.
 
 <Step title="Update environment variables">
 
-You will need to set the following environment variables in your Mage environment:
+You will need to set the following environment variables in your Bigbytes environment:
 
 1. GHE_HOSTNAME: the hostname of your GitHub instance. If you’re using non-enterprise GitHub or GitHub Enterprise Cloud, you should set this to `github.com`
 2. GHE_CLIENT_ID: the client id you retrieved in the previous step
@@ -94,9 +94,9 @@ You should now be able to authenticate with GitHub and follow the rest of the st
 
 <Steps>
 
-<Step title="Add Mage as an OAuth consumer">
+<Step title="Add Bigbytes as an OAuth consumer">
 
-In order for Mage to authenticate with your BitBucket, you will need to add Mage as an
+In order for Bigbytes to authenticate with your BitBucket, you will need to add Bigbytes as an
 OAuth consumer. You can follow the steps [here](https://support.atlassian.com/bitbucket-cloud/docs/use-oauth-on-bitbucket-cloud/)
 to set it up.
 
@@ -106,14 +106,14 @@ Make sure you copy the key and secret after the consumer is created.
 
 <Step title="Update environment variables">
 
-You will need to set the following environment variables in your Mage environment:
+You will need to set the following environment variables in your Bigbytes environment:
 
 1. BITBUCKET_OAUTH_KEY: the key you retrieved in the previous step
 2. BITBUCKET_OAUTH_SECRET: the secret you retrieved in the previous step
 
 </Step>
 
-<Step title="Authenticate Mage with Bitbucket">
+<Step title="Authenticate Bigbytes with Bitbucket">
 
 You should now be able to authenticate with Bitbucket and follow the rest of the steps in this document.
 
@@ -127,16 +127,16 @@ You should now be able to authenticate with Bitbucket and follow the rest of the
 
 <Note>
 
-Mage will request `read_user`, `write_repository`, and `api` scopes from GitLab in order
+Bigbytes will request `read_user`, `write_repository`, and `api` scopes from GitLab in order
 to perform the necessary git actions.
 
 </Note>
 
 <Steps>
 
-<Step title="Add Mage Oauth application">
+<Step title="Add Bigbytes Oauth application">
 
-In order for Mage to authenticate with your GitLab, you will need to add a Mage oauth application.
+In order for Bigbytes to authenticate with your GitLab, you will need to add a Bigbytes oauth application.
 You can follow the steps [here](https://docs.gitlab.com/ee/integration/oauth_provider.html)
 to set it up.
 
@@ -146,7 +146,7 @@ Make sure you copy the Application ID and Secret after the oauth app is created.
 
 <Step title="Update environment variables">
 
-You will need to set the following environment variables in your Mage environment:
+You will need to set the following environment variables in your Bigbytes environment:
 
 1. GITLAB_CLIENT_ID: the application ID you retrieved in the previous step
 2. GITLAB_CLIENT_SECRET: the secret you retrieved in the previous step
@@ -154,7 +154,7 @@ You will need to set the following environment variables in your Mage environmen
 
 </Step>
 
-<Step title="Authenticate Mage with GitLab">
+<Step title="Authenticate Bigbytes with GitLab">
 
 You should now be able to authenticate with GitLab and follow the rest of the steps in this document.
 
@@ -170,7 +170,7 @@ You should now be able to authenticate with GitLab and follow the rest of the st
 
 <Step title="Enable Active Directory integration">
 
-First, you will need to enable the [Active Directory](https://docs.mage.ai/production/authentication/microsoft) integration in order for Mage to authenticate your user.
+First, you will need to enable the [Active Directory](https://docs.bigbytes.io/production/authentication/microsoft) integration in order for Bigbytes to authenticate your user.
 
 </Step>
 
@@ -183,7 +183,7 @@ export AZURE_DEVOPS_ORGANIZATION=<organization_name>`
 ```
 </Step>
 
-<Step title="Authenticate Mage with Azure DevOps">
+<Step title="Authenticate Bigbytes with Azure DevOps">
 
 You should now be able to authenticate with Azure DevOps and follow the rest of the steps in this document.
 
@@ -198,10 +198,10 @@ You should now be able to authenticate with Azure DevOps and follow the rest of 
 Click the Authenticate button next to your Git Provider to start the authentication process.
 
 <Frame>
-    <img alt="Authenticate" src="https://github.com/mage-ai/assets/blob/main/version-control/authentication.png?raw=true" />
+    <img alt="Authenticate" src="https://github.com/digitranslab/assets/blob/main/version-control/authentication.png?raw=true" />
 </Frame>
 
-After authorizing Mage, you’ll be redirected back to the initial page and an access token will
+After authorizing Bigbytes, you’ll be redirected back to the initial page and an access token will
 be in the URL as a parameter. This access token is saved in your application’s database;
 it never leaves your application’s database.
 
@@ -210,7 +210,7 @@ it never leaves your application’s database.
 Enter a name for your new remote. For the remote URL, you must use the `https` version of the
 GitHub repository (as opposed to the `SSH` version).
 
-For example, the remote URL for Mage is `https://github.com/mage-ai/mage-ai.git`.
+For example, the remote URL for Bigbytes is `https://github.com/digitranslab/bigbytes.git`.
 
 Note that a remote added via HTTPS/SSH authentication _will not_ work— only a remote in the format above is accepted.
 
@@ -249,7 +249,7 @@ If you want to clone the content of a remote repository into a folder named afte
 ## Branches
 
 <Frame>
-    <img alt="Branches" src="https://github.com/mage-ai/assets/blob/main/version-control/branches.png?raw=true" />
+    <img alt="Branches" src="https://github.com/digitranslab/assets/blob/main/version-control/branches.png?raw=true" />
 </Frame>
 
 ### Switch branch
@@ -288,7 +288,7 @@ If you want to clone the content of a remote repository into a folder named afte
 ## Files
 
 <Frame>
-    <img alt="Files" src="https://github.com/mage-ai/assets/blob/main/version-control/files.png?raw=true" />
+    <img alt="Files" src="https://github.com/digitranslab/assets/blob/main/version-control/files.png?raw=true" />
 </Frame>
 
 ### Add files
@@ -320,7 +320,7 @@ If you want to clone the content of a remote repository into a folder named afte
 ## Push
 
 <Frame>
-    <img alt="Push" src="https://github.com/mage-ai/assets/blob/main/version-control/push.png?raw=true" />
+    <img alt="Push" src="https://github.com/digitranslab/assets/blob/main/version-control/push.png?raw=true" />
 </Frame>
 
 ### Push local changes

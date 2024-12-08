@@ -1,12 +1,12 @@
 ---
 title: "dbt Integration"
 sidebarTitle: "Overview"
-description: "Transform dbt with Mage."
+description: "Transform dbt with Bigbytes."
 icon: "wind-turbine"
 ---
 
 <Warning>
-  dbt integration is currently only supported when using Mage in
+  dbt integration is currently only supported when using Bigbytes in
   [Docker](/getting-started/setup#using-docker).
 </Warning>
 
@@ -16,7 +16,7 @@ icon: "wind-turbine"
 
 ## Overview
 
-Build, run, and manage your dbt models with Mage.
+Build, run, and manage your dbt models with Bigbytes.
 
 <Frame>
   <img src="https://user-images.githubusercontent.com/59450879/252510713-4fd2ed03-7867-4038-8b0e-24eb1c40c518.png" />
@@ -24,11 +24,11 @@ Build, run, and manage your dbt models with Mage.
 
 ### Analytics engineers
 
-With Mage and dbt combined, you can expand build and run complex data pipelines.
+With Bigbytes and dbt combined, you can expand build and run complex data pipelines.
 
 ### Data engineers
 
-Simplify your data infrastructure and reduce the amount of redundant tools in your “modern” data stack. Replace dbt cloud and Airflow with Mage’s native integration with dbt.
+Simplify your data infrastructure and reduce the amount of redundant tools in your “modern” data stack. Replace dbt cloud and Airflow with Bigbytes’s native integration with dbt.
 
 ## Features
 
@@ -39,12 +39,12 @@ Trigger your dbt model runs on a regular schedule, from an event, or via API req
 ### Run specific dbt models and their dependencies
 
 <Frame>
-  <img src="https://github.com/mage-ai/assets/blob/main/dbt/add-dbt-model.gif?raw=true" />
+  <img src="https://github.com/digitranslab/assets/blob/main/dbt/add-dbt-model.gif?raw=true" />
 </Frame>
 
 ### Run all models and optionally exclude others
 
-![](https://raw.githubusercontent.com/mage-ai/assets/main/dbt/add-dbt-models.gif)
+![](https://raw.githubusercontent.com/digitranslab/assets/main/dbt/add-dbt-models.gif)
 
 ### dbt models can depend on non-dbt related tasks
 
@@ -56,7 +56,7 @@ Examples:
 ### Preview dbt model results as you write SQL
 
 <Frame>
-  <img src="https://github.com/mage-ai/assets/blob/main/dbt/dbt-preview.gif?raw=true" />
+  <img src="https://github.com/digitranslab/assets/blob/main/dbt/dbt-preview.gif?raw=true" />
 </Frame>
 
 ### Build dynamic dbt pipelines using flexible variable interpolation
@@ -65,11 +65,11 @@ Examples:
 
 - `{{ env_var('...') }}`
 - `{{ variables('...') }}`
-- `{{ mage_secret_var('...') }}`
+- `{{ bigbytes_secret_var('...') }}`
 
 ### Automatically run dbt tests every time a pipeline runs
 
-Write checks using dbt tests, then Mage will run them and fail the pipeline if the test results produce any failures.
+Write checks using dbt tests, then Bigbytes will run them and fail the pipeline if the test results produce any failures.
 
 ### Observability built-in
 

@@ -1,19 +1,19 @@
 ---
 title: "Project Structure"
-description: "Details about how the Mage file directory works and how typical projects are structured."
+description: "Details about how the Bigbytes file directory works and how typical projects are structured."
 ---
 
 ## Overview
 
-A Mage project lives inside it's own folder. It's there where mage data is stored (`mage_data`) and individual projects are housed. You can think of a project as an environment: it contains configurations, pipelines, and other project-specific data.
+A Bigbytes project lives inside it's own folder. It's there where bigbytes data is stored (`bigbytes_data`) and individual projects are housed. You can think of a project as an environment: it contains configurations, pipelines, and other project-specific data.
 
 ## Project structure
 
-Here is a [sample project](https://github.com/mage-ai/demo%5Fetl%5Fpipeline) and a sample folder structure:
+Here is a [sample project](https://github.com/digitranslab/demo%5Fetl%5Fpipeline) and a sample folder structure:
 
 ```
 .
-├── mage_data
+├── bigbytes_data
 └── my-first-project
     ├── charts
     ├── custom
@@ -46,9 +46,9 @@ Let's walk through each folder:
   - [`scratchpads`](/design/blocks/scratchpad)
   - [`transformers`](/design/blocks/transformer)
 - dbt assets are stored in the [dbt directory](/dbt/overview).
-- Each [pipeline](/design/core-abstractions#pipeline) is represented by a YAML file in the `pipelines` folder under the Mage project directory: `[project_dir]/pipelines/[pipeline_name]/metadata.yaml`
+- Each [pipeline](/design/core-abstractions#pipeline) is represented by a YAML file in the `pipelines` folder under the Bigbytes project directory: `[project_dir]/pipelines/[pipeline_name]/metadata.yaml`
 - The `utils` folder is meant to hold custom utilities for your project. For example, [Python scripts](/development/dependencies/custom-files).
-- The `extensions` folder is used for Mage extensions that integrate other data tools, like [Great Expectations](/development/testing/great-expectations).
+- The `extensions` folder is used for Bigbytes extensions that integrate other data tools, like [Great Expectations](/development/testing/great-expectations).
 - Data loader and exporter [configurations](/development/io_config) are stored in the `io_config.yaml` file.
 - The `metadata.yaml` file contains project-level metadata. There's a metadata file in each pipeline as well.
 
@@ -81,11 +81,11 @@ This might look like:
 
 ## Project data
 
-Project-level data is stored in the `mage_data` directory— located at the same level as your project folder.
+Project-level data is stored in the `bigbytes_data` directory— located at the same level as your project folder.
 
-`mage_data` holds project-level cache data and stores the result of Block runs, which are then returned to the user via the UI. Here are the locations for various components of `mage_data`:
+`bigbytes_data` holds project-level cache data and stores the result of Block runs, which are then returned to the user via the UI. Here are the locations for various components of `bigbytes_data`:
 
-- SQLite DB: `mage_data/[project_folder]/mage-ai.db`
+- SQLite DB: `bigbytes_data/[project_folder]/bigbytes.db`
   - The SQLite DB stores project-level metadata, such as pipeline and block run data. Here's a sample tree tables in the `tables` schema:
 
    ```
@@ -106,23 +106,23 @@ Project-level data is stored in the `mage_data` directory— located at the same
         └── user_role
     ```
 
-  - You can connect to the SQLite DB like any other database. The JDBC URL `jdbc:sqlite:PATH`, where PATH is `/home/src/mage_data/[project_folder]/mage-ai.db` for Docker installs or `~/.mage_data/[project_folder]/mage-ai.db` for pip installs.
-- Block output: `mage_data/[project_folder]/pipelines/[pipeline_uuid]/.variables/`
-- Pipeline and block logs: `mage_data/[project_folder]/pipelines/[pipeline_uuid]/.logs/`
-- Cache: `mage_data/[project_folder]/.cache`
+  - You can connect to the SQLite DB like any other database. The JDBC URL `jdbc:sqlite:PATH`, where PATH is `/home/src/bigbytes_data/[project_folder]/bigbytes.db` for Docker installs or `~/.bigbytes_data/[project_folder]/bigbytes.db` for pip installs.
+- Block output: `bigbytes_data/[project_folder]/pipelines/[pipeline_uuid]/.variables/`
+- Pipeline and block logs: `bigbytes_data/[project_folder]/pipelines/[pipeline_uuid]/.logs/`
+- Cache: `bigbytes_data/[project_folder]/.cache`
 
-To clear project block output, cache data, or log data, consider performing routine operations on this folder. This might be helpful for reducing storage size, optimizing cost, or otherwise maintaining your Mage project.
+To clear project block output, cache data, or log data, consider performing routine operations on this folder. This might be helpful for reducing storage size, optimizing cost, or otherwise maintaining your Bigbytes project.
 
 ## Changing the name of your project
 
 ### Docker
 
-If you’re running Mage in Docker, change the environment variable `USER_CODE_PATH` to the absolute path where your project lives.
+If you’re running Bigbytes in Docker, change the environment variable `USER_CODE_PATH` to the absolute path where your project lives.
 
 For example, if your original project name was `demo_magic` and the directory is located at `/home/src/demo_magic`, 
 then the value of `USER_CODE_PATH` should be: `/home/src/demo_magic`.
 
 ### Not using Docker
 
-When you run `mage start [project_name]` on the command line to start running Mage,
+When you run `bigbytes start [project_name]` on the command line to start running Bigbytes,
 the 1st command line argument value is used for your project’s name.

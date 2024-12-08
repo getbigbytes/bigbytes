@@ -7,7 +7,7 @@ sidebarTitle: "Setup"
 
 ### Setup
 
-[Download Mage maintained Terraform scripts](/production/deploying-to-cloud/using-terraform).
+[Download Bigbytes maintained Terraform scripts](/production/deploying-to-cloud/using-terraform).
 
 ## Terraform plan
 
@@ -32,7 +32,7 @@ Set the token in `DIGITALOCEAN_ACCESS_TOKEN` environment variable
 ## 2. Create ssh key
 
 Create ssh key with command: `ssh-keygen`. In the file
-[./digitalocean/variables.tf](https://github.com/mage-ai/mage-ai-terraform-templates/blob/master/digitalocean/variables.tf), update the value of `ssh_pub_key` to your path of public key.
+[./digitalocean/variables.tf](https://github.com/digitranslab/bigbytes-terraform-templates/blob/master/digitalocean/variables.tf), update the value of `ssh_pub_key` to your path of public key.
 
 ---
 
@@ -41,21 +41,21 @@ Create ssh key with command: `ssh-keygen`. In the file
 **Application name (optional)**
 
 In the file
-[./digitalocean/variables.tf](https://github.com/mage-ai/mage-ai-terraform-templates/blob/master/digitalocean/variables.tf),
+[./digitalocean/variables.tf](https://github.com/digitranslab/bigbytes-terraform-templates/blob/master/digitalocean/variables.tf),
 you can change the default application name that will appear in DigitalOcean:
 
 ```
 variable "app_name" {
   type        = string
   description = "Application Name"
-  default     = "mage-data-prep"
+  default     = "bigbytes-data-prep"
 }
 ```
 
 **Region (optional)**
 
 In the file
-[./digitalocean/variables.tf](https://github.com/mage-ai/mage-ai-terraform-templates/blob/master/digitalocean/variables.tf),
+[./digitalocean/variables.tf](https://github.com/digitranslab/bigbytes-terraform-templates/blob/master/digitalocean/variables.tf),
 you can change the region:
 
 ```
@@ -69,7 +69,7 @@ variable "region" {
 **More**
 
 Other variables defined in
-[./digitalocean/variables.tf](https://github.com/mage-ai/mage-ai-terraform-templates/blob/master/digitalocean/variables.tf)
+[./digitalocean/variables.tf](https://github.com/digitranslab/bigbytes-terraform-templates/blob/master/digitalocean/variables.tf)
 can also be customized to your needs.
 
 ---
@@ -97,26 +97,26 @@ Once it’s finished deploying, you can get the IP from the output.
 
 SSH into the instance: `ssh -i [path_to_private_key] root@[ip]`
 
-Run command to start Mage app in :
+Run command to start Bigbytes app in :
 ```bash
-docker run -d -p 6789:6789 -v $(pwd):/home/src mageai/mageai /app/run_app.sh mage start default_repo
+docker run -d -p 6789:6789 -v $(pwd):/home/src bigbytes/bigbytes /app/run_app.sh bigbytes start default_repo
 ```
 
 <br />
 
-To update Mage to latest version, you can pull latest docker image with command:
+To update Bigbytes to latest version, you can pull latest docker image with command:
 ```bash
-docker pull mageai/mageai:latest
+docker pull bigbytes/bigbytes:latest
 ```
-Then, just restart the Mage app with the same `docker run` command above.
+Then, just restart the Bigbytes app with the same `docker run` command above.
 
-## 6. Open browser with Mage
+## 6. Open browser with Bigbytes
 
-Once you’ve launched the Droplet and started Mage, you can access Mage from your web browser by entering the following:
+Once you’ve launched the Droplet and started Bigbytes, you can access Bigbytes from your web browser by entering the following:
 
 `http://[ip]:[port]`
 
-Change the IP to match the IP of your Droplet and the port that you’re using for Mage.
+Change the IP to match the IP of your Droplet and the port that you’re using for Bigbytes.
 
 ---
 
