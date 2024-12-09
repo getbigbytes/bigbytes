@@ -17,7 +17,7 @@ on:
       - "setup.py"
 
 env:
-  ENV: test_mage
+  ENV: test_bigbytes
 
 jobs:
   check-code-quality:

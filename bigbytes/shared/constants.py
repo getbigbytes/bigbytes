@@ -4,7 +4,7 @@ ENV_DEV = 'dev'
 ENV_PROD = 'prod'
 ENV_STAGING = 'staging'
 ENV_TEST = 'test'
-ENV_TEST_BIGBYTES = 'test_mage'
+ENV_TEST_BIGBYTES = 'test_bigbytes'
 
 VALID_ENVS = frozenset([
     ENV_DEV,
