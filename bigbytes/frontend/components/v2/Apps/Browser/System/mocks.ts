@@ -1597,7 +1597,7 @@ const projectFilePaths = [
   '/home/src/default_repo/mlops/mlops/unit_3_observability/data_loaders/ingest.py',
   '/home/src/default_repo/mlops/mlops/unit_3_observability/data_loaders/versatile_phoenix.sql',
   '/home/src/default_repo/mlops/mlops/unit_3_observability/data_loaders/__init__.py',
-  '/home/src/default_repo/mlops/mlops/unit_3_observability/markdowns/create_iam_policy_to_deploy_mage.md',
+  '/home/src/default_repo/mlops/mlops/unit_3_observability/markdowns/create_iam_policy_to_deploy_bigbytes.md',
   '/home/src/default_repo/mlops/mlops/unit_3_observability/markdowns/terraform_setup_docs.md',
   '/home/src/default_repo/mlops/mlops/unit_3_observability/markdowns/add_secrets_to_github_repo.md',
   '/home/src/default_repo/mlops/mlops/unit_3_observability/markdowns/online_inference_guide.md',

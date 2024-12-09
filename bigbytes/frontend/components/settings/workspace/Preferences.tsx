@@ -175,12 +175,12 @@ function Preferences({
             <Spacing mr={PADDING_UNITS} />
 
             <ToggleSwitch
-              checked={projectAttributes?.help_improve_mage}
+              checked={projectAttributes?.help_improve_bigbytes}
               compact
               id="help_improve_bigbytes_toggle"
               onCheck={() => setProjectAttributes(prev => ({
                 ...prev,
-                help_improve_mage: !projectAttributes?.help_improve_mage,
+                help_improve_bigbytes: !projectAttributes?.help_improve_bigbytes,
               }))}
             />
           </FlexContainer>
@@ -366,14 +366,14 @@ function Preferences({
           onClick={() => {
             const updateProjectPayload: ProjectRequestPayloadType = {
               features: projectAttributes?.features,
-              help_improve_mage: projectAttributes?.help_improve_mage,
+              help_improve_bigbytes: projectAttributes?.help_improve_bigbytes,
               openai_api_key: projectAttributes?.openai_api_key,
               pipelines: projectAttributes?.pipelines,
             };
-            if (project?.help_improve_mage === true
-              && projectAttributes?.help_improve_mage === false
+            if (project?.help_improve_bigbytes === true
+              && projectAttributes?.help_improve_bigbytes === false
             ) {
-              updateProjectPayload.deny_improve_mage = true;
+              updateProjectPayload.deny_improve_bigbytes = true;
             }
             updateProject(updateProjectPayload);
           }}

@@ -536,7 +536,7 @@ const PIPELINE_DEPLOY = {
       timeout: null,
       type: 'markdown',
       upstream_blocks: [],
-      uuid: 'create_iam_policy_to_deploy_mage',
+      uuid: 'create_iam_policy_to_deploy_bigbytes',
       callback_blocks: [],
       conditional_blocks: [],
       content:

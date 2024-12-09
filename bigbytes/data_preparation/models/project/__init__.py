@@ -91,8 +91,8 @@ class Project:
         return config
 
     @property
-    def help_improve_mage(self) -> bool:
-        return self.repo_config.help_improve_mage
+    def help_improve_bigbytes(self) -> bool:
+        return self.repo_config.help_improve_bigbytes
 
     @property
     def project_uuid(self) -> str:

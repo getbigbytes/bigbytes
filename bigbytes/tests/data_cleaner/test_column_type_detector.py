@@ -420,7 +420,7 @@ class ColumnTypeDetectorTests(TestCase):
                 '12345',
                 12345,
                 12345,
-                'fire_mage@bigbytes.io',
+                'fire_bigbytes@bigbytes.io',
                 '1234567890',
                 'Feb 18, 2021, 2:57 PM',
                 self.fake.name(),
