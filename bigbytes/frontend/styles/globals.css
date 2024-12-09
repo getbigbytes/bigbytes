@@ -413,7 +413,7 @@ input[type="radio"] {
 
 /* appearance for checked radiobutton */
 input[type="radio"]:checked {
-  background-color: #2A60FE;
+  background-color: #00a99d;
 }
 
 /**
@@ -782,7 +782,7 @@ textarea {
 }
 
 .react-calendar__tile--hasActive {
-  background: #006edc;
+  background: #00a99d;
 }
 
 .react-calendar__tile--hasActive:enabled:hover,
@@ -791,13 +791,13 @@ textarea {
 }
 
 .react-calendar__tile--active {
-  background: #006edc;
+  background: #00a99d;
   color: white;
 }
 
 .react-calendar__tile--active:enabled:hover,
 .react-calendar__tile--active:enabled:focus {
-  background: #1087ff;
+  background: #00a99d;
 }
 
 .react-calendar--selectRange .react-calendar__tile--hover {

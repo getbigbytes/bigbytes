@@ -166,6 +166,30 @@ const DEFAULT_NAV_ITEMS = ({
             href: '/global-data-products',
           },
         },
+        {
+          Icon: HexagonAll,
+          id: 'sql-workspace',
+          label: () => 'Sql Workspace',
+          linkProps: {
+            href: '/global-data-products',
+          },
+        },
+        {
+          Icon: HexagonAll,
+          id: 'data-catalog',
+          label: () => 'Data Catalog',
+          linkProps: {
+            href: '/global-data-products',
+          },
+        },
+        {
+          Icon: HexagonAll,
+          id: 'data-lineage',
+          label: () => 'Data Lineage',
+          linkProps: {
+            href: '/global-data-products',
+          },
+        },
       ],
     },
     {

@@ -57,7 +57,7 @@ export function getColorSet(
     ],
     [
       '#8E73E5', // (Lighter shade of #6B50D7)
-      '#4F7EFF', // (Lighter shade of #2A60FE)
+      '#4F7EFF', // (Lighter shade of #00a99d)
       '#FF5A7A', // (Lighter shade of #FF144D)
       '#56E06B', // (Lighter shade of #2FCB52)
       '#FFD64A', // (Lighter shade of #FFCC19)
@@ -67,7 +67,7 @@ export function getColorSet(
     ],
     [
       '#5338AA', // (Darker shade of #6B50D7)
-      '#1E4BCC', // (Darker shade of #2A60FE)
+      '#1E4BCC', // (Darker shade of #00a99d)
       '#CB1035', // (Darker shade of #FF144D)
       '#209A3C', // (Darker shade of #2FCB52)
       '#E6AB00', // (Darker shade of #FFCC19)

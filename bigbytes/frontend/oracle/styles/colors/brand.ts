@@ -9,6 +9,6 @@ export const EARTH: '#DEBB92' = '#DEBB92'; // tan
 export const LIGHTNING: '#CBFE00' = '#CBFE00'; // volt
 export const ICE: '#95ECE2' = '#95ECE2'; // light blue
 export const ICE_LIGHT: string = 'rgb(149, 236, 226, 0.1)';
-export const WATER: '#2A60FE' = '#2A60FE'; // blue
+export const WATER: '#00a99d' = '#00a99d'; // blue
 export const STONE: '#C7CDDA' = '#C7CDDA'; // cool gray
 export const WIND: '#6B50D7' = '#6B50D7';

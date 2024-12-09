@@ -6,7 +6,7 @@ function PipeIconGradient({ size }: { size: number }) {
       </g>
       <defs>
         <linearGradient id="paint0_linear_3007_70027" x1="11.75" y1=".250001" x2="11.75" y2="23.1475" gradientUnits="userSpaceOnUse">
-          <stop offset=".28125" stopColor="#7D55EC" />
+          <stop offset=".28125" stopColor="#00A99D" />
           <stop offset="1" stopColor="#2AB2FE" />
         </linearGradient>
         <clipPath id="clip0_3007_70027">
