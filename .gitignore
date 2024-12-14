@@ -148,8 +148,6 @@ testfiles/
 .local/
 .npm/
 .python_history
-bigbytes/frontend/package-lock.json
-docker-compose.override.yml
 
 # DB files
 *.db
@@ -186,8 +184,6 @@ playwright-report/
 **/TEST_STATE.json
 mlfow.db
 mlruns/
-package-lock.json
-package.json
 test.py
 test/
 test_data*
