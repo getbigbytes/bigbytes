@@ -102,7 +102,7 @@ function Secrets({ fetchSecrets, pipelineUUID, secrets, setErrorMessages, width 
   );
 
   const SAMPLE_SECRET_VALUE = `
-    "{{ bigbytes_secret_var('<secret_name>') }}"
+    "{{ mage_secret_var('<secret_name>') }}"
   `;
 
   const SECRET_IN_CODE = `
@@ -166,7 +166,7 @@ function Secrets({ fetchSecrets, pipelineUUID, secrets, setErrorMessages, width 
                     centerText
                     muted
                     onClick={() => {
-                      navigator.clipboard.writeText(`{{ bigbytes_secret_var(${newSecretName}) }}`);
+                      navigator.clipboard.writeText(`{{ mage_secret_var(${newSecretName}) }}`);
                       toast.success('Successfully copied to clipboard.', {
                         position: toast.POSITION.BOTTOM_RIGHT,
                         toastId: newSecretName,

@@ -17,7 +17,7 @@ from bigbytes.io.config import ConfigFileLoader
 from bigbytes.settings.repo import get_repo_path
 from bigbytes.shared.hash import merge_dict
 
-BIGBYTES_SEMI_COLON = '__BIGBYTES_SEMI_COLON__'
+MAGE_SEMI_COLON = '__BIGBYTES_SEMI_COLON__'
 
 
 def build_variable_pattern(variable_name: str):
@@ -585,7 +585,7 @@ def split_query_string(query_string: str) -> List[str]:
 
     for _, match in enumerate(matches):
         matched_string = match.group()
-        updated_string = re.sub(r';', BIGBYTES_SEMI_COLON, matched_string)
+        updated_string = re.sub(r';', MAGE_SEMI_COLON, matched_string)
 
         start_idx, end_idx = match.span()
 
@@ -608,7 +608,7 @@ def split_query_string(query_string: str) -> List[str]:
         lines = query.split('\n')
         query = '\n'.join(list(filter(lambda x: not x.startswith('--'), lines)))
         query = query.strip()
-        query = re.sub(BIGBYTES_SEMI_COLON, ';', query)
+        query = re.sub(MAGE_SEMI_COLON, ';', query)
 
         if query:
             arr.append(query)

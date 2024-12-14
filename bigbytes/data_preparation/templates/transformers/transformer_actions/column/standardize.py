@@ -6,7 +6,7 @@
     """
     Execute Transformer Action: ActionType.STANDARDIZE
 
-    Docs: https://docs.bigbytes.io/guides/transformer-blocks#standardize-data
+    Docs: https://docs.bigbytes.ai/guides/transformer-blocks#standardize-data
     """
     action = build_transformer_action(
         df,

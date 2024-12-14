@@ -67,7 +67,7 @@ class HashTests(TestCase):
 
     def test_get_value(self):
         obj = dict(l1=dict(power=1))
-        value = 'bigbytes'
+        value = 'mage'
 
         self.assertEqual(
             set_value(obj, ['l1', 'l2', 'l3'], value),
@@ -83,7 +83,7 @@ class HashTests(TestCase):
 
     def test_combine_into(self):
         parent = dict(
-            bigbytes=dict(power=2, level=2),
+            mage=dict(power=2, level=2),
             fire=dict(
                 power=3,
                 water=dict(
@@ -92,14 +92,14 @@ class HashTests(TestCase):
             ),
         )
         child = dict(
-            bigbytes=dict(power=1),
+            mage=dict(power=1),
             fire=dict(power=2),
             ice=3,
         )
         combine_into(child, parent)
 
         self.assertEqual(parent, dict(
-            bigbytes=dict(power=1, level=2),
+            mage=dict(power=1, level=2),
             fire=dict(
                 power=2,
                 water=dict(

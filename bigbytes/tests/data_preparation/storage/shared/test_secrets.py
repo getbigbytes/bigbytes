@@ -99,7 +99,7 @@ class SecretProjectPlatformTest(ProjectPlatformMixin, DBTestCase):
 
                     self.assertEqual(
                         secret.repo_name,
-                        os.path.join(base_repo_path(), 'bigbytes_platform'),
+                        os.path.join(base_repo_path(), 'mage_platform'),
                     )
 
                     content = yaml.dump(SETTINGS)

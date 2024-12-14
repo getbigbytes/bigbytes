@@ -17,8 +17,8 @@ class CustomTemplatesUtilsTest(DBTestCase):
             dict(parent_names=None),
             dict(parent_names=[]),
             dict(parent_names=[None]),
-            dict(parent_names=['bigbytes']),
-            dict(parent_names=['bigbytes', 'fire']),
+            dict(parent_names=['mage']),
+            dict(parent_names=['mage', 'fire']),
         ]
 
         def load(repo_path: str, template_uuid: str):
@@ -33,5 +33,5 @@ class CustomTemplatesUtilsTest(DBTestCase):
 
             self.assertTrue(find(lambda x: x.template_uuid == '', arr))
             self.assertTrue(find(lambda x: x.template_uuid == 'None', arr))
-            self.assertTrue(find(lambda x: x.template_uuid == 'bigbytes', arr))
-            self.assertTrue(find(lambda x: x.template_uuid == 'bigbytes/fire', arr))
+            self.assertTrue(find(lambda x: x.template_uuid == 'mage', arr))
+            self.assertTrue(find(lambda x: x.template_uuid == 'mage/fire', arr))

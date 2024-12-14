@@ -1,4 +1,4 @@
-FROM bigbytes/bigbytes:latest
+FROM digitranslab/bigbytes:latest
 ARG PIP=pip3
 
 RUN apt-get update && \
@@ -47,4 +47,4 @@ RUN ${PIP} install pyspark
 COPY run_app_with_hadoop.sh /app/run_app_with_hadoop.sh
 RUN chmod +x /app/run_app_with_hadoop.sh
 
-ENV BIGBYTES_DATA_DIR=
+ENV MAGE_DATA_DIR=

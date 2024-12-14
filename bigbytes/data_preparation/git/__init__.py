@@ -33,7 +33,7 @@ from bigbytes.settings.platform import git_settings, project_platform_activated
 from bigbytes.settings.repo import get_repo_path
 from bigbytes.shared.logger import VerboseFunctionExec
 
-REMOTE_NAME = 'bigbytes-repo'
+REMOTE_NAME = 'mage-repo'
 
 logger = Logger().new_server_logger(__name__)
 
@@ -246,7 +246,7 @@ class Git:
                             raise TimeoutError(
                                 "Connecting to remote timed out, make sure your SSH key is set up properly"  # noqa: E501
                                 " and your repository host is added as a known host. More information here:"  # noqa: E501
-                                " https://docs.bigbytes.io/developing-in-the-cloud/setting-up-git#5-add-github-com-to-known-hosts")  # noqa: E501
+                                " https://docs.bigbytes.ai/developing-in-the-cloud/setting-up-git#5-add-github-com-to-known-hosts")  # noqa: E501
                     return func(self, *args, **kwargs)
             elif self.auth_type == AuthType.HTTPS:
                 token = self.get_access_token()

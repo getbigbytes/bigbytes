@@ -286,7 +286,7 @@ async def build_update(factory, model: Project, items: List[Dict]):
             monospace=True,
             action_uuid='update_project',
             type=InteractionInputType.TEXT_FIELD,
-            placeholder='e.g. bigbytes--new_powers',
+            placeholder='e.g. mage--new_powers',
             value=sync_config.get('branch'),
         ),
         dict(

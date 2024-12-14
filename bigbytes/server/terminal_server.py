@@ -19,7 +19,7 @@ from bigbytes.settings import (
 from bigbytes.shared.array import find_index
 
 
-class BigbytesTermManager(terminado.NamedTermManager):
+class MageTermManager(terminado.NamedTermManager):
     def get_terminal(self, term_name: str, **kwargs):
         assert term_name is not None
 
@@ -38,7 +38,7 @@ class BigbytesTermManager(terminado.NamedTermManager):
         return term
 
 
-class BigbytesUniqueTermManager(terminado.UniqueTermManager):
+class MageUniqueTermManager(terminado.UniqueTermManager):
     def get_terminal(self, url_component=None, **kwargs):
         if self.max_terminals and len(self.ptys_by_fd) >= self.max_terminals:
             raise terminado.management.MaxTerminalsReached(self.max_terminals)

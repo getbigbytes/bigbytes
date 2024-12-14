@@ -153,8 +153,8 @@ class DestinationTests(unittest.TestCase):
                         'morphed': {'type': ['integer']},
                         'date_joined': {'format': 'date-time', 'type': ['string']},
                         'power_level': {'type': ['null', 'number']},
-                        '_bigbytes_created_at': {'format': 'date-time', 'type': ['null', 'string']},
-                        '_bigbytes_updated_at': {'format': 'date-time', 'type': ['null', 'string']},
+                        '_mage_created_at': {'format': 'date-time', 'type': ['null', 'string']},
+                        '_mage_updated_at': {'format': 'date-time', 'type': ['null', 'string']},
                     },
                     'type': 'object',
                 }

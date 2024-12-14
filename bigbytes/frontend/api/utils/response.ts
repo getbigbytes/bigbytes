@@ -157,7 +157,7 @@ export function displayErrorFromReadResponse(
   if (data?.error?.exception?.includes('Too many open files')) {
     const tooManyOpenFilesErrLink = [
       {
-        href: 'https://docs.bigbytes.io/production/configuring-production-settings/overview#ulimit',
+        href: 'https://docs.bigbytes.ai/production/configuring-production-settings/overview#ulimit',
         label: 'Refer to the docs for troubleshooting this error.',
       },
     ];

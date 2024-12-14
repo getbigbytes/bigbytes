@@ -102,7 +102,7 @@ class ADProvider(SsoProvider, OauthProvider):
             req.prepare_url(redirect_uri, dict(provider=self.provider))
             query = dict(
                 client_id=ACTIVE_DIRECTORY_BIGBYTES_CLIENT_ID,
-                redirect_uri=f'https://api.bigbytes.io/v1/oauth/{self.provider}',
+                redirect_uri=f'https://api.bigbytes.ai/v1/oauth/{self.provider}',
                 response_type='code',
                 scope=self.scope,
                 state=quote_plus(
@@ -151,7 +151,7 @@ class ADProvider(SsoProvider, OauthProvider):
         if access_token is None:
             raise Exception('Access token is required to fetch user info.')
 
-        bigbytes_roles = []
+        mage_roles = []
         async with aiohttp.ClientSession() as session:
             async with session.get(
                 f'{self.graph_api_host}/v1.0/me',
@@ -206,7 +206,7 @@ class ADProvider(SsoProvider, OauthProvider):
                         app_role_id = assignment.get('appRoleId')
                         app_role = app_role_mapping.get(app_role_id)
                         if app_role and app_role in self.roles_mapping:
-                            bigbytes_roles.append(self.roles_mapping[app_role])
+                            mage_roles.append(self.roles_mapping[app_role])
                 except Exception:
                     logger.exception(
                         'Failed to map Active Directory roles to Bigbytes roles.'
@@ -215,5 +215,5 @@ class ADProvider(SsoProvider, OauthProvider):
         return dict(
             email=userinfo_resp.get('userPrincipalName'),
             username=userinfo_resp.get('userPrincipalName'),
-            user_roles=bigbytes_roles,
+            user_roles=mage_roles,
         )

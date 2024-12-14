@@ -3,7 +3,7 @@
     """
     Execute Transformer Action: ActionType.FILTER
 
-    Docs: https://docs.bigbytes.io/guides/transformer-blocks#filter
+    Docs: https://docs.bigbytes.ai/guides/transformer-blocks#filter
     """
     action = build_transformer_action(
         df,

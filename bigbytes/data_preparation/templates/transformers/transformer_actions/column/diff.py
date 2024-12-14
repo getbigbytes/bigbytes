@@ -5,7 +5,7 @@
 
     Calculates difference from previous row along column.
 
-    Docs: https://docs.bigbytes.io/guides/transformer-blocks#difference
+    Docs: https://docs.bigbytes.ai/guides/transformer-blocks#difference
     """
     action = build_transformer_action(
         df,

@@ -190,7 +190,7 @@ WHERE TABLE_NAME = '{table_name}' AND TABLE_SCHEMA = '{schema_name}'
         tap_stream_id = stream.tap_stream_id
         bookmarks = bookmarks or dict()
         start_lsn = bookmarks.get(INTERNAL_COLUMN_LSN) or 0
-        slot = self.config.get('replication_slot', 'bigbytes_slot')
+        slot = self.config.get('replication_slot', 'mage_slot')
 
         # We are willing to poll for a total of 1 minute without finding a record
         poll_total_seconds = self.config.get('logical_poll_total_seconds') or 60 * 1
@@ -216,7 +216,7 @@ WHERE TABLE_NAME = '{table_name}' AND TABLE_SCHEMA = '{schema_name}'
                 start_lsn=start_lsn,
                 options=dict(
                     proto_version='1',
-                    publication_names=self.config.get('publication_name', 'bigbytes_pub'),
+                    publication_names=self.config.get('publication_name', 'mage_pub'),
                 ),
             )
 

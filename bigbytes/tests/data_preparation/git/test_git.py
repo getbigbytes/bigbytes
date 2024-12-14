@@ -14,11 +14,11 @@ class GitTest(BaseAPIEndpointTest):
 class GitProjectPlatformTest(ProjectPlatformMixin):
     def test_repo_path(self):
         git_settings = dict(
-            path='bigbytes_custom_path',
+            path='mage_custom_path',
         )
         with patch('bigbytes.data_preparation.git.project_platform_activated', lambda: True):
             with patch(
                 'bigbytes.data_preparation.git.git_settings',
                 lambda user=None, **kwargs: git_settings,
             ):
-                self.assertEqual(Git().repo_path, 'bigbytes_custom_path')
+                self.assertEqual(Git().repo_path, 'mage_custom_path')

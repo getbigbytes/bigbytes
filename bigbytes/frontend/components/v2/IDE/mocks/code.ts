@@ -78,12 +78,12 @@ regex1 = [
     ['keyword', 'white', 'type'],
 ]
 
-"www.bigbytes.io"
-"https://bigbytes.io"
-"bigbytes.io"
-"bigbytes.io:8080"
-"bigbytes.io:8080/api/v1"
-"bigbytes.io:8080/api/v1/endpoint"
+"www.bigbytes.ai"
+"https://bigbytes.ai"
+"bigbytes.ai"
+"bigbytes.ai:8080"
+"bigbytes.ai:8080/api/v1"
+"bigbytes.ai:8080/api/v1/endpoint"
 
 path_win = 'C:\\Users\\user\\file.txt'
 path_mac = '/Users/dangerous/Code/materia/bigbytes/bigbytes/frontend/mana'

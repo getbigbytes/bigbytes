@@ -100,7 +100,7 @@ class Environment(BaseSparkModel):
     ],
     [
       "spark.app.name",
-      "SparkBigbytes"
+      "SparkMage"
     ],
     """
     spark_properties: List[List[str]] = field(default_factory=list)

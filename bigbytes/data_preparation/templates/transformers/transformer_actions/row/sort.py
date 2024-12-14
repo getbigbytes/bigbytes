@@ -3,7 +3,7 @@
     """
     Execute Transformer Action: ActionType.SORT
 
-    Docs: https://docs.bigbytes.io/guides/transformer-blocks#sort
+    Docs: https://docs.bigbytes.ai/guides/transformer-blocks#sort
     """
     action = build_transformer_action(
         df,

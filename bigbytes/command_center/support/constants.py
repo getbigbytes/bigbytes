@@ -14,7 +14,7 @@ ITEMS = [
         actions=[
             dict(
                 page=dict(
-                    path='https://docs.bigbytes.io',
+                    path='https://docs.bigbytes.ai',
                     external=True,
                     open_new_window=True,
                 ),
@@ -35,7 +35,7 @@ ITEMS = [
         actions=[
             dict(
                 page=dict(
-                    path='https://bigbytes.io/chat',
+                    path='https://bigbytes.ai/chat',
                     external=True,
                     open_new_window=True,
                 ),

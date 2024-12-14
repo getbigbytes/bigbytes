@@ -12,11 +12,11 @@ class TestK8sExecutorConfig(TestCase):
         self.mock_config_data = {
             "metadata": {
                 "annotations": {
-                    "application": "bigbytes",
+                    "application": "mage",
                     "composant": "executor"
                 },
                 "labels": {
-                    "application": "bigbytes",
+                    "application": "mage",
                     "type": "spark"
                 },
                 "namespace": "test-namespace"
@@ -34,12 +34,12 @@ class TestK8sExecutorConfig(TestCase):
                 ],
             },
             "container": {
-                "name": "bigbytes-data",
+                "name": "mage-data",
                 "env": [
                     {"name": "KUBE_NAMESPACE", "value": "default"},
                     {"name": "secret_key", "value": "somesecret"}
                 ],
-                "image": "bigbytes/bigbytes:0.9.26",
+                "image": "digitranslab/bigbytes:0.9.26",
                 "image_pull_policy": "IfNotPresent",
                 "resources": {
                     "limits": {
@@ -74,8 +74,8 @@ class TestK8sExecutorConfig(TestCase):
         self.assertIsInstance(config.pod_config, V1PodSpec)
         self.assertIsInstance(config.pod_config.containers[0], V1Container)
         self.assertEqual(config.namespace, "test-namespace")
-        self.assertEqual(config.pod_config.containers[0].name, "bigbytes-data")
-        self.assertEqual(config.pod_config.containers[0].image, "bigbytes/bigbytes:0.9.26")
+        self.assertEqual(config.pod_config.containers[0].name, "mage-data")
+        self.assertEqual(config.pod_config.containers[0].image, "digitranslab/bigbytes:0.9.26")
         self.assertEqual(config.pod_config.containers[0].env[0].name, "KUBE_NAMESPACE")
         self.assertEqual(config.pod_config.containers[0].env[0].value, "default")
         self.assertEqual(config.pod_config.containers[0].resources.limits['cpu'], "1")
@@ -97,5 +97,5 @@ class TestK8sExecutorConfig(TestCase):
         self.assertEqual(config.pod_config.containers[0].resources.requests['memory'], "0.5Gi")
         self.assertEqual(config.pod_config.containers[0].env[0].name, "KUBE_NAMESPACE")
         self.assertEqual(config.pod_config.containers[0].env[0].value, "default")
-        self.assertEqual(config.pod_config.containers[0].image, "bigbytes/bigbytes:0.9.26")
+        self.assertEqual(config.pod_config.containers[0].image, "digitranslab/bigbytes:0.9.26")
         self.assertEqual(config.pod_config.containers[0].volume_mounts[0].mount_path, "/tmp/data")

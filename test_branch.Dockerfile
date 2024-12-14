@@ -40,7 +40,7 @@ RUN \
   pip3 install --no-cache-dir "git+https://github.com/mage-ai/google-ads-python.git#egg=google-ads" && \
   pip3 install --no-cache-dir "git+https://github.com/mage-ai/dbt-mysql.git#egg=dbt-mysql" && \
   pip3 install --no-cache-dir "git+https://github.com/mage-ai/dbt-synapse.git#egg=dbt-synapse" && \
-  pip3 install --no-cache-dir "git+https://github.com/mage-ai/bigbytes.git#egg=bigbytes-integrations&subdirectory=bigbytes_integrations"
+  pip3 install --no-cache-dir "git+https://github.com/digitranslab/bigbytes.git#egg=bigbytes-integrations&subdirectory=bigbytes_integrations"
 # Bigbytes
 COPY ./bigbytes/server/constants.py /tmp/constants.py
 RUN \

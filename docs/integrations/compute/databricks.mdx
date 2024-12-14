@@ -20,7 +20,7 @@ Here is an overview of the steps required to use Bigbytes with Databricks Cluste
 6. [Verify everything worked](#6-verify-everything-worked)
 
 If you get stuck, run into problems, or just want someone to walk you through
-these steps, please join our [Slack](https://www.bigbytes.io/chat)
+these steps, please join our [Slack](https://www.bigbytes.ai/chat)
 
 ### 1. Set up Databricks cluster
 
@@ -34,7 +34,7 @@ Use the Dockerfile template from [bigbytes/integrations/databricks/Dockerfile](h
 
 Update the dadabricks-connect version to match the version used in your Databricks cluster.
 
-Build the Docker image with command `docker build -t bigbytes_databricks .`.
+Build the Docker image with command `docker build -t mage_databricks .`.
 
 ### 3. Start Bigbytes
 
@@ -43,8 +43,8 @@ Type this command in your terminal to start Bigbytes using docker (Note:
 want):
 
 ```bash
-docker run -it --name bigbytes_databricks -p 6789:6789 -v $(pwd):/home/src bigbytes_databricks \
-  /app/run_app.sh bigbytes start demo_project
+docker run -it --name mage_databricks -p 6789:6789 -v $(pwd):/home/src mage_databricks \
+  /app/run_app.sh mage start demo_project
 ```
 
 SSH into the docker container and configure `databricks-connect` following the [guide](https://docs.databricks.com/dev-tools/databricks-connect.html#step-2-configure-connection-properties).
@@ -117,7 +117,7 @@ def export_data(df: DataFrame, **kwargs) -> None:
         .option('delimiter', ',')
         .option('header', 'True')
         .mode('overwrite')
-        .csv('s3://bigbytes-spark-cluster/demo_project/demo_pipeline/')
+        .csv('s3://mage-spark-cluster/demo_project/demo_pipeline/')
     )
 ```
 
@@ -146,7 +146,7 @@ def load_data(**kwargs) -> DataFrame:
         .option('header', 'true')
         .option('inferSchema', 'true')
         .option('delimiter', ',')
-        .load('s3://bigbytes-spark-cluster/demo_project/demo_pipeline/*')
+        .load('s3://mage-spark-cluster/demo_project/demo_pipeline/*')
     )
 
     return df

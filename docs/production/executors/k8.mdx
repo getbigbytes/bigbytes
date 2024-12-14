@@ -79,7 +79,7 @@ in this project. Example config:
   ```yaml
   k8s_executor_config:
     container_config:
-      image: bigbytes/bigbytes:0.9.7
+      image: digitranslab/bigbytes:0.9.7
       env:
       - name: USER_CODE_PATH
         value: /home/src/k8s_project
@@ -114,7 +114,7 @@ container:
       value: "default"
     - name: "secret_key"
       value: "somesecret"
-  image: "bigbytes/bigbytes:latest"
+  image: "digitranslab/bigbytes:latest"
   image_pull_policy: "IfNotPresent"
   resources:
     limits:
@@ -128,11 +128,11 @@ container:
       name: "data-pvc"
 ```
 
-**NB:** When deploying Bigbytes in a multi-container pod, you need to specify the environment variable `BIGBYTES_CONTAINER_NAME`. If this variable is not set, Bigbytes will default to using the first container in the pod. To specify the Bigbytes container, you can use:
+**NB:** When deploying Bigbytes in a multi-container pod, you need to specify the environment variable `MAGE_CONTAINER_NAME`. If this variable is not set, Bigbytes will default to using the first container in the pod. To specify the Bigbytes container, you can use:
 
 ```yaml
     env:
-      - name: BIGBYTES_CONTAINER_NAME
+      - name: MAGE_CONTAINER_NAME
         valueFrom:
           fieldRef:
             fieldPath: metadata.name

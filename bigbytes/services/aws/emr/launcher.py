@@ -46,7 +46,7 @@ def create_cluster(
 
     # Create EMR cluster
     cluster_id = create_a_new_cluster(
-        'bigbytes-data-preparation',
+        'mage-data-preparation',
         [],
         emr_config,
         bootstrap_script_path=resource_manager.bootstrap_script_path,

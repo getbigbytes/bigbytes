@@ -48,7 +48,7 @@ you can change the default application name that will appear in DigitalOcean:
 variable "app_name" {
   type        = string
   description = "Application Name"
-  default     = "bigbytes-data-prep"
+  default     = "mage-data-prep"
 }
 ```
 
@@ -99,14 +99,14 @@ SSH into the instance: `ssh -i [path_to_private_key] root@[ip]`
 
 Run command to start Bigbytes app in :
 ```bash
-docker run -d -p 6789:6789 -v $(pwd):/home/src bigbytes/bigbytes /app/run_app.sh bigbytes start default_repo
+docker run -d -p 6789:6789 -v $(pwd):/home/src digitranslab/bigbytes /app/run_app.sh mage start default_repo
 ```
 
 <br />
 
 To update Bigbytes to latest version, you can pull latest docker image with command:
 ```bash
-docker pull bigbytes/bigbytes:latest
+docker pull digitranslab/bigbytes:latest
 ```
 Then, just restart the Bigbytes app with the same `docker run` command above.
 

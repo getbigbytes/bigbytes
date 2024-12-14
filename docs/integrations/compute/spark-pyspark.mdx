@@ -35,7 +35,7 @@ Find the Spark Master URL at the top of the web page.
 
 ### 2. Build Bigbytes docker image with Spark environment
 * Download the [Dockerfile template](https://github.com/digitranslab/bigbytes/blob/master/integrations/spark/Dockerfile) for Bigbytes with Spark environment.
-* Change the current directory to the directory that contains the `Dockerfile`. Build the docker image with the command `docker build -t bigbytes_spark .`
+* Change the current directory to the directory that contains the `Dockerfile`. Build the docker image with the command `docker build -t mage_spark .`
 
 ### 3. Run Bigbytes in Kubernetes cluster with the `SPARK_MASTER_HOST` environment variable
 * Use the docker image built from step 2 as the container image in your Kubernetes yaml file.
@@ -48,16 +48,16 @@ Here is the example Pod config:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: bigbytes-server
+  name: mage-server
 spec:
   containers:
-  - name: bigbytes-server
-    image: bigbytes_spark
+  - name: mage-server
+    image: mage_spark
     imagePullPolicy: Never
     ports:
     - containerPort: 6789
     volumeMounts:
-    - name: bigbytes-fs
+    - name: mage-fs
       mountPath: /home/src
     env:
       - name: KUBE_NAMESPACE
@@ -67,10 +67,10 @@ spec:
       - name: SPARK_MASTER_HOST
         value: "spark://spark_master_url:7077"
   volumes:
-  - name: bigbytes-fs
+  - name: mage-fs
     hostPath:
-      path: /path/to/bigbytes_project
-  serviceAccountName: bigbytes-user
+      path: /path/to/mage_project
+  serviceAccountName: mage-user
 ```
 
 Updates
@@ -96,14 +96,14 @@ In other blocks, you can access the Spark session from the `kwargs` via `kwargs[
 
 ### 1. Build Bigbytes docker image with Spark environment
 * Download the [Dockerfile template](https://github.com/digitranslab/bigbytes/blob/master/integrations/spark/Dockerfile) for Bigbytes with Spark environment.
-* Change the current directory to the directory that contains the `Dockerfile`. Build the docker image with the command `docker build -t bigbytes_spark .`
+* Change the current directory to the directory that contains the `Dockerfile`. Build the docker image with the command `docker build -t mage_spark .`
 
 ### 2. Start Bigbytes with `SPARK_MASTER_HOST` environment variable
 Type this command in your terminal to start Bigbytes using docker
 
 ```bash
-docker run -it --name bigbytes_spark -e SPARK_MASTER_HOST='local' -p 6789:6789 -v $(pwd):/home/src bigbytes_spark \
-  /app/run_app.sh bigbytes start demo_project
+docker run -it --name mage_spark -e SPARK_MASTER_HOST='local' -p 6789:6789 -v $(pwd):/home/src mage_spark \
+  /app/run_app.sh mage start demo_project
 ```
 Notes
 * `demo_project` is the name of your project, you can change it to anything you want
@@ -133,13 +133,13 @@ In other blocks, you can access the Spark session from the `kwargs` via `kwargs[
 
 ### 1. Build Bigbytes docker image with Spark environment
 * Download the [Dockerfile template](https://github.com/digitranslab/bigbytes/blob/master/integrations/spark/Dockerfile) for Bigbytes with Spark environment.
-* Build the docker image with the command `docker build -t bigbytes_spark .`
+* Build the docker image with the command `docker build -t mage_spark .`
 
 ### 2. Start Bigbytes using docker with the following command in your terminal
 
 ```bash
-docker run -it --name bigbytes_spark -p 6789:6789 -v $(pwd):/home/src bigbytes_spark \
-  /app/run_app.sh bigbytes start demo_project
+docker run -it --name mage_spark -p 6789:6789 -v $(pwd):/home/src mage_spark \
+  /app/run_app.sh mage start demo_project
 ```
 Notes
 * `demo_project` is the name of your project, you can change it to anything you want
@@ -197,13 +197,13 @@ It is also possible to use different Spark Sessions in different pipelines under
 
 ### 1. Build Bigbytes docker image with Spark environment
 * Download the [Dockerfile template](https://github.com/digitranslab/bigbytes/blob/master/integrations/spark/Dockerfile) for Bigbytes with Spark environment.
-* Build the docker image with the command `docker build -t bigbytes_spark .`
+* Build the docker image with the command `docker build -t mage_spark .`
 
 ### 2. Start Bigbytes using docker with the following command in your terminal
 
 ```bash
-docker run -it --name bigbytes_spark -p 6789:6789 -v $(pwd):/home/src bigbytes_spark \
-  /app/run_app.sh bigbytes start demo_project
+docker run -it --name mage_spark -p 6789:6789 -v $(pwd):/home/src mage_spark \
+  /app/run_app.sh mage start demo_project
 ```
 Notes
 * `demo_project` is the name of your project, you can change it to anything you want
@@ -278,14 +278,14 @@ It is also possible to create custom Spark ssesion using Python code. Here are t
 
 ### 1. Build Bigbytes docker image with a Hadoop Yarn environment
 * Download the [Dockerfile template](https://github.com/digitranslab/bigbytes/blob/master/integrations/hadoop/Dockerfile) for Bigbytes with Hadoop environment.
-* Build the docker image with the command `docker build -t bigbytes_hadoop .`
+* Build the docker image with the command `docker build -t mage_hadoop .`
 
 
 ### 2. Start Bigbytes with the following command in your terminal using docker
 
 ```bash
-docker run -it --name bigbytes_hadoop -p 6789:6789 -v $(pwd):/home/src bigbytes_hadoop \
-  /app/run_app_with_hadoop.sh bigbytes start demo_project
+docker run -it --name mage_hadoop -p 6789:6789 -v $(pwd):/home/src mage_hadoop \
+  /app/run_app_with_hadoop.sh mage start demo_project
 ```
 Notes
 * `demo_project` is the name of your project, you can change it to anything you want
@@ -350,7 +350,7 @@ Here is an overview of the steps required to use Bigbytes locally with Spark in 
 8. [Clean up](#8-clean-up)
 
 If you get stuck, run into problems, or just want someone to walk you through
-these steps, please join our [Slack](https://www.bigbytes.io/chat)
+these steps, please join our [Slack](https://www.bigbytes.ai/chat)
 
 ### 1. Create an S3 bucket for Spark
 
@@ -373,8 +373,8 @@ Type this command in your terminal to start Bigbytes using docker (Note:
 want):
 
 ```bash
-docker run -it -p 6789:6789 -v $(pwd):/home/src bigbytes/bigbytes \
-  /app/run_app.sh bigbytes start demo_project
+docker run -it -p 6789:6789 -v $(pwd):/home/src digitranslab/bigbytes \
+  /app/run_app.sh mage start demo_project
 ```
 
 ### 3. Configure project’s metadata settings
@@ -539,7 +539,7 @@ def export_data(df: DataFrame, **kwargs) -> None:
         .option('delimiter', ',')
         .option('header', 'True')
         .mode('overwrite')
-        .csv('s3://bigbytes-spark-cluster/demo_project/demo_pipeline/')
+        .csv('s3://mage-spark-cluster/demo_project/demo_pipeline/')
     )
 ```
 
@@ -568,7 +568,7 @@ def load_data(**kwargs) -> DataFrame:
         .option('header', 'true')
         .option('inferSchema', 'true')
         .option('delimiter', ',')
-        .load('s3://bigbytes-spark-cluster/demo_project/demo_pipeline/*')
+        .load('s3://mage-spark-cluster/demo_project/demo_pipeline/*')
     )
 
     return df

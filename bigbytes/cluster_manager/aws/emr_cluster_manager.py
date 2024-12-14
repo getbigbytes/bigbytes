@@ -11,7 +11,7 @@ from bigbytes.services.aws.emr.launcher import create_cluster
 from bigbytes.shared.array import find
 from bigbytes.shared.hash import merge_dict
 
-CLUSTER_NAME = 'bigbytes-data-prep'
+CLUSTER_NAME = 'mage-data-prep'
 
 
 class EmrClusterManager(ClusterManager):

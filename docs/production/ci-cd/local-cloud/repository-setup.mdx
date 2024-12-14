@@ -10,8 +10,8 @@ icon: "list-check"
     locally: For example:
 
     ```bash
-    docker run -it -p 6789:6789 -v $(pwd):/home/src bigbytes/bigbytes \
-      /app/run_app.sh bigbytes start demo_project
+    docker run -it -p 6789:6789 -v $(pwd):/home/src digitranslab/bigbytes \
+      /app/run_app.sh mage start demo_project
     ```
 
     For more examples, read the [setup guide](/getting-started/setup).
@@ -25,13 +25,13 @@ icon: "list-check"
     contents of your `Dockerfile` are:
 
     ```dockerfile
-    FROM bigbytes/bigbytes:latest
+    FROM digitranslab/bigbytes:latest
 
     ARG PROJECT_NAME=[project_name]
-    ARG BIGBYTES_CODE_PATH=/home/bigbytes_code
-    ARG USER_CODE_PATH=${BIGBYTES_CODE_PATH}/${PROJECT_NAME}
+    ARG MAGE_CODE_PATH=/home/mage_code
+    ARG USER_CODE_PATH=${MAGE_CODE_PATH}/${PROJECT_NAME}
 
-    WORKDIR ${BIGBYTES_CODE_PATH}
+    WORKDIR ${MAGE_CODE_PATH}
 
     # Replace [project_name] with the name of your project (e.g. demo_project)
     COPY ${PROJECT_NAME} ${PROJECT_NAME}
@@ -46,7 +46,7 @@ icon: "list-check"
     # Install custom libraries within 3rd party libraries (e.g. dbt packages)
     RUN python3 /app/install_other_dependencies.py --path ${USER_CODE_PATH}
 
-    ENV PYTHONPATH="${PYTHONPATH}:/home/bigbytes_code"
+    ENV PYTHONPATH="${PYTHONPATH}:/home/mage_code"
 
     CMD ["/bin/sh", "-c", "/app/run_app.sh"]
     ```
@@ -57,7 +57,7 @@ icon: "list-check"
     |   demo_project/
     |   Dockerfile
     ```
-5.  Build a custom Docker image using `bigbytes/bigbytes:latest` as the base and
+5.  Build a custom Docker image using `digitranslab/bigbytes:latest` as the base and
     using the newly created Dockerfile as the additional set of instructions:
 
     ```
@@ -71,7 +71,7 @@ icon: "list-check"
 
 6.  To test the new image works, run the following command:
     ```bash
-    docker run -it -p 6789:6789 mageprod:latest /app/run_app.sh bigbytes start demo_project
+    docker run -it -p 6789:6789 mageprod:latest /app/run_app.sh mage start demo_project
     ```
 7.  Open your browser and go to http://localhost:6789/
     1. You should see all your pipelines there.

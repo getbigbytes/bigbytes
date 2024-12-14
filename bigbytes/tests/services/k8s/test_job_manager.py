@@ -29,7 +29,7 @@ from bigbytes.tests.base_test import TestCase
 MOCK_POD_CONFIG = V1Pod(
     spec=V1PodSpec(
         containers=[V1Container(
-            name='bigbytes-container',
+            name='mage-container',
             image_pull_policy='Always',
             image='test_image',
             env=[
@@ -111,7 +111,7 @@ class TestK8sUtilities(TestCase):
         )
 
 
-@patch.dict(os.environ, {'HOSTNAME': 'bigbytes-server'})
+@patch.dict(os.environ, {'HOSTNAME': 'mage-server'})
 class JobManagerTests(TestCase):
     @patch('bigbytes.services.k8s.job_manager.config')
     def test_load_config(self, mock_config):
@@ -150,7 +150,7 @@ class JobManagerTests(TestCase):
                     mock_read_namespaced_pod_method.assert_called_once()
                     # to dig
                     # mock_read_namespaced_pod_method.assert_called_once_with(
-                    #     name='bigbytes-server',
+                    #     name='mage-server',
                     #     namespace='test_namespace',
                     # )
 
@@ -178,7 +178,7 @@ class JobManagerTests(TestCase):
             namespace='test_namespace',
         )
         job_manager.pod_config = MOCK_POD_CONFIG
-        command = 'bigbytes run test_pipeline'
+        command = 'mage run test_pipeline'
         k8s_config = K8sExecutorConfig.load(config=dict(
             namespace='test_namespace',
             resource_limits=dict(
@@ -196,7 +196,7 @@ class JobManagerTests(TestCase):
         job_manager.create_job_object(command, k8s_config)
 
         self.assertEqual(pod_config.service_account_name, 'test_service_account')
-        self.assertEqual(pod_config.containers[0].name, 'bigbytes-job-container')
+        self.assertEqual(pod_config.containers[0].name, 'mage-job-container')
         self.assertEqual(pod_config.containers[0].image_pull_policy, 'IfNotPresent')
         self.assertEqual(pod_config.containers[0].image, 'test_image')
         self.assertEqual(pod_config.containers[0].resources, mock_v1_resource_requirements)
@@ -292,11 +292,11 @@ class JobManagerTests(TestCase):
         mock_config = {
             'metadata': {
                 'annotations': {
-                    'application': 'bigbytes',
+                    'application': 'mage',
                     'composant': 'executor'
                 },
                 'labels': {
-                    'application': 'bigbytes',
+                    'application': 'mage',
                     'type': 'spark'
                 },
                 'namespace': 'test-namespace'
@@ -339,12 +339,12 @@ class JobManagerTests(TestCase):
                 ],
             },
             'container': {
-                'name': 'bigbytes-pipeline',
+                'name': 'mage-pipeline',
                 'env': [
                     {'name': 'KUBE_NAMESPACE', 'value': 'default'},
                     {'name': 'secret_key', 'value': 'somesecret'}
                 ],
-                'image': 'bigbytes/bigbytes:0.9.26',
+                'image': 'digitranslab/bigbytes:0.9.26',
                 'image_pull_policy': 'Always',
                 'resources': {
                     'limits': {
@@ -387,9 +387,9 @@ class JobManagerTests(TestCase):
         # Assertions
         # Metadata
         self.assertEqual(job.spec.template.metadata.labels,
-                         {'application': 'bigbytes', 'type': 'spark'})
+                         {'application': 'mage', 'type': 'spark'})
         self.assertEqual(job.spec.template.metadata.annotations,
-                         {'application': 'bigbytes', 'composant': 'executor'})
+                         {'application': 'mage', 'composant': 'executor'})
         self.assertEqual(job.spec.template.metadata.namespace, 'test-namespace')
 
         # Pod
@@ -430,7 +430,7 @@ class JobManagerTests(TestCase):
         ])
 
         # Container
-        self.assertEqual(job.spec.template.spec.containers[0].name, 'bigbytes-pipeline')
+        self.assertEqual(job.spec.template.spec.containers[0].name, 'mage-pipeline')
         self.assertEqual(job.spec.template.spec.containers[0].image_pull_policy, 'Always')
         print(job.spec.template.spec.containers[0].env[0])
         self.assertEqual(

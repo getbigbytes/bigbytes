@@ -13,8 +13,8 @@ class RepoManagerProjectPlatformTest(ProjectPlatformMixin):
     def test_init(self):
         repo = RepoConfig(root_project=False)
         self.assertFalse(repo.root_project)
-        self.assertEqual(repo.repo_path, os.path.join(base_repo_path(), 'bigbytes_platform'))
-        self.assertEqual(repo.variables_dir, os.path.join(base_repo_path(), 'bigbytes_platform'))
+        self.assertEqual(repo.repo_path, os.path.join(base_repo_path(), 'mage_platform'))
+        self.assertEqual(repo.variables_dir, os.path.join(base_repo_path(), 'mage_platform'))
 
         repo = RepoConfig(root_project=True)
         self.assertTrue(repo.root_project)
@@ -24,8 +24,8 @@ class RepoManagerProjectPlatformTest(ProjectPlatformMixin):
     def test_from_dict(self):
         repo = RepoConfig.from_dict(dict(), root_project=False)
         self.assertFalse(repo.root_project)
-        self.assertEqual(repo.repo_path, os.path.join(base_repo_path(), 'bigbytes_platform'))
-        self.assertEqual(repo.variables_dir, os.path.join(base_repo_path(), 'bigbytes_platform'))
+        self.assertEqual(repo.repo_path, os.path.join(base_repo_path(), 'mage_platform'))
+        self.assertEqual(repo.variables_dir, os.path.join(base_repo_path(), 'mage_platform'))
 
         repo = RepoConfig.from_dict(dict(), root_project=True)
         self.assertTrue(repo.root_project)
@@ -35,7 +35,7 @@ class RepoManagerProjectPlatformTest(ProjectPlatformMixin):
     def test_metadata_path(self):
         repo = RepoConfig(root_project=False)
         self.assertEqual(
-            repo.metadata_path, os.path.join(base_repo_path(), 'bigbytes_platform/metadata.yaml'),
+            repo.metadata_path, os.path.join(base_repo_path(), 'mage_platform/metadata.yaml'),
         )
 
         repo = RepoConfig(root_project=True)
@@ -44,8 +44,8 @@ class RepoManagerProjectPlatformTest(ProjectPlatformMixin):
     def test_get_repo_config(self):
         repo = get_repo_config(root_project=False)
         self.assertFalse(repo.root_project)
-        self.assertEqual(repo.repo_path, os.path.join(base_repo_path(), 'bigbytes_platform'))
-        self.assertEqual(repo.variables_dir, os.path.join(base_repo_path(), 'bigbytes_platform'))
+        self.assertEqual(repo.repo_path, os.path.join(base_repo_path(), 'mage_platform'))
+        self.assertEqual(repo.variables_dir, os.path.join(base_repo_path(), 'mage_platform'))
 
         repo = get_repo_config(root_project=True)
         self.assertTrue(repo.root_project)

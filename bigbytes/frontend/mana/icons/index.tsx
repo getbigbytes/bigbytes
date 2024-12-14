@@ -2847,7 +2847,7 @@ export const ScheduleClockWithBorderDots = useWithIcon(
   },
 );
 
-export const BigbytesMLogo = useWithIcon(
+export const MageMLogo = useWithIcon(
   [
     {
       d: 'M15.7636 2.5L20.0003 2.5L12.1068 17.5L7.87012 17.5L15.7636 2.5Z',
@@ -2996,7 +2996,7 @@ export const CategorizationUseCase = useWithIcon(
       height: 107,
       rx: 8,
       width: 107,
-      fill: '#00a99d',
+      fill: '#2A60FE',
     },
     {
       Style: RectStyle,
@@ -3005,11 +3005,11 @@ export const CategorizationUseCase = useWithIcon(
       width: 72,
       x: 35,
       y: 35,
-      fill: '#00a99d',
+      fill: '#2A60FE',
     },
     {
       d: 'M129.172 21.8284C131.691 19.3086 136 21.0932 136 24.6569V127C136 131.418 132.418 135 128 135H25.6569C22.0932 135 20.3086 130.691 22.8284 128.172L129.172 21.8284Z',
-      fill: '#00a99d',
+      fill: '#2A60FE',
       opacity: 0.7,
     },
     {
@@ -4092,7 +4092,7 @@ export default {
   List,
   Locked,
   Logs,
-  BigbytesMLogo,
+  MageMLogo,
   MapPin,
   Menu,
   MicrosoftIcon,

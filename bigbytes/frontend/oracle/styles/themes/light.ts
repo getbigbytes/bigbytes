@@ -97,7 +97,7 @@ export default {
     water100: '#BDCEFF',
     water200: '#81A1FF',
     water300: '#517DFF',
-    water400: '#00a99d',
+    water400: '#2A60FE',
     water400Transparent: 'rgba(42, 96, 254, 0.4)',
     water500: '#0F4CFF',
     wind100: '#EEEAFF',

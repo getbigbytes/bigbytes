@@ -51,12 +51,12 @@ class BlockWithProjectPlatformShared:
 @patch('bigbytes.settings.platform.project_platform_activated', lambda: False)
 class BlockWithProjectPlatformInactiveTest(BaseAPIEndpointTest, BlockWithProjectPlatformShared):
     def test_configuration_getter(self):
-        self.build_block(project_platform=False, configuration=dict(bigbytes=1))
+        self.build_block(project_platform=False, configuration=dict(mage=1))
         self.assertEqual(self.block.configuration, dict(
-            bigbytes=1,
+            mage=1,
         ))
         self.assertEqual(self.block._configuration, dict(
-            bigbytes=1,
+            mage=1,
         ))
 
     def test_configuration_setter(self):
@@ -68,9 +68,9 @@ class BlockWithProjectPlatformInactiveTest(BaseAPIEndpointTest, BlockWithProject
             'clean_file_paths',
             wraps=block.clean_file_paths,
         ) as mock_clean_file_paths:
-            block.configuration = dict(bigbytes=1)
-            mock_clean_file_paths.assert_called_once_with(dict(bigbytes=1))
-            self.assertEqual(block.configuration, dict(bigbytes=1))
+            block.configuration = dict(mage=1)
+            mock_clean_file_paths.assert_called_once_with(dict(mage=1))
+            self.assertEqual(block.configuration, dict(mage=1))
 
     # def test_file_path(self):
     #     self.run_test_file_path(
@@ -130,25 +130,25 @@ class BlockWithProjectPlatformInactiveTest(BaseAPIEndpointTest, BlockWithProject
 @patch('bigbytes.settings.repo.project_platform_activated', lambda: True)
 class BlockWithProjectPlatformActivatedTest(ProjectPlatformMixin, BlockWithProjectPlatformShared):
     def test_configuration_getter(self):
-        block = self.build_block(configuration=dict(bigbytes=1))
+        block = self.build_block(configuration=dict(mage=1))
         self.assertEqual(self.block.configuration, dict(
             file_source=dict(
-                path=f'bigbytes_platform/data_loaders/{block.uuid}.py',
+                path=f'mage_platform/data_loaders/{block.uuid}.py',
             ),
-            bigbytes=1,
+            mage=1,
         ))
         self.assertEqual(self.block._configuration, dict(
             file_source=dict(
-                path=f'bigbytes_platform/data_loaders/{block.uuid}.py',
+                path=f'mage_platform/data_loaders/{block.uuid}.py',
             ),
-            bigbytes=1,
+            mage=1,
         ))
 
     def test_configuration_setter(self):
         block = self.build_block()
         self.assertEqual(self.block.configuration, dict(
             file_source=dict(
-                path=f'bigbytes_platform/data_loaders/{block.uuid}.py',
+                path=f'mage_platform/data_loaders/{block.uuid}.py',
             ),
         ))
 
@@ -157,16 +157,16 @@ class BlockWithProjectPlatformActivatedTest(ProjectPlatformMixin, BlockWithProje
             'clean_file_paths',
             wraps=self.block.clean_file_paths,
         ) as mock_clean_file_paths:
-            self.block.configuration = dict(bigbytes=1)
-            mock_clean_file_paths.assert_called_once_with(dict(bigbytes=1))
-            self.assertEqual(self.block.configuration, dict(bigbytes=1))
+            self.block.configuration = dict(mage=1)
+            mock_clean_file_paths.assert_called_once_with(dict(mage=1))
+            self.assertEqual(self.block.configuration, dict(mage=1))
 
     # def test_file_path(self):
     #     with patch('bigbytes.shared.path_fixer.get_repo_path', lambda x: base_repo_path()):
     #         self.run_test_file_path(
     #             lambda block: os.path.join(
     #                 base_repo_path(),
-    #                 f'bigbytes_platform/data_loaders/{block.uuid}.py',
+    #                 f'mage_platform/data_loaders/{block.uuid}.py',
     #             ),
     #         )
 
@@ -204,8 +204,8 @@ class BlockWithProjectPlatformActivatedTest(ProjectPlatformMixin, BlockWithProje
     def test_create_dbt(self):
         block = self.build_block()
         file = block.file
-        file_path = f'bigbytes_platform/data_loaders/{block.uuid}.py'
-        with open(os.path.join(base_repo_path(), 'bigbytes_platform', 'dbt_project.yml'), 'w') as f:
+        file_path = f'mage_platform/data_loaders/{block.uuid}.py'
+        with open(os.path.join(base_repo_path(), 'mage_platform', 'dbt_project.yml'), 'w') as f:
             f.write('')
 
         with patch.object(file, 'create_parent_directories') as mock_create_parent_directories:
@@ -222,7 +222,7 @@ class BlockWithProjectPlatformActivatedTest(ProjectPlatformMixin, BlockWithProje
                             self.build_block(
                                 block_type=BlockType.DBT,
                                 configuration=dict(
-                                    file_path=f'bigbytes_platform/data_loaders/{block.uuid}.py',
+                                    file_path=f'mage_platform/data_loaders/{block.uuid}.py',
                                     file_source=dict(
                                         path=file_path,
                                     ),
@@ -256,29 +256,29 @@ class ProjectPlatformAccessibleTest(ProjectPlatformMixin, BlockWithProjectPlatfo
             f.write('')
 
         configuration = dict(
-            file_path='bigbytes_platform/dir1/dir2/filename.sql',
+            file_path='mage_platform/dir1/dir2/filename.sql',
             file_source=dict(
-                path='bigbytes_platform/dir3/dir4/filename.sql',
+                path='mage_platform/dir3/dir4/filename.sql',
             ),
         )
         block = self.build_block()
         block.type = BlockType.DBT
 
         self.assertEqual(block.clean_file_paths(configuration), dict(
-            file_path='bigbytes_platform/dir1/dir2/filename.sql',
+            file_path='mage_platform/dir1/dir2/filename.sql',
             file_source=dict(
-                path='bigbytes_platform/dir3/dir4/filename.sql',
-                project_path='bigbytes_platform/dir3',
+                path='mage_platform/dir3/dir4/filename.sql',
+                project_path='mage_platform/dir3',
             ),
         ))
 
         configuration['file_source']['project_path'] = self.faker.unique.name()
         configuration_new = block.clean_file_paths(configuration)
         self.assertEqual(configuration_new, dict(
-            file_path='bigbytes_platform/dir1/dir2/filename.sql',
+            file_path='mage_platform/dir1/dir2/filename.sql',
             file_source=dict(
-                path='bigbytes_platform/dir3/dir4/filename.sql',
-                project_path='bigbytes_platform/dir3',
+                path='mage_platform/dir3/dir4/filename.sql',
+                project_path='mage_platform/dir3',
             ),
         ))
 
@@ -286,10 +286,10 @@ class ProjectPlatformAccessibleTest(ProjectPlatformMixin, BlockWithProjectPlatfo
         project_path = self.faker.unique.name()
         configuration_new['file_source']['project_path'] = project_path
         self.assertEqual(block.clean_file_paths(configuration_new), dict(
-            file_path='bigbytes_platform/dir1/dir2/filename.sql',
+            file_path='mage_platform/dir1/dir2/filename.sql',
             file_source=dict(
-                path='bigbytes_platform/dir3/dir4/filename.sql',
-                project_path='bigbytes_platform/dir3',
+                path='mage_platform/dir3/dir4/filename.sql',
+                project_path='mage_platform/dir3',
             ),
         ))
 
@@ -301,13 +301,13 @@ class ProjectPlatformAccessibleTest(ProjectPlatformMixin, BlockWithProjectPlatfo
             ):
                 block = self.build_block()
                 block._configuration = dict(
-                    file_source=dict(path='bigbytes_platform/bigbytes.py'),
+                    file_source=dict(path='mage_platform/bigbytes.py'),
                 )
                 block._project_platform_activated = True
                 self.assertFalse(block.is_from_another_project())
 
                 block._configuration = dict(
-                    file_source=dict(path='bigbytes_data/bigbytes.py'),
+                    file_source=dict(path='mage_data/bigbytes.py'),
                 )
                 self.assertTrue(block.is_from_another_project())
 
@@ -318,7 +318,7 @@ class ProjectPlatformAccessibleTest(ProjectPlatformMixin, BlockWithProjectPlatfo
             ):
                 block = self.build_block()
                 block._configuration = dict(
-                    file_source=dict(path='test/bigbytes_platform/bigbytes.py'),
+                    file_source=dict(path='test/mage_platform/bigbytes.py'),
                 )
                 block._project_platform_activated = True
                 self.assertFalse(block.is_from_another_project())
@@ -326,65 +326,65 @@ class ProjectPlatformAccessibleTest(ProjectPlatformMixin, BlockWithProjectPlatfo
     def test_get_file_path_from_source(self):
         block = self.build_block()
         block._configuration = dict(
-            file_source=dict(path='test/bigbytes_platform/bigbytes.py'),
+            file_source=dict(path='test/mage_platform/bigbytes.py'),
         )
         with patch.object(block, 'is_from_another_project', lambda: True):
-            self.assertEqual(block.get_file_path_from_source(), 'test/bigbytes_platform/bigbytes.py')
+            self.assertEqual(block.get_file_path_from_source(), 'test/mage_platform/bigbytes.py')
 
     def test_get_project_path_from_source(self):
         block = self.build_block()
 
         block._configuration = dict(
-            file_source=dict(project_path='bigbytes_platform/bigbytes.py'),
+            file_source=dict(project_path='mage_platform/bigbytes.py'),
         )
         with patch.object(block, 'is_from_another_project', lambda: True):
             self.assertEqual(
                 block.get_project_path_from_source(),
-                os.path.join(base_repo_path(), 'bigbytes_platform/bigbytes.py'),
+                os.path.join(base_repo_path(), 'mage_platform/bigbytes.py'),
             )
 
         block._configuration = dict(
-            file_source=dict(project_path='/bigbytes_platform/bigbytes.py'),
+            file_source=dict(project_path='/mage_platform/bigbytes.py'),
         )
         with patch.object(block, 'is_from_another_project', lambda: True):
             self.assertEqual(
                 block.get_project_path_from_source(),
-                '/bigbytes_platform/bigbytes.py',
+                '/mage_platform/bigbytes.py',
             )
 
     def test_get_project_path_from_project_name(self):
         block = self.build_block()
-        # self.assertIsNone(block.get_project_path_from_project_name('test/bigbytes_platform/dir1'))
+        # self.assertIsNone(block.get_project_path_from_project_name('test/mage_platform/dir1'))
 
         self.assertEqual(
-            block.get_project_path_from_project_name('bigbytes_data/dir1'),
-            os.path.join(base_repo_path(), 'bigbytes_data/dir1'),
+            block.get_project_path_from_project_name('mage_data/dir1'),
+            os.path.join(base_repo_path(), 'mage_data/dir1'),
         )
 
     def test_get_base_project_from_source(self):
         block = self.build_block()
         block._configuration = dict(
-            dbt_project_name='bigbytes_data/fire',
-            file_source=dict(path='bigbytes_data/bigbytes.py'),
+            dbt_project_name='mage_data/fire',
+            file_source=dict(path='mage_data/bigbytes.py'),
         )
         self.assertEqual(
             block.get_base_project_from_source(),
-            os.path.join(base_repo_path(), 'bigbytes_data'),
+            os.path.join(base_repo_path(), 'mage_data'),
         )
 
     def test_build_file(self):
         block = self.build_block()
         block._configuration = dict(
-            file_source=dict(path='bigbytes_data/utils/bigbytes.py'),
+            file_source=dict(path='mage_data/utils/bigbytes.py'),
         )
         file = block.build_file()
         self.assertEqual(str(file.filename), 'utils/bigbytes.py')
-        self.assertEqual(str(file.dir_path), 'bigbytes_data')
+        self.assertEqual(str(file.dir_path), 'mage_data')
         self.assertEqual(str(file.repo_path), base_repo_path())
 
     def test_hydrate_dbt_nodes(self):
         block = self.build_block()
-        block.project_path = os.path.join(base_repo_path(), 'bigbytes_data/dbt/demo')
+        block.project_path = os.path.join(base_repo_path(), 'mage_data/dbt/demo')
 
         nodes_default = 'fire'
         nodes_init = [
@@ -396,16 +396,16 @@ class ProjectPlatformAccessibleTest(ProjectPlatformMixin, BlockWithProjectPlatfo
         ]
 
         # block._configuration = dict(
-        #     file_source=dict(path='bigbytes_platform/utils/bigbytes.py'),
+        #     file_source=dict(path='mage_platform/utils/bigbytes.py'),
         # )
         # self.assertEqual(block.hydrate_dbt_nodes(nodes_default, nodes_init), nodes_default)
 
         block._configuration = dict(
-            file_source=dict(path='bigbytes_data/utils/bigbytes.py'),
+            file_source=dict(path='mage_data/utils/bigbytes.py'),
         )
         self.assertEqual(block.hydrate_dbt_nodes(nodes_default, nodes_init), dict(
             ice=dict(
-                file_path='test/bigbytes_data/dbt/demo/models/users.sql',
+                file_path='test/mage_data/dbt/demo/models/users.sql',
                 original_file_path='models/users.sql',
                 upstream_nodes=set(['water']),
             ),
@@ -413,7 +413,7 @@ class ProjectPlatformAccessibleTest(ProjectPlatformMixin, BlockWithProjectPlatfo
 
     def test_node_uuids_mapping(self):
         block = self.build_block()
-        block.project_path = os.path.join(base_repo_path(), 'bigbytes_data/dbt/demo')
+        block.project_path = os.path.join(base_repo_path(), 'mage_data/dbt/demo')
 
         nodes_init = [
             dict(
@@ -425,29 +425,29 @@ class ProjectPlatformAccessibleTest(ProjectPlatformMixin, BlockWithProjectPlatfo
 
         # default_value = 'fire'
         # block._configuration = dict(
-        #     file_source=dict(path='bigbytes_platform/utils/bigbytes.py'),
+        #     file_source=dict(path='mage_platform/utils/bigbytes.py'),
         # )
         # self.assertEqual(block.node_uuids_mapping(default_value, None), default_value)
 
         block._configuration = dict(
-            file_source=dict(path='bigbytes_data/utils/bigbytes.py'),
+            file_source=dict(path='mage_data/utils/bigbytes.py'),
         )
         nodes = block.hydrate_dbt_nodes(None, nodes_init)
         self.assertEqual(block.node_uuids_mapping(None, nodes), dict(
-            ice='bigbytes_data/dbt/demo/models/users',
+            ice='mage_data/dbt/demo/models/users',
         ))
 
     def test_build_dbt_block(self):
         block = self.build_block()
         block._configuration = dict(
-            file_source=dict(path='bigbytes_data/utils/bigbytes.py'),
+            file_source=dict(path='mage_data/utils/bigbytes.py'),
         )
-        block.project_path = os.path.join(base_repo_path(), 'bigbytes_data/dbt/demo')
+        block.project_path = os.path.join(base_repo_path(), 'mage_data/dbt/demo')
 
-        os.makedirs(os.path.join(base_repo_path(), 'bigbytes_data/dbt/demo/models'), exist_ok=True)
-        with open(os.path.join(base_repo_path(), 'bigbytes_data/dbt/demo/models/users.sql'), 'w') as f:
+        os.makedirs(os.path.join(base_repo_path(), 'mage_data/dbt/demo/models'), exist_ok=True)
+        with open(os.path.join(base_repo_path(), 'mage_data/dbt/demo/models/users.sql'), 'w') as f:
             f.write('')
-        with open(os.path.join(base_repo_path(), 'bigbytes_data/dbt/dbt_project.yml'), 'w') as f:
+        with open(os.path.join(base_repo_path(), 'mage_data/dbt/dbt_project.yml'), 'w') as f:
             f.write('')
 
         name = self.faker.unique.name()
@@ -468,8 +468,8 @@ class ProjectPlatformAccessibleTest(ProjectPlatformMixin, BlockWithProjectPlatfo
         self.assertEqual(block.type, BlockType.DBT)
         self.assertEqual(block.configuration, dict(
             file_source=dict(
-                path='bigbytes_data/dbt/demo/models/users.sql',
-                project_path='bigbytes_data/dbt',
+                path='mage_data/dbt/demo/models/users.sql',
+                project_path='mage_data/dbt',
             ),
         ))
         self.assertEqual(block.language, BlockLanguage.SQL)

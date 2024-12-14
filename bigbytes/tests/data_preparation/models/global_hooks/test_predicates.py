@@ -102,8 +102,8 @@ class PredicatesTest(AsyncDBTestCase):
             ),
             (
                 PredicateValueDataType.DICTIONARY,
-                dict(bigbytes=value),
-                dict(bigbytes=value, more=value),
+                dict(mage=value),
+                dict(mage=value, more=value),
             ),
             (
                 PredicateValueDataType.FLOAT,

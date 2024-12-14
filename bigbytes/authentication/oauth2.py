@@ -9,7 +9,7 @@ from bigbytes.orchestration.db.models.oauth import (
     Oauth2Application,
     User,
 )
-from bigbytes.settings import JWT_SECRET, BIGBYTES_ACCESS_TOKEN_EXPIRY_TIME
+from bigbytes.settings import JWT_SECRET, MAGE_ACCESS_TOKEN_EXPIRY_TIME
 
 JWT_ALGORITHM = 'HS256'
 
@@ -22,7 +22,7 @@ def generate_access_token(
     duration: int = None,
 ) -> Oauth2AccessToken:
     if duration is None:
-        duration = BIGBYTES_ACCESS_TOKEN_EXPIRY_TIME
+        duration = MAGE_ACCESS_TOKEN_EXPIRY_TIME
 
     if not token:
         token = secrets.token_urlsafe()

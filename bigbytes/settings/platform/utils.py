@@ -101,7 +101,7 @@ def get_pipeline_config_path(
     if not context_data.get('repo_paths_all'):
         repo_paths_all = build_repo_path_for_all_projects(
             context_data=context_data,
-            bigbytes_projects_only=True,
+            mage_projects_only=True,
         )
         context_data['repo_paths_all'] = repo_paths_all
     else:
@@ -127,7 +127,7 @@ def get_pipeline_config_path(
         if full_filename:
             paths = get_repo_paths_for_file_path(
                 file_path=full_filename,
-                bigbytes_projects_only=True,
+                mage_projects_only=True,
                 repo_paths_all=repo_paths_all,
             )
             match_config_path = full_filename
@@ -146,7 +146,7 @@ def full_paths_for_all_projects(
     if not repo_paths_all:
         repo_paths_all = build_repo_path_for_all_projects(
             context_data=context_data,
-            bigbytes_projects_only=True,
+            mage_projects_only=True,
         )
     return [d.get(
         'full_path',

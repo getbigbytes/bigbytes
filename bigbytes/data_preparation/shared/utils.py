@@ -8,7 +8,7 @@ def get_template_vars(include_python_libraries: Dict = None) -> Dict[str, Callab
     from bigbytes.data_preparation.shared.secrets import get_secret_value
     no_db_kwargs = get_template_vars_no_db(include_python_libraries=include_python_libraries)
 
-    kwargs = dict(bigbytes_secret_var=get_secret_value)
+    kwargs = dict(mage_secret_var=get_secret_value)
 
     return merge_dict(no_db_kwargs, kwargs)
 

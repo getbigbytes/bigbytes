@@ -2,6 +2,7 @@ import { Page, expect } from '@playwright/test';
 
 import { FeatureUUIDEnum } from '@interfaces/ProjectType';
 import { capitalizeRemoveUnderscoreLower } from '@utils/string';
+import { ignoreKeys } from '@utils/hash';
 
 export type TSettingFeaturesToDisable = Partial<
   Record<FeatureUUIDEnum, boolean>
@@ -11,8 +12,17 @@ function getSettingsToEnable(
   settingFeaturesToDisable: TSettingFeaturesToDisable,
 ): FeatureUUIDEnum[] {
   const settingsToEnable: FeatureUUIDEnum[] = [];
+  const featuresFiltered = ignoreKeys(FeatureUUIDEnum, [
+    'CODE_BLOCK_V2',
+    'COMMAND_CENTER',
+    'COMPUTE_MANAGEMENT',
+    'CUSTOM_DESIGN',
+    'DBT_V2',
+    'GLOBAL_HOOKS',
+    'NOTEBOOK_BLOCK_OUTPUT_SPLIT_VIEW',
+]);
 
-  for (const feature in FeatureUUIDEnum) {
+  for (const feature in featuresFiltered) {
     if (!settingFeaturesToDisable[
       FeatureUUIDEnum[feature as keyof typeof FeatureUUIDEnum]
     ]) {
@@ -36,12 +46,12 @@ export async function enableSettings(
   await page.waitForLoadState();
   await expect(page.getByText('Add new block v2')).toBeVisible();
 
-  const helpImproveBigbytesToggle = page.locator('#help_improve_bigbytes_toggle');
-  const helpImproveBigbytesToggleInput = page.locator('#help_improve_bigbytes_toggle_input');
-  if (await helpImproveBigbytesToggleInput.isChecked()) {
-    await helpImproveBigbytesToggle.click();
+  const helpImproveMageToggle = page.locator('#help_improve_mage_toggle');
+  const helpImproveMageToggleInput = page.locator('#help_improve_mage_toggle_input');
+  if (await helpImproveMageToggleInput.isChecked()) {
+    await helpImproveMageToggle.click();
   }
-  await expect(helpImproveBigbytesToggleInput).not.toBeChecked();
+  await expect(helpImproveMageToggleInput).not.toBeChecked();
 
 
   const features = getSettingsToEnable(settingFeaturesToDisable);

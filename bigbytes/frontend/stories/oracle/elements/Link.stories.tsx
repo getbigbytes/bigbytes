@@ -28,7 +28,7 @@ Regular.args = {
   bold: false,
   children: 'Link',
   disabled: false,
-  href: 'https://www.bigbytes.io',
+  href: 'https://www.bigbytes.ai',
   inline: false,
   muted: false,
   noHoverUnderline: false,

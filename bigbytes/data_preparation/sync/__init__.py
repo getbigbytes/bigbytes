@@ -5,9 +5,9 @@ from dataclasses import dataclass
 from bigbytes.shared.config import BaseConfig
 from bigbytes.shared.enum import StrEnum
 
-GIT_ACCESS_TOKEN_SECRET_NAME = 'bigbytes_git_access_token'
-GIT_SSH_PRIVATE_KEY_SECRET_NAME = 'bigbytes_git_ssh_private_key_b64'
-GIT_SSH_PUBLIC_KEY_SECRET_NAME = 'bigbytes_git_ssh_public_key_b64'
+GIT_ACCESS_TOKEN_SECRET_NAME = 'mage_git_access_token'
+GIT_SSH_PRIVATE_KEY_SECRET_NAME = 'mage_git_ssh_private_key_b64'
+GIT_SSH_PUBLIC_KEY_SECRET_NAME = 'mage_git_ssh_public_key_b64'
 
 
 class AuthType(StrEnum):

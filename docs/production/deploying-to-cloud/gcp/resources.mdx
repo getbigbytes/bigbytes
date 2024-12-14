@@ -19,7 +19,7 @@ Terraform will perform the following actions:
       + autogenerate_revision_name = true
       + id                         = (known after apply)
       + location                   = "us-west2"
-      + name                       = "bigbytes-data-prep"
+      + name                       = "mage-data-prep"
       + project                    = (known after apply)
       + status                     = (known after apply)
 
@@ -95,7 +95,7 @@ Terraform will perform the following actions:
       + member   = "allUsers"
       + project  = (known after apply)
       + role     = "roles/run.invoker"
-      + service  = "bigbytes-data-prep"
+      + service  = "mage-data-prep"
     }
 
   # google_compute_backend_service.backend will be created
@@ -105,11 +105,11 @@ Terraform will perform the following actions:
       + fingerprint                     = (known after apply)
       + id                              = (known after apply)
       + load_balancing_scheme           = "EXTERNAL"
-      + name                            = "bigbytes-data-prep-backend"
+      + name                            = "mage-data-prep-backend"
       + port_name                       = "http"
       + project                         = (known after apply)
       + protocol                        = "HTTP"
-      + security_policy                 = "bigbytes-data-prep-security-policy"
+      + security_policy                 = "mage-data-prep-security-policy"
       + self_link                       = (known after apply)
       + session_affinity                = (known after apply)
       + timeout_sec                     = 30
@@ -162,7 +162,7 @@ Terraform will perform the following actions:
       + address            = (known after apply)
       + creation_timestamp = (known after apply)
       + id                 = (known after apply)
-      + name               = "bigbytes-data-prep-service-ip"
+      + name               = "mage-data-prep-service-ip"
       + project            = (known after apply)
       + self_link          = (known after apply)
     }
@@ -174,7 +174,7 @@ Terraform will perform the following actions:
       + ip_protocol           = (known after apply)
       + label_fingerprint     = (known after apply)
       + load_balancing_scheme = "EXTERNAL"
-      + name                  = "bigbytes-data-prep-frontend"
+      + name                  = "mage-data-prep-frontend"
       + network               = (known after apply)
       + port_range            = "80"
       + project               = (known after apply)
@@ -187,14 +187,14 @@ Terraform will perform the following actions:
   # google_compute_region_network_endpoint_group.cloudrun_neg will be created
   + resource "google_compute_region_network_endpoint_group" "cloudrun_neg" {
       + id                    = (known after apply)
-      + name                  = "bigbytes-data-prep-neg"
+      + name                  = "mage-data-prep-neg"
       + network_endpoint_type = "SERVERLESS"
       + project               = (known after apply)
       + region                = "us-west2"
       + self_link             = (known after apply)
 
       + cloud_run {
-          + service = "bigbytes-data-prep"
+          + service = "mage-data-prep"
         }
     }
 
@@ -202,7 +202,7 @@ Terraform will perform the following actions:
   + resource "google_compute_security_policy" "policy" {
       + fingerprint = (known after apply)
       + id          = (known after apply)
-      + name        = "bigbytes-data-prep-security-policy"
+      + name        = "mage-data-prep-security-policy"
       + project     = (known after apply)
       + self_link   = (known after apply)
       + type        = (known after apply)
@@ -254,7 +254,7 @@ Terraform will perform the following actions:
   + resource "google_compute_target_http_proxy" "http_proxy" {
       + creation_timestamp = (known after apply)
       + id                 = (known after apply)
-      + name               = "bigbytes-data-prep-http-proxy"
+      + name               = "mage-data-prep-http-proxy"
       + project            = (known after apply)
       + proxy_bind         = (known after apply)
       + proxy_id           = (known after apply)
@@ -269,7 +269,7 @@ Terraform will perform the following actions:
       + fingerprint        = (known after apply)
       + id                 = (known after apply)
       + map_id             = (known after apply)
-      + name               = "bigbytes-data-prep-urlmap"
+      + name               = "mage-data-prep-urlmap"
       + project            = (known after apply)
       + self_link          = (known after apply)
     }
@@ -280,7 +280,7 @@ Terraform will perform the following actions:
       + etag        = (known after apply)
       + id          = (known after apply)
       + location    = "us-west2-a"
-      + name        = "bigbytes-data-prep"
+      + name        = "mage-data-prep"
       + project     = (known after apply)
       + tier        = "BASIC_HDD"
       + zone        = (known after apply)
@@ -347,7 +347,7 @@ Terraform will perform the following actions:
       + ip_cidr_range  = "10.8.0.0/28"
       + max_throughput = 300
       + min_throughput = 200
-      + name           = "bigbytes-data-prep-connector"
+      + name           = "mage-data-prep-connector"
       + network        = "default"
       + project        = (known after apply)
       + region         = "us-west2"

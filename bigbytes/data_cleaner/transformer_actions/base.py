@@ -163,7 +163,7 @@ class BaseAction:
                     'type': 'feature',
                     'id': 1,
                     'feature': {
-                        'uuid': 'bigbytes',
+                        'uuid': 'mage',
                     },
                 }
             """

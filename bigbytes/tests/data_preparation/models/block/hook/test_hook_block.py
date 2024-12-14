@@ -36,7 +36,7 @@ class HookBlockTest(BaseApiTestCase):
             BlockType.HOOK,
             hook=self.hook,
         )
-        global_vars = dict(bigbytes=1)
+        global_vars = dict(mage=1)
 
         with patch.object(block.hook, 'run') as mock_run:
             block.execute_sync(global_vars=global_vars)
@@ -48,7 +48,7 @@ class HookBlockTest(BaseApiTestCase):
                 context={},
                 env=ENV_TEST_BIGBYTES,
                 error_on_failure=True,
-                bigbytes=1,
+                mage=1,
                 pipeline_uuid='',
                 poll_interval=10,
                 strategies=[HookStrategy.RAISE],
@@ -67,9 +67,9 @@ class HookBlockTest(BaseApiTestCase):
             BlockType.HOOK,
             hook=self.hook,
         )
-        global_vars = dict(bigbytes=1)
+        global_vars = dict(mage=1)
 
-        self.hook.status = HookStatus.load(error=Exception('bigbytes'), strategy=HookStrategy.RAISE)
+        self.hook.status = HookStatus.load(error=Exception('mage'), strategy=HookStrategy.RAISE)
 
         with patch.object(block.hook, 'run') as mock_run:
             error = None
@@ -78,7 +78,7 @@ class HookBlockTest(BaseApiTestCase):
             except Exception as err:
                 error = err
 
-            self.assertEqual(str(error), 'bigbytes')
+            self.assertEqual(str(error), 'mage')
 
             mock_run.assert_called_once_with(
                 block_uuid=block.uuid,
@@ -87,7 +87,7 @@ class HookBlockTest(BaseApiTestCase):
                 context={},
                 env=ENV_TEST_BIGBYTES,
                 error_on_failure=True,
-                bigbytes=1,
+                mage=1,
                 pipeline_uuid='',
                 poll_interval=10,
                 strategies=[HookStrategy.RAISE],
@@ -95,7 +95,7 @@ class HookBlockTest(BaseApiTestCase):
             )
 
             self.hook.status = HookStatus.load(
-                error=Exception('bigbytes'),
+                error=Exception('mage'),
                 strategy=HookStrategy.CONTINUE,
             )
-            self.assertEqual(block.execute_sync(global_vars=global_vars)['output'], ['bigbytes'])
+            self.assertEqual(block.execute_sync(global_vars=global_vars)['output'], ['mage'])

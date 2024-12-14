@@ -343,7 +343,7 @@ ${BUILD_CODE_SNIPPET_PREVIEW(pipelineUUID, selectedBlock?.uuid, uuid)}`;
         <Text bold large>
           For Python (
           <Link
-            href="https://docs.bigbytes.io/production/configuring-production-settings/runtime-variable"
+            href="https://docs.bigbytes.ai/production/configuring-production-settings/runtime-variable"
             large
             openNewWindow
             primary
@@ -362,7 +362,7 @@ ${BUILD_CODE_SNIPPET_PREVIEW(pipelineUUID, selectedBlock?.uuid, uuid)}`;
         <Text bold large>
           For SQL (
           <Link
-            href="https://docs.bigbytes.io/guides/sql-blocks#variables"
+            href="https://docs.bigbytes.ai/guides/sql-blocks#variables"
             large
             openNewWindow
             primary
@@ -381,7 +381,7 @@ ${BUILD_CODE_SNIPPET_PREVIEW(pipelineUUID, selectedBlock?.uuid, uuid)}`;
         <Text bold large>
           For R (
           <Link
-            href="https://docs.bigbytes.io/guides/r-blocks#runtime-variables"
+            href="https://docs.bigbytes.ai/guides/r-blocks#runtime-variables"
             large
             openNewWindow
             primary

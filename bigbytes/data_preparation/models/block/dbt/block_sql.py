@@ -217,7 +217,7 @@ class DBTBlockSQL(DBTBlock, ProjectPlatformAccessible):
                     downstream_nodes.add(unique_id)
                     nodes[upstream_node]['downstream_nodes'] = downstream_nodes
 
-        # map dbt unique_id to bigbytes uuid
+        # map dbt unique_id to mage uuid
         uuids_default = {
             unique_id: clean_name(
                 remove_extension_from_filename(node['file_path']),
@@ -227,7 +227,7 @@ class DBTBlockSQL(DBTBlock, ProjectPlatformAccessible):
         }
         uuids = self.node_uuids_mapping(uuids_default, nodes)
 
-        # replace dbt unique_ids with bigbytes uuids
+        # replace dbt unique_ids with mage uuids
         nodes = {
             uuids[unique_id]: {
                 'file_path': node['file_path'],

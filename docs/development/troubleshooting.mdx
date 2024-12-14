@@ -11,7 +11,7 @@ To temporarily fix this, open the `/terminal` page in Bigbytes.
 Then type the following command press enter to run it:
 
 ```bash
-rm -rf bigbytes_data/[project_name]/pipelines/[pipeline_name]/.variables
+rm -rf mage_data/[project_name]/pipelines/[pipeline_name]/.variables
 ```
 
 <Info>Change `[project_name]` to your Bigbytes project name and change `[pipeline_name]` to the name of the pipeline that is freezing the browser.</Info>
@@ -34,7 +34,7 @@ Sometimes, upstream data is out of our contol. If we're expecting a column in a 
 
 <Frame><img alt="Oh no" src="https://media0.giphy.com/media/t1RCtCTlFUhby/200w.gif" /></Frame>
 
-Thankfully, [Bigbytes Community](https://www.bigbytes.io/chat) member [Josh Pachner](https://bigbytes.slack.com/team/U05B9DLK0N7) has a solution.
+Thankfully, [Bigbytes Community](https://www.bigbytes.ai/chat) member [Josh Pachner](https://bigbytes.slack.com/team/U05B9DLK0N7) has a solution.
 
 Say you have an upstream block that looks like:
 
@@ -89,7 +89,7 @@ Use the `-v` command in your `docker run` command to mount the directory contain
 ```bash
 docker run -it -p 6789:6789
     -v /Users/dragon/secrets:/home/secrets \
-    -v $(pwd):/home/src bigbytes/bigbytes \
+    -v $(pwd):/home/src digitranslab/bigbytes \
     /app/run_app.sh bigbytes start [project_name]
 ```
 
@@ -98,7 +98,7 @@ or, using `docker compose`, add a volume mount to your Bigbytes service. The fol
 ```yaml
 services:
   bigbytes:
-    image: bigbytes/bigbytes:latest
+    image: digitranslab/bigbytes:latest
     ...
     volumes:
       - ~/.aws:/root/.aws

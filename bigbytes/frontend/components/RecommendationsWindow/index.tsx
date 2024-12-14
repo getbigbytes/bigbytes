@@ -8,7 +8,7 @@ import BlockType, {
 import Button from '@oracle/elements/Button';
 import Flex from '@oracle/components/Flex';
 import FlexContainer from '@oracle/components/FlexContainer';
-import BigbytesIcon from '@oracle/icons/custom/Bigbytes8Bit';
+import MageIcon from '@oracle/icons/custom/Bigbytes8Bit';
 import Select from '@oracle/elements/Inputs/Select';
 import Spacing from '@oracle/elements/Spacing';
 import Spinner from '@oracle/components/Spinner';
@@ -67,7 +67,7 @@ function RecommendationsWindow({
       <WindowHeaderStyle>
         <Flex alignItems="center">
           <div>
-            <BigbytesIcon />
+            <MageIcon />
           </div>
           <Spacing pr={1} />
           <Text

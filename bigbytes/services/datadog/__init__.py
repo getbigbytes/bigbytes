@@ -19,7 +19,7 @@ def create_event(title, text, tags={}):
     )
 
 
-def gauge(metric, value, host='bigbytes', tags={}):
+def gauge(metric, value, host='mage', tags={}):
     return api.Metric.send(
         host=host,
         metric=metric,
@@ -37,7 +37,7 @@ def increment(metric, tags={}, value=1):
     ])
 
 
-def create_metrics(metrics, host='bigbytes', metric_type='count'):
+def create_metrics(metrics, host='mage', metric_type='count'):
     # Format of argument
     # metrics = [
     #     ('metric', 'value', 'tags'),
@@ -52,7 +52,7 @@ def create_metrics(metrics, host='bigbytes', metric_type='count'):
     return api.Metric.send(metrics=arr)
 
 
-def create_metric(metric, value, host='bigbytes', tags={}):
+def create_metric(metric, value, host='mage', tags={}):
     return api.Metric.send(
         host=host,
         metric=metric,
@@ -64,7 +64,7 @@ def create_metric(metric, value, host='bigbytes', tags={}):
     )
 
 
-def histogram(metric, value, host='bigbytes', tags={}):
+def histogram(metric, value, host='mage', tags={}):
     return api.Metric.send(
         host=host,
         metric=metric,
@@ -76,7 +76,7 @@ def histogram(metric, value, host='bigbytes', tags={}):
     )
 
 
-def timing(metric, value, host='bigbytes', tags={}):
+def timing(metric, value, host='mage', tags={}):
     return api.Metric.send(
         host=host,
         metric=metric,

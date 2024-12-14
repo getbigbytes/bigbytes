@@ -7,7 +7,7 @@ from bigbytes.data_cleaner.transformer_actions.constants import ImputationStrate
     """
     Execute Transformer Action: ActionType.IMPUTE
 
-    Docs: https://docs.bigbytes.io/guides/transformer-blocks#fill-in-missing-values
+    Docs: https://docs.bigbytes.ai/guides/transformer-blocks#fill-in-missing-values
     """
     action = build_transformer_action(
         df,

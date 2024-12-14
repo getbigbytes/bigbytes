@@ -53,7 +53,7 @@ class GCSStorage(BaseStorage):
         include a "delimiter" argument because it would increase load times to unacceptable levels.
 
         Example block output path in GCS:
-            gs://bigbytes_demo/pipelines/example_pipeline/.variables/example_block/output_0/
+            gs://mage_demo/pipelines/example_pipeline/.variables/example_block/output_0/
         """
         try:
             blobs = self.bucket.list_blobs(

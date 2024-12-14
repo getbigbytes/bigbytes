@@ -36,7 +36,7 @@ class BlockExecutorTest(BaseApiTestCase):
 
         self.pipeline.get_block.return_value = self.block
         self.pipeline.repo_config.retry_config = {'retries': 3, 'delay': 1}
-        self.pipeline.repo_config.variables_dir = os.path.join(os.getcwd(), 'bigbytes_data')
+        self.pipeline.repo_config.variables_dir = os.path.join(os.getcwd(), 'mage_data')
 
         self.logger_manager.logger = self.logger
         self.logger_manager.output_logs_to_destination = MagicMock()
@@ -293,7 +293,7 @@ class BlockExecutorTest(BaseApiTestCase):
             block_uuid=hook.uuid,
             metrics=dict(
                 hook=hook.to_dict(include_all=True),
-                hook_variables=dict(bigbytes=1),
+                hook_variables=dict(mage=1),
             ),
             pipeline_run_id=pipeline_run.id,
         )

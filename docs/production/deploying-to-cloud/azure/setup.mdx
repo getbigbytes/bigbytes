@@ -53,7 +53,7 @@ completed, your terminal will output something like this:
     "state": "Enabled",
     "tenantId": "7712a6c4-1684-402f-8d1a-f1bb656e5d40",
     "user": {
-      "name": "eng@bigbytes.io",
+      "name": "eng@bigbytes.com",
       "type": "user"
     }
   }
@@ -104,7 +104,7 @@ you can change the `default` value under `app_name`:
 variable "app_name" {
   type        = string
   description = "Application Name"
-  default     = "bigbytes-data-prep"
+  default     = "mage-data-prep"
 }
 ```
 
@@ -117,7 +117,7 @@ you can change the `default` value under `docker_image`:
 ```js
 variable "docker_image" {
   description = "Docker image url."
-  default     = "bigbytes/bigbytes:latest"
+  default     = "digitranslab/bigbytes:latest"
 }
 ```
 
@@ -236,7 +236,7 @@ resource "azurerm_container_group" "container_group" {
 
     Outputs:
 
-    id = "/subscriptions/d17fcd12-b89c-4f81-a221-40b8e768a0e8/resourceGroups/bigbytes-data-prep2-production/providers/Microsoft.ContainerInstance/containerGroups/bigbytes-data-prep-production"
+    id = "/subscriptions/d17fcd12-b89c-4f81-a221-40b8e768a0e8/resourceGroups/mage-data-prep2-production/providers/Microsoft.ContainerInstance/containerGroups/mage-data-prep-production"
     ip = "20.3.85.62"
     ```
 
@@ -255,7 +255,7 @@ After Bigbytes is running in your cloud, you can update the Bigbytes Docker imag
 version by running the following command in your CLI tool:
 
 ```bash
-az container restart --name bigbytes-data-prep-production --resource-group bigbytes-data-prep-production
+az container restart --name mage-data-prep-production --resource-group mage-data-prep-production
 ```
 
 ---
@@ -269,7 +269,7 @@ address to the above mentioned security group.
 
 In order to access Bigbytes on Azure from another local workstation, you must add
 that IP address to the security group named
-`bigbytes-data-prep-production-nsg-public`.
+`mage-data-prep-production-nsg-public`.
 
 > Security group name
 >

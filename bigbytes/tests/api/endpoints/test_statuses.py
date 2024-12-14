@@ -86,8 +86,8 @@ class StatusWithProjectPlatformAPIEndpointTest(BaseAPIEndpointTest, ProjectPlatf
 
 def __assert_after_list(self, result, **kwargs):
     for key, value in [
-        ('repo_path', os.path.join(base_repo_path(), 'bigbytes_platform')),
-        ('repo_path_relative', 'test/bigbytes_platform'),
+        ('repo_path', os.path.join(base_repo_path(), 'mage_platform')),
+        ('repo_path_relative', 'test/mage_platform'),
         ('repo_path_relative_root', 'test'),
         ('repo_path_root', base_repo_path()),
     ]:

@@ -1,4 +1,4 @@
-FROM bigbytes/bigbytes:latest
+FROM digitranslab/bigbytes:latest
 ARG PIP=pip3
 
 # Add Debian Bullseye repository
@@ -13,4 +13,4 @@ RUN rm /etc/apt/sources.list.d/bullseye.list
 
 RUN ${PIP} install pyspark
 
-ENV BIGBYTES_DATA_DIR=
+ENV MAGE_DATA_DIR=

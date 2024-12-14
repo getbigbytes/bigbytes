@@ -127,7 +127,7 @@ class OidcProvider(OauthProvider, SsoProvider):
     async def get_user_info(self, access_token: str = None, **kwargs) -> Awaitable[Dict]:
         if access_token is None:
             raise Exception('Access token is required to fetch user info.')
-        bigbytes_roles = []
+        mage_roles = []
         async with aiohttp.ClientSession() as session:
             async with session.get(
                 self.userinfo_endpoint,
@@ -143,12 +143,12 @@ class OidcProvider(OauthProvider, SsoProvider):
         if hasattr(self, 'roles_mapping'):
             for group in userinfo_resp.get('user_roles', []):
                 if group in self.roles_mapping:
-                    bigbytes_roles.append(self.roles_mapping[group])
+                    mage_roles.append(self.roles_mapping[group])
         else:
-            bigbytes_roles.extend(userinfo_resp.get('user_roles', []))
+            mage_roles.extend(userinfo_resp.get('user_roles', []))
 
         return dict(
             email=email,
             username=userinfo_resp.get('preferred_username', email),
-            user_roles=bigbytes_roles,
+            user_roles=mage_roles,
         )

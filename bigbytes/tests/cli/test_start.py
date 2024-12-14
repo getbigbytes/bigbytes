@@ -48,14 +48,14 @@ class StartTests(TestCase):
     @mock.patch('bigbytes.cli.main.os.path.abspath')
     def test_start_with_project_path(self, mock_abspath, mock_start_sever):
         mock_abspath.side_effect = lambda x: x
-        result = runner.invoke(app, ['start', 'my_bigbytes_project'])
+        result = runner.invoke(app, ['start', 'my_mage_project'])
         mock_start_sever.assert_called_once_with(
             host='localhost',
             port='6789',
-            project='my_bigbytes_project',
+            project='my_mage_project',
             manage=False,
             dbt_docs=False
         )
         assert result.exit_code == 0
         assert ('Bigbytes is running at http://localhost:6789'
-                ' and serving project my_bigbytes_project') in result.output
+                ' and serving project my_mage_project') in result.output

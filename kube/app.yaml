@@ -40,7 +40,7 @@ metadata:
 spec:
   containers:
   - name: bigbytes-server
-    image: bigbytes/bigbytes:latest
+    image: digitranslab/bigbytes:latest
     ports:
     - containerPort: 6789
     volumeMounts:

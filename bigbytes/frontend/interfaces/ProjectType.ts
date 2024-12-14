@@ -12,9 +12,10 @@ export enum FeatureUUIDEnum {
   DBT_V2 = 'dbt_v2',
   GLOBAL_HOOKS = 'global_hooks',
   INTERACTIONS = 'interactions',
-  NOTEBOOK_BLOCK_OUTPUT_SPLIT_VIEW = 'notebook_block_output_split_view',
   LOCAL_TIMEZONE = 'display_local_timezone',
+  NOTEBOOK_BLOCK_OUTPUT_SPLIT_VIEW = 'notebook_block_output_split_view',
   OPERATION_HISTORY = 'operation_history',
+  POLARS = 'polars',
 }
 
 export enum ProjectTypeEnum {
@@ -88,11 +89,11 @@ export interface ProjectPipelinesType {
 }
 
 export type ProjectRequestPayloadType = {
-  deny_improve_bigbytes?: boolean;
+  deny_improve_mage?: boolean;
   features?: {
     [key: string]: boolean;
   };
-  help_improve_bigbytes?: boolean;
+  help_improve_mage?: boolean;
   openai_api_key?: string;
   pipelines?: ProjectPipelinesType;
 };
@@ -108,7 +109,7 @@ export default interface ProjectType {
   features_override?: {
     [key: string]: boolean;
   };
-  help_improve_bigbytes?: boolean;
+  help_improve_mage?: boolean;
   latest_version?: string;
   name?: string;
   openai_api_key?: string;

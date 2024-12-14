@@ -492,7 +492,7 @@ function GitActions({
                 switchBranch({
                   git_branch: {
                     name: e.target.value,
-                    remote: 'bigbytes-repo',
+                    remote: 'mage-repo',
                   },
                 });
               }}

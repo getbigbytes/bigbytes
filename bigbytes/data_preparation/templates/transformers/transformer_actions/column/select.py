@@ -3,7 +3,7 @@
     """
     Execute Transformer Action: ActionType.SELECT
 
-    Docs: https://docs.bigbytes.io/guides/transformer-blocks#select-columns
+    Docs: https://docs.bigbytes.ai/guides/transformer-blocks#select-columns
     """
     action = build_transformer_action(
         df,

@@ -79,8 +79,8 @@ from bigbytes.server.setup import initialize_globals
 from bigbytes.server.static.files import StaticFileHandler
 from bigbytes.server.subscriber import get_messages
 from bigbytes.server.terminal_server import (
-    BigbytesTermManager,
-    BigbytesUniqueTermManager,
+    MageTermManager,
+    MageUniqueTermManager,
     TerminalWebsocketServer,
 )
 from bigbytes.server.websocket_server import WebSocketServer
@@ -111,8 +111,8 @@ from bigbytes.settings import (
 from bigbytes.settings.keys import LDAP_ADMIN_USERNAME
 from bigbytes.settings.repo import (
     DEFAULT_BIGBYTES_DATA_DIR,
-    BIGBYTES_CLUSTER_TYPE_ENV_VAR,
-    BIGBYTES_PROJECT_TYPE_ENV_VAR,
+    MAGE_CLUSTER_TYPE_ENV_VAR,
+    MAGE_PROJECT_TYPE_ENV_VAR,
     get_metadata_path,
     get_repo_name,
     get_variables_dir,
@@ -243,9 +243,9 @@ def make_app(
         shell_command = 'bash'
         if os.name == 'nt':
             shell_command = 'cmd'
-    term_klass = BigbytesTermManager
+    term_klass = MageTermManager
     if USE_UNIQUE_TERMINAL:
-        term_klass = BigbytesUniqueTermManager
+        term_klass = MageUniqueTermManager
     term_manager = term_klass(shell_command=[shell_command])
 
     if template_dir is None:
@@ -846,8 +846,8 @@ if __name__ == '__main__':
     manage = args.manage_instance == '1'
     dbt_docs = args.dbt_docs_instance == '1'
     instance_type = os.getenv(ENV_VAR_INSTANCE_TYPE, args.instance_type)
-    project_type = os.getenv(BIGBYTES_PROJECT_TYPE_ENV_VAR, ProjectType.STANDALONE)
-    cluster_type = os.getenv(BIGBYTES_CLUSTER_TYPE_ENV_VAR)
+    project_type = os.getenv(MAGE_PROJECT_TYPE_ENV_VAR, ProjectType.STANDALONE)
+    cluster_type = os.getenv(MAGE_CLUSTER_TYPE_ENV_VAR)
 
     initialize_globals()
 

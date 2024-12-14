@@ -6,7 +6,7 @@ demo:
       host: host.docker.internal
       password: postgres
       port: 5432
-      schema: bigbytes_dbt
+      schema: mage_dbt
       type: postgres
       user: postgres
     dev:
@@ -14,11 +14,11 @@ demo:
       host: host.docker.internal
       password: postgres
       port: 5432
-      schema: bigbytes_dbt
+      schema: mage_dbt
       type: postgres
       user: postgres
     bigquery:
-      dataset: bigbytes_demo_dev
+      dataset: mage_demo_dev
       keyfile: bigquery_credentials.json
       method: service-account
       project: materia-284023

@@ -1,6 +1,6 @@
 from bigbytes.shared.enum import StrEnum
 
-DATABASE_CONNECTION_URL_ENV_VAR = 'BIGBYTES_DATABASE_CONNECTION_URL'
+DATABASE_CONNECTION_URL_ENV_VAR = 'MAGE_DATABASE_CONNECTION_URL'
 
 AWS_DB_SECRETS_NAME = 'AWS_DB_SECRETS_NAME'
 AZURE_SECRET_DB_CONN_URL = 'AZURE_SECRET_DB_CONN_URL'
@@ -15,7 +15,7 @@ PG_DB_NAME = 'DB_NAME'
 
 # ================================================
 
-PIPELINE_RUN_BIGBYTES_VARIABLES_KEY = '__bigbytes_variables'
+PIPELINE_RUN_BIGBYTES_VARIABLES_KEY = '__mage_variables'
 
 
 class Entity(StrEnum):

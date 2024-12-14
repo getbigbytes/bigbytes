@@ -1,7 +1,7 @@
 export enum GroupEnum {
   DATA_EXPORTER = 'data_exporter',
   DATA_LOADER = 'data_loader',
-  BIGBYTES_LIBRARY = 'bigbytes_library',
+  MAGE_LIBRARY = 'mage_library',
   TRANSFORMER = 'transformer',
   USER_LIBRARY = 'user_library',
 }

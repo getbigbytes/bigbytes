@@ -85,10 +85,10 @@ class GitBranchResource(GenericResource):
             if include_remote_branches:
                 try:
                     git_manager.fetch()
-                    bigbytes_remote = git_manager.origin
+                    mage_remote = git_manager.origin
                     arr += [
                         dict(name=ref.name)
-                        for ref in bigbytes_remote.refs
+                        for ref in mage_remote.refs
                     ]
                 except Exception:
                     logger.warning('Failed to fetch remote branches')
@@ -190,7 +190,7 @@ class GitBranchResource(GenericResource):
         if access_token:
             token = access_token.token
             user_from_api = api.get_user(token, provider=provider)
-            # Default to bigbytes user email if no email is returned from API
+            # Default to mage user email if no email is returned from API
             email = user_from_api.get('email')
             if email is None and user:
                 email = user.email

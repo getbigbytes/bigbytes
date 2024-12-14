@@ -37,7 +37,7 @@ export const CellStyle = styled.td<any>`
   align-items: center;
   justify-content: space-between;
 
-  border: 1px solid #00A99D;
+  border: 1px solid #1C1C1C;
   height: 100%;
 
   ${props => !props.noPadding && `

@@ -49,7 +49,7 @@ class AmazonS3(Destination):
             self.config.get('role_arn')
         ):
             # Assume IAM role and get credentials
-            role_session_name = self.config.get('role_session_name', 'bigbytes-data-integration')
+            role_session_name = self.config.get('role_session_name', 'mage-data-integration')
             sts_session = boto3.Session()
             sts_connection = sts_session.client('sts')
             assume_role_object = sts_connection.assume_role(
@@ -91,7 +91,7 @@ class AmazonS3(Destination):
 
         self.logger.info('Export data started', tags=tags)
 
-        # Add _bigbytes_created_at and _bigbytes_updated_at columns
+        # Add _mage_created_at and _mage_updated_at columns
         for r in record_data:
             r['record'] = update_record_with_internal_columns(r['record'])
 

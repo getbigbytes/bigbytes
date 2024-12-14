@@ -185,7 +185,7 @@ class ProjectResource(GenericResource):
             return self
 
         data = {}
-        should_log_project = self.model.get('help_improve_bigbytes') or False
+        should_log_project = self.model.get('help_improve_mage') or False
 
         if 'features' in payload:
             for k, v in payload.get('features', {}).items():
@@ -200,17 +200,17 @@ class ProjectResource(GenericResource):
                     features,
                 )
 
-        if 'help_improve_bigbytes' in payload:
-            if payload['help_improve_bigbytes']:
+        if 'help_improve_mage' in payload:
+            if payload['help_improve_mage']:
                 should_log_project = True
 
                 if not repo_config.project_uuid:
                     data['project_uuid'] = uuid.uuid4().hex
 
-            data['help_improve_bigbytes'] = payload['help_improve_bigbytes']
+            data['help_improve_mage'] = payload['help_improve_mage']
 
-        if 'deny_improve_bigbytes' in payload:
-            await UsageStatisticLogger().project_deny_improve_bigbytes(
+        if 'deny_improve_mage' in payload:
+            await UsageStatisticLogger().project_deny_improve_mage(
                 repo_config.project_uuid or data.get('project_uuid'),
             )
 

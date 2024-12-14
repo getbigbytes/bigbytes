@@ -7,7 +7,7 @@ class ProjectPresenter(BasePresenter):
         'features',
         'features_defined',
         'features_override',
-        'help_improve_bigbytes',
+        'help_improve_mage',
         'latest_version',
         'name',
         'openai_api_key',

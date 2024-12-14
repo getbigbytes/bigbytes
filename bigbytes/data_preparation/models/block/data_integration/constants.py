@@ -4,7 +4,7 @@ BLOCK_CATALOG_FILENAME = 'catalog.json'
 REPLICATION_METHOD_INCREMENTAL = 'INCREMENTAL'
 STATE_FILENAME = 'state.json'
 
-# Copied from: digitranslab/bigbytes_integrations/bigbytes_integrations/sources/constants.py
+# Copied from: bigbytes/bigbytes_integrations/bigbytes_integrations/sources/constants.py
 COLUMN_FORMAT_DATETIME = 'date-time'
 COLUMN_FORMAT_UUID = 'uuid'
 

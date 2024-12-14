@@ -82,7 +82,7 @@ def output_filename(index: int) -> str:
 
 
 def get_state_file_path(block, data_integration_uuid: str, stream: str) -> str:
-    # ~/.bigbytes_data/default_repo/pipelines/:pipeline_uuid/:block_uuid/:data_integration_uuid/:stream
+    # ~/.mage_data/default_repo/pipelines/:pipeline_uuid/:block_uuid/:data_integration_uuid/:stream
     full_path = os.path.join(
         block.pipeline.pipeline_variables_dir,
         block.uuid,
@@ -246,7 +246,7 @@ def output_full_path(
 
     filename = output_filename(index) if index is not None else None
     # Example:
-    # /root/.bigbytes_data/default_repo/pipelines/unified_pipeline/.variables
+    # /root/.mage_data/default_repo/pipelines/unified_pipeline/.variables
     # /_from_notebook/source_postgresql/postgresql/user_with_emails
     return variable_use.full_path(filename)
 
@@ -264,10 +264,10 @@ def get_streams_from_output_directory(
         from_notebook=from_notebook,
         stream=None,
     )
-    # /root/.bigbytes_data/default_repo/pipelines/unified_pipeline/.variables
+    # /root/.mage_data/default_repo/pipelines/unified_pipeline/.variables
     # /_from_notebook/source_postgresql/postgresql
     # or
-    # /root/.bigbytes_data/default_repo/pipelines/unified_pipeline/.variables
+    # /root/.mage_data/default_repo/pipelines/unified_pipeline/.variables
     # /_from_notebook/source_postgresql
     output_directory_path = output_full_path(
         data_integration_uuid=data_integration_uuid,

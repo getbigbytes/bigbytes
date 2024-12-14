@@ -13,7 +13,7 @@ Here is a [sample project](https://github.com/digitranslab/demo%5Fetl%5Fpipeline
 
 ```
 .
-├── bigbytes_data
+├── mage_data
 └── my-first-project
     ├── charts
     ├── custom
@@ -81,11 +81,11 @@ This might look like:
 
 ## Project data
 
-Project-level data is stored in the `bigbytes_data` directory— located at the same level as your project folder.
+Project-level data is stored in the `mage_data` directory— located at the same level as your project folder.
 
-`bigbytes_data` holds project-level cache data and stores the result of Block runs, which are then returned to the user via the UI. Here are the locations for various components of `bigbytes_data`:
+`mage_data` holds project-level cache data and stores the result of Block runs, which are then returned to the user via the UI. Here are the locations for various components of `mage_data`:
 
-- SQLite DB: `bigbytes_data/[project_folder]/bigbytes.db`
+- SQLite DB: `mage_data/[project_folder]/bigbytes.db`
   - The SQLite DB stores project-level metadata, such as pipeline and block run data. Here's a sample tree tables in the `tables` schema:
 
    ```
@@ -106,10 +106,10 @@ Project-level data is stored in the `bigbytes_data` directory— located at the 
         └── user_role
     ```
 
-  - You can connect to the SQLite DB like any other database. The JDBC URL `jdbc:sqlite:PATH`, where PATH is `/home/src/bigbytes_data/[project_folder]/bigbytes.db` for Docker installs or `~/.bigbytes_data/[project_folder]/bigbytes.db` for pip installs.
-- Block output: `bigbytes_data/[project_folder]/pipelines/[pipeline_uuid]/.variables/`
-- Pipeline and block logs: `bigbytes_data/[project_folder]/pipelines/[pipeline_uuid]/.logs/`
-- Cache: `bigbytes_data/[project_folder]/.cache`
+  - You can connect to the SQLite DB like any other database. The JDBC URL `jdbc:sqlite:PATH`, where PATH is `/home/src/mage_data/[project_folder]/bigbytes.db` for Docker installs or `~/.mage_data/[project_folder]/bigbytes.db` for pip installs.
+- Block output: `mage_data/[project_folder]/pipelines/[pipeline_uuid]/.variables/`
+- Pipeline and block logs: `mage_data/[project_folder]/pipelines/[pipeline_uuid]/.logs/`
+- Cache: `mage_data/[project_folder]/.cache`
 
 To clear project block output, cache data, or log data, consider performing routine operations on this folder. This might be helpful for reducing storage size, optimizing cost, or otherwise maintaining your Bigbytes project.
 

@@ -309,8 +309,8 @@ export const InferencePipeline = {
 };
 
 export const PipelineFrameworkInstance = {
-  name: 'Bigbytesr RAGer pipeline',
-  uuid: cleanName('Bigbytesr RAGer pipeline'),
+  name: 'Bigbyter RAGer pipeline',
+  uuid: cleanName('Bigbyter RAGer pipeline'),
   type: PipelineTypeEnum.PYTHON,
   execution_framework: PipelineExecutionFrameworkUUIDEnum.RAG,
   blocks: [

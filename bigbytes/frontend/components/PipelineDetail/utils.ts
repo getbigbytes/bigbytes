@@ -353,7 +353,7 @@ export function buildBlockFromFilePath({
   };
 
   if (isNewBlock) {
-    newBlock.content = `--Docs: https://docs.bigbytes.io/dbt/sources
+    newBlock.content = `--Docs: https://docs.bigbytes.ai/dbt/sources
 `;
   }
 

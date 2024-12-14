@@ -88,7 +88,7 @@ class BlockUtilsTest(BaseApiTestCase):
                 ),
                 dict(
                     variable_uuid='output_1',
-                    text_data=[dict(bigbytes=i) for i in range(3)],
+                    text_data=[dict(mage=i) for i in range(3)],
                 ),
             ],
             execution_partition=execution_partition,
@@ -100,7 +100,7 @@ class BlockUtilsTest(BaseApiTestCase):
             dynamic_block_values_and_metadata(self.block, execution_partition=execution_partition),
             (
                 [0, 1, 2],
-                [dict(bigbytes=0), dict(bigbytes=1), dict(bigbytes=2)],
+                [dict(mage=0), dict(mage=1), dict(mage=2)],
             ),
         )
 
@@ -112,7 +112,7 @@ class BlockUtilsTest(BaseApiTestCase):
             ),
             (
                 [0, 1, 2],
-                [dict(bigbytes=0), dict(bigbytes=1), dict(bigbytes=2)],
+                [dict(mage=0), dict(mage=1), dict(mage=2)],
             ),
         )
 
@@ -124,7 +124,7 @@ class BlockUtilsTest(BaseApiTestCase):
                 ),
                 dict(
                     variable_uuid='output_1',
-                    text_data=[dict(bigbytes=i) for i in range(3)],
+                    text_data=[dict(mage=i) for i in range(3)],
                 ),
             ],
             override=True,
@@ -135,7 +135,7 @@ class BlockUtilsTest(BaseApiTestCase):
             dynamic_block_values_and_metadata(self.block3),
             (
                 [0, 1, 2],
-                [dict(bigbytes=0), dict(bigbytes=1), dict(bigbytes=2)],
+                [dict(mage=0), dict(mage=1), dict(mage=2)],
             ),
         )
 

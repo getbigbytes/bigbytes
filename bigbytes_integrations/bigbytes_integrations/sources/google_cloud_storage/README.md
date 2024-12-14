@@ -35,6 +35,6 @@ universe_domain: str
 ### Get Started
 1. [Enable the Google Cloud Storage API](https://console.cloud.google.com/flows/enableapi?apiid=storage-api.googleapis.com)
 2. Create the service account. [Check out this guide](https://cloud.google.com/iam/docs/service-accounts-create)
-3. Download your credentials file, and add it to your bigbytes project.
+3. Download your credentials file, and add it to your mage project.
 
 Your account should have "Storage Admin" role for easy interactions with your bucket.

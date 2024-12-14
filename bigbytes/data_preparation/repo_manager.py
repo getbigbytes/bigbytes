@@ -14,7 +14,7 @@ from bigbytes.data_preparation.templates.utils import copy_template_directory
 from bigbytes.settings import INITIAL_METADATA, settings
 from bigbytes.settings.repo import (
     DEFAULT_BIGBYTES_DATA_DIR,
-    BIGBYTES_DATA_DIR_ENV_VAR,
+    MAGE_DATA_DIR_ENV_VAR,
     PROJECT_METADATA_FILENAME,
 )
 from bigbytes.settings.repo import get_data_dir as get_data_dir_new
@@ -73,7 +73,7 @@ class RepoConfig:
         self.spark_config = None
         self.notification_config = None
         self.queue_config = None
-        self.help_improve_bigbytes = None
+        self.help_improve_mage = None
         self.openai_api_key = None
         self._pipelines = None
         self.retry_config = None
@@ -140,7 +140,7 @@ class RepoConfig:
             self.notification_config = repo_config.get('notification_config', dict())
             self.queue_config = repo_config.get('queue_config', dict())
             self.project_uuid = repo_config.get('project_uuid')
-            self.help_improve_bigbytes = repo_config.get('help_improve_bigbytes')
+            self.help_improve_mage = repo_config.get('help_improve_mage')
             self.openai_api_key = repo_config.get('openai_api_key')
             self.pipelines = repo_config.get('pipelines')
             self.retry_config = repo_config.get('retry_config')
@@ -216,7 +216,7 @@ class RepoConfig:
             emr_config=self.emr_config,
             features=self.features,
             gcp_cloud_run_config=self.gcp_cloud_run_config,
-            help_improve_bigbytes=self.help_improve_bigbytes,
+            help_improve_mage=self.help_improve_mage,
             notification_config=self.notification_config,
             openai_api_key=self.openai_api_key,
             pipelines=self.pipelines.to_dict() if self.pipelines else self.pipelines,
@@ -276,7 +276,7 @@ def init_repo(
         )
     elif project_type == ProjectType.SUB:
         os.makedirs(
-            os.getenv(BIGBYTES_DATA_DIR_ENV_VAR) or DEFAULT_BIGBYTES_DATA_DIR,
+            os.getenv(MAGE_DATA_DIR_ENV_VAR) or DEFAULT_BIGBYTES_DATA_DIR,
             exist_ok=True,
         )
         copy_template_directory('repo', repo_path)
@@ -287,7 +287,7 @@ def init_repo(
         )
     else:
         os.makedirs(
-            os.getenv(BIGBYTES_DATA_DIR_ENV_VAR) or DEFAULT_BIGBYTES_DATA_DIR,
+            os.getenv(MAGE_DATA_DIR_ENV_VAR) or DEFAULT_BIGBYTES_DATA_DIR,
             exist_ok=True,
         )
         copy_template_directory('repo', repo_path)
@@ -313,10 +313,10 @@ def get_repo_config(
 
 
 def get_project_type(repo_config: RepoConfig = None, repo_path: str = None) -> ProjectType:
-    from bigbytes.settings.repo import BIGBYTES_PROJECT_TYPE_ENV_VAR
+    from bigbytes.settings.repo import MAGE_PROJECT_TYPE_ENV_VAR
 
     try:
-        project_type_from_env = os.getenv(BIGBYTES_PROJECT_TYPE_ENV_VAR)
+        project_type_from_env = os.getenv(MAGE_PROJECT_TYPE_ENV_VAR)
         if project_type_from_env:
             return ProjectType(project_type_from_env)
         else:
@@ -329,10 +329,10 @@ def get_project_type(repo_config: RepoConfig = None, repo_path: str = None) -> P
 
 
 def get_cluster_type(repo_path=None) -> Optional[ClusterType]:
-    from bigbytes.settings.repo import BIGBYTES_CLUSTER_TYPE_ENV_VAR
+    from bigbytes.settings.repo import MAGE_CLUSTER_TYPE_ENV_VAR
 
     try:
-        cluster_type_from_env = os.getenv(BIGBYTES_CLUSTER_TYPE_ENV_VAR)
+        cluster_type_from_env = os.getenv(MAGE_CLUSTER_TYPE_ENV_VAR)
         if cluster_type_from_env:
             return ClusterType(cluster_type_from_env)
         else:
@@ -393,7 +393,7 @@ def get_project_uuid() -> str:
 # These should not be used. Please use the corresponding functions in
 # bigbytes/settings/__init__.py
 
-REPO_PATH_ENV_VAR = 'BIGBYTES_REPO_PATH'
+REPO_PATH_ENV_VAR = 'MAGE_REPO_PATH'
 
 
 def get_repo_path() -> str:

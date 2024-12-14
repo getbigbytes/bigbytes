@@ -12,7 +12,7 @@ from bigbytes.data_preparation.repo_manager import (
     init_project_uuid,
     set_project_uuid_from_metadata,
 )
-from bigbytes.settings.repo import BIGBYTES_DATA_DIR_ENV_VAR
+from bigbytes.settings.repo import MAGE_DATA_DIR_ENV_VAR
 from bigbytes.tests.base_test import DBTestCase
 
 
@@ -22,8 +22,8 @@ def mock_uuid_value():
 
 class RepoManagerTest(DBTestCase):
     def test_variables_dir(self):
-        if os.getenv(BIGBYTES_DATA_DIR_ENV_VAR):
-            del os.environ[BIGBYTES_DATA_DIR_ENV_VAR]
+        if os.getenv(MAGE_DATA_DIR_ENV_VAR):
+            del os.environ[MAGE_DATA_DIR_ENV_VAR]
         config_dict = dict(
             variables_dir='variables_dir_from_config_dict',
         )
@@ -49,13 +49,13 @@ class RepoManagerTest(DBTestCase):
         )
         shutil.rmtree(test2.variables_dir)
 
-        os.environ[BIGBYTES_DATA_DIR_ENV_VAR] = 'variables_dir_from_env_var'
+        os.environ[MAGE_DATA_DIR_ENV_VAR] = 'variables_dir_from_env_var'
         test4 = RepoConfig(repo_path=self.repo_path)
         self.assertEqual(
             test4.variables_dir,
             os.path.join(self.repo_path, 'variables_dir_from_env_var'),
         )
-        del os.environ[BIGBYTES_DATA_DIR_ENV_VAR]
+        del os.environ[MAGE_DATA_DIR_ENV_VAR]
         shutil.rmtree(test4.variables_dir)
 
     def test_variables_dir_default(self):

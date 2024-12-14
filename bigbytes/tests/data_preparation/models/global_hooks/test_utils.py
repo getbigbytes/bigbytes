@@ -15,7 +15,7 @@ from bigbytes.tests.base_test import AsyncDBTestCase
 class GlobalHookUtilsTest(AsyncDBTestCase):
     def test_extract_valid_data(self):
         data = dict(
-            bigbytes=uuid.uuid4().hex,
+            mage=uuid.uuid4().hex,
         )
 
         for key in VALID_KEYS_FOR_INPUT_OUTPUT_DATA_ALL:
@@ -41,7 +41,7 @@ class GlobalHookUtilsTest(AsyncDBTestCase):
                 ))
             else:
                 self.assertEqual(extracted_data, ignore_keys(data, [
-                    'bigbytes',
+                    'mage',
                     HookInputKey.RESOURCE_PARENT.value,
                 ]))
 
@@ -64,12 +64,12 @@ class GlobalHookUtilsTest(AsyncDBTestCase):
                 else:
                     if resource_parent_type in limited_types:
                         self.assertEqual(extracted_data, ignore_keys(data, [
-                            'bigbytes',
+                            'mage',
                             HookInputKey.RESOURCE_PARENT.value,
                         ]))
                         self.assertTrue(HookInputKey.RESOURCE_PARENT.value not in extracted_data)
                     else:
                         self.assertEqual(extracted_data, ignore_keys(data, [
-                            'bigbytes',
+                            'mage',
                         ]))
                         self.assertTrue(HookInputKey.RESOURCE_PARENT.value in extracted_data)

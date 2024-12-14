@@ -1,8 +1,8 @@
 [tool.poetry]
 name = "bigbytes"
-version = "0.8.75-dev"
+version = "0.1.0"
 description = "DevEx poetry configuration"
-authors = ["Digitrans, Inc."]
+authors = ["Bigbytes"]
 readme = "README.md"
 
 [tool.poetry.dependencies]

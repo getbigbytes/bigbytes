@@ -230,7 +230,7 @@ class OauthResource(GenericResource):
                     redirect_uri=urllib.parse.quote_plus(
                         '?'.join(
                             [
-                                f'https://api.bigbytes.io/v1/oauth/{pk}',
+                                f'https://api.bigbytes.ai/v1/oauth/{pk}',
                                 f'redirect_uri={urllib.parse.unquote(redirect_uri)}',
                             ]
                         )

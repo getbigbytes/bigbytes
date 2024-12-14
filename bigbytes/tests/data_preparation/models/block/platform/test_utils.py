@@ -27,47 +27,47 @@ class BlockPlatformUtilsTest(ProjectPlatformMixin):
             'bigbytes.data_preparation.models.block.platform.utils.project_platform_activated',
             lambda: False,
         ):
-            self.assertFalse(from_another_project('bigbytes_data/fire.py'))
+            self.assertFalse(from_another_project('mage_data/fire.py'))
 
         with patch(
             'bigbytes.data_preparation.models.block.platform.utils.project_platform_activated',
             lambda: True,
         ):
-            self.assertTrue(from_another_project('bigbytes_data/fire.py'))
+            self.assertTrue(from_another_project('mage_data/fire.py'))
 
         with patch(
             'bigbytes.data_preparation.models.block.platform.utils.project_platform_activated',
             lambda: True,
         ):
-            self.assertFalse(from_another_project('bigbytes_platform/fire.py'))
+            self.assertFalse(from_another_project('mage_platform/fire.py'))
 
     def test_get_selected_directory_from_file_path(self):
         os.makedirs(
-            os.path.join(base_repo_path(), 'bigbytes_platform/dbt/demo/models/team/group'),
+            os.path.join(base_repo_path(), 'mage_platform/dbt/demo/models/team/group'),
             exist_ok=True,
         )
         with open(
-            os.path.join(base_repo_path(), 'bigbytes_platform/dbt/demo/models/team/group/fire.sql'),
+            os.path.join(base_repo_path(), 'mage_platform/dbt/demo/models/team/group/fire.sql'),
             'w',
         ) as f:
             f.write('')
         with open(
-            os.path.join(base_repo_path(), 'bigbytes_platform/dbt/demo/dbt_project.yml'),
+            os.path.join(base_repo_path(), 'mage_platform/dbt/demo/dbt_project.yml'),
             'w',
         ) as f:
             f.write('')
 
         os.makedirs(
-            os.path.join(base_repo_path(), 'bigbytes_platform/dbt/demo2/models/team/group'),
+            os.path.join(base_repo_path(), 'mage_platform/dbt/demo2/models/team/group'),
             exist_ok=True,
         )
         with open(
-            os.path.join(base_repo_path(), 'bigbytes_platform/dbt/demo2/models/team/group/fire.sql'),
+            os.path.join(base_repo_path(), 'mage_platform/dbt/demo2/models/team/group/fire.sql'),
             'w',
         ) as f:
             f.write('')
         with open(
-            os.path.join(base_repo_path(), 'bigbytes_platform/dbt/demo2/dbt_project.yml'),
+            os.path.join(base_repo_path(), 'mage_platform/dbt/demo2/dbt_project.yml'),
             'w',
         ) as f:
             f.write('')
@@ -80,4 +80,4 @@ class BlockPlatformUtilsTest(ProjectPlatformMixin):
             ),
         )
 
-        self.assertEqual(os.path.join(base_repo_path(), 'bigbytes_platform/dbt/demo2'), project_path)
+        self.assertEqual(os.path.join(base_repo_path(), 'mage_platform/dbt/demo2'), project_path)

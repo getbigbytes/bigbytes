@@ -67,7 +67,7 @@ Data will begin streaming 30 seconds after the container starts.
 4. Click `Execute pipeline` in the bottom right to run your stream. You should see data flowing!
 
 <p align="center">
-<img src="https://github.com/digitranslab/magic-devcontainer/blob/main/assets/img/bigbytes-gif.gif?raw=True" width="60%"></img>
+<img src="https://github.com/digitranslab/magic-devcontainer/blob/main/assets/img/mage-gif.gif?raw=True" width="60%"></img>
 </p>
 
 Nice! We've got a working stream. You can click `Cancel pipeline` after some sample data has been loaded or let the stream run.
@@ -80,6 +80,6 @@ This container builds a postgres database alongside our Bigbytes app for us to r
 
 - The first cell reads in the data from our stream (stored in s3 or your cloud provider of choice). Click the play icon or hit CMD + Enter to run.
 - You might notice there are some tests in this cell— Bigbytes incorporates _runtime tests_ to check the quality of your data. What tests are we running here?
-- The next cell writes our data to a postgres table using `dbt`. Note how we can read from our bigbytes data _directly_, without the need for an intermediate table.
+- The next cell writes our data to a postgres table using `dbt`. Note how we can read from our mage data _directly_, without the need for an intermediate table.
 - Finally, we apply a transform to build an [SCD Type-2](https://en.wikipedia.org/wiki/Slowly_changing_dimension#Type_2:_add_new_row) table from our dataset. This is also known as a "change-log" format.
 - The final cell pulls a sample ride! Do the pickup, enroute, & dropoff times lineup?

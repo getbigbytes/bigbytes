@@ -234,7 +234,7 @@ export interface AnalysisType {
 export enum ObjectType {
   BLOCK_FILE = 'block_file',
   CUSTOM_BLOCK_TEMPLATE = 'custom_block_template',
-  BIGBYTES_TEMPLATE = 'bigbytes_template',
+  MAGE_TEMPLATE = 'mage_template',
 }
 
 export interface BlockRequestConfigType {

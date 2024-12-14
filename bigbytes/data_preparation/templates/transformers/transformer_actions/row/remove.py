@@ -3,7 +3,7 @@
     """
     Execute Transformer Action: ActionType.REMOVE
 
-    Docs: https://docs.bigbytes.io/guides/transformer-blocks#remove-rows
+    Docs: https://docs.bigbytes.ai/guides/transformer-blocks#remove-rows
     """
     action = build_transformer_action(
         df,

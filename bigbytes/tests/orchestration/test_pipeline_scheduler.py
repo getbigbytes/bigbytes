@@ -474,11 +474,11 @@ class PipelineSchedulerTests(DBTestCase):
         pipeline_run.update(status=PipelineRun.PipelineRunStatus.RUNNING)
         scheduler = PipelineScheduler(pipeline_run=pipeline_run)
         with patch.object(scheduler, 'schedule') as mock_schedule:
-            scheduler.on_block_complete('block1', metrics=dict(bigbytes=1))
+            scheduler.on_block_complete('block1', metrics=dict(mage=1))
             mock_schedule.assert_called_once()
             block_run = BlockRun.get(pipeline_run_id=pipeline_run.id, block_uuid='block1')
             self.assertEqual(block_run.status, BlockRun.BlockRunStatus.COMPLETED)
-            self.assertEqual(block_run.metrics, dict(bigbytes=1))
+            self.assertEqual(block_run.metrics, dict(mage=1))
 
     def test_on_block_complete_without_schedule(self):
         pipeline_run = create_pipeline_run_with_schedule(pipeline_uuid='test_pipeline')
@@ -495,11 +495,11 @@ class PipelineSchedulerTests(DBTestCase):
         pipeline_run.update(status=PipelineRun.PipelineRunStatus.RUNNING)
         scheduler = PipelineScheduler(pipeline_run=pipeline_run)
         with patch.object(scheduler, 'schedule') as mock_schedule:
-            scheduler.on_block_complete_without_schedule('block1', metrics=dict(bigbytes=1))
+            scheduler.on_block_complete_without_schedule('block1', metrics=dict(mage=1))
             mock_schedule.assert_not_called()
             block_run = BlockRun.get(pipeline_run_id=pipeline_run.id, block_uuid='block1')
             self.assertEqual(block_run.status, BlockRun.BlockRunStatus.COMPLETED)
-            self.assertEqual(block_run.metrics, dict(bigbytes=1))
+            self.assertEqual(block_run.metrics, dict(mage=1))
 
     def test_on_block_failure(self):
         pipeline_run = create_pipeline_run_with_schedule(pipeline_uuid='test_pipeline')

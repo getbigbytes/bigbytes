@@ -18,10 +18,10 @@ class VariableManagerProjectPlatformTests(ProjectPlatformMixin):
                 repo_path=settings["full_path"],
             )
             value = self.faker.unique.name()
-            pipeline.variables = dict(bigbytes=value)
+            pipeline.variables = dict(mage=value)
             pipeline.save()
 
-            self.assertEqual(get_global_variable(pipeline.uuid, "bigbytes"), value)
+            self.assertEqual(get_global_variable(pipeline.uuid, "mage"), value)
 
     def test_get_global_variables(self):
         for settings in self.repo_paths.values():

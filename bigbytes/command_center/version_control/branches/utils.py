@@ -81,7 +81,7 @@ async def build_create(factory, model: Project, items: List[Dict]):
                         display_settings=dict(
                             icon_uuid='BranchAlt',
                         ),
-                        placeholder='e.g. bigbytes--new_powers',
+                        placeholder='e.g. mage--new_powers',
                         name='request.payload.version_control_branch.name',
                         type=InteractionInputType.TEXT_FIELD,
                         required=True,

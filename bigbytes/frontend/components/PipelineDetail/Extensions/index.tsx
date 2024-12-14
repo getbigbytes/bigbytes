@@ -88,7 +88,7 @@ function Extensions({
             <Text default>
               Power up your pipeline with extensions.
               Learn more about <Link
-                href="https://docs.bigbytes.io/design/blocks/extension"
+                href="https://docs.bigbytes.ai/design/blocks/extension"
                 openNewWindow
               >
                 extension blocks

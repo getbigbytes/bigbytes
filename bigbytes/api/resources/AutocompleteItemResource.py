@@ -30,7 +30,7 @@ class AutocompleteItemResource(GenericResource):
                 await build_file_content_mapping([f'{repo_path}/transformers'], []),
             ),
             (
-                'bigbytes_library',
+                'mage_library',
                 await build_file_content_mapping(
                     PATHS_TO_TRAVERSE,
                     FILES_TO_READ,

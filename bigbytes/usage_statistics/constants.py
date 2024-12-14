@@ -1,6 +1,6 @@
 from bigbytes.shared.enum import StrEnum
 
-API_ENDPOINT = 'https://api.bigbytes.io/v1/usage_statistics'
+API_ENDPOINT = 'https://api.bigbytes.ai/v1/usage_statistics'
 
 
 class EventNameType(StrEnum):

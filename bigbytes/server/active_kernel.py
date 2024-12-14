@@ -109,7 +109,7 @@ def switch_active_kernel(
         if kernel_name == KernelName.PYSPARK:
             raise Exception(
                 'PySpark kernel is not installed. Please follow the instructions in '
-                'https://docs.bigbytes.io/integrations/spark-pyspark '
+                'https://docs.bigbytes.ai/integrations/spark-pyspark '
                 'to install it.'
             ) from e
         else:

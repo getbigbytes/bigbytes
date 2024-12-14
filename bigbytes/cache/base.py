@@ -2,8 +2,8 @@ import os
 from typing import Any, Dict, List, Union
 
 from bigbytes.cache.constants import (
-    BIGBYTES_CACHE_DIRECTORY_DEFAULT,
-    BIGBYTES_CACHE_DIRECTORY_ENVIRONMENT_VARIABLE_NAME,
+    MAGE_CACHE_DIRECTORY_DEFAULT,
+    MAGE_CACHE_DIRECTORY_ENVIRONMENT_VARIABLE_NAME,
 )
 from bigbytes.data_preparation.repo_manager import RepoConfig, get_repo_config
 from bigbytes.data_preparation.storage.local_storage import LocalStorage
@@ -68,9 +68,9 @@ class BaseCache():
         return value_fetched
 
     def build_path(self, key: str) -> str:
-        dir_path = os.getenv(BIGBYTES_CACHE_DIRECTORY_ENVIRONMENT_VARIABLE_NAME) or os.path.join(
+        dir_path = os.getenv(MAGE_CACHE_DIRECTORY_ENVIRONMENT_VARIABLE_NAME) or os.path.join(
             get_variables_dir(repo_path=self.repo_path, root_project=self.root_project),
-            BIGBYTES_CACHE_DIRECTORY_DEFAULT,
+            MAGE_CACHE_DIRECTORY_DEFAULT,
         )
 
         return os.path.join(dir_path, key)

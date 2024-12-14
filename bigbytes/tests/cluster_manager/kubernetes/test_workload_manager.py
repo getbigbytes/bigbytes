@@ -38,9 +38,9 @@ def get_custom_configs(config):
         self.workload_manager.create_hooks_config_map(
             'test',
             pre_start_script_path=pre_start_script_path,
-            bigbytes_container_config={
+            mage_container_config={
                 'name': 'test-container',
-                'image': 'bigbytes/bigbytes:latest',
+                'image': 'digitranslab/bigbytes:latest',
                 'ports': [{'containerPort': 6789, 'name': 'web'}],
             },
         )
@@ -67,9 +67,9 @@ def wrong_function_name(config):
             self.workload_manager.create_hooks_config_map(
                 'test',
                 pre_start_script_path=pre_start_script_path,
-                bigbytes_container_config={
+                mage_container_config={
                     'name': 'test-container',
-                    'image': 'bigbytes/bigbytes:latest',
+                    'image': 'digitranslab/bigbytes:latest',
                     'ports': [{'containerPort': 6789, 'name': 'web'}],
                 },
             )
@@ -99,7 +99,7 @@ def wrong_function_name(config):
             self.workload_manager.create_hooks_config_map(
                 'test',
                 pre_start_script_path=pre_start_script_path,
-                bigbytes_container_config=dict(),
+                mage_container_config=dict(),
             )
             self.assertTrue(
                 'The container config can not be empty' in str(context.exception)

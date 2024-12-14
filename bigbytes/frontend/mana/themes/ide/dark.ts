@@ -21,7 +21,7 @@ export function rules(colors: ColorsType): Record<string, Record<string, string>
     attribute: { foreground: '#81A1FF' },
     property: { foreground: '#81A1FF' },
     'function.name': { foreground: '#517DFF', fontStyle: 'italic' },
-    'function.decorator': { foreground: '#00a99d' },
+    'function.decorator': { foreground: '#2A60FE' },
     'string.link': { foreground: '#4F6AC4', fontStyle: 'underline' },
 
     // Red: keywords

@@ -223,7 +223,7 @@ def run(
 
         sys.path.append(os.path.dirname(project_path))
         # Initialize db_connection session before getting the pipeline in case
-        # "bigbytes_secret_var" syntax is used in the project's metadata.yaml
+        # "mage_secret_var" syntax is used in the project's metadata.yaml
         db_connection.start_session()
         pipeline = Pipeline.get(pipeline_uuid, repo_path=project_path)
 

@@ -57,7 +57,7 @@ import {
   Switch,
 } from '@oracle/icons';
 import { ICON_SIZE_DEFAULT, ICON_SIZE_SMALL } from '@oracle/styles/units/icons';
-import { BIGBYTES_VARIABLES_KEY } from '@interfaces/PipelineRunType';
+import { MAGE_VARIABLES_KEY } from '@interfaces/PipelineRunType';
 import {
   PADDING_UNITS,
   UNIT,
@@ -645,7 +645,7 @@ function TriggerDetail({
 
     if (!isEmptyObject(scheduleVariables)) {
       Object.entries(scheduleVariables).forEach(([k, v]) => {
-        if (![BIGBYTES_VARIABLES_KEY, VARIABLE_BOOKMARK_VALUES_KEY].includes(k)) {
+        if (![MAGE_VARIABLES_KEY, VARIABLE_BOOKMARK_VALUES_KEY].includes(k)) {
           arr.push({
             uuid: k,
             value: getFormattedVariable(v),
@@ -776,7 +776,7 @@ function TriggerDetail({
   const dbtSettingsTable = useMemo(() => {
     const arr = [];
     // @ts-ignore
-    const blocksData = scheduleVariables?.[BIGBYTES_VARIABLES_KEY]?.blocks;
+    const blocksData = scheduleVariables?.[MAGE_VARIABLES_KEY]?.blocks;
 
     pipeline?.blocks?.forEach((block) => {
       const {
@@ -1036,7 +1036,7 @@ function TriggerDetail({
                     Save or update the trigger and its settings in the
                     pipeline’s metadata and version control the trigger using Git.
                     For more information, please read the <Link
-                      href="https://docs.bigbytes.io/guides/triggers/configure-triggers-in-code"
+                      href="https://docs.bigbytes.ai/guides/triggers/configure-triggers-in-code"
                       openNewWindow
                     >
                       documentation

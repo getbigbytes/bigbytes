@@ -97,7 +97,7 @@ Google Cloud Run supports pulling Docker images directly from Docker Hub. To use
 variable "docker_image" {
   type        = string
   description = "The docker image to deploy to Cloud Run."
-  default     = "bigbytes/bigbytes:latest"
+  default     = "digitranslab/bigbytes:latest"
 }
 ```
 
@@ -113,7 +113,7 @@ you can change the `default` value under `app_name`:
 variable "app_name" {
   type        = string
   description = "Application Name"
-  default     = "bigbytes-data-prep"
+  default     = "mage-data-prep"
 }
 ```
 
@@ -170,7 +170,7 @@ See our [docs](/production/deploying-to-cloud/secrets/GCP) for configuring secre
 
     ```
     ╷
-    │ Error: resource is in failed state "Ready:False", message: Revision 'bigbytes-2992l' is not ready and cannot serve traffic. spec.template.spec.volumes[1].secret.items[0].key: Permission denied on secret: projects/1054912425479/secrets/bigquery_credentials/versions/latest for Revision service account 1054912425479-compute@developer.gserviceaccount.com. The service account used must be granted the 'Secret Manager Secret Accessor' role (roles/secretmanager.secretAccessor) at the secret, project or higher level.
+    │ Error: resource is in failed state "Ready:False", message: Revision 'mage-2992l' is not ready and cannot serve traffic. spec.template.spec.volumes[1].secret.items[0].key: Permission denied on secret: projects/1054912425479/secrets/bigquery_credentials/versions/latest for Revision service account 1054912425479-compute@developer.gserviceaccount.com. The service account used must be granted the 'Secret Manager Secret Accessor' role (roles/secretmanager.secretAccessor) at the secret, project or higher level.
     │
     │   with google_cloud_run_service.run_service,
     │   on main.tf line 88, in resource "google_cloud_run_service" "run_service":
@@ -258,7 +258,7 @@ See our [docs](/production/deploying-to-cloud/secrets/GCP) for configuring secre
     target: prod
     outputs:
       prod_bigquery:
-        dataset: bigbytes_demo
+        dataset: mage_demo
         keyfile: "{{ env_var('path_to_keyfile') }}"
         method: service-account
         project: my_cool_gcp_project
@@ -391,7 +391,7 @@ it is usually caused by the Docker image not being built using the correct platf
 Pull the Bigbytes Docker image using this command:
 
 ```
-docker pull --platform linux/amd64 bigbytes/bigbytes:latest
+docker pull --platform linux/amd64 digitranslab/bigbytes:latest
 ```
 
 Once pulled, tag your image and push to GCP Artifact Registry again.

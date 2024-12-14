@@ -1657,7 +1657,7 @@ function DataIntegrationModal({
 
           <FlexContainer alignItems="center">
             <Link
-              href="https://docs.bigbytes.io"
+              href="https://docs.bigbytes.ai"
               inline
               noOutline
               openNewWindow

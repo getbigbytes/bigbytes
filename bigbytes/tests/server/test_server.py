@@ -128,7 +128,7 @@ class ServerTests(AsyncDBTestCase):
         self.assertIsNotNone(owner_user)
 
     def test_initialize_user_authentication_standalone_project_with_custom_email(self):
-        with patch('bigbytes.server.server.DEFAULT_OWNER_EMAIL', 'admin@bigbytes.io'), \
+        with patch('bigbytes.server.server.DEFAULT_OWNER_EMAIL', 'admin@bigbytes.ai'), \
              patch('bigbytes.server.server.DEFAULT_OWNER_PASSWORD', 'magepassword'), \
              patch('bigbytes.server.server.DEFAULT_OWNER_USERNAME', 'mageuser'):
 
@@ -137,7 +137,7 @@ class ServerTests(AsyncDBTestCase):
             owner_role = Role.get_role(Role.DefaultRole.OWNER)
             self.assertTrue(len(owner_role.users) > 0)
 
-            owner_user = User.query.filter(User.email == 'admin@bigbytes.io').one_or_none()
+            owner_user = User.query.filter(User.email == 'admin@bigbytes.ai').one_or_none()
             self.assertIsNotNone(owner_user)
             self.assertEqual(owner_user.username, 'mageuser')
 

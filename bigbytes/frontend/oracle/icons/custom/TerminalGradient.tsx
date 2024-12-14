@@ -18,7 +18,7 @@ function TerminalGradient({ size }: { size: number }) {
           <rect width="24" height="24" fill="white" />
         </clipPath>
         <linearGradient id="paint0_linear_1244_32583" x1="1.07031" y1="11.8041" x2="21.9428" y2="11.8041" gradientUnits="userSpaceOnUse">
-          <stop offset="0.28125" stopColor="#00A99D"/>
+          <stop offset="0.28125" stopColor="#7D55EC"/>
           <stop offset="1" stopColor="#2AB2FE"/>
         </linearGradient>
       </defs>

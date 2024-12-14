@@ -46,7 +46,7 @@ class GoogleCloudStorage(Destination):
 
         self.logger.info('Export data started', tags=tags)
 
-        # Add _bigbytes_created_at and _bigbytes_updated_at columns
+        # Add _mage_created_at and _mage_updated_at columns
         for r in record_data:
             r['record'] = update_record_with_internal_columns(r['record'])
 

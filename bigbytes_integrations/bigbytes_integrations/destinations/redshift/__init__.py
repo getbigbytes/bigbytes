@@ -220,7 +220,7 @@ WHERE TABLE_NAME = '{table_name}' AND TABLE_SCHEMA = '{schema_name}'
                         f'SELECT {insert_columns} FROM ('
                         f'  SELECT *,'
                         f'      ROW_NUMBER() OVER ('
-                        f'          PARTITION BY {", ".join(unique_constraints_clean)} ORDER BY _bigbytes_created_at DESC'  # noqa: E501
+                        f'          PARTITION BY {", ".join(unique_constraints_clean)} ORDER BY _mage_created_at DESC'  # noqa: E501
                         f'      ) as row_num'
                         f'  FROM {full_table_name})'
                         f'WHERE row_num = 1'

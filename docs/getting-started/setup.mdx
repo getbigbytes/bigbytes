@@ -27,18 +27,18 @@ If you're familiar with [Docker Compose](https://docs.docker.com/compose/) or pl
 
     <CodeGroup>
       ```bash Mac/Linux
-      docker run -it -p 6789:6789 -v $(pwd):/home/src bigbytes/bigbytes /app/run_app.sh bigbytes start [project_name]
+      docker run -it -p 6789:6789 -v $(pwd):/home/src digitranslab/bigbytes /app/run_app.sh bigbytes start [project_name]
       ```
       ```bash Windows Command Line
-      docker run -it -p 6789:6789 -v "%cd%:/home/src" bigbytes/bigbytes /app/run_app.sh bigbytes start [project_name]
+      docker run -it -p 6789:6789 -v "%cd%:/home/src" digitranslab/bigbytes /app/run_app.sh bigbytes start [project_name]
       ```
 
       ```bash PowerShell
-      docker run -it -p 6789:6789 -v ${PWD}:/home/src bigbytes/bigbytes /app/run_app.sh bigbytes start [project_name]
+      docker run -it -p 6789:6789 -v ${PWD}:/home/src digitranslab/bigbytes /app/run_app.sh bigbytes start [project_name]
       ```
 
       ```bash GCP VM Instance
-      sudo docker run -it -p 6789:6789 -v $(pwd):/home/src bigbytes/bigbytes /app/run_app.sh bigbytes start [project_name]
+      sudo docker run -it -p 6789:6789 -v $(pwd):/home/src digitranslab/bigbytes /app/run_app.sh bigbytes start [project_name]
       ```
     </CodeGroup>
 
@@ -46,7 +46,7 @@ If you're familiar with [Docker Compose](https://docs.docker.com/compose/) or pl
 
     ### What's happening?
 
-    We're executing `docker run`, which runs a Docker container from the Bigbytes image. additionally, we're _mounting a volume_ (the `-v` command) to persist our project files on our container. This mounts the current folder to `/home/src` in the bigbytes container. We're executing our docker image `bigbytes/bigbytes` and running a script to start up the container.
+    We're executing `docker run`, which runs a Docker container from the Bigbytes image. additionally, we're _mounting a volume_ (the `-v` command) to persist our project files on our container. This mounts the current folder to `/home/src` in the bigbytes container. We're executing our docker image `digitranslab/bigbytes` and running a script to start up the container.
 
   </Accordion>
 
@@ -107,7 +107,7 @@ If you're familiar with [Docker Compose](https://docs.docker.com/compose/) or pl
       </Step>
       <Step title="Create new project and launch tool">
          ```bash
-         bigbytes start [project_name]
+            bigbytes start [project_name]
          ```
       </Step>
       <Step title="Open Bigbytes">

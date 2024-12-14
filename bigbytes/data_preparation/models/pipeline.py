@@ -664,7 +664,7 @@ class Pipeline:
                     'full_path',
                 )
                 for d in build_repo_path_for_all_projects(
-                    context_data=kwargs.get('context_data'), bigbytes_projects_only=True
+                    context_data=kwargs.get('context_data'), mage_projects_only=True
                 ).values()
             ]
 
@@ -1532,7 +1532,7 @@ class Pipeline:
                     )
 
         # If there are any dbt blocks which could receive an upstream df
-        # we need to update bigbytes_sources.yml
+        # we need to update mage_sources.yml
         if any(
             (
                 BlockType.DBT != block.type

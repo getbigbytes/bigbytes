@@ -757,7 +757,7 @@ function IntegrationPipeline({
                         </AccordionPanel>
                       </Accordion>
 
-                      {buildVariablesTable('https://docs.bigbytes.io/guides/data-integration-pipeline#configure-source')}
+                      {buildVariablesTable('https://docs.bigbytes.ai/guides/data-integration-pipeline#configure-source')}
                     </Spacing>
                   )}
 
@@ -1073,7 +1073,7 @@ function IntegrationPipeline({
                       </Text> in a previous section.
                     </Text>
 
-                    {buildVariablesTable('https://docs.bigbytes.io/guides/data-integration-pipeline#configure-destination')}
+                    {buildVariablesTable('https://docs.bigbytes.ai/guides/data-integration-pipeline#configure-destination')}
                   </Spacing>
                 </>
               )}

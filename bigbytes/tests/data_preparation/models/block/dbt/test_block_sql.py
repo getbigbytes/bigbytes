@@ -128,7 +128,7 @@
 #             {},
 #             from_notebook=False,
 #             runtime_arguments={
-#                 '__bigbytes_variables': {
+#                 '__mage_variables': {
 #                     'blocks': {
 #                         'test_dbt_block_sql': {
 #                             'configuration': {
@@ -253,16 +253,16 @@
 # class DBTBlockSQLProjectPlatformTest(ProjectPlatformMixin, BlockWithProjectPlatformShared):
 #     def test_file_path(self):
 #         block = build_block()
-#         block.configuration['file_source'] = dict(path='bigbytes_data/dbt/demo/models/fire.sql')
-#         self.assertEqual(block.file_path, 'bigbytes_data/dbt/demo/models/fire.sql')
+#         block.configuration['file_source'] = dict(path='mage_data/dbt/demo/models/fire.sql')
+#         self.assertEqual(block.file_path, 'mage_data/dbt/demo/models/fire.sql')
 
 #     def test_project_path(self):
 #         block = build_block()
 #         block.configuration['file_source'] = dict(
-#             path='bigbytes_data/dbt/demo/models/fire.sql',
-#             project_path='bigbytes_data/dbt/demo',
+#             path='mage_data/dbt/demo/models/fire.sql',
+#             project_path='mage_data/dbt/demo',
 #         )
-#         self.assertEqual(block.project_path, os.path.join(base_repo_path(), 'bigbytes_data/dbt/demo'))
+#         self.assertEqual(block.project_path, os.path.join(base_repo_path(), 'mage_data/dbt/demo'))
 
 #     @patch('bigbytes.data_preparation.models.block.dbt.block_sql.DBTCli.invoke')
 #     @patch('bigbytes.data_preparation.models.block.dbt.block_sql.Profiles')
@@ -281,24 +281,24 @@
 #         ])
 #         Profiles.return_value.__enter__.return_value.profiles_dir = 'test_profiles_dir'
 
-#         os.makedirs(os.path.join(base_repo_path(), 'bigbytes_data/dbt/demo/models'), exist_ok=True)
+#         os.makedirs(os.path.join(base_repo_path(), 'mage_data/dbt/demo/models'), exist_ok=True)
 #         for key in [
 #             'fire',
 #             'ice',
 #             'water',
 #         ]:
 #             with open(
-#                 os.path.join(base_repo_path(), f'bigbytes_data/dbt/demo/models/{key}.sql'),
+#                 os.path.join(base_repo_path(), f'mage_data/dbt/demo/models/{key}.sql'),
 #                 'w',
 #             ) as f:
 #                 f.write('')
-#         with open(os.path.join(base_repo_path(), 'bigbytes_data/dbt/dbt_project.yml'), 'w') as f:
+#         with open(os.path.join(base_repo_path(), 'mage_data/dbt/dbt_project.yml'), 'w') as f:
 #             f.write('')
 
 #         block = build_block()
 #         block.configuration['file_source'] = dict(
-#             path='bigbytes_data/dbt/demo/models/fire.sql',
-#             project_path='bigbytes_data/dbt/demo',
+#             path='mage_data/dbt/demo/models/fire.sql',
+#             project_path='mage_data/dbt/demo',
 #         )
 #         blocks = block.upstream_dbt_blocks()
 
@@ -308,10 +308,10 @@
 #         self.assertTrue(isinstance(block1, DBTBlockSQL))
 #         self.assertEqual(block1.type, BlockType.DBT)
 #         self.assertEqual(block1.configuration, dict(
-#             file_path='bigbytes_data/dbt/demo/models/water.sql',
+#             file_path='mage_data/dbt/demo/models/water.sql',
 #             file_source=dict(
-#                 path='bigbytes_data/dbt/demo/models/water.sql',
-#                 project_path='bigbytes_data/dbt',
+#                 path='mage_data/dbt/demo/models/water.sql',
+#                 project_path='mage_data/dbt',
 #             ),
 #         ))
 #         self.assertEqual(block1.language, BlockLanguage.SQL)
@@ -319,10 +319,10 @@
 #         self.assertTrue(isinstance(block2, DBTBlockSQL))
 #         self.assertEqual(block2.type, BlockType.DBT)
 #         self.assertEqual(block2.configuration, dict(
-#             file_path='bigbytes_data/dbt/demo/models/ice.sql',
+#             file_path='mage_data/dbt/demo/models/ice.sql',
 #             file_source=dict(
-#                 path='bigbytes_data/dbt/demo/models/ice.sql',
-#                 project_path='bigbytes_data/dbt',
+#                 path='mage_data/dbt/demo/models/ice.sql',
+#                 project_path='mage_data/dbt',
 #             ),
 #         ))
 #         self.assertEqual(block2.language, BlockLanguage.SQL)

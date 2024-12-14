@@ -551,7 +551,7 @@ class Manager {
         : {
             ...languageClientConfig,
             languageId: this.language,
-            name: `bigbytes-lsp-${this.language}`,
+            name: `mage-lsp-${this.language}`,
           },
       loggerConfig,
       wrapperConfig: {

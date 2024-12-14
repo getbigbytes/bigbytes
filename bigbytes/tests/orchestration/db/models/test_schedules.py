@@ -1769,7 +1769,7 @@ class PipelineScheduleProjectPlatformTests(ProjectPlatformMixin):
             for settings in self.repo_paths.values():
                 arr.append(PipelineSchedule.create(
                     name='test pipeline',
-                    pipeline_uuid='bigbytes',
+                    pipeline_uuid='mage',
                     repo_path=settings['full_path'],
                 ))
 
@@ -1948,7 +1948,7 @@ class BlockRunProjectPlatformTests(ProjectPlatformMixin, AsyncDBTestCase):
             create_block_runs=False,
         )
 
-        block_uuid_value = 'bigbytes_fire'
+        block_uuid_value = 'mage_fire'
         block_run = BlockRun.create(
             block_uuid=block_uuid_value,
             pipeline_run=pipeline_run,

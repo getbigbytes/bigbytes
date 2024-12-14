@@ -12,8 +12,8 @@ from bigbytes.settings.utils import base_repo_dirname, base_repo_path
 from bigbytes.shared.environments import is_test
 from bigbytes.shared.yaml import load_yaml
 
-BIGBYTES_PROJECT_TYPE_ENV_VAR = 'PROJECT_TYPE'
-BIGBYTES_CLUSTER_TYPE_ENV_VAR = 'CLUSTER_TYPE'
+MAGE_PROJECT_TYPE_ENV_VAR = 'PROJECT_TYPE'
+MAGE_CLUSTER_TYPE_ENV_VAR = 'CLUSTER_TYPE'
 
 """
 Moved from repo_manager because repo_manager has too many dependencies
@@ -23,8 +23,8 @@ which can cause circular import errors.
 if is_test():
     DEFAULT_BIGBYTES_DATA_DIR = '.'
 else:
-    DEFAULT_BIGBYTES_DATA_DIR = os.path.join('~', '.bigbytes_data')
-BIGBYTES_DATA_DIR_ENV_VAR = 'BIGBYTES_DATA_DIR'
+    DEFAULT_BIGBYTES_DATA_DIR = os.path.join('~', '.mage_data')
+MAGE_DATA_DIR_ENV_VAR = 'MAGE_DATA_DIR'
 
 
 def base_repo_path_directory_name() -> str:
@@ -147,7 +147,7 @@ def get_repo_name(repo_path: str = None, root_project: bool = False) -> str:
 
 
 def get_data_dir() -> str:
-    return os.getenv(BIGBYTES_DATA_DIR_ENV_VAR) or DEFAULT_BIGBYTES_DATA_DIR
+    return os.getenv(MAGE_DATA_DIR_ENV_VAR) or DEFAULT_BIGBYTES_DATA_DIR
 
 
 def get_metadata_path(
@@ -168,7 +168,7 @@ def get_variables_dir(
     Fetches the variables directory for the project.
 
     Priority:
-        1. os.getenv(BIGBYTES_DATA_DIR_ENV_VAR)
+        1. os.getenv(MAGE_DATA_DIR_ENV_VAR)
         2. 'variables_dir' from repo_config argument
         3. 'variables_dir' from project's metadata.yaml file
             This method will either read from the metadata.yaml file or the repo_config argument.
@@ -186,8 +186,8 @@ def get_variables_dir(
         repo_path = get_repo_path(root_project=root_project)
     repo_name = get_repo_name(repo_path=repo_path, root_project=root_project)
     variables_dir = None
-    if os.getenv(BIGBYTES_DATA_DIR_ENV_VAR):
-        variables_dir = os.getenv(BIGBYTES_DATA_DIR_ENV_VAR)
+    if os.getenv(MAGE_DATA_DIR_ENV_VAR):
+        variables_dir = os.getenv(MAGE_DATA_DIR_ENV_VAR)
     else:
         if repo_config is not None:
             variables_dir = repo_config.get('variables_dir')

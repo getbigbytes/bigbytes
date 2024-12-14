@@ -6,7 +6,7 @@
     This marks any improperly formatted values in each column specified
     as invalid.
 
-    Docs: https://docs.bigbytes.io/guides/transformer-blocks#fix-syntax-errors
+    Docs: https://docs.bigbytes.ai/guides/transformer-blocks#fix-syntax-errors
     """
     action = build_transformer_action(
         df,

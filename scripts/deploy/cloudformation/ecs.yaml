@@ -16,15 +16,15 @@ Resources:
   Cluster:
     Type: AWS::ECS::Cluster
     Properties:
-      ClusterName: bigbytes-data-preparation
+      ClusterName: mage-data-preparation
   LogGroup:
     Type: AWS::Logs::LogGroup
     Properties:
-      LogGroupName: /ecs/bigbytes-data-preparation
+      LogGroupName: /ecs/mage-data-preparation
   ExecutionRole:
     Type: AWS::IAM::Role
     Properties:
-      RoleName: bigbytes-data-preparation
+      RoleName: mage-data-preparation
       AssumeRolePolicyDocument:
         Statement:
           - Effect: Allow
@@ -36,7 +36,7 @@ Resources:
   ContainerSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupName: BigbytesContainerSecurityGroup
+      GroupName: MageContainerSecurityGroup
       GroupDescription: Security group for Bigbytes server
       SecurityGroupIngress:
         - IpProtocol: tcp
@@ -51,7 +51,7 @@ Resources:
       Encrypted: true
       FileSystemTags:
         - Key: Name
-          Value: bigbytes-data-preparation
+          Value: mage-data-preparation
       KmsKeyId: !Ref "AWS::NoValue"
       PerformanceMode: generalPurpose
       ThroughputMode: bursting
@@ -67,7 +67,7 @@ Resources:
     Type: AWS::EC2::SecurityGroup
     Properties:
       GroupDescription: FileSystem Security Group
-      GroupName: BigbytesEFSSecurityGroup
+      GroupName: MageEFSSecurityGroup
       SecurityGroupIngress:
         - IpProtocol: "tcp"
           FromPort: !Ref FileSharePort
@@ -85,7 +85,7 @@ Resources:
   LoadBalancer:
     Type: AWS::ElasticLoadBalancingV2::LoadBalancer
     Properties:
-      Name: bigbytes-data-preparation
+      Name: mage-data-preparation
       Scheme: internet-facing
       LoadBalancerAttributes:
         - Key: idle_timeout.timeout_seconds
@@ -122,18 +122,18 @@ Resources:
   TaskDefinition:
     Type: AWS::ECS::TaskDefinition
     Properties:
-      Family: bigbytes-data-preparation
+      Family: mage-data-preparation
       Cpu: 512
       Memory: 1024
       NetworkMode: awsvpc
       ExecutionRoleArn: !Ref ExecutionRole
       ContainerDefinitions:
-        - Name: bigbytes-data-preparation
-          Image: bigbytes/bigbytes:latest
+        - Name: mage-data-preparation
+          Image: digitranslab/bigbytes:latest
           MountPoints:
             - ReadOnly: false
               ContainerPath: /home/src
-              SourceVolume: bigbytes-data-preparation
+              SourceVolume: mage-data-preparation
           PortMappings:
             - ContainerPort: 6789
           PseudoTerminal: true
@@ -147,7 +147,7 @@ Resources:
         - EC2
         - FARGATE
       Volumes:
-        - Name: bigbytes-data-preparation
+        - Name: mage-data-preparation
           EfsVolumeConfiguration:
             FileSystemId: !GetAtt FileSystem.FileSystemId
             TransitEncryption: "ENABLED"
@@ -156,14 +156,14 @@ Resources:
     DependsOn:
       - LoadBalancerListener
     Properties:
-      ServiceName: bigbytes-data-preparation
+      ServiceName: mage-data-preparation
       Cluster: !Ref Cluster
       TaskDefinition: !Ref TaskDefinition
       DesiredCount: 1
       LaunchType: FARGATE
       LoadBalancers:
         - TargetGroupArn: !Ref TargetGroup
-          ContainerName: bigbytes-data-preparation
+          ContainerName: mage-data-preparation
           ContainerPort: 6789
       NetworkConfiguration:
         AwsvpcConfiguration:

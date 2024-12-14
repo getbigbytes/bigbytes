@@ -41,7 +41,7 @@ from bigbytes.services.k8s.constants import (
     DEFAULT_STORAGE_CLASS_NAME,
     KUBE_POD_NAME_ENV_VAR,
 )
-from bigbytes.settings import BIGBYTES_SETTINGS_ENVIRONMENT_VARIABLES
+from bigbytes.settings import MAGE_SETTINGS_ENVIRONMENT_VARIABLES
 from bigbytes.shared.array import find
 from bigbytes.shared.hash import merge_dict, safe_dig
 
@@ -238,7 +238,7 @@ class WorkloadManager:
         ingress_name = workspace_config.ingress_name
 
         volumes = []
-        volume_mounts = [{'name': 'bigbytes-data', 'mountPath': '/home/src'}]
+        volume_mounts = [{'name': 'mage-data', 'mountPath': '/home/src'}]
 
         env_vars = self.__populate_env_vars(
             name,
@@ -281,7 +281,7 @@ class WorkloadManager:
                     },
                 }
 
-        container_image = 'bigbytes/bigbytes:latest'
+        container_image = 'digitranslab/bigbytes:latest'
         if self.pod_config:
             try:
                 container = self.pod_config.spec.containers[0]
@@ -289,7 +289,7 @@ class WorkloadManager:
             except Exception:
                 pass
 
-        bigbytes_container_config = {
+        mage_container_config = {
             'name': f'{name}-container',
             'image': container_image,
             'ports': [{'containerPort': 6789, 'name': 'web'}],
@@ -297,7 +297,7 @@ class WorkloadManager:
             **container_config,
         }
 
-        containers = [bigbytes_container_config]
+        containers = [mage_container_config]
 
         init_containers = []
         pre_start_script_path = lifecycle_config.pre_start_script_path
@@ -305,7 +305,7 @@ class WorkloadManager:
             init_containers.append(
                 {
                     'name': f'{name}-pre-start',
-                    'image': 'bigbytes/pre-start:latest',
+                    'image': 'digitranslab/pre-start:latest',
                     'imagePullPolicy': 'Always',
                     'volumeMounts': [
                         {
@@ -368,7 +368,7 @@ class WorkloadManager:
         config_map = self.create_hooks_config_map(
             name,
             lifecycle_config.pre_start_script_path,
-            bigbytes_container_config,
+            mage_container_config,
             lifecycle_config.post_start,
         )
         if config_map:
@@ -416,7 +416,7 @@ class WorkloadManager:
                 },
                 'volumeClaimTemplates': [
                     {
-                        'metadata': {'name': 'bigbytes-data'},
+                        'metadata': {'name': 'mage-data'},
                         'spec': {
                             'accessModes': [storage_access_mode],
                             'storageClassName': storage_class_name,
@@ -506,13 +506,13 @@ class WorkloadManager:
             )
             container_config['env'] = env_vars
 
-        bigbytes_container_config = {
+        mage_container_config = {
             'name': f'{name}-container',
             **container_config,
         }
 
         stateful_set_template_spec = {
-            'containers': [bigbytes_container_config],
+            'containers': [mage_container_config],
         }
 
         updated_stateful_set = {
@@ -652,9 +652,9 @@ class WorkloadManager:
             exec_command = [
                 '/bin/bash',
                 '-c',
-                '[[ -z "${BIGBYTES_ROUTES_BASE_PATH:-${BIGBYTES_BASE_PATH}}" ]] '
+                '[[ -z "${MAGE_ROUTES_BASE_PATH:-${MAGE_BASE_PATH}}" ]] '
                 '&& BasePath="" '
-                '|| BasePath="/${BIGBYTES_ROUTES_BASE_PATH:-${BIGBYTES_BASE_PATH}}";'
+                '|| BasePath="/${MAGE_ROUTES_BASE_PATH:-${MAGE_BASE_PATH}}";'
                 'curl -s --request GET --url '
                 'http://localhost:6789${BasePath}/api/statuses?_format=with_activity_details '
                 '--header "Content-Type: application/json"',
@@ -691,22 +691,22 @@ class WorkloadManager:
         self,
         name: str,
         pre_start_script_path: str = None,
-        bigbytes_container_config: Dict = None,
+        mage_container_config: Dict = None,
         post_start_config: PostStart = None,
     ) -> Dict:
         config_map_data = {}
         if pre_start_script_path:
-            if not bigbytes_container_config:
+            if not mage_container_config:
                 raise ConfigurationError('The container config can not be empty')
             self.__validate_pre_start_script(
-                pre_start_script_path, bigbytes_container_config
+                pre_start_script_path, mage_container_config
             )
 
             with open(pre_start_script_path, 'r', encoding='utf-8') as f:
                 pre_start_script = f.read()
 
             config_map_data['pre-start.py'] = pre_start_script
-            config_map_data['initial-config.json'] = json.dumps(bigbytes_container_config)
+            config_map_data['initial-config.json'] = json.dumps(mage_container_config)
 
         post_start_file_name = None
         if post_start_config and post_start_config.hook_path is not None:
@@ -732,7 +732,7 @@ class WorkloadManager:
     def __validate_pre_start_script(
         self,
         pre_start_script_path: str,
-        bigbytes_container_config: Dict,
+        mage_container_config: Dict,
     ) -> None:
         with open(pre_start_script_path, 'r', encoding='utf-8') as f:
             pre_start_script = f.read()
@@ -750,7 +750,7 @@ class WorkloadManager:
             spec.loader.exec_module(module)
             get_custom_configs = module.get_custom_configs
 
-            get_custom_configs(bigbytes_container_config)
+            get_custom_configs(mage_container_config)
         except AttributeError as ex:
             raise ConfigurationError(
                 'Could not find get_custom_configs function in pre-start script'
@@ -783,7 +783,7 @@ class WorkloadManager:
         if set_base_path:
             env_vars.append(
                 {
-                    'name': 'BIGBYTES_BASE_PATH',
+                    'name': 'MAGE_BASE_PATH',
                     'value': name,
                 }
             )
@@ -823,7 +823,7 @@ class WorkloadManager:
                 }
             )
 
-        for var in BIGBYTES_SETTINGS_ENVIRONMENT_VARIABLES + [
+        for var in MAGE_SETTINGS_ENVIRONMENT_VARIABLES + [
             DATABASE_CONNECTION_URL_ENV_VAR,
         ]:
             if os.getenv(var) is not None:

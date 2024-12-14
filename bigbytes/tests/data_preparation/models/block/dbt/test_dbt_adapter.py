@@ -60,12 +60,12 @@ class DBTAdapterTest(AsyncDBTestCase):
         Test the Project Interface by reading the original dbt_project.yml
         and return the dictionary.
         """
-        value = 'bigbytes'
+        value = 'mage'
 
         file_path = os.path.join(
             self.repo_path,
             'dbt_test_project',
-            f'.bigbytes_temp_profiles_{value}',
+            f'.mage_temp_profiles_{value}',
             'profiles.yml',
         )
 
@@ -143,12 +143,12 @@ class DBTAdapterTest(AsyncDBTestCase):
         Test the Project Interface by reading the original dbt_project.yml
         and return the dictionary.
         """
-        value = 'bigbytes'
+        value = 'mage'
 
         file_path = os.path.join(
             self.repo_path,
             'dbt_test_project',
-            f'.bigbytes_temp_profiles_{value}',
+            f'.mage_temp_profiles_{value}',
             'profiles.yml',
         )
 

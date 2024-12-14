@@ -78,12 +78,12 @@ class PlatformUtilsTests(ProjectPlatformMixin, AsyncDBTestCase):
         with patch('bigbytes.settings.platform.utils.project_platform_activated', lambda: True):
             with patch('bigbytes.data_preparation.models.pipeline.Pipeline.get') as mock:
                 get_pipeline_from_platform(
-                    'bigbytes',
+                    'mage',
                     repo_path=full_path,
                 )
                 mock.assert_called_once_with(
-                    'bigbytes',
-                    repo_path=os.path.join(base_repo_path(), 'bigbytes_platform'),
+                    'mage',
+                    repo_path=os.path.join(base_repo_path(), 'mage_platform'),
                     all_projects=False,
                     use_repo_path=False,
                 )
@@ -142,12 +142,12 @@ class PlatformUtilsTests(ProjectPlatformMixin, AsyncDBTestCase):
         with patch('bigbytes.settings.platform.utils.project_platform_activated', lambda: True):
             with patch('bigbytes.data_preparation.models.pipeline.Pipeline.get_async') as mock:
                 await get_pipeline_from_platform_async(
-                    'bigbytes',
+                    'mage',
                     repo_path=full_path,
                 )
                 mock.assert_called_once_with(
-                    'bigbytes',
-                    repo_path=os.path.join(base_repo_path(), 'bigbytes_platform'),
+                    'mage',
+                    repo_path=os.path.join(base_repo_path(), 'mage_platform'),
                     all_projects=False,
                     use_repo_path=False,
                 )

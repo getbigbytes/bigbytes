@@ -72,7 +72,7 @@ function Preferences({
   } = project || {};
 
   const isDemoApp = useMemo(() =>
-    typeof window !== 'undefined' && window.location.hostname === 'demo.bigbytes.io',
+    typeof window !== 'undefined' && window.location.hostname === 'demo.bigbytes.ai',
     [],
   );
 
@@ -164,7 +164,7 @@ function Preferences({
               <Text default>
                 Please contribute usage statistics to help improve the developer experience
                 for you and everyone in the community. Learn more <Link
-                  href="https://docs.bigbytes.io/contributing/statistics/overview"
+                  href="https://docs.bigbytes.ai/contributing/statistics/overview"
                   openNewWindow
                 >
                   here
@@ -175,12 +175,12 @@ function Preferences({
             <Spacing mr={PADDING_UNITS} />
 
             <ToggleSwitch
-              checked={projectAttributes?.help_improve_bigbytes}
+              checked={projectAttributes?.help_improve_mage}
               compact
-              id="help_improve_bigbytes_toggle"
+              id="help_improve_mage_toggle"
               onCheck={() => setProjectAttributes(prev => ({
                 ...prev,
-                help_improve_bigbytes: !projectAttributes?.help_improve_bigbytes,
+                help_improve_mage: !projectAttributes?.help_improve_mage,
               }))}
             />
           </FlexContainer>
@@ -247,7 +247,7 @@ function Preferences({
               Features&nbsp;
               <Link
                 bold
-                href="https://docs.bigbytes.io/development/project/features"
+                href="https://docs.bigbytes.ai/development/project/features"
                 largeSm
                 openNewWindow
               >
@@ -258,6 +258,12 @@ function Preferences({
 
           {Object.entries(ignoreKeys(projectAttributes?.features, [
             FeatureUUIDEnum.CODE_BLOCK_V2,
+            FeatureUUIDEnum.COMMAND_CENTER,
+            FeatureUUIDEnum.COMPUTE_MANAGEMENT,
+            FeatureUUIDEnum.CUSTOM_DESIGN,
+            FeatureUUIDEnum.DBT_V2,
+            FeatureUUIDEnum.GLOBAL_HOOKS,
+            FeatureUUIDEnum.NOTEBOOK_BLOCK_OUTPUT_SPLIT_VIEW,
           ]) || {}).map(([k, v], idx) => {
             const overrideFromRootProject = projectPlatformActivated
               && !rootProjectUse
@@ -366,14 +372,14 @@ function Preferences({
           onClick={() => {
             const updateProjectPayload: ProjectRequestPayloadType = {
               features: projectAttributes?.features,
-              help_improve_bigbytes: projectAttributes?.help_improve_bigbytes,
+              help_improve_mage: projectAttributes?.help_improve_mage,
               openai_api_key: projectAttributes?.openai_api_key,
               pipelines: projectAttributes?.pipelines,
             };
-            if (project?.help_improve_bigbytes === true
-              && projectAttributes?.help_improve_bigbytes === false
+            if (project?.help_improve_mage === true
+              && projectAttributes?.help_improve_mage === false
             ) {
-              updateProjectPayload.deny_improve_bigbytes = true;
+              updateProjectPayload.deny_improve_mage = true;
             }
             updateProject(updateProjectPayload);
           }}

@@ -51,16 +51,16 @@ Follow the [guide](https://cloud.google.com/kubernetes-engine/docs/deploy-app-cl
 
 # Deploy Bigbytes using Helm
 
-Bigbytes helm repo: https://bigbytes.github.io/helm-charts/
+Bigbytes helm repo: https://digitranslab.github.io/helm-charts/
 
 ### Add Helm repository
 ```bash
-helm repo add bigbytes https://bigbytes.github.io/helm-charts
+helm repo add bigbytes https://digitranslab.github.io/helm-charts
 ```
 
 ### Install Helm charts with default config
 ```
-helm install my-bigbytes bigbytes/bigbytes
+helm install my-bigbytes digitranslab/bigbytes
 ```
 
 ### Customize deployment 
@@ -69,7 +69,7 @@ You can customize the deployment by updating the `values.yaml` file.
 - Get the `values.yaml` with the command
     
     ```bash
-    helm show values bigbytes/bigbytes > values.yaml
+    helm show values digitranslab/bigbytes > values.yaml
     ```
     
 - Customize the mount volume
@@ -98,7 +98,7 @@ You can customize the deployment by updating the `values.yaml` file.
 
 - Install the Helm charts with updated `values.yaml`
     ```bash
-    helm install --values path/to/values.yaml my-bigbytes bigbytes/bigbytes
+    helm install --values path/to/values.yaml my-bigbytes digitranslab/bigbytes
     ```
     
 ## Releases

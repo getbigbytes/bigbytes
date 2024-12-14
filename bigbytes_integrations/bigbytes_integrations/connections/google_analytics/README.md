@@ -14,7 +14,7 @@ import json
 
 client = GoogleAnalytics(
     211168255,
-    '/users/bigbytes/bigbytes-241122-6ca7fe21b556.json',
+    '/users/mage/mage-241122-6ca7fe21b556.json',
 )
 
 data = client.load(

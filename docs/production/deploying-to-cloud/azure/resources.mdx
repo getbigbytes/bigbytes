@@ -18,21 +18,21 @@ Terraform will perform the following actions:
   + resource "azurerm_application_gateway" "network" {
       + id                          = (known after apply)
       + location                    = "westus2"
-      + name                        = "bigbytes-data-prep-production-app-gateway"
+      + name                        = "mage-data-prep-production-app-gateway"
       + private_endpoint_connection = (known after apply)
-      + resource_group_name         = "bigbytes-data-prep-production"
+      + resource_group_name         = "mage-data-prep-production"
 
       + backend_address_pool {
           + fqdns        = []
           + id           = (known after apply)
           + ip_addresses = (known after apply)
-          + name         = "bigbytes-data-prep-production-backend-pool"
+          + name         = "mage-data-prep-production-backend-pool"
         }
 
       + backend_http_settings {
           + cookie_based_affinity               = "Disabled"
           + id                                  = (known after apply)
-          + name                                = "bigbytes-data-prep-production-http-setting"
+          + name                                = "mage-data-prep-production-http-setting"
           + pick_host_name_from_backend_address = false
           + port                                = 6789
           + probe_id                            = (known after apply)
@@ -43,7 +43,7 @@ Terraform will perform the following actions:
 
       + frontend_ip_configuration {
           + id                            = (known after apply)
-          + name                          = "bigbytes-data-prep-production-frontend-ip-config"
+          + name                          = "mage-data-prep-production-frontend-ip-config"
           + private_ip_address            = (known after apply)
           + private_ip_address_allocation = "Dynamic"
           + private_link_configuration_id = (known after apply)
@@ -52,24 +52,24 @@ Terraform will perform the following actions:
 
       + frontend_port {
           + id   = (known after apply)
-          + name = "bigbytes-data-prep-production-frontend-port"
+          + name = "mage-data-prep-production-frontend-port"
           + port = 80
         }
 
       + gateway_ip_configuration {
           + id        = (known after apply)
-          + name      = "bigbytes-data-prep-production-ip-configuration"
+          + name      = "mage-data-prep-production-ip-configuration"
           + subnet_id = (known after apply)
         }
 
       + http_listener {
           + frontend_ip_configuration_id   = (known after apply)
-          + frontend_ip_configuration_name = "bigbytes-data-prep-production-frontend-ip-config"
+          + frontend_ip_configuration_name = "mage-data-prep-production-frontend-ip-config"
           + frontend_port_id               = (known after apply)
-          + frontend_port_name             = "bigbytes-data-prep-production-frontend-port"
+          + frontend_port_name             = "mage-data-prep-production-frontend-port"
           + host_names                     = []
           + id                             = (known after apply)
-          + name                           = "bigbytes-data-prep-production-listener"
+          + name                           = "mage-data-prep-production-listener"
           + protocol                       = "Http"
           + ssl_certificate_id             = (known after apply)
           + ssl_profile_id                 = (known after apply)
@@ -77,13 +77,13 @@ Terraform will perform the following actions:
 
       + request_routing_rule {
           + backend_address_pool_id    = (known after apply)
-          + backend_address_pool_name  = "bigbytes-data-prep-production-backend-pool"
+          + backend_address_pool_name  = "mage-data-prep-production-backend-pool"
           + backend_http_settings_id   = (known after apply)
-          + backend_http_settings_name = "bigbytes-data-prep-production-http-setting"
+          + backend_http_settings_name = "mage-data-prep-production-http-setting"
           + http_listener_id           = (known after apply)
-          + http_listener_name         = "bigbytes-data-prep-production-listener"
+          + http_listener_name         = "mage-data-prep-production-listener"
           + id                         = (known after apply)
-          + name                       = "bigbytes-data-prep-production-routing-rule"
+          + name                       = "mage-data-prep-production-routing-rule"
           + priority                   = 10
           + redirect_configuration_id  = (known after apply)
           + rewrite_rule_set_id        = (known after apply)
@@ -114,10 +114,10 @@ Terraform will perform the following actions:
       + ip_address          = (known after apply)
       + ip_address_type     = "Private"
       + location            = "westus2"
-      + name                = "bigbytes-data-prep-production"
+      + name                = "mage-data-prep-production"
       + network_profile_id  = (known after apply)
       + os_type             = "Linux"
-      + resource_group_name = "bigbytes-data-prep-production"
+      + resource_group_name = "mage-data-prep-production"
       + restart_policy      = "Always"
       + tags                = {
           + "Environment" = "production"
@@ -126,9 +126,9 @@ Terraform will perform the following actions:
       + container {
           + commands = (known after apply)
           + cpu      = 1
-          + image    = "bigbytes/bigbytes:latest"
+          + image    = "digitranslab/bigbytes:latest"
           + memory   = 1.5
-          + name     = "bigbytes-data-prep-production-container"
+          + name     = "mage-data-prep-production-container"
 
           + ports {
               + port     = 6789
@@ -138,9 +138,9 @@ Terraform will perform the following actions:
           + volume {
               + empty_dir            = false
               + mount_path           = "/home/src"
-              + name                 = "bigbytes-data-prep-fs"
+              + name                 = "mage-data-prep-fs"
               + read_only            = false
-              + share_name           = "bigbytes-data-prep-production-data"
+              + share_name           = "mage-data-prep-production-data"
               + storage_account_key  = (sensitive value)
               + storage_account_name = "magedataprepstorage"
             }
@@ -152,11 +152,11 @@ Terraform will perform the following actions:
       + container_network_interface_ids = (known after apply)
       + id                              = (known after apply)
       + location                        = "westus2"
-      + name                            = "bigbytes-data-prep-production-profile"
-      + resource_group_name             = "bigbytes-data-prep-production"
+      + name                            = "mage-data-prep-production-profile"
+      + resource_group_name             = "mage-data-prep-production"
 
       + container_network_interface {
-          + name = "bigbytes-data-prep-production-nic"
+          + name = "mage-data-prep-production-nic"
 
           + ip_configuration {
               + name      = "aciipconfig"
@@ -169,8 +169,8 @@ Terraform will perform the following actions:
   + resource "azurerm_network_security_group" "nsg-aci" {
       + id                  = (known after apply)
       + location            = "westus2"
-      + name                = "bigbytes-data-prep-production-nsg-aci"
-      + resource_group_name = "bigbytes-data-prep-production"
+      + name                = "mage-data-prep-production-nsg-aci"
+      + resource_group_name = "mage-data-prep-production"
       + security_rule       = [
           + {
               + access                                     = "Allow"
@@ -265,8 +265,8 @@ Terraform will perform the following actions:
   + resource "azurerm_network_security_group" "nsg-public" {
       + id                  = (known after apply)
       + location            = "westus2"
-      + name                = "bigbytes-data-prep-production-nsg-public"
-      + resource_group_name = "bigbytes-data-prep-production"
+      + name                = "mage-data-prep-production-nsg-public"
+      + resource_group_name = "mage-data-prep-production"
       + security_rule       = [
           + {
               + access                                     = "Allow"
@@ -338,8 +338,8 @@ Terraform will perform the following actions:
       + ip_address              = (known after apply)
       + ip_version              = "IPv4"
       + location                = "westus2"
-      + name                    = "bigbytes-data-prep-production-public-ip"
-      + resource_group_name     = "bigbytes-data-prep-production"
+      + name                    = "mage-data-prep-production-public-ip"
+      + resource_group_name     = "mage-data-prep-production"
       + sku                     = "Standard"
       + sku_tier                = "Regional"
     }
@@ -348,7 +348,7 @@ Terraform will perform the following actions:
   + resource "azurerm_resource_group" "resource_group" {
       + id       = (known after apply)
       + location = "westus2"
-      + name     = "bigbytes-data-prep-production"
+      + name     = "mage-data-prep-production"
     }
 
   # azurerm_storage_account.aci_storage will be created
@@ -387,7 +387,7 @@ Terraform will perform the following actions:
       + primary_web_host                  = (known after apply)
       + public_network_access_enabled     = true
       + queue_encryption_key_type         = "Service"
-      + resource_group_name               = "bigbytes-data-prep-production"
+      + resource_group_name               = "mage-data-prep-production"
       + secondary_access_key              = (sensitive value)
       + secondary_blob_connection_string  = (sensitive value)
       + secondary_blob_endpoint           = (known after apply)
@@ -509,7 +509,7 @@ Terraform will perform the following actions:
       + enabled_protocol     = "SMB"
       + id                   = (known after apply)
       + metadata             = (known after apply)
-      + name                 = "bigbytes-data-prep-production-data"
+      + name                 = "mage-data-prep-production-data"
       + quota                = 100
       + resource_manager_id  = (known after apply)
       + storage_account_name = "magedataprepstorage"
@@ -527,11 +527,11 @@ Terraform will perform the following actions:
       + name                                           = "aci"
       + private_endpoint_network_policies_enabled      = (known after apply)
       + private_link_service_network_policies_enabled  = (known after apply)
-      + resource_group_name                            = "bigbytes-data-prep-production"
+      + resource_group_name                            = "mage-data-prep-production"
       + service_endpoints                              = [
           + "Microsoft.Storage",
         ]
-      + virtual_network_name                           = "bigbytes-data-prep-production"
+      + virtual_network_name                           = "mage-data-prep-production"
 
       + delegation {
           + name = "acidelegationservice"
@@ -557,8 +557,8 @@ Terraform will perform the following actions:
       + name                                           = "public"
       + private_endpoint_network_policies_enabled      = (known after apply)
       + private_link_service_network_policies_enabled  = (known after apply)
-      + resource_group_name                            = "bigbytes-data-prep-production"
-      + virtual_network_name                           = "bigbytes-data-prep-production"
+      + resource_group_name                            = "mage-data-prep-production"
+      + virtual_network_name                           = "mage-data-prep-production"
     }
 
   # azurerm_subnet_network_security_group_association.sn-nsg-aci will be created
@@ -587,8 +587,8 @@ Terraform will perform the following actions:
       + guid                = (known after apply)
       + id                  = (known after apply)
       + location            = "westus2"
-      + name                = "bigbytes-data-prep-production"
-      + resource_group_name = "bigbytes-data-prep-production"
+      + name                = "mage-data-prep-production"
+      + resource_group_name = "mage-data-prep-production"
       + subnet              = (known after apply)
       + tags                = {
           + "Environment" = "production"

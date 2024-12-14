@@ -7,12 +7,12 @@ import yaml
 from bigbytes.data_preparation.models.block.dbt.project import Project
 from bigbytes.errors.base import BigbytesBaseException
 
-SOURCES_FILE_NAME = 'bigbytes_sources.yml'
+SOURCES_FILE_NAME = 'mage_sources.yml'
 
 
 class SourcesError(BigbytesBaseException):
     """
-    Error while handling bigbytes_sources.yml
+    Error while handling mage_sources.yml
     """
     pass
 
@@ -20,7 +20,7 @@ class SourcesError(BigbytesBaseException):
 class Sources(object):
     """
     Interface for dbt sources.yml
-    - Provide bigbytes_sources.yml as dictionary
+    - Provide mage_sources.yml as dictionary
     - Adds/cleans/resets sources for pipelines
     """
 
@@ -30,7 +30,7 @@ class Sources(object):
     ) -> None:
         """
         Interface with a dbt sources.yml.
-        It manages a bigbytes_sources.yml in the configured model-path.
+        It manages a mage_sources.yml in the configured model-path.
 
         Args:
             project_dir (Union[str, os.PathLike]): path of the dbt project
@@ -48,13 +48,13 @@ class Sources(object):
     @property
     def sources(self) -> Dict[str, Any]:
         """
-        Gets the bigbytes_sources.yml as dictionary.
+        Gets the mage_sources.yml as dictionary.
 
         Raises:
-            SourcesError: Error while handling bigbytes_sources.yml
+            SourcesError: Error while handling mage_sources.yml
 
         Returns:
-            Dict: bigbytes_sources.yml as dictionary
+            Dict: mage_sources.yml as dictionary
         """
         if self.__sources:
             return self.__sources
@@ -92,7 +92,7 @@ class Sources(object):
         database: Optional[str] = None
     ) -> None:
         """
-        Adds block_uuids to the bigbytes_sources.yml pipeline sources.
+        Adds block_uuids to the mage_sources.yml pipeline sources.
         Also upserts schema and database.
 
         Args:
@@ -101,7 +101,7 @@ class Sources(object):
             block_uuids (List[str]):
                 list of blocks to keep as sources in the pipeline
             schema (Optional[str], optional):
-                the schema in which the table located. Defaults to 'bigbytes'.
+                the schema in which the table located. Defaults to 'mage'.
             database (Optional[str], optional):
                 the database in which the table located. Defaults to None.
         """
@@ -112,13 +112,13 @@ class Sources(object):
         for block_uuid in block_uuids:
             block_source_new = {
                 'name': f'{pipeline_uuid}_{block_uuid}',
-                'identifier': f'bigbytes_{pipeline_uuid}_{block_uuid}',
+                'identifier': f'mage_{pipeline_uuid}_{block_uuid}',
                 'meta': {
                     'pipeline_uuid': pipeline_uuid,
                     'block_uuid': block_uuid
                 },
                 'description':
-                    f'Dataframe for block `{block_uuid}` of the `{pipeline_uuid}` bigbytes pipeline.',
+                    f'Dataframe for block `{block_uuid}` of the `{pipeline_uuid}` mage pipeline.',
             }
             block_source = next(
                 (
@@ -143,7 +143,7 @@ class Sources(object):
     ) -> None:
         """
         Remove all blocks that are not part of the passed block_uuids from the pipeline
-        source bigbytes_sources.yml.
+        source mage_sources.yml.
 
         Args:
             pipeline_uuid (str): the uuid of the pipeline of which sources should be resetted
@@ -153,7 +153,7 @@ class Sources(object):
 
         # get the sources defined for the pipeline
         project_sources = next(
-            (s for s in sources['sources'] if s.get('name') == f'bigbytes_{project_name}'),
+            (s for s in sources['sources'] if s.get('name') == f'mage_{project_name}'),
             None
         )
         if project_sources:
@@ -167,7 +167,7 @@ class Sources(object):
             ]
 
             # if tables list is empty, then remove the whole pipeline sources dict
-            # from bigbytes_sources.yml
+            # from mage_sources.yml
             if not project_sources['tables']:
                 sources['sources'].remove(project_sources)
 
@@ -178,11 +178,11 @@ class Sources(object):
         project_name: str,
         pipeline_uuid: str,
         block_uuids: List[str],
-        schema: Optional[str] = 'bigbytes',
+        schema: Optional[str] = 'mage',
         database: Optional[str] = None
     ) -> None:
         """
-        Resets the bigbytes_sources.yml pipeline source to the given block_uuids.
+        Resets the mage_sources.yml pipeline source to the given block_uuids.
         Also upserts schema and database.
 
         Args:
@@ -191,7 +191,7 @@ class Sources(object):
             block_uuids (List[str]):
                 list of blocks to keep as sources in the pipeline
             schema (Optional[str], optional):
-                the schema in which the table located. Defaults to 'bigbytes'.
+                the schema in which the table located. Defaults to 'mage'.
             database (Optional[str], optional):
                 the database in which the table located. Defaults to None.
         """
@@ -208,13 +208,13 @@ class Sources(object):
         Gets the pipeline specific sources definition.
         Also upserts schema and database.
 
-        The pipeline name is set as `bigbytes_{pipeline_uuid}`.
+        The pipeline name is set as `mage_{pipeline_uuid}`.
 
         Args:
             pipeline_uuid (str):
                 the uuid of the pipeline of which sources should be loaded
             schema (Optional[str], optional):
-                the schema in which the table located. Defaults to 'bigbytes'.
+                the schema in which the table located. Defaults to 'mage'.
             database (Optional[str], optional):
                 the database in which the table located. Defaults to None.
 
@@ -226,7 +226,7 @@ class Sources(object):
 
         # get the sources defined for the pipeline
         project_sources = next(
-            (s for s in sources['sources'] if s.get('name') == f'bigbytes_{project_name}'),
+            (s for s in sources['sources'] if s.get('name') == f'mage_{project_name}'),
             None
         )
 
@@ -234,9 +234,9 @@ class Sources(object):
         project_sources_exist = bool(project_sources)
         if not project_sources_exist:
             project_sources = {
-                'name': f'bigbytes_{project_name}',
+                'name': f'mage_{project_name}',
                 'description': 'Dataframes Bigbytes upstream blocks',
-                'loader': 'bigbytes',
+                'loader': 'mage',
                 'tables': []
             }
         if schema:
@@ -256,7 +256,7 @@ class Sources(object):
         Writes the sources to disk.
 
         Raises:
-            SourcesError: Error while handling bigbytes_sources.yml
+            SourcesError: Error while handling mage_sources.yml
         """
         try:
             with Path(self.__sources_full_path).open('w') as f:
