@@ -9,7 +9,7 @@ from bigbytes.orchestration.db.models.schedules import BlockRun
 from bigbytes.services.k8s.config import K8sExecutorConfig
 from bigbytes.services.k8s.constants import DEFAULT_NAMESPACE
 from bigbytes.services.k8s.job_manager import JobManager as K8sJobManager
-from bigbytes.settings.server import MAGE_CLUSTER_UUID
+from bigbytes.settings.server import BIGBYTES_CLUSTER_UUID
 from bigbytes.shared.hash import merge_dict
 from bigbytes.shared.utils import clean_name
 
@@ -44,7 +44,7 @@ class K8sBlockExecutor(BlockExecutor):
             namespace = DEFAULT_NAMESPACE
 
         job_manager = K8sJobManager(
-            job_name=f'{MAGE_CLUSTER_UUID}-{job_name_prefix}-block-{block_run_id}',
+            job_name=f'{BIGBYTES_CLUSTER_UUID}-{job_name_prefix}-block-{block_run_id}',
             logger=self.logger,
             logging_tags=kwargs.get('tags', dict()),
             namespace=namespace,

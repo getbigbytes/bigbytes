@@ -114,7 +114,7 @@ class PlatformSettingsTest(ProjectPlatformMixin):
 
         self.assertEqual(
             get_repo_paths_for_file_path(
-                'mage_data/platform/data_loaders/mage/fire/water/ice/load.py',
+                'mage_data/platform/data_loaders/bigbytes/fire/water/ice/load.py',
             ),
             dict(
                 full_path=os.path.join(base_repo_path(), 'mage_data/platform'),

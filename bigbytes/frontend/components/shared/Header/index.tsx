@@ -388,7 +388,8 @@ function Header({
         {userFromLocalStorage?.avatar}
       </div>
     );
-  }, [
+  },
+      [
     hasAvatarAndNotEmoji,
     userFromLocalStorage,
   ]);
@@ -507,25 +508,25 @@ function Header({
               />
             </Spacing>
 
-            <Spacing ml={1}>
-              <KeyboardShortcutButton
-                beforeElement={<Slack />}
-                compact
-                highlightOnHoverAlt
-                inline
-                linkProps={{
-                  as: 'https://www.bigbytes.ai/chat',
-                  href: 'https://www.bigbytes.ai/chat',
-                }}
-                noBackground
-                noHoverUnderline
-                openNewTab
-                sameColorAsText
-                uuid="Header/live_chat"
-              >
-                Live help
-              </KeyboardShortcutButton>
-            </Spacing>
+            {/*<Spacing ml={1}>*/}
+            {/*  <KeyboardShortcutButton*/}
+            {/*    beforeElement={<Slack />}*/}
+            {/*    compact*/}
+            {/*    highlightOnHoverAlt*/}
+            {/*    inline*/}
+            {/*    linkProps={{*/}
+            {/*      as: 'https://www.bigbytes.ai/chat',*/}
+            {/*      href: 'https://www.bigbytes.ai/chat',*/}
+            {/*    }}*/}
+            {/*    noBackground*/}
+            {/*    noHoverUnderline*/}
+            {/*    openNewTab*/}
+            {/*    sameColorAsText*/}
+            {/*    uuid="Header/live_chat"*/}
+            {/*  >*/}
+            {/*    Live help*/}
+            {/*  </KeyboardShortcutButton>*/}
+            {/*</Spacing>*/}
 
             {menuItems &&
               <>
@@ -603,17 +604,17 @@ function Header({
                       ref={refUserMenu}
                       uuid="Header/menu"
                     >
-                      {hasAvatarEmoji && userFromLocalStorage?.avatar?.length >= 2
-                        ? avatarMemo
-                        : (
-                          <Circle
-                            color={BLUE_TRANSPARENT}
-                            size={4 * UNIT}
-                          >
-                            {avatarMemo}
-                          </Circle>
-                        )
-                      }
+                      {/*{hasAvatarEmoji && userFromLocalStorage?.avatar?.length >= 2*/}
+                      {/*  ? avatarMemo*/}
+                      {/*  : (*/}
+                      {/*    <Circle*/}
+                      {/*      color={BLUE_TRANSPARENT}*/}
+                      {/*      size={4 * UNIT}*/}
+                      {/*    >*/}
+                      {/*      {avatarMemo}*/}
+                      {/*    </Circle>*/}
+                      {/*  )*/}
+                      {/*}*/}
                     </KeyboardShortcutButton>
 
                     <FlyoutMenu

@@ -10,8 +10,8 @@ from bigbytes.presenters.block_layout.constants import (
     BLOCK_LAYOUT_FILENAME_WITH_EXTENSION,
 )
 from bigbytes.presenters.constants import (
-    MAGE_PRESENTERS_DIRECTORY_DEFAULT,
-    MAGE_PRESENTERS_DIRECTORY_ENVIRONMENT_VARIABLE_NAME,
+    BIGBYTES_PRESENTERS_DIRECTORY_DEFAULT,
+    BIGBYTES_PRESENTERS_DIRECTORY_ENVIRONMENT_VARIABLE_NAME,
 )
 from bigbytes.settings.repo import get_repo_path
 from bigbytes.shared.config import BaseConfig
@@ -38,10 +38,10 @@ class PageBlockLayout(BaseConfig):
             repo_config_to_use = repo_config
 
         directory_path = os.getenv(
-            MAGE_PRESENTERS_DIRECTORY_ENVIRONMENT_VARIABLE_NAME,
+            BIGBYTES_PRESENTERS_DIRECTORY_ENVIRONMENT_VARIABLE_NAME,
         ) or os.path.join(
             repo_config_to_use.variables_dir,
-            MAGE_PRESENTERS_DIRECTORY_DEFAULT,
+            BIGBYTES_PRESENTERS_DIRECTORY_DEFAULT,
         )
 
         file_path = os.path.join(

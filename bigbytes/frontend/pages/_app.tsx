@@ -315,7 +315,7 @@ function MyApp(props: MyAppProps & AppProps) {
                     <Banner
                       linkProps={{
                         href: 'https://github.com/digitranslab/bigbytes',
-                        label: 'GET MAGE',
+                        label: 'GET BIGBYTES',
                       }}
                       localStorageHideKey={LOCAL_STORAGE_KEY_HIDE_PUBLIC_DEMO_WARNING}
                       textProps={{

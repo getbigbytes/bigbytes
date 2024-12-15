@@ -70,6 +70,6 @@ COPY ./bigbytes /home/src/bigbytes
 WORKDIR /home/src/bigbytes/frontend
 RUN yarn install && yarn cache clean
 
-ENV MAGE_DATA_DIR=
+ENV BIGBYTES_DATA_DIR=
 ENV PYTHONPATH="${PYTHONPATH}:/home/src"
 WORKDIR /home/src

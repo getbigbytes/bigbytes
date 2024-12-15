@@ -242,11 +242,11 @@ class BlockActionObjectCache(BaseCache):
         Initializes a cache for various types of objects across all projects.
 
         This method populates a mapping dictionary with cached data for different types of objects,
-        including mage templates, custom block templates, and block files, from all projects.
+        including bigbytes templates, custom block templates, and block files, from all projects.
 
         - `OBJECT_TYPE_BLOCK_FILE`: Cache for block files.
         - `OBJECT_TYPE_CUSTOM_BLOCK_TEMPLATE`: Cache for custom block templates.
-        - `OBJECT_TYPE_BIGBYTES_TEMPLATE`: Cache for mage templates.
+        - `OBJECT_TYPE_BIGBYTES_TEMPLATE`: Cache for bigbytes templates.
 
         The caching process includes fetching templates relevant to all projects,
         processing custom block templates from a directory,

@@ -27,6 +27,6 @@ class AzureContainerInstanceExecutor(BlockExecutor):
         )
         container_instance.run_job(
             ' '.join(cmd),
-            f'mage-data-prep-block-{block_run_id}',
+            f'bigbytes-data-prep-block-{block_run_id}',
             self.executor_config,
         )

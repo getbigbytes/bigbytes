@@ -112,7 +112,7 @@ class ReformatValuesCleaningRuleTests(TestCase):
     def test_currency_correction(self):
         df = pd.DataFrame(
             [
-                ['$', '$    10000', 'stock exchange america', '$:MAGE', 5.34],
+                ['$', '$    10000', 'stock exchange america', '$:BIGBYTES', 5.34],
                 ['£', '£200', 'huddersfield stock exchange', '£:XYZA', -1.34],
                 ['CAD', 'CAD 100', None, '', -0.89],
                 ['¥', '¥2500.89', 'stock exchange japan', '', 4.23],

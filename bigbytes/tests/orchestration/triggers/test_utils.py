@@ -57,7 +57,7 @@ class TriggerUtilsTest(DBTestCase):
                 data_loader=dict(partitions=1),
                 transformer=dict(partitions=2),
             ),
-            uuid='mage',
+            uuid='bigbytes',
         )
         self.pipeline_schedule = fetch_or_create_pipeline_schedule(self.global_data_product)
 
@@ -75,7 +75,7 @@ class TriggerUtilsTest(DBTestCase):
         pipeline_run = create_and_start_pipeline_run(
             self.pipeline,
             self.pipeline_schedule,
-            dict(variables=dict(mage=3)),
+            dict(variables=dict(bigbytes=3)),
         )
 
         error = False
@@ -111,8 +111,8 @@ class TriggerUtilsTest(DBTestCase):
         pipeline_run = create_and_start_pipeline_run(
             self.pipeline,
             self.pipeline_schedule,
-            dict(variables=dict(mage=3)),
+            dict(variables=dict(bigbytes=3)),
         )
 
         self.assertEqual(pipeline_run.pipeline_schedule, self.pipeline_schedule)
-        self.assertEqual(pipeline_run.variables['mage'], 3)
+        self.assertEqual(pipeline_run.variables['bigbytes'], 3)

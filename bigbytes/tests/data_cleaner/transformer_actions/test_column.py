@@ -2708,7 +2708,7 @@ class ColumnTests(TestCase):
 
         df_currency = pd.DataFrame(
             [
-                ['$', '$    10000', 'stock exchange america', '$:MAGE', 5.34],
+                ['$', '$    10000', 'stock exchange america', '$:BIGBYTES', 5.34],
                 ['£', '£200', 'huddersfield stock exchange', '£:XYZA', -1.34],
                 ['CAD', 'CAD 100', None, '', -0.89],
                 ['¥', '', 'stock exchange japan', '', 4.23],
@@ -2728,7 +2728,7 @@ class ColumnTests(TestCase):
         )
         df_expected = pd.DataFrame(
             [
-                ['$', 10000, 'stock exchange america', '$:MAGE', 5.34],
+                ['$', 10000, 'stock exchange america', '$:BIGBYTES', 5.34],
                 ['£', 200, 'huddersfield stock exchange', '£:XYZA', -1.34],
                 ['CAD', 100, None, '', -0.89],
                 ['¥', np.nan, 'stock exchange japan', '', 4.23],

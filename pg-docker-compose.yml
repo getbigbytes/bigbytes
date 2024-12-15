@@ -24,7 +24,7 @@ services:
       - ENV=dev
       - GCP_PROJECT_ID=$GCP_PROJECT_ID
       - GCP_REGION=$GCP_REGION
-      - MAGE_DATABASE_CONNECTION_URL=postgresql+psycopg2://postgres:postgres@postgres-db:5432/bigbytes
+      - BIGBYTES_DATABASE_CONNECTION_URL=postgresql+psycopg2://postgres:postgres@postgres-db:5432/bigbytes
       - MAX_NUMBER_OF_FILE_VERSIONS=$MAX_NUMBER_OF_FILE_VERSIONS
       - REQUIRE_USER_AUTHENTICATION=$REQUIRE_USER_AUTHENTICATION
       - path_to_keyfile=$GCP_PATH_TO_CREDENTIALS
@@ -43,7 +43,7 @@ services:
     volumes:
       - .:/home/src
       - ~/.aws:/root/.aws
-      - ~/.mage_data:/root/.mage_data
+      - ~/.bigbytes_data:/root/.bigbytes_data
     restart: on-failure:5
     stdin_open: true # used for interactive debugging
     tty: true # used for interactive debugging

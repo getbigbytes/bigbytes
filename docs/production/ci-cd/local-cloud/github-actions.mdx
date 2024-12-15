@@ -81,10 +81,10 @@ env:
 | Key                   | Description                                                                                                                                                                                                                                                                        | Sample value                         |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
 | `AWS_REGION`          | Region of your AWS ECS cluster.                                                                                                                                                                                                                                                    | `us-west-2`                          |
-| `CONTAINER_NAME`      | Set this to the name of the container in the containerDefinitions section of your task definition.                                                                                                                                                                                 | `mage-data-production-container`     |
-| `ECR_REPOSITORY`      | The name of the AWS ECR repository you created to store your Docker images.                                                                                                                                                                                                        | `mage-data`                          |
-| `ECS_CLUSTER`         | The name of your AWS ECS cluster.                                                                                                                                                                                                                                                  | `mage-production-cluster`            |
-| `ECS_SERVICE`         | The name of your AWS ECS service.                                                                                                                                                                                                                                                  | `mage-production-ecs-service`        |
+| `CONTAINER_NAME`      | Set this to the name of the container in the containerDefinitions section of your task definition.                                                                                                                                                                                 | `bigbytes-data-production-container`     |
+| `ECR_REPOSITORY`      | The name of the AWS ECR repository you created to store your Docker images.                                                                                                                                                                                                        | `bigbytes-data`                          |
+| `ECS_CLUSTER`         | The name of your AWS ECS cluster.                                                                                                                                                                                                                                                  | `bigbytes-production-cluster`            |
+| `ECS_SERVICE`         | The name of your AWS ECS service.                                                                                                                                                                                                                                                  | `bigbytes-production-ecs-service`        |
 | `ECS_TASK_DEFINITION` | Go to your AWS ECS task definition for the above service. Click on the **JSON** tab on the task definition detail page. Copy the JSON string content and save it to a file in your root folder containing your Bigbytes project. Use the path to that file as the value in this field. | `some_path/ecs-task-definition.json` |
 
 1. Click the button labeled **Start commit** in the top right corner.
@@ -105,7 +105,7 @@ env:
 2. In the field labeled **Name**, enter the value `GCP_CREDENTIALS`.
 3. In the field labeled **Secret**, enter the JSON string containing your GCP
    service account credentials. It should look something like this:
-   `json { "type": "service_account", "project_id": "mage-123456", "private_key_id": "...", "private_key": "-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n", "client_email": "mage@mage-123456.iam.gserviceaccount.com", "client_id": "...", "auth_uri": "https://accounts.google.com/o/oauth2/auth", "token_uri": "https://oauth2.googleapis.com/token", "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs", "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/mage%40mage-123456.iam.gserviceaccount.com" } `
+   `json { "type": "service_account", "project_id": "bigbytes-123456", "private_key_id": "...", "private_key": "-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n", "client_email": "bigbytes@bigbytes-123456.iam.gserviceaccount.com", "client_id": "...", "auth_uri": "https://accounts.google.com/o/oauth2/auth", "token_uri": "https://oauth2.googleapis.com/token", "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs", "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/bigbytes%40bigbytes-123456.iam.gserviceaccount.com" } `
 4. Click the button labeled **Add secret** to save.
 5. Click on the tab labeled **Actions**.
 6. On the left side, click the button labeled **New workflow**.
@@ -127,10 +127,10 @@ env:
    | Key                             | Description                                                                                 | Sample value  |
    | ------------------------------- | ------------------------------------------------------------------------------------------- | ------------- |
    | `GAR_LOCATION`                  | Region that Bigbytes is already deployed in.                                                    | `us-east1`    |
-   | `GOOGLE_CLOUD_RUN_SERVICE_NAME` | The name of your Google Cloud Run service. Go to the Google Cloud Run dashboard to find it. | `mage-data`   |
+   | `GOOGLE_CLOUD_RUN_SERVICE_NAME` | The name of your Google Cloud Run service. Go to the Google Cloud Run dashboard to find it. | `bigbytes-data`   |
    | `IMAGE`                         | The name of the Docker image you pushed to the above GCP Artifact Registry.                 | `bigbytes`      |
-   | `PROJECT_ID`                    | Project ID of where you launched Bigbytes using Terraform.                                      | `mage-123456` |
-   | `REPOSITORY`                    | The name of your GCP Artifact Registry that is storing your Docker image.                   | `mageprod`    |
+   | `PROJECT_ID`                    | Project ID of where you launched Bigbytes using Terraform.                                      | `bigbytes-123456` |
+   | `REPOSITORY`                    | The name of your GCP Artifact Registry that is storing your Docker image.                   | `bigbytesprod`    |
 
 10. Click the button labeled **Start commit** in the top right corner.
 11. Click the button labeled **Commit new file**.

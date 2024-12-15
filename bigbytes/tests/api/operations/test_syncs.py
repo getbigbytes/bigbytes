@@ -4,7 +4,7 @@ import inflection
 
 from bigbytes.data_preparation.preferences import get_preferences
 from bigbytes.data_preparation.shared.secrets import get_secret_value
-from bigbytes.settings.repo import MAGE_DATA_DIR_ENV_VAR
+from bigbytes.settings.repo import BIGBYTES_DATA_DIR_ENV_VAR
 from bigbytes.tests.api.operations.test_base import BaseApiTestCase
 from bigbytes.tests.factory import create_user
 
@@ -21,7 +21,7 @@ class SyncOperationTests(BaseApiTestCase):
     @classmethod
     def setUpClass(self):
         super().setUpClass()
-        os.environ[MAGE_DATA_DIR_ENV_VAR] = self.repo_path
+        os.environ[BIGBYTES_DATA_DIR_ENV_VAR] = self.repo_path
 
     async def asyncTearDown(self):
         # super().asyncTearDown()

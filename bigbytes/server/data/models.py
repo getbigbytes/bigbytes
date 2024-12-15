@@ -2,7 +2,7 @@ import os
 import os.path
 
 from bigbytes.data_cleaner.pipelines.base import BasePipeline
-from bigbytes.server.client.mage import Bigbytes
+from bigbytes.server.client.bigbytes import Bigbytes
 from bigbytes.server.data.base import Model
 from bigbytes.server.logger import Logger
 from bigbytes.shared.constants import SAMPLE_SIZE

@@ -88,7 +88,7 @@ class AmazonS3(Source):
             self.config.get('role_arn')
         ):
             # Assume IAM role and get credentials
-            role_session_name = self.config.get('role_session_name', 'mage-data-integration')
+            role_session_name = self.config.get('role_session_name', 'bigbytes-data-integration')
             sts_session = boto3.Session()
             sts_connection = sts_session.client('sts')
             assume_role_object = sts_connection.assume_role(

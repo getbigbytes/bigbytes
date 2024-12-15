@@ -33,7 +33,7 @@ from bigbytes.settings.platform import git_settings, project_platform_activated
 from bigbytes.settings.repo import get_repo_path
 from bigbytes.shared.logger import VerboseFunctionExec
 
-REMOTE_NAME = 'mage-repo'
+REMOTE_NAME = 'bigbytes-repo'
 
 logger = Logger().new_server_logger(__name__)
 

@@ -1,5 +1,5 @@
 # !bin/bash
-MAGE_CLI="python3 -m bigbytes.cli.main"
+BIGBYTES_CLI="python3 -m bigbytes.cli.main"
 PIP="python3 -m pip"
 
 POSITIONAL=()
@@ -21,4 +21,4 @@ done
 
 ssh -i ${POSITIONAL[0]} -f -L 6789:localhost:6789 ${POSITIONAL[1]}@${POSITIONAL[2]} sleep 120
 ssh -t -i ${POSITIONAL[0]} ${POSITIONAL[1]}@${POSITIONAL[2]} "if ! $PIP list | grep bigbytes; then $PIP install bigbytes; fi;" \
-"$MAGE_CLI init $REPO_NAME; $MAGE_CLI start $REPO_NAME;"
+"$BIGBYTES_CLI init $REPO_NAME; $BIGBYTES_CLI start $REPO_NAME;"

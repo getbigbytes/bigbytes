@@ -23,14 +23,14 @@ Set the following environment variable name and value:
 
 ### Set access token expiration time
 
-You can set the `MAGE_ACCESS_TOKEN_EXPIRY_TIME` environment variable to customize the expiration time
+You can set the `BIGBYTES_ACCESS_TOKEN_EXPIRY_TIME` environment variable to customize the expiration time
 of a Bigbytes access token. The value should be the length of time in seconds.
 
 Defaults to 2592000 which is 30 days.
 
 |   |   |
 | --- | --- |
-| Name | `MAGE_ACCESS_TOKEN_EXPIRY_TIME` |
+| Name | `BIGBYTES_ACCESS_TOKEN_EXPIRY_TIME` |
 | Value | `2592000` |
 
 ### Running Bigbytes in Docker
@@ -47,7 +47,7 @@ For example:
 docker run -it -p 6789:6789 \
   -v $(pwd):/home/src \
   -e REQUIRE_USER_AUTHENTICATION=1 \
-  digitranslab/bigbytes /app/run_app.sh mage start demo_project
+  digitranslab/bigbytes /app/run_app.sh bigbytes start demo_project
 ```
 
 ### Running Bigbytes without Docker

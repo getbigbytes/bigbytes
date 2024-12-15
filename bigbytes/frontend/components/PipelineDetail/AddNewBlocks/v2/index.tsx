@@ -402,7 +402,7 @@ function AddNewBlocksV2({
                               <TemplateShapes muted size={ICON_SIZE} />
                             )}
 
-                            {ObjectType.MAGE_TEMPLATE === objectType && (
+                            {ObjectType.BIGBYTES_TEMPLATE === objectType && (
                               <BlockCubePolygon muted size={ICON_SIZE} />
                             )}
 

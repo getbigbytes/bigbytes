@@ -492,7 +492,7 @@ class GlobalHooksTest(BaseApiTestCase):
                     resource_type=EntityName.Tag,
                     stage=HookStage.BEFORE,
                     conditions=[HookCondition.SUCCESS, HookCondition.FAILURE],
-                    operation_resource=dict(mage=1),
+                    operation_resource=dict(bigbytes=1),
                     resource_id=1,
                     resource_parent=dict(fire=5),
                     resource_parent_id=3,
@@ -512,7 +512,7 @@ class GlobalHooksTest(BaseApiTestCase):
                     error=None,
                     meta=None,
                     metadata=None,
-                    operation_resource=dict(mage=1),
+                    operation_resource=dict(bigbytes=1),
                     payload=None,
                     query=None,
                     resource=None,
@@ -569,7 +569,7 @@ class GlobalHooksTest(BaseApiTestCase):
         hook1, hook2, hook3 = build_and_add_hooks(self, self.global_hooks)
         hook4 = build_hook(self)
         self.global_hooks.add_hook(hook4)
-        self.global_hooks.project_global_hooks = dict(mage=1)
+        self.global_hooks.project_global_hooks = dict(bigbytes=1)
 
         self.assertEqual(
             self.global_hooks.to_dict(),

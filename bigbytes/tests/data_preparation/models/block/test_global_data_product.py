@@ -31,7 +31,7 @@ class GlobalDataProductBlockTest(DBTestCase):
                     outdated_after=dict(months=12),
                     outdated_starting_at=dict(day_of_month=12),
                     settings=dict(data_loader=dict(partitions=12)),
-                    uuid='mage',
+                    uuid='bigbytes',
                 ),
             ),
             pipeline=self.pipeline,
@@ -44,7 +44,7 @@ class GlobalDataProductBlockTest(DBTestCase):
             outdated_starting_at=dict(day_of_month=1),
             repo_path=self.repo_path,
             settings=dict(data_loader=dict(partitions=1)),
-            uuid='mage',
+            uuid='bigbytes',
         )
 
         self.file_path = os.path.join(
@@ -65,7 +65,7 @@ class GlobalDataProductBlockTest(DBTestCase):
 
     @patch('bigbytes.orchestration.triggers.global_data_product.trigger_and_check_status')
     def test_execute_block(self, mock_trigger_and_check_status):
-        self.block.execute_block(global_vars=dict(variables=dict(mage=3)))
+        self.block.execute_block(global_vars=dict(variables=dict(bigbytes=3)))
         mock_trigger_and_check_status.assert_has_calls([
             call(
                 self.block.get_global_data_product(),
@@ -75,6 +75,6 @@ class GlobalDataProductBlockTest(DBTestCase):
                 logging_tags=ANY,
                 poll_interval=30,
                 remote_blocks=None,
-                variables=dict(mage=3),
+                variables=dict(bigbytes=3),
             ),
         ])

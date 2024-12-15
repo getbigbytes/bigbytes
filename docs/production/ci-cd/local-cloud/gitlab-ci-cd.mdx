@@ -87,10 +87,10 @@ Follow the [Bigbytes project setup instructions](/production/ci-cd/local-cloud/r
 
     | Key                   | Description                                                                                                                                                                                                                                                                        | Sample value                         |
     | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
-    | `REPOSITORY_URL`      | The URL of the AWS ECR repository you created to store your Docker images. | `679812356111.dkr.ecr.us-west-2.amazonaws.com/mage-data` |
-    | `CLUSTER_NAME`         | The name of your AWS ECS cluster. | `mage-production-cluster` |
-    | `SERVICE_NAME`         | The name of your AWS ECS service. | `mage-production-ecs-service` |
-    | `TASK_DEFINITION_NAME` | Go to your AWS ECS task definition for the above service. Use the name of that task definition. | `mage-production-task` |
+    | `REPOSITORY_URL`      | The URL of the AWS ECR repository you created to store your Docker images. | `679812356111.dkr.ecr.us-west-2.amazonaws.com/bigbytes-data` |
+    | `CLUSTER_NAME`         | The name of your AWS ECS cluster. | `bigbytes-production-cluster` |
+    | `SERVICE_NAME`         | The name of your AWS ECS service. | `bigbytes-production-ecs-service` |
+    | `TASK_DEFINITION_NAME` | Go to your AWS ECS task definition for the above service. Use the name of that task definition. | `bigbytes-production-task` |
 
 1. If you use a different branch than `main`, for example `master`,
     you must edit the value `only` under the `build` and `deploy` key in the file `.gitlab-ci.yml`.

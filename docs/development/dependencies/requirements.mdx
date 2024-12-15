@@ -65,7 +65,7 @@ To set the `USER_CODE_PATH` when running a Bigbytes Docker container, use the fo
 ```Shell
 docker run -it -p 6789:6789 -v $(pwd):/home/src \
   -e USER_CODE_PATH=/home/src/project_name \
-  digitranslab/bigbytes /app/run_app.sh mage start [project_name]
+  digitranslab/bigbytes /app/run_app.sh bigbytes start [project_name]
 ```
 Let's break down this command:
 
@@ -74,7 +74,7 @@ Let's break down this command:
 - `v $(pwd):/home/src`: Mounts your current directory to `/home/src` in the container.
 - `e USER_CODE_PATH=/home/src/project_name`: Sets the `USER_CODE_PATH` environment variable.
 - `digitranslab/bigbytes`: Specifies the Bigbytes Docker image to use.
-- `/app/run_app.sh mage start [project_name]`: The command to run inside the container.
+- `/app/run_app.sh bigbytes start [project_name]`: The command to run inside the container.
 
 ### Important Notes
 
@@ -99,11 +99,11 @@ FROM digitranslab/bigbytes:latest
 
 ### Set up project-specific arguments
 ARG PROJECT_NAME=[project_name]
-ARG MAGE_CODE_PATH=/home/mage_code
-ARG USER_CODE_PATH=${MAGE_CODE_PATH}/${PROJECT_NAME}
+ARG BIGBYTES_CODE_PATH=/home/mage_code
+ARG USER_CODE_PATH=${BIGBYTES_CODE_PATH}/${PROJECT_NAME}
 
 ### Set working directory
-WORKDIR ${MAGE_CODE_PATH}
+WORKDIR ${BIGBYTES_CODE_PATH}
 
 ### Copy project files
 COPY ${PROJECT_NAME} ${PROJECT_NAME}
@@ -120,14 +120,14 @@ Breakdown of the Dockerfile:
 
 ```Bash
 ARG PROJECT_NAME=[project_name]
-ARG MAGE_CODE_PATH=/home/mage_code
-ARG USER_CODE_PATH=${MAGE_CODE_PATH}/${PROJECT_NAME}
+ARG BIGBYTES_CODE_PATH=/home/mage_code
+ARG USER_CODE_PATH=${BIGBYTES_CODE_PATH}/${PROJECT_NAME}
 ```
 - `PROJECT_NAME`: Should be replaced with your actual project name.
-- `MAGE_CODE_PATH`: Sets the base path for Bigbytes code.
+- `BIGBYTES_CODE_PATH`: Sets the base path for Bigbytes code.
 - `USER_CODE_PATH`: Constructs the full path to your project, effectively setting the `USER_CODE_PATH` for Bigbytes.
-3. `WORKDIR ${MAGE_CODE_PATH}`
-    - Sets the working directory inside the container to the path specified by `MAGE_CODE_PATH`.
+3. `WORKDIR ${BIGBYTES_CODE_PATH}`
+    - Sets the working directory inside the container to the path specified by `BIGBYTES_CODE_PATH`.
 4. `COPY ${PROJECT_NAME} ${PROJECT_NAME}`
     - Copies your project files from the host machine into the container.
 5. `CMD ["/bin/sh", "-c", "/app/run_app.sh"]`

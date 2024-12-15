@@ -24,7 +24,7 @@ export default function(
       imports,
     } = autocompleteItem;
 
-    if ([GroupEnum.MAGE_LIBRARY, GroupEnum.USER_LIBRARY].includes(group)) {
+    if ([GroupEnum.BIGBYTES_LIBRARY, GroupEnum.USER_LIBRARY].includes(group)) {
       let moduleName = id;
       if (moduleName.match(/__init__.py/)) {
         moduleName = moduleName.replace(/\/__init__.py/, '');

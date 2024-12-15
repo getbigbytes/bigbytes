@@ -10,7 +10,7 @@ class AttributeOperationType(StrEnum):
 
 
 class AttributeType(StrEnum):
-    ALL = '__*MAGE*__'
+    ALL = '__*BIGBYTES*__'
 
 
 class AuthorizeStatusType(StrEnum):

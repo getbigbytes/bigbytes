@@ -15,7 +15,7 @@ While you may pull an image directly from Docker Hub, here are our legacy instru
     - Choose any **Encryption**
     - Click **`CREATE`**
 
-2.  Click on the newly created repository (e.g. `mage-docker`).
+2.  Click on the newly created repository (e.g. `bigbytes-docker`).
 3. Near the top of the page, click the link **`SETUP INSTRUCTIONS`** or read these
     [instructions](https://cloud.google.com/artifact-registry/docs/docker/authentication)
     to set up authentication for Docker.
@@ -57,19 +57,19 @@ While you may pull an image directly from Docker Hub, here are our legacy instru
         - An example command could look like this:
 
             ```bash
-            docker tag digitranslab/bigbytes:latest us-west2-docker.pkg.dev/materia-284023/mage-docker/bigbytes:latest
+            docker tag digitranslab/bigbytes:latest us-west2-docker.pkg.dev/materia-284023/bigbytes-docker/bigbytes:latest
             ```
 
-    - Sample commands if using previously tagged a custom Docker image using the tag `mageprod:latest`:
+    - Sample commands if using previously tagged a custom Docker image using the tag `bigbytesprod:latest`:
 
         ```bash
         docker tag mageprod:latest [region]-docker.pkg.dev/[project_id]/[repository]/bigbytes:latest
         ```
 
-        - An example command could look like this if you previously tagged your custom Docker image with the tag `mageprod:latest`:
+        - An example command could look like this if you previously tagged your custom Docker image with the tag `bigbytesprod:latest`:
 
             ```bash
-            docker tag mageprod:latest us-west2-docker.pkg.dev/materia-284023/mage-docker/bigbytes:latest
+            docker tag bigbytesprod:latest us-west2-docker.pkg.dev/materia-284023/bigbytes-docker/bigbytes:latest
             ```
 
 6.  Push the local Docker image to GCP Artifact Registry:
@@ -81,5 +81,5 @@ While you may pull an image directly from Docker Hub, here are our legacy instru
     - An example command could look like this:
 
         ```bash
-        docker push us-west2-docker.pkg.dev/materia-284023/mage-docker/bigbytes:latest
+        docker push us-west2-docker.pkg.dev/materia-284023/bigbytes-docker/bigbytes:latest
         ```

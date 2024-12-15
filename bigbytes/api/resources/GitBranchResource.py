@@ -190,7 +190,7 @@ class GitBranchResource(GenericResource):
         if access_token:
             token = access_token.token
             user_from_api = api.get_user(token, provider=provider)
-            # Default to mage user email if no email is returned from API
+            # Default to bigbytes user email if no email is returned from API
             email = user_from_api.get('email')
             if email is None and user:
                 email = user.email

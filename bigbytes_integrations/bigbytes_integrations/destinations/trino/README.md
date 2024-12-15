@@ -72,7 +72,7 @@ hive.metastore.glue.default-warehouse-dir=s3://[bucket_name]/
 
 ```
 connector.name=postgresql
-connection-url=jdbc:postgresql://host.docker.internal:5432/mage
+connection-url=jdbc:postgresql://host.docker.internal:5432/bigbytes
 connection-user=postgres
 connection-password=postgres
 ```

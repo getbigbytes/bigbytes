@@ -11,7 +11,7 @@ You must enter the following credentials when configuring this source:
 | Key | Description | Sample value
 | --- | --- | --- |
 | `api_key` | The name of the database you want to load data from. | `abc123` |
-| `domain` | If you access Freshdesk from a URL like this https://bigbytes.freshdesk.com, then the `domain` is `mage`. | `mage` |
+| `domain` | If you access Freshdesk from a URL like this https://bigbytes.freshdesk.com, then the `domain` is `bigbytes`. | `bigbytes` |
 | `start_date` | Fetch data that is newer than the `start_date`. | `2021-01-01T00:00:00Z` |
 
 <br />

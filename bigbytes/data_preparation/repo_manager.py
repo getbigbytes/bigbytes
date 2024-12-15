@@ -14,7 +14,7 @@ from bigbytes.data_preparation.templates.utils import copy_template_directory
 from bigbytes.settings import INITIAL_METADATA, settings
 from bigbytes.settings.repo import (
     DEFAULT_BIGBYTES_DATA_DIR,
-    MAGE_DATA_DIR_ENV_VAR,
+    BIGBYTES_DATA_DIR_ENV_VAR,
     PROJECT_METADATA_FILENAME,
 )
 from bigbytes.settings.repo import get_data_dir as get_data_dir_new
@@ -276,7 +276,7 @@ def init_repo(
         )
     elif project_type == ProjectType.SUB:
         os.makedirs(
-            os.getenv(MAGE_DATA_DIR_ENV_VAR) or DEFAULT_BIGBYTES_DATA_DIR,
+            os.getenv(BIGBYTES_DATA_DIR_ENV_VAR) or DEFAULT_BIGBYTES_DATA_DIR,
             exist_ok=True,
         )
         copy_template_directory('repo', repo_path)
@@ -287,7 +287,7 @@ def init_repo(
         )
     else:
         os.makedirs(
-            os.getenv(MAGE_DATA_DIR_ENV_VAR) or DEFAULT_BIGBYTES_DATA_DIR,
+            os.getenv(BIGBYTES_DATA_DIR_ENV_VAR) or DEFAULT_BIGBYTES_DATA_DIR,
             exist_ok=True,
         )
         copy_template_directory('repo', repo_path)
@@ -313,10 +313,10 @@ def get_repo_config(
 
 
 def get_project_type(repo_config: RepoConfig = None, repo_path: str = None) -> ProjectType:
-    from bigbytes.settings.repo import MAGE_PROJECT_TYPE_ENV_VAR
+    from bigbytes.settings.repo import BIGBYTES_PROJECT_TYPE_ENV_VAR
 
     try:
-        project_type_from_env = os.getenv(MAGE_PROJECT_TYPE_ENV_VAR)
+        project_type_from_env = os.getenv(BIGBYTES_PROJECT_TYPE_ENV_VAR)
         if project_type_from_env:
             return ProjectType(project_type_from_env)
         else:
@@ -329,10 +329,10 @@ def get_project_type(repo_config: RepoConfig = None, repo_path: str = None) -> P
 
 
 def get_cluster_type(repo_path=None) -> Optional[ClusterType]:
-    from bigbytes.settings.repo import MAGE_CLUSTER_TYPE_ENV_VAR
+    from bigbytes.settings.repo import BIGBYTES_CLUSTER_TYPE_ENV_VAR
 
     try:
-        cluster_type_from_env = os.getenv(MAGE_CLUSTER_TYPE_ENV_VAR)
+        cluster_type_from_env = os.getenv(BIGBYTES_CLUSTER_TYPE_ENV_VAR)
         if cluster_type_from_env:
             return ClusterType(cluster_type_from_env)
         else:
@@ -393,7 +393,7 @@ def get_project_uuid() -> str:
 # These should not be used. Please use the corresponding functions in
 # bigbytes/settings/__init__.py
 
-REPO_PATH_ENV_VAR = 'MAGE_REPO_PATH'
+REPO_PATH_ENV_VAR = 'BIGBYTES_REPO_PATH'
 
 
 def get_repo_path() -> str:

@@ -27,7 +27,7 @@ class OauthPolicyTestCase(AsyncDBTestCase):
                     key,
                 )
 
-            for key in ['doesn’t exist', 'mage']:
+            for key in ['doesn’t exist', 'bigbytes']:
                 OauthPolicy.attribute_rule_with_permissions(
                     AttributeOperationType.QUERY,
                     key,

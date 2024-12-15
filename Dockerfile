@@ -67,7 +67,7 @@ RUN if [ -z "$FEATURE_BRANCH" ] || [ "$FEATURE_BRANCH" = "null" ] ; then \
 ## Startup Script
 COPY --chmod=0755 ./scripts/install_other_dependencies.py ./scripts/run_app.sh /app/
 
-ENV MAGE_DATA_DIR="/home/src/bigbytes_data"
+ENV BIGBYTES_DATA_DIR="/home/src/bigbytes_data"
 ENV PYTHONPATH="${PYTHONPATH}:/home/src"
 WORKDIR /home/src
 EXPOSE 6789

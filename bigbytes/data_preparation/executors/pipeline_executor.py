@@ -180,7 +180,7 @@ class PipelineExecutor:
             A list of command arguments.
         """
         cmd = f'/app/run_app.sh '\
-              f'mage run {self.pipeline.repo_config.repo_path} '\
+              f'bigbytes run {self.pipeline.repo_config.repo_path} '\
               f'{self.pipeline.uuid}'
         options = [
             '--executor-type',

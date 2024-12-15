@@ -3602,7 +3602,7 @@ class Block(
         if self.pipeline and self.pipeline.repo_path:
             global_vars['repo_path'] = self.pipeline.repo_path
             # Setting value in os.environ is local to python subprocess
-            os.environ['MAGE_RUNTIME__REPO_PATH'] = self.pipeline.repo_path
+            os.environ['BIGBYTES_RUNTIME__REPO_PATH'] = self.pipeline.repo_path
 
         if dynamic_block_index is not None:
             global_vars['dynamic_block_index'] = dynamic_block_index
@@ -4080,9 +4080,9 @@ class Block(
             and self.file_source_path()
             and add_absolute_path(self.file_source_path()) == self.file_path
         ):
-            # /home/src/data-vault/perftools/mage/data_loaders/team/illusory_glitter
+            # /home/src/data-vault/perftools/bigbytes/data_loaders/team/illusory_glitter
             old_file_path_without_extension = str(Path(old_file_path).with_suffix(''))
-            #  /home/src/data-vault/perftools/mage/data_loaders/team
+            #  /home/src/data-vault/perftools/bigbytes/data_loaders/team
             old_file_path_without_uuid = str(
                 Path(
                     old_file_path_without_extension.replace(
@@ -4092,15 +4092,15 @@ class Block(
                 )
             )
 
-            # perftools/mage/data_loaders/team
+            # perftools/bigbytes/data_loaders/team
             old_file_path_without_repo_path = remove_base_repo_path(old_file_path_without_uuid)
-            # perftools/mage
+            # perftools/bigbytes
             path_without_block_directory = str(old_file_path_without_repo_path).split(
                 directory_name,
             )[0]
 
             file_extension_new = Path(self.uuid).suffix or file_extension
-            # perftools/mage/data_loaders/load_titanic.py
+            # perftools/bigbytes/data_loaders/load_titanic.py
             new_path = str(
                 Path(
                     os.path.join(

@@ -725,7 +725,7 @@ function UserDetail({
                   })}
                   paddingHorizontal={0}
                   paddingVertical={0}
-                  placeholder="e.g. mage@power.com"
+                  placeholder="e.g. bigbytes@power.com"
                   type="email"
                   value={objectAttributes?.email || ''}
                 />

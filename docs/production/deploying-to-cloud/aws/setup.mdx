@@ -75,7 +75,7 @@ you can change the default application name that will appear in AWS ECS:
 variable "app_name" {
   type        = string
   description = "Application Name"
-  default     = "mage-data-prep"
+  default     = "bigbytes-data-prep"
 }
 ```
 
@@ -207,7 +207,7 @@ Once it’s finished deploying, you can access Bigbytes in your browser.
 
 1. Open your EC2 dashboard.
 2. View all load balancers.
-3. Click on the load balancer with the name `mage-data-prep` in it (if you
+3. Click on the load balancer with the name `bigbytes-data-prep` in it (if you
    changed the app name, then find the load balancer with that app name).
 4. Find the public DNS name, copy that, and paste it in your browser.
 
@@ -220,14 +220,14 @@ From the root directory of Bigbytes, run the following commands:
 1. Initialize Terraform:
 
 ```bash
-docker run -i -t -v $(pwd):/mage --workdir="/absolute_path_to/bigbytes-terraform-templates/aws" \
+docker run -i -t -v $(pwd):/bigbytes --workdir="/absolute_path_to/bigbytes-terraform-templates/aws" \
   hashicorp/terraform:latest init
 ```
 
 2. Deploy:
 
 ```bash
-docker run -i -t -v $(pwd):/mage --workdir="/absolute_path_to/bigbytes-terraform-templates/aws" \
+docker run -i -t -v $(pwd):/bigbytes --workdir="/absolute_path_to/bigbytes-terraform-templates/aws" \
   --env AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
   --env AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
   hashicorp/terraform:latest apply
@@ -288,7 +288,7 @@ aws ecs update-service --cluster [cluster_name] --service [service_name] --force
 #### Security
 
 To enable other IP addresses access to Bigbytes, open the security group named
-`mage-data-prep-sg` to whitelist IPs.
+`bigbytes-data-prep-sg` to whitelist IPs.
 
 Add a new inbound rule for HTTP port 80 and use your IP address.
 
@@ -304,14 +304,14 @@ After you get a certificate, add a HTTPS listener in your load balancer group.
 
 1. Open your EC2 dashboard.
 2. View all load balancers.
-3. Click on the load balancer with the name `mage-data-prep` in it (if you
+3. Click on the load balancer with the name `bigbytes-data-prep` in it (if you
    changed the app name, then find the load balancer with that app name).
 4. Click "Listeners and rules" tab.
 5. Click "Add listener" button
 6. For "Protocol" and "Port", choose HTTPS and keep the default port or enter a
    different port.
 7. In "Default actions", select "Forward to target groups" and forward to the target group that
-   contains your app name (`mage-data-prep-production-tg` by default)
+   contains your app name (`bigbytes-data-prep-production-tg` by default)
 8. In "Security Policy", keep the default security policy.
 9. For "Default SSL certificate", do one of the following:
    1. If you created or imported a certificate using AWS Certificate Manager,

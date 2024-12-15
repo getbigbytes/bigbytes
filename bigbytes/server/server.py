@@ -111,8 +111,8 @@ from bigbytes.settings import (
 from bigbytes.settings.keys import LDAP_ADMIN_USERNAME
 from bigbytes.settings.repo import (
     DEFAULT_BIGBYTES_DATA_DIR,
-    MAGE_CLUSTER_TYPE_ENV_VAR,
-    MAGE_PROJECT_TYPE_ENV_VAR,
+    BIGBYTES_CLUSTER_TYPE_ENV_VAR,
+    BIGBYTES_PROJECT_TYPE_ENV_VAR,
     get_metadata_path,
     get_repo_name,
     get_variables_dir,
@@ -846,8 +846,8 @@ if __name__ == '__main__':
     manage = args.manage_instance == '1'
     dbt_docs = args.dbt_docs_instance == '1'
     instance_type = os.getenv(ENV_VAR_INSTANCE_TYPE, args.instance_type)
-    project_type = os.getenv(MAGE_PROJECT_TYPE_ENV_VAR, ProjectType.STANDALONE)
-    cluster_type = os.getenv(MAGE_CLUSTER_TYPE_ENV_VAR)
+    project_type = os.getenv(BIGBYTES_PROJECT_TYPE_ENV_VAR, ProjectType.STANDALONE)
+    cluster_type = os.getenv(BIGBYTES_CLUSTER_TYPE_ENV_VAR)
 
     initialize_globals()
 

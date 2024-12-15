@@ -219,7 +219,7 @@ Follow the steps below to launch the Bigbytes app on your ECS cluster:
    {
      "containerDefinitions": [
        {
-         "name": "mage-data-prep-start",
+         "name": "bigbytes-data-prep-start",
          "image": "[aws-account-id].dkr.ecr.[region].amazonaws.com/[your-image-repo-name]:[tag]",
          "portMappings": [
            {
@@ -230,12 +230,12 @@ Follow the steps below to launch the Bigbytes app on your ECS cluster:
          ],
          "essential": true,
          "entryPoint": ["sh", "-c"],
-         "command": ["mage init default_repo && mage start default_repo"],
+         "command": ["bigbytes init default_repo && bigbytes start default_repo"],
          "interactive": true,
          "pseudoTerminal": true
        }
      ],
-     "family": "mage-data-prep",
+     "family": "bigbytes-data-prep",
      "networkMode": "awsvpc",
      "requiresCompatibilities": ["FARGATE", "EC2"],
      "cpu": "256",
@@ -297,22 +297,22 @@ files and configuration setting files needed for the pipeline to run.
 
 1. Create a new Docker image for running your pipeline— you can start with [our template](https://github.com/digitranslab/docker/blob/master/Dockerfile). Make sure to add any other environment variables defined locally to the image to be able to access those secrets in the cluster. Upload this Docker image to a repository like Amazon ECR so ECS tasks can pull and deploy containers using the image.
 2. If not already created, create a new ECS cluster. This task can be run on both Fargate and EC2 based instances
-3. Create a new task definition based off the template below. This task calls `mage run` on your pipeline when started.
+3. Create a new task definition based off the template below. This task calls `bigbytes run` on your pipeline when started.
 
    ```json
    {
      "containerDefinitions": [
        {
-         "name": "mage-data-prep-deploy",
+         "name": "bigbytes-data-prep-deploy",
          "image": "[aws-account-id].dkr.ecr.[region].amazonaws.com/[your-image-repo-name]:[tag]",
          "essential": true,
          "entryPoint": ["sh", "-c"],
-         "command": ["mage run default_repo [your-pipeline-name]"],
+         "command": ["bigbytes run default_repo [your-pipeline-name]"],
          "interactive": true,
          "pseudoTerminal": true
        }
      ],
-     "family": "mage-data-prep",
+     "family": "bigbytes-data-prep",
      "networkMode": "awsvpc",
      "requiresCompatibilities": ["FARGATE"],
      "cpu": "1024",

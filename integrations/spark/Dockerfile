@@ -13,4 +13,4 @@ RUN rm /etc/apt/sources.list.d/bullseye.list
 
 RUN ${PIP} install pyspark
 
-ENV MAGE_DATA_DIR=
+ENV BIGBYTES_DATA_DIR=

@@ -41,7 +41,7 @@ from bigbytes.services.k8s.constants import (
     DEFAULT_STORAGE_CLASS_NAME,
     KUBE_POD_NAME_ENV_VAR,
 )
-from bigbytes.settings import MAGE_SETTINGS_ENVIRONMENT_VARIABLES
+from bigbytes.settings import BIGBYTES_SETTINGS_ENVIRONMENT_VARIABLES
 from bigbytes.shared.array import find
 from bigbytes.shared.hash import merge_dict, safe_dig
 
@@ -238,7 +238,7 @@ class WorkloadManager:
         ingress_name = workspace_config.ingress_name
 
         volumes = []
-        volume_mounts = [{'name': 'mage-data', 'mountPath': '/home/src'}]
+        volume_mounts = [{'name': 'bigbytes-data', 'mountPath': '/home/src'}]
 
         env_vars = self.__populate_env_vars(
             name,
@@ -416,7 +416,7 @@ class WorkloadManager:
                 },
                 'volumeClaimTemplates': [
                     {
-                        'metadata': {'name': 'mage-data'},
+                        'metadata': {'name': 'bigbytes-data'},
                         'spec': {
                             'accessModes': [storage_access_mode],
                             'storageClassName': storage_class_name,
@@ -652,9 +652,9 @@ class WorkloadManager:
             exec_command = [
                 '/bin/bash',
                 '-c',
-                '[[ -z "${MAGE_ROUTES_BASE_PATH:-${MAGE_BASE_PATH}}" ]] '
+                '[[ -z "${BIGBYTES_ROUTES_BASE_PATH:-${BIGBYTES_BASE_PATH}}" ]] '
                 '&& BasePath="" '
-                '|| BasePath="/${MAGE_ROUTES_BASE_PATH:-${MAGE_BASE_PATH}}";'
+                '|| BasePath="/${BIGBYTES_ROUTES_BASE_PATH:-${BIGBYTES_BASE_PATH}}";'
                 'curl -s --request GET --url '
                 'http://localhost:6789${BasePath}/api/statuses?_format=with_activity_details '
                 '--header "Content-Type: application/json"',
@@ -783,7 +783,7 @@ class WorkloadManager:
         if set_base_path:
             env_vars.append(
                 {
-                    'name': 'MAGE_BASE_PATH',
+                    'name': 'BIGBYTES_BASE_PATH',
                     'value': name,
                 }
             )
@@ -823,7 +823,7 @@ class WorkloadManager:
                 }
             )
 
-        for var in MAGE_SETTINGS_ENVIRONMENT_VARIABLES + [
+        for var in BIGBYTES_SETTINGS_ENVIRONMENT_VARIABLES + [
             DATABASE_CONNECTION_URL_ENV_VAR,
         ]:
             if os.getenv(var) is not None:

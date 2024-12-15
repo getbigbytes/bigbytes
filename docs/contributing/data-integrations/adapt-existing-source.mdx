@@ -130,7 +130,7 @@ Finally, we need to overwrite the `write_schema` method in the `tap_your_tap/syn
 
 `from bigbytes_integrations.sources.messages import write_schema`
 
-Now, switch out the default function (likely `singer.write_schema`) for the mage function using the default arguments. Here's an example:
+Now, switch out the default function (likely `singer.write_schema`) for the bigbytes function using the default arguments. Here's an example:
 
 ```python
   write_schema(

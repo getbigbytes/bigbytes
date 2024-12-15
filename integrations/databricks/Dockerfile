@@ -7,4 +7,4 @@ apt-get install -y --no-install-recommends \
 
 RUN ${PIP} install databricks-connect==11.3.0b0
 
-ENV MAGE_DATA_DIR=
+ENV BIGBYTES_DATA_DIR=

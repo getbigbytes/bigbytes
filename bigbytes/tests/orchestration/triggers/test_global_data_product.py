@@ -61,7 +61,7 @@ class TriggerGlobalDataProductTest(DBTestCase):
                 data_loader=dict(partitions=1),
                 transformer=dict(partitions=2),
             ),
-            uuid='mage',
+            uuid='bigbytes',
         )
 
         self.file_path = os.path.join(

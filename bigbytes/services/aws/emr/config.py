@@ -91,8 +91,8 @@ class EmrConfig(BaseConfig):
                 ),
             ],
         }
-        if os.getenv('MAGE_EC2_SUBNET_ID'):
-            instances_config['Ec2SubnetId'] = os.getenv('MAGE_EC2_SUBNET_ID')
+        if os.getenv('BIGBYTES_EC2_SUBNET_ID'):
+            instances_config['Ec2SubnetId'] = os.getenv('BIGBYTES_EC2_SUBNET_ID')
         if self.ec2_key_name is not None:
             instances_config['Ec2KeyName'] = self.ec2_key_name
         if self.master_security_group is not None:

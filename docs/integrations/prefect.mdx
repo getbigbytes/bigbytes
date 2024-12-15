@@ -50,7 +50,7 @@ ABSOLUTE_PATH = os.path.abspath(os.path.dirname(__file__))
 project_path = os.path.join(ABSOLUTE_PATH, 'project_path')
 pipeline_name = 'pipeline_name'
 
-mage_task = ShellTask(return_all=True)
+bigbytes_task = ShellTask(return_all=True)
 
 @task(trigger=all_finished)
 def output_print(output):
@@ -59,7 +59,7 @@ def output_print(output):
         logger.info(o)
 
 with Flow('My Bigbytes Flow') as flow:
-    run_pipeline = mage_task(command=f'bigbytes run {project_path} {pipeline_name}')
+    run_pipeline = bigbytes_task(command=f'bigbytes run {project_path} {pipeline_name}')
     output = output_print(run_pipeline)
 
 flow.run()

@@ -39,7 +39,7 @@ class K8sBlockExecutorTestCase(unittest.TestCase):
             global_vars={'key': 'value'},
         )
         job_manager_mock.assert_called_once_with(
-            job_name='mage-data-prep-block-1',
+            job_name='bigbytes-data-prep-block-1',
             logger=self.executor.logger,
             logging_tags={},
             namespace='default',
@@ -68,7 +68,7 @@ class K8sBlockExecutorTestCase(unittest.TestCase):
             global_vars={'key': 'value'},
         )
         job_manager_mock.assert_called_once_with(
-            job_name='mage-custom-prefix-block-1',
+            job_name='bigbytes-custom-prefix-block-1',
             logger=self.executor.logger,
             logging_tags={},
             namespace='default',

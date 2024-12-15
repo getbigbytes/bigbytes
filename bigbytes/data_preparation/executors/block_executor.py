@@ -1336,7 +1336,7 @@ class BlockExecutor:
         """
         cmd = (
             f'/app/run_app.sh '
-            f'mage run {self.pipeline.repo_config.repo_path} {self.pipeline.uuid}'
+            f'bigbytes run {self.pipeline.repo_config.repo_path} {self.pipeline.uuid}'
         )
         options = [
             '--block-uuid',

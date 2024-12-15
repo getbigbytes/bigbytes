@@ -19,7 +19,7 @@ from bigbytes.shared.hash import merge_dict
 class JobManager():
     def __init__(
         self,
-        job_name: str = 'mage-job',
+        job_name: str = 'bigbytes-job',
         namespace: str = DEFAULT_NAMESPACE,
         logger=None,
         logging_tags: Dict = None,
@@ -125,7 +125,7 @@ class JobManager():
             )
 
         if k8s_config and k8s_config.container_config:
-            k8s_config.container_config.setdefault('name', 'mage-data')
+            k8s_config.container_config.setdefault('name', 'bigbytes-data')
             pod_spec.containers = [
                 merge_containers(
                     client.V1Container(**k8s_config.container_config),

@@ -60,11 +60,11 @@ target: dev
         - checking the file contents
         - cleaning up the interpolated profiles.yml
         """
-        value = 'mage'
+        value = 'bigbytes'
 
         file_path = os.path.join(
             self.repo_path,
-            f'.mage_temp_profiles_{value}',
+            f'.bigbytes_temp_profiles_{value}',
             'profiles.yml',
         )
 

@@ -116,9 +116,9 @@ default:
     catalog: postgresql                       # Change this to the catalog of your choice
     host: 127.0.0.1
     http_headers:
-      X-Something: 'mage=power'
+      X-Something: 'bigbytes=power'
     http_scheme: http
-    password: mage1337                        # Optional
+    password: bigbytes1337                        # Optional
     port: 8080
     schema: core_data
     session_properties:                       # Optional

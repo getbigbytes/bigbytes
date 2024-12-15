@@ -55,7 +55,7 @@ class FileCache(BaseCache):
                 projects.extend(settings.cache.files.projects.includes or [])
 
         for project_name, path_dict in build_repo_path_for_all_projects(
-            mage_projects_only=True,
+            bigbytes_projects_only=True,
         ).items():
             path = path_dict.get("path")
             if (

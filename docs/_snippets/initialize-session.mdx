@@ -51,6 +51,6 @@ r = s.post(url=sessions_url, json=json_data)
 if r.json().get('error'):
     raise ValueError(r.text)
 else:
-    mage_session = r.json().get('session')
-    pprint(mage_session)
+    bigbytes_session = r.json().get('session')
+    pprint(bigbytes_session)
 ```

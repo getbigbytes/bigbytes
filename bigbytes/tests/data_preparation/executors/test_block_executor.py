@@ -293,7 +293,7 @@ class BlockExecutorTest(BaseApiTestCase):
             block_uuid=hook.uuid,
             metrics=dict(
                 hook=hook.to_dict(include_all=True),
-                hook_variables=dict(mage=1),
+                hook_variables=dict(bigbytes=1),
             ),
             pipeline_run_id=pipeline_run.id,
         )

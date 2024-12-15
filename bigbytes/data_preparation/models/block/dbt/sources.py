@@ -101,7 +101,7 @@ class Sources(object):
             block_uuids (List[str]):
                 list of blocks to keep as sources in the pipeline
             schema (Optional[str], optional):
-                the schema in which the table located. Defaults to 'mage'.
+                the schema in which the table located. Defaults to 'bigbytes'.
             database (Optional[str], optional):
                 the database in which the table located. Defaults to None.
         """
@@ -118,7 +118,7 @@ class Sources(object):
                     'block_uuid': block_uuid
                 },
                 'description':
-                    f'Dataframe for block `{block_uuid}` of the `{pipeline_uuid}` mage pipeline.',
+                    f'Dataframe for block `{block_uuid}` of the `{pipeline_uuid}` bigbytes pipeline.',
             }
             block_source = next(
                 (
@@ -178,7 +178,7 @@ class Sources(object):
         project_name: str,
         pipeline_uuid: str,
         block_uuids: List[str],
-        schema: Optional[str] = 'mage',
+        schema: Optional[str] = 'bigbytes',
         database: Optional[str] = None
     ) -> None:
         """
@@ -191,7 +191,7 @@ class Sources(object):
             block_uuids (List[str]):
                 list of blocks to keep as sources in the pipeline
             schema (Optional[str], optional):
-                the schema in which the table located. Defaults to 'mage'.
+                the schema in which the table located. Defaults to 'bigbytes'.
             database (Optional[str], optional):
                 the database in which the table located. Defaults to None.
         """
@@ -214,7 +214,7 @@ class Sources(object):
             pipeline_uuid (str):
                 the uuid of the pipeline of which sources should be loaded
             schema (Optional[str], optional):
-                the schema in which the table located. Defaults to 'mage'.
+                the schema in which the table located. Defaults to 'bigbytes'.
             database (Optional[str], optional):
                 the database in which the table located. Defaults to None.
 
@@ -234,9 +234,9 @@ class Sources(object):
         project_sources_exist = bool(project_sources)
         if not project_sources_exist:
             project_sources = {
-                'name': f'mage_{project_name}',
+                'name': f'bigbytes_{project_name}',
                 'description': 'Dataframes Bigbytes upstream blocks',
-                'loader': 'mage',
+                'loader': 'bigbytes',
                 'tables': []
             }
         if schema:

@@ -57,7 +57,7 @@ If you’re using Docker, run the following command in the `dags/` folder:
 
 ```bash
 docker run -it -p 6789:6789 -v $(pwd):/home/src \
-  digitranslab/bigbytes /app/run_app.sh mage init demo_project
+  digitranslab/bigbytes /app/run_app.sh bigbytes init demo_project
 
 ```
 
@@ -65,7 +65,7 @@ If you used pip to install Bigbytes, run the following command in the `dags/`
 folder:
 
 ```bash
-mage init demo_project
+    bigbytes init demo_project
 ```
 
 Once finished, you should have a folder named `demo_project` inside your `dags/`
@@ -118,7 +118,7 @@ If you’re using Docker, run the following command in the `dags/` folder:
 
 ```bash
 docker run -it -p 6789:6789 -v $(pwd):/home/src \
-  digitranslab/bigbytes /app/run_app.sh mage start demo_project
+  digitranslab/bigbytes /app/run_app.sh bigbytes start demo_project
 
 ```
 
@@ -126,7 +126,7 @@ If you used pip to install Bigbytes, run the following command in the `dags/`
 folder:
 
 ```bash
-mage start demo_project
+bigbytes start demo_project
 ```
 
 Open [http://localhost:6789](http://localhost:6789) in your browser.
@@ -146,12 +146,12 @@ a new pipeline, add 1 data loader block, and add 1 transformer block.
    step, then find a DAG named `mage_pipeline_etl_demo`. If you named it
    something else, find a DAG with the prefix `mage_pipeline_`.
 3. Click on the DAG to view the detail page. The URL could typically be this:
-   [http://localhost:8080/admin/airflow/tree?dag_id=mage_pipeline_etl_demo](http://localhost:8080/admin/airflow/tree?dag_id=mage_pipeline_etl_demo).
+   [http://localhost:8080/admin/airflow/tree?dag_id=mage_pipeline_etl_demo](http://localhost:8080/admin/airflow/tree?dag_id=bigbytes_pipeline_etl_demo).
 4. Turn that DAG on if its currently off.
 5. Trigger a new DAG run.
 6. Watch the DAG as it runs each task according to the pipeline you created in
    Bigbytes.
 
-<img alt="Bigbytes in Airflow" src="https://github.com/digitranslab/assets/blob/main/mage-airflow.jpg?raw=True" />
+<img alt="Bigbytes in Airflow" src="https://github.com/digitranslab/assets/blob/main/bigbytes-airflow.jpg?raw=True" />
 </Step>
 </Steps>

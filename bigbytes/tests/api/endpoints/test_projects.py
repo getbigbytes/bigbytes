@@ -24,7 +24,7 @@ class ProjectAPIEndpointTest(BaseAPIEndpointTest):
 
 
 def __assert_after_list(self, result, **kwargs):
-    self.assertEqual(result[1]['projects'], dict(mage={}))
+    self.assertEqual(result[1]['projects'], dict(bigbytes={}))
 
 
 # No parent
@@ -34,7 +34,7 @@ build_list_endpoint_tests(
     resource='project',
     result_keys_to_compare=[
         'features',
-        'help_improve_mage',
+        'help_improve_bigbytes',
         'latest_version',
         'name',
         'openai_api_key',
@@ -54,7 +54,7 @@ async def __member(_, user, **kwargs):
 
     if kwargs.get('root_project'):
         model['projects'] = dict(
-            mage={},
+            bigbytes={},
         )
 
     return ProjectResource(model, user, **kwargs)

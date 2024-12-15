@@ -238,7 +238,7 @@ function ConfigureBlock({
       return block?.config?.custom_template;
     } else if ([
       ObjectType.CUSTOM_BLOCK_TEMPLATE,
-      ObjectType.MAGE_TEMPLATE,
+      ObjectType.BIGBYTES_TEMPLATE,
     ].includes(blockActionObject?.object_type)) {
       return {
         ...blockActionObject,

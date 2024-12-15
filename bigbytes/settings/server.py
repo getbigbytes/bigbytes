@@ -1,6 +1,6 @@
 """
 If you add a new environment variable, make sure to check if it should be added to
-the `MAGE_SETTINGS_ENVIRONMENT_VARIABLES` list at the bottom of this file. Also, update
+the `BIGBYTES_SETTINGS_ENVIRONMENT_VARIABLES` list at the bottom of this file. Also, update
 the environment variable documentation at docs/development/variables/environment-variables.mdx
 """
 
@@ -100,9 +100,9 @@ REQUIRE_USER_PERMISSIONS = REQUIRE_USER_AUTHENTICATION and get_bool_value(
 )
 AUTHENTICATION_MODE = os.getenv('AUTHENTICATION_MODE', 'LOCAL')
 try:
-    MAGE_ACCESS_TOKEN_EXPIRY_TIME = int(os.getenv('MAGE_ACCESS_TOKEN_EXPIRY_TIME', '2592000'))
+    BIGBYTES_ACCESS_TOKEN_EXPIRY_TIME = int(os.getenv('BIGBYTES_ACCESS_TOKEN_EXPIRY_TIME', '2592000'))
 except ValueError:
-    MAGE_ACCESS_TOKEN_EXPIRY_TIME = 2592000
+    BIGBYTES_ACCESS_TOKEN_EXPIRY_TIME = 2592000
 
 # Default access level to give to users created when authenticated through OAuth
 # for the first time. value should be the name of a Bigbytes role (e.g. Viewer, Editor, Admin)
@@ -183,16 +183,16 @@ SYSTEM_LOGS_POLL_INTERVAL = float(os.getenv('SYSTEM_LOGS_POLL_INTERVAL', 0.1))
 # -----------------------------
 
 DEFAULT_LOCALHOST_URL = 'http://localhost:6789'
-MAGE_PUBLIC_HOST = os.getenv('MAGE_PUBLIC_HOST') or DEFAULT_LOCALHOST_URL
+BIGBYTES_PUBLIC_HOST = os.getenv('BIGBYTES_PUBLIC_HOST') or DEFAULT_LOCALHOST_URL
 # All base path variables should not include a leading forward slash
-# e.g. MAGE_BASE_PATH = 'test_prefix' -> localhost:6789/test_prefix/pipelines
-BASE_PATH = os.getenv('MAGE_BASE_PATH')
+# e.g. BIGBYTES_BASE_PATH = 'test_prefix' -> localhost:6789/test_prefix/pipelines
+BASE_PATH = os.getenv('BIGBYTES_BASE_PATH')
 # Requests base path is used to configure the base path for the frontend requests. Defaults
-# to the MAGE_BASE_PATH environment variable.
-REQUESTS_BASE_PATH = os.getenv('MAGE_REQUESTS_BASE_PATH', BASE_PATH)
+# to the BIGBYTES_BASE_PATH environment variable.
+REQUESTS_BASE_PATH = os.getenv('BIGBYTES_REQUESTS_BASE_PATH', BASE_PATH)
 # Routes base path is used to configure the base path for the backend routes. Defaults
-# to the MAGE_BASE_PATH environment variable.
-ROUTES_BASE_PATH = os.getenv('MAGE_ROUTES_BASE_PATH', BASE_PATH)
+# to the BIGBYTES_BASE_PATH environment variable.
+ROUTES_BASE_PATH = os.getenv('BIGBYTES_ROUTES_BASE_PATH', BASE_PATH)
 
 
 # -------------------------
@@ -238,7 +238,7 @@ KERNEL_MAGIC = os.getenv('KERNEL_MANAGER', 'default') == 'magic'
 
 # List of environment variables used to configure Bigbytes. The value of these settings
 # will be copied between workspaces.
-MAGE_SETTINGS_ENVIRONMENT_VARIABLES = [
+BIGBYTES_SETTINGS_ENVIRONMENT_VARIABLES = [
     'CONCURRENCY_CONFIG_BLOCK_RUN_LIMIT',
     'CONCURRENCY_CONFIG_PIPELINE_RUN_LIMIT',
     'DISABLE_NOTEBOOK_EDIT_ACCESS',
@@ -263,7 +263,7 @@ MAGE_SETTINGS_ENVIRONMENT_VARIABLES = [
     'USE_UNIQUE_TERMINAL',
     'SENTRY_DSN',
     'SENTRY_TRACES_SAMPLE_RATE',
-    'MAGE_PUBLIC_HOST',
+    'BIGBYTES_PUBLIC_HOST',
     'SCHEDULER_TRIGGER_INTERVAL',
     'REQUIRE_USER_PERMISSIONS',
     'ENABLE_PROMETHEUS',

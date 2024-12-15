@@ -1,5 +1,5 @@
-const HEIGHT = 14;
-const WIDTH = 18.53;
+const HEIGHT = 20;
+const WIDTH = 24.53;
 const RATIO = WIDTH / HEIGHT;
 
 type GradientLogoProps = {
@@ -15,25 +15,12 @@ function GradientLogo({
   const w = width || (height ? (height * (RATIO)) : WIDTH);
 
   return (
-    <svg width={w} height={h} viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path opacity="0.4" d="M15.3266 0L19.2641 1.82961e-06L11.9687 14L8.03125 14L15.3266 0Z" fill="url(#paint0_linear_1303_5)" />
-      <path d="M11.9692 1.82961e-06L8.03164 0L0.736328 14L4.67383 14L8.03164 7.55626V14H11.9691V8.38194e-05L11.9692 1.82961e-06Z" fill="url(#paint1_linear_1303_5)" />
-      <path d="M15.3269 2.57679e-06H19.2644V14H15.3269V2.57679e-06Z" fill="url(#paint2_linear_1303_5)" />
-      <defs>
-        <linearGradient id="paint0_linear_1303_5" x1="8.03125" y1="7" x2="19.2641" y2="7" gradientUnits="userSpaceOnUse">
-          <stop offset="0.28125" stopColor="#7D55EC" />
-          <stop offset="1" stopColor="#2AB2FE" />
-        </linearGradient>
-        <linearGradient id="paint1_linear_1303_5" x1="0.736328" y1="7" x2="19.2644" y2="7" gradientUnits="userSpaceOnUse">
-          <stop offset="0.28125" stopColor="#7D55EC" />
-          <stop offset="1" stopColor="#2AB2FE" />
-        </linearGradient>
-        <linearGradient id="paint2_linear_1303_5" x1="0.736328" y1="7" x2="19.2644" y2="7" gradientUnits="userSpaceOnUse">
-          <stop offset="0.28125" stopColor="#7D55EC" />
-          <stop offset="1" stopColor="#2AB2FE" />
-        </linearGradient>
-    </defs>
-  </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width={w} zoomAndPan="magnify"
+           viewBox="0 0 1200 1199.999942" height={h} preserveAspectRatio="xMidYMid meet" version="1.0">
+          <path fill="#00a99d"
+                d="M 276.527344 801.511719 L 276.527344 144.105469 L 150.515625 216.9375 L 150.515625 874.128906 L 276.527344 946.746094 L 339.324219 983.269531 L 379.6875 1006.335938 L 465.335938 1055.886719 L 505.488281 1079.167969 L 568.496094 1115.476562 L 694.511719 1188.097656 L 820.523438 1115.476562 L 923.683594 1055.886719 L 1049.484375 983.269531 L 1049.484375 719.28125 L 1048.84375 719.070312 L 1049.484375 718.640625 L 1049.484375 573.832031 L 1048.84375 573.621094 L 923.683594 501.214844 L 820.523438 441.625 L 694.511719 369.007812 L 631.503906 332.484375 L 505.488281 405.316406 L 505.488281 11.898438 L 379.6875 84.515625 L 379.6875 861.101562 Z M 694.511719 1042.859375 L 591.351562 983.269531 L 694.511719 923.679688 L 820.523438 850.847656 L 820.523438 587.074219 L 923.042969 646.238281 L 923.683594 645.808594 L 923.683594 910.4375 L 820.523438 970.027344 Z M 694.511719 778.230469 L 505.488281 887.160156 L 505.488281 405.316406 L 694.511719 514.457031 Z M 694.511719 778.230469 "
+                fill-opacity="1" fill-rule="evenodd"/>
+      </svg>
   );
 }
 

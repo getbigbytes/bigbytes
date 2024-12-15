@@ -131,7 +131,7 @@ will be interpolated as is.
     | --- | --- |
     | Optional | ❌ |
     | Type | If `block_uuid` argument is present, then the type depends on the output from that block. If `block_uuid` isn’t present, then the type is `list`.  |
-    | Example | `{ 'mage': 'powerful' }` |
+    | Example | `{ 'bigbytes': 'powerful' }` |
 
 - `variables`
     A dictionary containing pipeline variables and runtime variables.
@@ -187,7 +187,7 @@ Interpolate values from a dictionary containing keys and values from:
 ```
 
 ```yaml
---vars '{"mage": "{{ variables('power') }}"}'
+--vars '{"bigbytes": "{{ variables('power') }}"}'
 ```
 
 ### Environment variables

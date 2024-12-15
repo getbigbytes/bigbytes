@@ -43,7 +43,7 @@ class SSHTunnel:
 
                 """
                 ssh \
-                    -i ~/.ssh/mage-emr-2023.pem \
+                    -i ~/.ssh/bigbytes-emr-2023.pem \
                     -L [local host]:[local port]:[remote host]:[remote port] \
                     hadoop@ec2-34-217-92-37.us-west-2.compute.amazonaws.com
                 """

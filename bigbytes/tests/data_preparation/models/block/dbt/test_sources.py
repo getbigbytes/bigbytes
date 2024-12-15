@@ -51,28 +51,28 @@ clean-targets:
                 'version': 2,
                 'sources': [
                     {
-                        'name': 'mage_test_project',
+                        'name': 'bigbytes_test_project',
                         'description': 'Dataframes Bigbytes upstream blocks',
-                        'loader': 'mage',
+                        'loader': 'bigbytes',
                         'tables': [
                             {
                                 'name': 'test_pipeline_test_block1',
-                                'identifier': 'mage_test_pipeline_test_block1',
+                                'identifier': 'bigbytes_test_pipeline_test_block1',
                                 'meta': {
                                     'pipeline_uuid': 'test_pipeline',
                                     'block_uuid': 'test_block1'
                                 },
                                 'description': 'Dataframe for block `test_block1` of ' +
-                                'the `test_pipeline` mage pipeline.'
+                                'the `test_pipeline` bigbytes pipeline.'
                             }, {
                                 'name': 'test_pipeline_test_block2',
-                                'identifier': 'mage_test_pipeline_test_block2',
+                                'identifier': 'bigbytes_test_pipeline_test_block2',
                                 'meta': {
                                     'pipeline_uuid': 'test_pipeline',
                                     'block_uuid': 'test_block2'
                                 },
                                 'description': 'Dataframe for block `test_block2` of ' +
-                                'the `test_pipeline` mage pipeline.'
+                                'the `test_pipeline` bigbytes pipeline.'
                             }
                         ],
                         'schema': 'test_schema',
@@ -109,37 +109,37 @@ clean-targets:
                 'version': 2,
                 'sources': [
                     {
-                        'name': 'mage_test_project',
+                        'name': 'bigbytes_test_project',
                         'description': 'Dataframes Bigbytes upstream blocks',
-                        'loader': 'mage',
+                        'loader': 'bigbytes',
                         'tables': [
                             {
                                 'name': 'test_pipeline_test_block1',
-                                'identifier': 'mage_test_pipeline_test_block1',
+                                'identifier': 'bigbytes_test_pipeline_test_block1',
                                 'meta': {
                                     'pipeline_uuid': 'test_pipeline',
                                     'block_uuid': 'test_block1'
                                 },
                                 'description': 'Dataframe for block `test_block1` of ' +
-                                'the `test_pipeline` mage pipeline.'
+                                'the `test_pipeline` bigbytes pipeline.'
                             }, {
                                 'name': 'test_pipeline_test_block2',
-                                'identifier': 'mage_test_pipeline_test_block2',
+                                'identifier': 'bigbytes_test_pipeline_test_block2',
                                 'meta': {
                                     'pipeline_uuid': 'test_pipeline',
                                     'block_uuid': 'test_block2'
                                 },
                                 'description': 'Dataframe for block `test_block2` of ' +
-                                'the `test_pipeline` mage pipeline.'
+                                'the `test_pipeline` bigbytes pipeline.'
                             }, {
                                 'name': 'test_pipeline_test_block3',
-                                'identifier': 'mage_test_pipeline_test_block3',
+                                'identifier': 'bigbytes_test_pipeline_test_block3',
                                 'meta': {
                                     'pipeline_uuid': 'test_pipeline',
                                     'block_uuid': 'test_block3'
                                 },
                                 'description': 'Dataframe for block `test_block3` of ' +
-                                'the `test_pipeline` mage pipeline.'
+                                'the `test_pipeline` bigbytes pipeline.'
                             }
                         ],
                         'schema': 'test_schema_new'
@@ -174,19 +174,19 @@ clean-targets:
                 'version': 2,
                 'sources': [
                     {
-                        'name': 'mage_test_project',
+                        'name': 'bigbytes_test_project',
                         'description': 'Dataframes Bigbytes upstream blocks',
-                        'loader': 'mage',
+                        'loader': 'bigbytes',
                         'tables': [
                             {
                                 'name': 'test_pipeline_test_block1',
-                                'identifier': 'mage_test_pipeline_test_block1',
+                                'identifier': 'bigbytes_test_pipeline_test_block1',
                                 'meta': {
                                     'pipeline_uuid': 'test_pipeline',
                                     'block_uuid': 'test_block1'
                                 },
                                 'description': 'Dataframe for block `test_block1` of ' +
-                                'the `test_pipeline` mage pipeline.'
+                                'the `test_pipeline` bigbytes pipeline.'
                             }
                         ],
                         'schema': 'test_schema'
@@ -299,19 +299,19 @@ clean-targets:
                 'version': 2,
                 'sources': [
                     {
-                        'name': 'mage_test_project',
+                        'name': 'bigbytes_test_project',
                         'description': 'Dataframes Bigbytes upstream blocks',
-                        'loader': 'mage',
+                        'loader': 'bigbytes',
                         'tables': [
                             {
                                 'name': 'test_pipeline_test_block1',
-                                'identifier': 'mage_test_pipeline_test_block1',
+                                'identifier': 'bigbytes_test_pipeline_test_block1',
                                 'meta': {
                                     'pipeline_uuid': 'test_pipeline',
                                     'block_uuid': 'test_block1'
                                 },
                                 'description': 'Dataframe for block `test_block1` of ' +
-                                'the `test_pipeline` mage pipeline.'
+                                'the `test_pipeline` bigbytes pipeline.'
                             }
                         ],
                         'schema': 'test_schema_new'

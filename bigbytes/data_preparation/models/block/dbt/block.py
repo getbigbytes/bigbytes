@@ -41,7 +41,7 @@ class DBTBlock(Block):
     @property
     def base_project_path(self) -> Union[str, os.PathLike]:
         """
-        Path to base dbt project of the mage repository
+        Path to base dbt project of the bigbytes repository
 
         Returns:
             Union[str, os.PathLike]: Path of base dbt project

@@ -128,11 +128,11 @@ container:
       name: "data-pvc"
 ```
 
-**NB:** When deploying Bigbytes in a multi-container pod, you need to specify the environment variable `MAGE_CONTAINER_NAME`. If this variable is not set, Bigbytes will default to using the first container in the pod. To specify the Bigbytes container, you can use:
+**NB:** When deploying Bigbytes in a multi-container pod, you need to specify the environment variable `BIGBYTES_CONTAINER_NAME`. If this variable is not set, Bigbytes will default to using the first container in the pod. To specify the Bigbytes container, you can use:
 
 ```yaml
     env:
-      - name: MAGE_CONTAINER_NAME
+      - name: BIGBYTES_CONTAINER_NAME
         valueFrom:
           fieldRef:
             fieldPath: metadata.name

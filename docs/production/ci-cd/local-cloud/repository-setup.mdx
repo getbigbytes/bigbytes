@@ -11,7 +11,7 @@ icon: "list-check"
 
     ```bash
     docker run -it -p 6789:6789 -v $(pwd):/home/src digitranslab/bigbytes \
-      /app/run_app.sh mage start demo_project
+      /app/run_app.sh bigbytes start demo_project
     ```
 
     For more examples, read the [setup guide](/getting-started/setup).
@@ -28,10 +28,10 @@ icon: "list-check"
     FROM digitranslab/bigbytes:latest
 
     ARG PROJECT_NAME=[project_name]
-    ARG MAGE_CODE_PATH=/home/mage_code
-    ARG USER_CODE_PATH=${MAGE_CODE_PATH}/${PROJECT_NAME}
+    ARG BIGBYTES_CODE_PATH=/home/mage_code
+    ARG USER_CODE_PATH=${BIGBYTES_CODE_PATH}/${PROJECT_NAME}
 
-    WORKDIR ${MAGE_CODE_PATH}
+    WORKDIR ${BIGBYTES_CODE_PATH}
 
     # Replace [project_name] with the name of your project (e.g. demo_project)
     COPY ${PROJECT_NAME} ${PROJECT_NAME}
@@ -65,13 +65,13 @@ icon: "list-check"
     ```
 
     <Note>
-      Change `mageprod` to any other name. You’ll need this tag name when
+      Change `bigbytesprod` to any other name. You’ll need this tag name when
       deploying to production in the cloud.
     </Note>
 
 6.  To test the new image works, run the following command:
     ```bash
-    docker run -it -p 6789:6789 mageprod:latest /app/run_app.sh mage start demo_project
+    docker run -it -p 6789:6789 bigbytesprod:latest /app/run_app.sh bigbytes start demo_project
     ```
 7.  Open your browser and go to http://localhost:6789/
     1. You should see all your pipelines there.
@@ -80,5 +80,5 @@ icon: "list-check"
        image (this is intentional).
 8.  The next steps depends on your deployment method. If you are using
     [Terraform](/production/deploying-to-cloud/using-terraform), then you’ll need to use the previously
-    tag name (e.g. `mageprod`) when pushing a Docker image to a remote Docker
+    tag name (e.g. `bigbytesprod`) when pushing a Docker image to a remote Docker
     registry.

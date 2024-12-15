@@ -65,7 +65,7 @@ class GlobalDataProductTest(DBTestCase):
                 data_loader=dict(partitions=1),
                 transformer=dict(partitions=2),
             ),
-            uuid='mage',
+            uuid='bigbytes',
         )
         self.pipeline_schedule = fetch_or_create_pipeline_schedule(
             self.global_data_product
@@ -103,7 +103,7 @@ class GlobalDataProductTest(DBTestCase):
             self.assertEqual(getattr(gdp, key), getattr(self.global_data_product, key))
 
     def test_get(self):
-        gdp = GlobalDataProduct.get('mage', self.repo_path)
+        gdp = GlobalDataProduct.get('bigbytes', self.repo_path)
 
         for key in [
             'object_type',
@@ -462,7 +462,7 @@ class GlobalDataProductTest(DBTestCase):
                 outdated_after=dict(seconds=777),
                 outdated_starting_at=dict(day_of_month=40),
                 repo_path=self.repo_path,
-                settings=dict(mage=dict(partitions=3)),
+                settings=dict(bigbytes=dict(partitions=3)),
             )
         )
 
@@ -473,4 +473,4 @@ class GlobalDataProductTest(DBTestCase):
         self.assertEqual(gdp.object_uuid, 'test2')
         self.assertEqual(gdp.outdated_after, dict(seconds=777))
         self.assertEqual(gdp.outdated_starting_at, dict(day_of_month=40))
-        self.assertEqual(gdp.settings, dict(mage=dict(partitions=3)))
+        self.assertEqual(gdp.settings, dict(bigbytes=dict(partitions=3)))

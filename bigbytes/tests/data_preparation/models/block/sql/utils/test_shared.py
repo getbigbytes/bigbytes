@@ -201,7 +201,7 @@ SELECT 1 AS id2, 2 AS "with"
 SELECT
 id as unique_id,split_part(name, ' ', 1) AS "first           name----1!"
 , name AS last_name
-FROM "mage"."account_v6"
+FROM "bigbytes"."account_v6"
 INNER JOIN test
 ON 1 = 1
 """,
@@ -217,7 +217,7 @@ SELECT
 id AS unique_id
 , name AS first_name
 , type AS last_name
-FROM "mage"."account_v6" AS "on"
+FROM "bigbytes"."account_v6" AS "on"
 """,
         )
 
@@ -282,7 +282,7 @@ SELECT 1 AS id2, 2 AS "with"
 SELECT
 id as unique_id,split_part(name, ' ', 1) AS "first           name----1!"
 , name AS last_name
-FROM "mage"."account_v6"
+FROM "bigbytes"."account_v6"
 INNER JOIN test
 ON 1 = 1
 ) AS "a"
@@ -292,7 +292,7 @@ SELECT
 id AS unique_id
 , name AS first_name
 , type AS last_name
-FROM "mage"."account_v6" AS "on"
+FROM "bigbytes"."account_v6" AS "on"
 ) AS b
 ON a.unique_id = b.unique_id
 
@@ -301,7 +301,7 @@ SELECT
 id AS unique_id
 , name AS first_name
 , type AS last_name
-FROM "mage"."account_v6" AS "on"
+FROM "bigbytes"."account_v6" AS "on"
 ) AS test_pipeline_data_loader_2_v1
 on 1 = 1
 
@@ -310,7 +310,7 @@ SELECT
 id AS unique_id
 , name AS first_name
 , type AS last_name
-FROM "mage"."account_v6" AS "on"
+FROM "bigbytes"."account_v6" AS "on"
 ) c
 ON 1 = 1
 
@@ -319,7 +319,7 @@ SELECT
 id AS unique_id
 , name AS first_name
 , type AS last_name
-FROM "mage"."account_v6" AS "on"
+FROM "bigbytes"."account_v6" AS "on"
 ) AS d
 ON 1 = 1
 
@@ -328,7 +328,7 @@ SELECT
 id AS unique_id
 , name AS first_name
 , type AS last_name
-FROM "mage"."account_v6" AS "on"
+FROM "bigbytes"."account_v6" AS "on"
 ) as e
 ON 1 = 1
 
@@ -337,7 +337,7 @@ SELECT
 id AS unique_id
 , name AS first_name
 , type AS last_name
-FROM "mage"."account_v6" AS "on"
+FROM "bigbytes"."account_v6" AS "on"
 ) AS "f"
 ON 1 = 1
 
@@ -346,7 +346,7 @@ SELECT
 id AS unique_id
 , name AS first_name
 , type AS last_name
-FROM "mage"."account_v6" AS "on"
+FROM "bigbytes"."account_v6" AS "on"
 ) as "g"
 ON 1 = 1
 
@@ -355,7 +355,7 @@ SELECT
 id AS unique_id
 , name AS first_name
 , type AS last_name
-FROM "mage"."account_v6" AS "on"
+FROM "bigbytes"."account_v6" AS "on"
 ) "on"
 ON 1 = 1
 """.strip())

@@ -48,7 +48,7 @@ class PathFixerTest(DBTestCase):
     def test_remove_repo_names(self):
         from bigbytes.shared.path_fixer import remove_repo_names
 
-        self.assertEqual(remove_repo_names('test/demo/mage'), 'demo/mage')
+        self.assertEqual(remove_repo_names('test/demo/bigbytes'), 'demo/bigbytes')
 
 
 @patch('bigbytes.settings.platform.project_platform_activated', lambda: True)
@@ -85,13 +85,13 @@ class PathFixerProjectPlatformTest(ProjectPlatformMixin):
     def test_remove_repo_names(self):
         from bigbytes.shared.path_fixer import remove_repo_names
 
-        self.assertEqual(remove_repo_names('test/mage_platform/demo/mage'), 'demo/mage')
+        self.assertEqual(remove_repo_names('test/bigbytes_platform/demo/bigbytes'), 'demo/bigbytes')
 
     def test_get_path_parts(self):
         from bigbytes.shared.path_fixer import get_path_parts
 
-        self.assertEqual(get_path_parts('mage_platform/demo/mage'), (
+        self.assertEqual(get_path_parts('bigbytes_platform/demo/bigbytes'), (
             base_repo_path(),
-            'mage_platform',
-            'demo/mage',
+            'bigbytes_platform',
+            'demo/bigbytes',
         ))

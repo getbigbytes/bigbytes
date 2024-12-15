@@ -177,8 +177,8 @@ def load_data():
     data = {
         'col1': [1, 1, 3],
         'col2': [2, 2, 4],
-        'col3': [dict(mage=1), dict(mage=2), dict(mage=3)],
-        'col4': [[dict(mage=1)], [dict(mage=2)], [dict(mage=3)]],
+        'col3': [dict(bigbytes=1), dict(bigbytes=2), dict(bigbytes=3)],
+        'col4': [[dict(bigbytes=1)], [dict(bigbytes=2)], [dict(bigbytes=3)]],
     }
     df = pd.DataFrame(data)
     return [df]
@@ -202,8 +202,8 @@ def remove_duplicate_rows(df):
         df_final = pd.DataFrame({
             'col1': [1, 1, 3],
             'col2': [2, 2, 4],
-            'col3': [dict(mage=1), dict(mage=2), dict(mage=3)],
-            'col4': [[dict(mage=1)], [dict(mage=2)], [dict(mage=3)]],
+            'col3': [dict(bigbytes=1), dict(bigbytes=2), dict(bigbytes=3)],
+            'col4': [[dict(bigbytes=1)], [dict(bigbytes=2)], [dict(bigbytes=3)]],
         })
         assert_frame_equal(data, df_final)
 

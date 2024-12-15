@@ -62,7 +62,7 @@ Connected App at least these 2 scopes:
 
 | Variable | Description | Sample value |
 | --- | --- | --- |
-| `[your_salesforce_domain]` | The domain of your Salesforce account. | `mage-dev-ed` |
+| `[your_salesforce_domain]` | The domain of your Salesforce account. | `bigbytes-dev-ed` |
 | `[client_id]` | Your <b>Consumer Key</b> | `ABC123...` |
 
 2. Open that URL in a browser.
@@ -85,7 +85,7 @@ Change the following URL parameters to match your credentials:
 
 | URL parameter | Description | Sample value |
 | --- | --- | --- |
-| `[your_salesforce_domain]` | The domain of your Salesforce account. | `mage-dev-ed` |
+| `[your_salesforce_domain]` | The domain of your Salesforce account. | `bigbytes-dev-ed` |
 | `[code]` | The code you received after authorizing your <b>Connected App</b> | `ABC123...` |
 | `[client_id]` | Your <b>Consumer Key</b> | `ABC123...` |
 | `[client_secret]` | Your <b>Consumer Secret</b> | `ABC1...` |

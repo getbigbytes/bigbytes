@@ -48,16 +48,16 @@ Here is the example Pod config:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: mage-server
+  name: bigbytes-server
 spec:
   containers:
-  - name: mage-server
-    image: mage_spark
+  - name: bigbytes-server
+    image: bigbytes_spark
     imagePullPolicy: Never
     ports:
     - containerPort: 6789
     volumeMounts:
-    - name: mage-fs
+    - name: bigbytes-fs
       mountPath: /home/src
     env:
       - name: KUBE_NAMESPACE
@@ -67,10 +67,10 @@ spec:
       - name: SPARK_MASTER_HOST
         value: "spark://spark_master_url:7077"
   volumes:
-  - name: mage-fs
+  - name: bigbytes-fs
     hostPath:
-      path: /path/to/mage_project
-  serviceAccountName: mage-user
+      path: /path/to/bigbytes_project
+  serviceAccountName: bigbytes-user
 ```
 
 Updates
@@ -102,8 +102,8 @@ In other blocks, you can access the Spark session from the `kwargs` via `kwargs[
 Type this command in your terminal to start Bigbytes using docker
 
 ```bash
-docker run -it --name mage_spark -e SPARK_MASTER_HOST='local' -p 6789:6789 -v $(pwd):/home/src mage_spark \
-  /app/run_app.sh mage start demo_project
+docker run -it --name bigbytes_spark -e SPARK_MASTER_HOST='local' -p 6789:6789 -v $(pwd):/home/src bigbytes_spark \
+  /app/run_app.sh bigbytes start demo_project
 ```
 Notes
 * `demo_project` is the name of your project, you can change it to anything you want
@@ -138,8 +138,8 @@ In other blocks, you can access the Spark session from the `kwargs` via `kwargs[
 ### 2. Start Bigbytes using docker with the following command in your terminal
 
 ```bash
-docker run -it --name mage_spark -p 6789:6789 -v $(pwd):/home/src mage_spark \
-  /app/run_app.sh mage start demo_project
+docker run -it --name bigbytes_spark -p 6789:6789 -v $(pwd):/home/src bigbytes_spark \
+  /app/run_app.sh bigbytes start demo_project
 ```
 Notes
 * `demo_project` is the name of your project, you can change it to anything you want
@@ -202,8 +202,8 @@ It is also possible to use different Spark Sessions in different pipelines under
 ### 2. Start Bigbytes using docker with the following command in your terminal
 
 ```bash
-docker run -it --name mage_spark -p 6789:6789 -v $(pwd):/home/src mage_spark \
-  /app/run_app.sh mage start demo_project
+docker run -it --name bigbytes_spark -p 6789:6789 -v $(pwd):/home/src bigbytes_spark \
+  /app/run_app.sh bigbytes start demo_project
 ```
 Notes
 * `demo_project` is the name of your project, you can change it to anything you want
@@ -284,8 +284,8 @@ It is also possible to create custom Spark ssesion using Python code. Here are t
 ### 2. Start Bigbytes with the following command in your terminal using docker
 
 ```bash
-docker run -it --name mage_hadoop -p 6789:6789 -v $(pwd):/home/src mage_hadoop \
-  /app/run_app_with_hadoop.sh mage start demo_project
+docker run -it --name bigbytes_hadoop -p 6789:6789 -v $(pwd):/home/src bigbytes_hadoop \
+  /app/run_app_with_hadoop.sh bigbytes start demo_project
 ```
 Notes
 * `demo_project` is the name of your project, you can change it to anything you want
@@ -374,7 +374,7 @@ want):
 
 ```bash
 docker run -it -p 6789:6789 -v $(pwd):/home/src digitranslab/bigbytes \
-  /app/run_app.sh mage start demo_project
+  /app/run_app.sh bigbytes start demo_project
 ```
 
 ### 3. Configure project’s metadata settings
@@ -539,7 +539,7 @@ def export_data(df: DataFrame, **kwargs) -> None:
         .option('delimiter', ',')
         .option('header', 'True')
         .mode('overwrite')
-        .csv('s3://mage-spark-cluster/demo_project/demo_pipeline/')
+        .csv('s3://bigbytes-spark-cluster/demo_project/demo_pipeline/')
     )
 ```
 
@@ -568,7 +568,7 @@ def load_data(**kwargs) -> DataFrame:
         .option('header', 'true')
         .option('inferSchema', 'true')
         .option('delimiter', ',')
-        .load('s3://mage-spark-cluster/demo_project/demo_pipeline/*')
+        .load('s3://bigbytes-spark-cluster/demo_project/demo_pipeline/*')
     )
 
     return df

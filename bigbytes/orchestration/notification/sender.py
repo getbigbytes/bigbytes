@@ -14,7 +14,7 @@ from bigbytes.services.opsgenie.opsgenie import send_opsgenie_alert
 from bigbytes.services.slack.slack import send_slack_message
 from bigbytes.services.teams.teams import send_teams_message
 from bigbytes.services.telegram.telegram import send_telegram_message
-from bigbytes.settings import DEFAULT_LOCALHOST_URL, MAGE_PUBLIC_HOST
+from bigbytes.settings import DEFAULT_LOCALHOST_URL, BIGBYTES_PUBLIC_HOST
 
 DEFAULT_MESSAGES = dict(
     success=dict(
@@ -257,11 +257,11 @@ class NotificationSender:
         if text is None:
             return text
         text = f'{text}\n'
-        if os.getenv('ENV') != 'production' or MAGE_PUBLIC_HOST != DEFAULT_LOCALHOST_URL:
+        if os.getenv('ENV') != 'production' or BIGBYTES_PUBLIC_HOST != DEFAULT_LOCALHOST_URL:
             """
             Include the URL for the following cases
             1. Dev environment: Use the default localhost as host in URL
-            2. Production environment: If MAGE_PUBLIC_HOST is set, use it as host.
+            2. Production environment: If BIGBYTES_PUBLIC_HOST is set, use it as host.
             """
             text += f'Open {self.__pipeline_run_url(pipeline, pipeline_run)} '\
                     'to check pipeline run results and logs.'
@@ -269,5 +269,5 @@ class NotificationSender:
 
     @staticmethod
     def __pipeline_run_url(pipeline, pipeline_run):
-        return f'{MAGE_PUBLIC_HOST}/pipelines/{pipeline.uuid}/runs/'\
+        return f'{BIGBYTES_PUBLIC_HOST}/pipelines/{pipeline.uuid}/runs/'\
                f'{pipeline_run.id}'

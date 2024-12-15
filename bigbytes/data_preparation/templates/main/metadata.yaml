@@ -30,9 +30,9 @@ notification_config:
     - trigger_failure
     - trigger_passed_sla
   slack_config:
-    webhook_url: "{{ env_var('MAGE_SLACK_WEBHOOK_URL') }}"
+    webhook_url: "{{ env_var('BIGBYTES_SLACK_WEBHOOK_URL') }}"
   teams_config:
-    webhook_url: "{{ env_var('MAGE_TEAMS_WEBHOOK_URL') }}"
+    webhook_url: "{{ env_var('BIGBYTES_TEAMS_WEBHOOK_URL') }}"
 
 retry_config:
   # Number of retry times

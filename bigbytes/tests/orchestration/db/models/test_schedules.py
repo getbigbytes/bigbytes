@@ -1769,7 +1769,7 @@ class PipelineScheduleProjectPlatformTests(ProjectPlatformMixin):
             for settings in self.repo_paths.values():
                 arr.append(PipelineSchedule.create(
                     name='test pipeline',
-                    pipeline_uuid='mage',
+                    pipeline_uuid='bigbytes',
                     repo_path=settings['full_path'],
                 ))
 

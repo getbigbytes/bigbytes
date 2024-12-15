@@ -249,7 +249,7 @@ class HookTest(GlobalHooksMixin):
     async def test_run_without_trigger(self):
         await self.setUpAsync()
 
-        variables = dict(mage=self.faker.unique.name())
+        variables = dict(bigbytes=self.faker.unique.name())
         hook = self.hooks_match[0]
         hook.snapshot()
         hook.pipeline_settings['variables'] = variables
@@ -276,7 +276,7 @@ class HookTest(GlobalHooksMixin):
     async def test_run_without_trigger_for_restricted_resource_type(self):
         await self.setUpAsync()
 
-        variables = dict(mage=self.faker.unique.name())
+        variables = dict(bigbytes=self.faker.unique.name())
         hook = self.hooks_match[0]
         hook.snapshot()
         hook.pipeline_settings['variables'] = variables
@@ -305,7 +305,7 @@ class HookTest(GlobalHooksMixin):
     async def test_run_with_trigger(self, mock_trigger_pipeline):
         await self.setUpAsync()
 
-        variables = dict(mage=self.faker.unique.name())
+        variables = dict(bigbytes=self.faker.unique.name())
         hook = self.hooks_match[0]
         hook.snapshot()
         hook.pipeline_settings['variables'] = variables
@@ -350,7 +350,7 @@ class HookTest(GlobalHooksMixin):
     async def test_run_with_trigger_asynchronously(self, mock_trigger_pipeline):
         await self.setUpAsync()
 
-        variables = dict(mage=self.faker.unique.name())
+        variables = dict(bigbytes=self.faker.unique.name())
         hook = self.hooks_match[0]
         hook.snapshot()
         hook.pipeline_settings['variables'] = variables
@@ -398,7 +398,7 @@ class HookTest(GlobalHooksMixin):
     async def test_run_with_trigger_for_restricted_resource_type(self, mock_trigger_pipeline):
         await self.setUpAsync()
 
-        variables = dict(mage=self.faker.unique.name())
+        variables = dict(bigbytes=self.faker.unique.name())
         hook = self.hooks_match[0]
         hook.snapshot()
         hook.pipeline_settings['variables'] = variables
@@ -555,7 +555,7 @@ class HookTest(GlobalHooksMixin):
 
         hook, _hook2, hook3, hook4 = self.hooks_match
 
-        variables = dict(mage=self.faker.unique.name())
+        variables = dict(bigbytes=self.faker.unique.name())
         hook.pipeline_settings['variables'] = variables
 
         output_setting = hook4.output_settings[0]
@@ -606,7 +606,7 @@ class HookTest(GlobalHooksMixin):
 
         hook, _hook2, hook3, hook4 = self.hooks_match
 
-        variables = dict(mage=self.faker.unique.name())
+        variables = dict(bigbytes=self.faker.unique.name())
         hook.pipeline_settings['variables'] = variables
         hook.run_settings = HookRunSettings.load(with_trigger=True)
 
@@ -710,8 +710,8 @@ class HookTest(GlobalHooksMixin):
 
         hook = self.hooks_match[0]
         hook.conditions = [HookCondition.SUCCESS]
-        hook.pipeline_settings['variables'] = dict(mage=1)
-        hook.project = dict(mage=1)
+        hook.pipeline_settings['variables'] = dict(bigbytes=1)
+        hook.project = dict(bigbytes=1)
         hook.run_settings = HookRunSettings.load(asynchronous=True, with_trigger=True)
         hook.strategies = [HookStrategy.BREAK]
 
@@ -726,10 +726,10 @@ class HookTest(GlobalHooksMixin):
                 outputs=[m.to_dict() for m in hook.output_settings],
                 pipeline=dict(
                     uuid=self.pipeline1.uuid,
-                    variables=dict(mage=1),
+                    variables=dict(bigbytes=1),
                 ),
                 predicate=hook.predicate.to_dict(convert_enum=True, ignore_empty=True),
-                project=dict(mage=1),
+                project=dict(bigbytes=1),
                 run_settings=dict(asynchronous=True, with_trigger=True),
                 stages=[m.value for m in hook.stages],
                 strategies=[m.value for m in hook.strategies],
@@ -743,7 +743,7 @@ class HookTest(GlobalHooksMixin):
 
         hook = self.hooks_match[0]
         hook.conditions = [HookCondition.SUCCESS]
-        hook.pipeline_settings['variables'] = dict(mage=1)
+        hook.pipeline_settings['variables'] = dict(bigbytes=1)
         hook.run_settings = HookRunSettings.load(asynchronous=True, with_trigger=True)
         hook.strategies = [HookStrategy.BREAK]
 
@@ -759,7 +759,7 @@ class HookTest(GlobalHooksMixin):
                 outputs=[m.to_dict() for m in hook.output_settings],
                 pipeline=dict(
                     uuid=self.pipeline1.uuid,
-                    variables=dict(mage=1),
+                    variables=dict(bigbytes=1),
                 ),
                 predicate=hook.predicate.to_dict(convert_enum=True, ignore_empty=True),
                 resource_type=hook.resource_type.value,
@@ -777,7 +777,7 @@ class HookTest(GlobalHooksMixin):
         hook = self.hooks_match[0]
         hook.conditions = [HookCondition.SUCCESS]
         hook.output = dict(fire=2)
-        hook.pipeline_settings['variables'] = dict(mage=1)
+        hook.pipeline_settings['variables'] = dict(bigbytes=1)
         hook.run_settings = HookRunSettings.load(asynchronous=True, with_trigger=True)
         hook.status = HookStatus.load(error=500, strategy=HookStrategy.BREAK)
         hook.strategies = [HookStrategy.BREAK]
@@ -794,7 +794,7 @@ class HookTest(GlobalHooksMixin):
                 outputs=[m.to_dict() for m in hook.output_settings],
                 pipeline=dict(
                     uuid=self.pipeline1.uuid,
-                    variables=dict(mage=1),
+                    variables=dict(bigbytes=1),
                 ),
                 predicate=hook.predicate.to_dict(convert_enum=True, ignore_empty=True),
                 run_settings=dict(asynchronous=True, with_trigger=True),

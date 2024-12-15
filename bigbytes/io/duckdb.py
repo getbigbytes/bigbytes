@@ -59,7 +59,7 @@ class DuckDB(BaseSQL):
             if database_url and database_url.startswith('md:'):
                 config = dict(
                     autoload_known_extensions=False,
-                    custom_user_agent='MAGE',
+                    custom_user_agent='BIGBYTES',
                 )
                 if self.settings.get('motherduck_token'):
                     config['motherduck_token'] = self.settings.get('motherduck_token')

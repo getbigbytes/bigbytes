@@ -3,8 +3,8 @@ from typing import Dict, List
 
 MIN_SECRET_LENGTH = 8
 WHITELISTED_ENV_VARS = set([
-    'MAGE_DATA_DIR',
-    'MAGE_REPO_PATH',
+    'BIGBYTES_DATA_DIR',
+    'BIGBYTES_REPO_PATH',
     'HOME',
     'PWD',
     'PYTHONPATH',

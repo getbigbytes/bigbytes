@@ -58,8 +58,8 @@ class ADProviderTest(unittest.IsolatedAsyncioTestCase):
                         'value': [
                             {
                                 'allowedMemberTypes': ['User'],
-                                'description': 'mage',
-                                'displayName': 'mage role',
+                                'description': 'bigbytes',
+                                'displayName': 'bigbytes role',
                                 'id': '5bab36bf-bf47-4b93-8001-48ccf01cccb2',
                                 'isEnabled': True,
                                 'origin': 'Application',
@@ -67,8 +67,8 @@ class ADProviderTest(unittest.IsolatedAsyncioTestCase):
                             },
                             {
                                 'allowedMemberTypes': ['User'],
-                                'description': 'mage',
-                                'displayName': 'mage edit role',
+                                'description': 'bigbytes',
+                                'displayName': 'bigbytes edit role',
                                 'id': '2dac98e2-3d69-497e-8f88-41588776161e',
                                 'isEnabled': True,
                                 'origin': 'Application',
@@ -89,7 +89,7 @@ class ADProviderTest(unittest.IsolatedAsyncioTestCase):
                                 'principalDisplayName': 'Bigbytes Bigbytes',
                                 'principalId': '6110b51e-23f8-4cd4-a5e1-c04698a9f9c3',
                                 'principalType': 'User',
-                                'resourceDisplayName': 'mage',
+                                'resourceDisplayName': 'bigbytes',
                                 'resourceId': 'fa5f493f-3d51-4f33-98cc-b1be17f4f2e6',
                             },
                             {
@@ -100,7 +100,7 @@ class ADProviderTest(unittest.IsolatedAsyncioTestCase):
                                 'principalDisplayName': 'Bigbytes Bigbytes',
                                 'principalId': '6110b51e-23f8-4cd4-a5e1-c04698a9f9c3',
                                 'principalType': 'User',
-                                'resourceDisplayName': 'mage',
+                                'resourceDisplayName': 'bigbytes',
                                 'resourceId': 'fa5f493f-3d51-4f33-98cc-b1be17f4f2e6',
                             },
                             {
@@ -111,7 +111,7 @@ class ADProviderTest(unittest.IsolatedAsyncioTestCase):
                                 'principalDisplayName': 'Bigbytes Bigbytes',
                                 'principalId': '6110b51e-23f8-4cd4-a5e1-c04698a9f9c3',
                                 'principalType': 'User',
-                                'resourceDisplayName': 'mage',
+                                'resourceDisplayName': 'bigbytes',
                                 'resourceId': 'fa5f493f-3d51-4f33-98cc-b1be17f4f2e6',
                             },
                         ],
@@ -130,4 +130,4 @@ class ADProviderTest(unittest.IsolatedAsyncioTestCase):
             user_info = await provider.get_user_info(access_token='test_token')
             self.assertEqual(user_info['email'], 'test@test.com')
             self.assertEqual(user_info['username'], 'test@test.com')
-            self.assertEqual(user_info['user_roles'], ['mage_role_1', 'mage_role_2'])
+            self.assertEqual(user_info['user_roles'], ['bigbytes_role_1', 'bigbytes_role_2'])

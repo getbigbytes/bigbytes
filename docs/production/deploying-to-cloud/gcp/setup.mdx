@@ -113,7 +113,7 @@ you can change the `default` value under `app_name`:
 variable "app_name" {
   type        = string
   description = "Application Name"
-  default     = "mage-data-prep"
+  default     = "bigbytes-data-prep"
 }
 ```
 
@@ -170,7 +170,7 @@ See our [docs](/production/deploying-to-cloud/secrets/GCP) for configuring secre
 
     ```
     ╷
-    │ Error: resource is in failed state "Ready:False", message: Revision 'mage-2992l' is not ready and cannot serve traffic. spec.template.spec.volumes[1].secret.items[0].key: Permission denied on secret: projects/1054912425479/secrets/bigquery_credentials/versions/latest for Revision service account 1054912425479-compute@developer.gserviceaccount.com. The service account used must be granted the 'Secret Manager Secret Accessor' role (roles/secretmanager.secretAccessor) at the secret, project or higher level.
+    │ Error: resource is in failed state "Ready:False", message: Revision 'bigbytes-2992l' is not ready and cannot serve traffic. spec.template.spec.volumes[1].secret.items[0].key: Permission denied on secret: projects/1054912425479/secrets/bigquery_credentials/versions/latest for Revision service account 1054912425479-compute@developer.gserviceaccount.com. The service account used must be granted the 'Secret Manager Secret Accessor' role (roles/secretmanager.secretAccessor) at the secret, project or higher level.
     │
     │   with google_cloud_run_service.run_service,
     │   on main.tf line 88, in resource "google_cloud_run_service" "run_service":

@@ -6,8 +6,8 @@ from typing import Dict, List, Union
 
 from bigbytes.api.operations.constants import OperationType
 from bigbytes.authentication.operation_history.constants import (
-    MAGE_OPERATION_HISTORY_DIRECTORY_DEFAULT,
-    MAGE_OPERATION_HISTORY_DIRECTORY_ENVIRONMENT_VARIABLE_NAME,
+    BIGBYTES_OPERATION_HISTORY_DIRECTORY_DEFAULT,
+    BIGBYTES_OPERATION_HISTORY_DIRECTORY_ENVIRONMENT_VARIABLE_NAME,
     ResourceType,
 )
 from bigbytes.data_preparation.repo_manager import RepoConfig, get_repo_config
@@ -92,10 +92,10 @@ class OperationHistoryReader:
 
     def build_file_path(self, timestamp: int = None) -> str:
         dir_path = os.getenv(
-            MAGE_OPERATION_HISTORY_DIRECTORY_ENVIRONMENT_VARIABLE_NAME,
+            BIGBYTES_OPERATION_HISTORY_DIRECTORY_ENVIRONMENT_VARIABLE_NAME,
         ) or os.path.join(
             self.directory_name,
-            MAGE_OPERATION_HISTORY_DIRECTORY_DEFAULT,
+            BIGBYTES_OPERATION_HISTORY_DIRECTORY_DEFAULT,
         )
 
         filename = datetime.fromtimestamp(

@@ -113,7 +113,7 @@ class K8sExecutorConfig(BaseConfig):
                                   for e in executor_config.container['volume_mounts']]
 
         container = V1Container(
-            name=get_safe_value(executor_config.container, 'name', 'mage-job-container'),
+            name=get_safe_value(executor_config.container, 'name', 'bigbytes-job-container'),
             image_pull_policy=get_safe_value(executor_config.container,
                                              'image_pull_policy', 'IfNotPresent'),
             image=get_safe_value(executor_config.container, 'image', ''),

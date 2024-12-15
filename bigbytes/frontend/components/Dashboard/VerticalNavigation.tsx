@@ -27,6 +27,8 @@ import {
   TemplateShapes,
   Terminal,
   TripleBoxes,
+  Analytics,
+  Catalog, Quality, Monitor, Locked, MultiShare, NavData, NumberWithDecimalHash, Chart
 } from '@oracle/icons';
 import {
   NavigationItemStyle,
@@ -50,7 +52,7 @@ const DEFAULT_NAV_ITEMS = ({
     {
       Icon: DocumentIcon,
       id: 'files',
-      label: () => 'Files',
+      label: () => 'Project',
       linkProps: {
         href: '/files',
       },
@@ -71,14 +73,14 @@ const DEFAULT_NAV_ITEMS = ({
         href: '/version-control',
       },
     },
-    {
-      Icon: Terminal,
-      id: 'terminal',
-      label: () => 'Terminal',
-      linkProps: {
-        href: '/terminal',
-      },
-    },
+    // {
+    //   Icon: Terminal,
+    //   id: 'terminal',
+    //   label: () => 'Terminal',
+    //   linkProps: {
+    //     href: '/terminal',
+    //   },
+    // },
     {
       Icon: Settings,
       id: 'settings',
@@ -129,6 +131,38 @@ const DEFAULT_NAV_ITEMS = ({
           Icon: HexagonAll,
           id: 'global-data-products',
           label: () => 'Global data products',
+          linkProps: {
+            href: '/global-data-products',
+          },
+        },
+        {
+          Icon: Chart,
+          id: 'sql-workspace',
+          label: () => 'SQL workspace',
+          linkProps: {
+            href: '/templates',
+          },
+        },
+        {
+          Icon: Analytics,
+          id: 'data-lineage',
+          label: () => 'Data lineage',
+          linkProps: {
+            href: '/global-data-products',
+          },
+        },
+        {
+          Icon: NumberWithDecimalHash,
+          id: 'data-catalog',
+          label: () => 'Data catalog',
+          linkProps: {
+            href: '/global-data-products',
+          },
+        },
+        {
+          Icon: Quality,
+          id: 'data-quality',
+          label: () => 'Data quality',
           linkProps: {
             href: '/global-data-products',
           },
