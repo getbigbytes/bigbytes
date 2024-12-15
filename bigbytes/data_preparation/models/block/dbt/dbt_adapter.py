@@ -231,7 +231,7 @@ class DBTAdapter:
             # load the adapter
             self.__adapter = get_adapter(config)
             # connect
-            self.__adapter.acquire_connection('bigbytes_dbt_adapter_' + uuid.uuid4().hex)
+            self.__adapter.acquire_connection('mage_dbt_adapter_' + uuid.uuid4().hex)
             return self
         except Exception as err:
             if is_debug():

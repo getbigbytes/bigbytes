@@ -1036,7 +1036,7 @@ function TriggerDetail({
                     Save or update the trigger and its settings in the
                     pipeline’s metadata and version control the trigger using Git.
                     For more information, please read the <Link
-                      href="https://docs.bigbytes.io/guides/triggers/configure-triggers-in-code"
+                      href="https://docs.bigbytes.ai/guides/triggers/configure-triggers-in-code"
                       openNewWindow
                     >
                       documentation

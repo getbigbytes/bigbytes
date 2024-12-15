@@ -57,7 +57,7 @@ class BlockExecutorTest(BaseApiTestCase):
 
         for hook in hooks_match[1:]:
             hook.pipeline_settings = dict(uuid=self.pipeline1.uuid)
-            hook.project = dict(uuid='bigbytes_platform')
+            hook.project = dict(uuid='mage_platform')
 
         pipeline_schedule = PipelineSchedule.create(
             name=self.faker.unique.name(),

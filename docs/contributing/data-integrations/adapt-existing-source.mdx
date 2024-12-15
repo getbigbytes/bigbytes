@@ -156,10 +156,10 @@ def discover(client, logger=None):
     """
     Run the discovery mode, prepare the catalog file and return catalog.
     """
-    bigbytes_logger = logger or LOGGER
+    mage_logger = logger or LOGGER
 ```
 
-Then replace usage of `LOGGER` with `bigbytes_logger`.
+Then replace usage of `LOGGER` with `mage_logger`.
 
 ```python
 
@@ -169,9 +169,9 @@ for stream_name, schema_dict in schemas.items():
             mdata = field_metadata[stream_name]
         except Exception as err:
             # These were LOGGER previously
-            bigbytes_logger.error(err)
-            bigbytes_logger.error('stream_name: %s', stream_name)
-            bigbytes_logger.error('type schema_dict: %s', type(schema_dict))
+            mage_logger.error(err)
+            mage_logger.error('stream_name: %s', stream_name)
+            mage_logger.error('type schema_dict: %s', type(schema_dict))
             raise err
 ```
 

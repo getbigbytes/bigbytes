@@ -67,7 +67,7 @@ Resources:
     Type: AWS::EC2::SecurityGroup
     Properties:
       GroupDescription: FileSystem Security Group
-      GroupName: BigbytesEFSSecurityGroup
+      GroupName: MageEFSSecurityGroup
       SecurityGroupIngress:
         - IpProtocol: "tcp"
           FromPort: !Ref FileSharePort
@@ -129,7 +129,7 @@ Resources:
       ExecutionRoleArn: !Ref ExecutionRole
       ContainerDefinitions:
         - Name: bigbytes-data-preparation
-          Image: bigbytes/bigbytes:latest
+          Image: digitranslab/bigbytes:latest
           MountPoints:
             - ReadOnly: false
               ContainerPath: /home/src

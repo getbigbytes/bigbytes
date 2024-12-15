@@ -41,14 +41,14 @@ function DBTSettings({
     prefix?: string;
     suffix?: string;
   }) => updateVariablesProp(() => {
-    const mageVariables = variables?.__bigbytes_variables || {};
+    const mageVariables = variables?.__mage_variables || {};
     const mageVariablesBlocks = mageVariables?.blocks || {};
     const blockData = mageVariablesBlocks[uuid] || {};
     const config = blockData?.configuration || {};
 
     return {
       ...variables,
-      __bigbytes_variables: {
+      __mage_variables: {
         ...mageVariables,
         blocks: {
           ...mageVariablesBlocks,
@@ -104,7 +104,7 @@ function DBTSettings({
               { blockColor: block.color, theme: themeContext },
             ).accent;
 
-            const config = variables?.__bigbytes_variables?.blocks?.[uuid]?.configuration;
+            const config = variables?.__mage_variables?.blocks?.[uuid]?.configuration;
             const {
               prefix,
               suffix,

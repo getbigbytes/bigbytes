@@ -14,7 +14,7 @@ You must enter the following credentials when configuring this source:
 | `client_secret` | ... | `xyz456...` | ✅ |
 | `page_size` | ... | ... |   |
 | `quota_limit` | ... | ... |   |
-| `redirect_uri` | ... | `https://www.bigbytes.io` | ✅ |
+| `redirect_uri` | ... | `https://www.bigbytes.ai` | ✅ |
 | `refresh_token` | ... | `def789...` | ✅ |
 | `start_date` | A cutoff date for syncing historical data. | `2023-01-01T00:00:00Z` | ✅ |
 
@@ -29,7 +29,7 @@ https://api.outreach.io/oauth/authorize?client_id=<Application_Identifier>&redir
 Sample URL:
 
 ```
-https://accounts.outreach.io/oauth/authorize?client_id=...&redirect_uri=https%3A%2F%2Fwww.bigbytes.io&response_type=code&scope=accounts.read+calls.read+duties.read+events.read+mailboxes.read+mailings.read+opportunities.read+personas.read+prospects.read+sequences.read+stages.read+tasks.read+teams.read+users.read
+https://accounts.outreach.io/oauth/authorize?client_id=...&redirect_uri=https%3A%2F%2Fwww.bigbytes.ai&response_type=code&scope=accounts.read+calls.read+duties.read+events.read+mailboxes.read+mailings.read+opportunities.read+personas.read+prospects.read+sequences.read+stages.read+tasks.read+teams.read+users.read
 ```
 
 #### Exchange `code` for `refresh_token`

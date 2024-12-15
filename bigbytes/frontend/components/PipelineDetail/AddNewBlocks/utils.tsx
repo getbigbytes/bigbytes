@@ -443,7 +443,7 @@ export const createColorMenuItems = (
   }));
 
 export const addSqlBlockNote = (content: string) => (
-  `-- Docs: https://docs.bigbytes.io/guides/sql-blocks
+  `-- Docs: https://docs.bigbytes.ai/guides/sql-blocks
 ` + (content || '')
 );
 

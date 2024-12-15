@@ -576,7 +576,7 @@ function BlockSettings({
           <Text muted>
             For more information on this setting, please read the{' '}
             <Link
-              href="https://docs.bigbytes.io/production/configuring-production-settings/compute-resource#2-set-executor-type-and-customize-the-compute-resource-of-the-bigbytes-executor"
+              href="https://docs.bigbytes.ai/production/configuring-production-settings/compute-resource#2-set-executor-type-and-customize-the-compute-resource-of-the-bigbytes-executor"
               openNewWindow
             >
               documentation
@@ -664,7 +664,7 @@ function BlockSettings({
             )}
             For more information on this setting, please read the{' '}
             <Link
-              href="https://docs.bigbytes.io/orchestration/pipeline-runs/retrying-block-runs"
+              href="https://docs.bigbytes.ai/orchestration/pipeline-runs/retrying-block-runs"
               openNewWindow
             >
               documentation
@@ -874,7 +874,7 @@ function BlockSettings({
                     {' '}
                     Refer to the
                     <Link
-                      href="https://docs.bigbytes.io/development/variables/block-variables"
+                      href="https://docs.bigbytes.ai/development/variables/block-variables"
                       openNewWindow
                     >
                       {' '}

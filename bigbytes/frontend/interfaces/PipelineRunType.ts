@@ -40,7 +40,7 @@ export const COMPLETED_STATUSES = [
   RunStatus.FAILED,
 ];
 
-export const BIGBYTES_VARIABLES_KEY = '__bigbytes_variables';
+export const BIGBYTES_VARIABLES_KEY = '__mage_variables';
 
 export const RUN_STATUS_TO_LABEL = {
   [LAST_RUN_FAILED_STATUS]: 'Last run failed',

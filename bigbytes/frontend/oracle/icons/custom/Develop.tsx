@@ -35,7 +35,7 @@ const Develop = ({
         y1="-1.62953e-06"
         y2="1.10817"
       >
-        <stop stopColor="#FFCC19" />
+        <stop stopColor="#00a99d" />
         <stop offset=".585938" stopColor="#2ECDF7" />
         <stop offset="1" stopColor="#9E7BFF" />
       </linearGradient>

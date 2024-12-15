@@ -112,7 +112,7 @@ class CustomDesign(BaseDataClass):
             model.custom_designs = {}
 
             for project_name, project in build_repo_path_for_all_projects(
-                bigbytes_projects_only=True,
+                mage_projects_only=True,
             ).items():
                 full_path = project['full_path']
                 if os.path.exists(full_path):

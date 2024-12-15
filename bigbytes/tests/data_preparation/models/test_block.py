@@ -756,7 +756,7 @@ def test_output(output, *args) -> None:
 
 class BlockProjectPlatformTests(ProjectPlatformMixin):
     def test_file_path(self):
-        path = os.path.join('bigbytes_platform', 'transformers', 'test_transformer.py')
+        path = os.path.join('mage_platform', 'transformers', 'test_transformer.py')
 
         with patch(
             'bigbytes.data_preparation.models.block.project_platform_activated',

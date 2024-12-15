@@ -45,12 +45,23 @@ RUN \
   pip3 install --no-cache-dir "git+https://github.com/mage-ai/dbt-mysql.git#egg=dbt-mysql" && \
   pip3 install --no-cache-dir "git+https://github.com/mage-ai/dbt-synapse.git#egg=dbt-synapse" && \
   pip3 install --no-cache-dir "git+https://github.com/mage-ai/sqlglot#egg=sqlglot" && \
+  # faster-fifo is not supported on Windows: https://github.com/alex-petrenko/faster-fifo/issues/17
   pip3 install --no-cache-dir faster-fifo && \
-  pip3 install --no-cache-dir "git+https://github.com/digitranslab/bigbytes.git#egg=bigbytes-integrations&subdirectory=bigbytes_integrations"
+  if [ -z "$FEATURE_BRANCH" ] || [ "$FEATURE_BRANCH" = "null" ]; then \
+  pip3 install --no-cache-dir "git+https://github.com/digitranslab/bigbytes.git#egg=bigbytes-integrations&subdirectory=bigbytes_integrations"; \
+  else \
+  pip3 install --no-cache-dir "git+https://github.com/digitranslab/bigbytes.git@$FEATURE_BRANCH#egg=bigbytes-integrations&subdirectory=bigbytes_integrations"; \
+  fi
 
 # Bigbytes
 COPY ./bigbytes/server/constants.py /tmp/constants.py
-RUN pip3 install --no-cache-dir "git+https://github.com/digitranslab/bigbytes.git@master#egg=bigbytes"
+RUN if [ -z "$FEATURE_BRANCH" ] || [ "$FEATURE_BRANCH" = "null" ] ; then \
+  tag=$(tail -n 1 /tmp/constants.py) && \
+  VERSION=$(echo "$tag" | tr -d "'") && \
+  pip3 install --no-cache-dir "bigbytes[all]==$VERSION"; \
+  else \
+  pip3 install --no-cache-dir "git+https://github.com/digitranslab/bigbytes.git@$FEATURE_BRANCH#egg=bigbytes[all]"; \
+  fi
 
 
 ## Startup Script

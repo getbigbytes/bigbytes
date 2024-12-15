@@ -126,7 +126,7 @@ Terraform will perform the following actions:
       + container {
           + commands = (known after apply)
           + cpu      = 1
-          + image    = "bigbytes/bigbytes:latest"
+          + image    = "digitranslab/bigbytes:latest"
           + memory   = 1.5
           + name     = "bigbytes-data-prep-production-container"
 
@@ -142,7 +142,7 @@ Terraform will perform the following actions:
               + read_only            = false
               + share_name           = "bigbytes-data-prep-production-data"
               + storage_account_key  = (sensitive value)
-              + storage_account_name = "magedataprepstorage"
+              + storage_account_name = "bigbytesdataprepstorage"
             }
         }
     }
@@ -512,7 +512,7 @@ Terraform will perform the following actions:
       + name                 = "bigbytes-data-prep-production-data"
       + quota                = 100
       + resource_manager_id  = (known after apply)
-      + storage_account_name = "magedataprepstorage"
+      + storage_account_name = "bigbytesdataprepstorage"
       + url                  = (known after apply)
     }
 

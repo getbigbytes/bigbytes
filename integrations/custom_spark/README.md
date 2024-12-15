@@ -1,4 +1,4 @@
-# Custom Spark Docker Image for BigBytes
+# Custom Spark Docker Image for Bigbytes
 With this, we can manage our own Spark cluster without the need for Bitnami/Spark
 
 ## Docker Build
@@ -24,4 +24,4 @@ With this, we can manage our own Spark cluster without the need for Bitnami/Spar
 ## Acknowledgements
 Special thanks to [Malaysia.AI](https://github.com/malaysia-ai) for assisting in creating this dockerfile to serve a custom Spark cluster along with its dependencies. 
 
-With this, we are able to self-manage and host BigBytes with our very own Spark cluster.
+With this, we are able to self-manage and host Bigbytes with our very own Spark cluster.

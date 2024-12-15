@@ -69,7 +69,7 @@ def activate_project(project_name: str, user=None) -> None:
 def build_repo_path_for_all_projects(
     repo_path: str = None,
     context_data: Dict = None,
-    bigbytes_projects_only: bool = False
+    mage_projects_only: bool = False
 ) -> Dict:
     # from bigbytes.shared.custom_logger import DX_PRINTER
     # DX_PRINTER.info('build repo path for all projects')
@@ -78,7 +78,7 @@ def build_repo_path_for_all_projects(
     settings = project_platform_settings(
         repo_path=repo_path,
         context_data=context_data,
-        bigbytes_projects_only=bigbytes_projects_only,
+        mage_projects_only=mage_projects_only,
     )
     root_project_path = base_repo_path()
     root_project_name = base_repo_name()
@@ -107,7 +107,7 @@ def repo_path_from_database_query_to_project_repo_path(
     repo_paths = build_repo_path_for_all_projects(
         repo_path=repo_path,
         context_data=context_data,
-        bigbytes_projects_only=True,
+        mage_projects_only=True,
     )
     for paths in repo_paths.values():
         full_path = paths['full_path']
@@ -116,7 +116,7 @@ def repo_path_from_database_query_to_project_repo_path(
     settings = project_platform_settings(
         repo_path=repo_path,
         context_data=context_data,
-        bigbytes_projects_only=True,
+        mage_projects_only=True,
     )
     for project_name, setting in settings.items():
         query_arr_paths = []
@@ -140,7 +140,7 @@ def get_repo_paths_for_file_path(
     file_path: str,
     repo_path: str = None,
     repo_paths_all: Dict = None,
-    bigbytes_projects_only: bool = False,
+    mage_projects_only: bool = False,
 ) -> Dict:
     if not file_path:
         return
@@ -150,7 +150,7 @@ def get_repo_paths_for_file_path(
     if repo_paths_all is None:
         repo_paths_all = build_repo_path_for_all_projects(
             repo_path=repo_path,
-            bigbytes_projects_only=bigbytes_projects_only,
+            mage_projects_only=mage_projects_only,
         )
 
     matches = []
@@ -226,7 +226,7 @@ def build_active_project_repo_path(
     settings = project_platform_settings(
         context_data=context_data,
         repo_path=repo_path,
-        bigbytes_projects_only=True,
+        mage_projects_only=True,
     )
 
     active_project = active_project_settings(
@@ -264,10 +264,10 @@ def build_active_project_repo_path(
     return repo_path
 
 
-def platform_settings(bigbytes_projects_only: bool = False) -> Dict:
+def platform_settings(mage_projects_only: bool = False) -> Dict:
     config = __load_platform_settings(platform_settings_full_path()) or {}
     config['projects'] = merge_dict(
-        {} if bigbytes_projects_only else (__get_projects_of_any_type() or {}),
+        {} if mage_projects_only else (__get_projects_of_any_type() or {}),
         (config.get('projects') if config else {}) or {},
     )
     return config
@@ -326,7 +326,7 @@ def active_project_settings(
         settings = project_platform_settings(
             context_data=context_data,
             repo_path=repo_path,
-            bigbytes_projects_only=True,
+            mage_projects_only=True,
         )
 
     # print(f'active project settings {settings}')
@@ -370,7 +370,7 @@ def active_project_settings(
 def project_platform_settings(
     repo_path: str = None,
     context_data: Dict = None,
-    bigbytes_projects_only: bool = False,
+    mage_projects_only: bool = False,
     user=None,
 ) -> Dict:
     if context_data is None:
@@ -385,10 +385,10 @@ def project_platform_settings(
     # DX_PRINTER.print_call_stack()
     mapping = (__combined_platform_settings(
         repo_path=repo_path,
-        bigbytes_projects_only=bigbytes_projects_only,
+        mage_projects_only=mage_projects_only,
     ) or {}).get('projects')
 
-    if bigbytes_projects_only:
+    if mage_projects_only:
         select_keys = []
 
         for project_name, settings in mapping.items():
@@ -414,11 +414,11 @@ def update_settings(settings: Dict) -> Dict:
     safe_write(platform_settings_full_path(), content)
 
 
-def __combined_platform_settings(repo_path: str = None, bigbytes_projects_only: bool = False) -> Dict:
+def __combined_platform_settings(repo_path: str = None, mage_projects_only: bool = False) -> Dict:
     parent = (platform_settings() or {}).copy()
     child = (__local_platform_settings(repo_path=repo_path) or {}).copy()
 
-    if bigbytes_projects_only:
+    if mage_projects_only:
         keys = (parent.get('projects') or {}).keys()
         child['projects'] = extract(child.get('projects') or {}, keys)
 
@@ -516,9 +516,9 @@ def __load_platform_settings(full_path: str) -> Dict:
 
     Example:
         >>> __load_platform_settings('/path/to/.settings.yaml')
-        {'projects': {'bigbytes_data': {'active': True}, 'bigbytes_platform': {'active': False}}}
+        {'projects': {'mage_data': {'active': True}, 'mage_platform': {'active': False}}}
         >>> __load_platform_settings('/path/to/settings.yaml')
-        {'projects': {'bigbytes_data': {'database': {}}, 'bigbytes_platform': {}}}
+        {'projects': {'mage_data': {'database': {}}, 'mage_platform': {}}}
     """
     from bigbytes.data_preparation.shared.utils import get_template_vars_no_db
 
@@ -552,7 +552,7 @@ def __local_platform_settings(repo_path: str = None) -> Dict:
 
     Example:
         >>> __local_platform_settings('/path/to/repo')
-        {'projects': {'bigbytes_data': {'active': True}, 'bigbytes_platform': {'active': False}}}
+        {'projects': {'mage_data': {'active': True}, 'mage_platform': {'active': False}}}
     """
     return __load_platform_settings(local_platform_settings_full_path(repo_path=repo_path))
 

@@ -6,7 +6,7 @@ function BackfillGradient({ size }: { size: number }) {
       </g>
       <defs>
         <linearGradient id="paint0_linear_7525_68660" x1="11.7498" y1="4" x2="11.7498" y2="20" gradientUnits="userSpaceOnUse">
-          <stop offset="0.28125" stopColor="#00A99D"/>
+          <stop offset="0.28125" stopColor="#7D55EC"/>
           <stop offset="1" stopColor="#2AB2FE"/>
         </linearGradient>
       </defs>

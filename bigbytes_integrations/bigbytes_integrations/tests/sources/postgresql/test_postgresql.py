@@ -6,7 +6,7 @@ import unittest
 
 class PostgreSQLSourceTests(unittest.TestCase):
     def test_load_data_from_logs(self):
-        source = PostgreSQL(config=dict(replication_slot='bigbytes_test_slot'))
+        source = PostgreSQL(config=dict(replication_slot='mage_test_slot'))
         postgres_connection = MagicMock()
         replication_connection = MagicMock()
         postgres_connection.build_connection.return_value = replication_connection

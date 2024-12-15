@@ -8,11 +8,11 @@ from bigbytes.authentication.providers.active_directory import ADProvider
 
 class ADProviderTest(unittest.IsolatedAsyncioTestCase):
     @patch('aiohttp.ClientSession')
-    async def test_map_ad_roles_to_bigbytes_roles(self, mock_client_session):
+    async def test_map_ad_roles_to_mage_roles(self, mock_client_session):
         roles_mapping = json.dumps(
             {
-                'Bigbytes.TestRole': 'bigbytes_role_1',
-                'Bigbytes.TestEditRole': 'bigbytes_role_2',
+                'Bigbytes.TestRole': 'mage_role_1',
+                'Bigbytes.TestEditRole': 'mage_role_2',
             }
         )
 

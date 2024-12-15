@@ -16,8 +16,8 @@ You must enter the following credentials when configuring this source:
 | `port` | Port of the running database (typically 5432). | `5432` |
 | `schema` | Schema of the data you want to read data from. | `public` |
 | `username` | Name of the user that will access the database (must have permissions to read and write to specified schema). | `guest` |
-| `replication_slot` | Name of the slot used in logical replication. | `bigbytes_slot` |
-| `publication_name` | Name of the publication used in logical replication. | `bigbytes_pub` |
+| `replication_slot` | Name of the slot used in logical replication. | `mage_slot` |
+| `publication_name` | Name of the publication used in logical replication. | `mage_pub` |
 
 ### Optional Configs
 
@@ -29,6 +29,6 @@ You must enter the following credentials when configuring this source:
 
 ## Change Data Capture (CDC) with PostgreSQL
 
-Please read this [document](https://docs.bigbytes.io/data-integrations/sources/postgresql).
+Please read this [document](https://docs.bigbytes.ai/data-integrations/sources/postgresql).
 
 <br />

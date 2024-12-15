@@ -27,6 +27,8 @@ import {
   TemplateShapes,
   Terminal,
   TripleBoxes,
+  Analytics,
+  Catalog, Quality, Monitor, Locked, MultiShare, NavData, NumberWithDecimalHash, Chart
 } from '@oracle/icons';
 import {
   NavigationItemStyle,
@@ -50,7 +52,7 @@ const DEFAULT_NAV_ITEMS = ({
     {
       Icon: DocumentIcon,
       id: 'files',
-      label: () => 'Files',
+      label: () => 'Project',
       linkProps: {
         href: '/files',
       },
@@ -71,14 +73,14 @@ const DEFAULT_NAV_ITEMS = ({
         href: '/version-control',
       },
     },
-    {
-      Icon: Terminal,
-      id: 'terminal',
-      label: () => 'Terminal',
-      linkProps: {
-        href: '/terminal',
-      },
-    },
+    // {
+    //   Icon: Terminal,
+    //   id: 'terminal',
+    //   label: () => 'Terminal',
+    //   linkProps: {
+    //     href: '/terminal',
+    //   },
+    // },
     {
       Icon: Settings,
       id: 'settings',
@@ -88,39 +90,6 @@ const DEFAULT_NAV_ITEMS = ({
       },
     },
   ];
-
-  if (featureEnabled(FeatureUUIDEnum.COMPUTE_MANAGEMENT)) {
-    miscItems = pushAtIndex({
-      Icon: TripleBoxes,
-      id: 'compute',
-      label: () => 'Compute management (beta)',
-      linkProps: {
-        href: '/compute',
-      },
-    }, 4, miscItems);
-  }
-
-  if (featureEnabled(FeatureUUIDEnum.GLOBAL_HOOKS)) {
-    miscItems = pushAtIndex({
-      Icon: Insights,
-      id: 'global-hooks',
-      label: () => 'Global hooks (beta)',
-      linkProps: {
-        href: '/global-hooks',
-      },
-    }, 4, miscItems);
-
-    if (projectPlatformActivated) {
-      miscItems = pushAtIndex({
-        Icon: Insights,
-        id: 'platform/global-hooks',
-        label: () => 'Global hooks (platform)',
-        linkProps: {
-          href: '/platform/global-hooks',
-        },
-      }, 5, miscItems);
-    }
-  }
 
   return [
     {
@@ -167,25 +136,33 @@ const DEFAULT_NAV_ITEMS = ({
           },
         },
         {
-          Icon: HexagonAll,
+          Icon: Chart,
           id: 'sql-workspace',
-          label: () => 'Sql Workspace',
+          label: () => 'SQL workspace',
           linkProps: {
-            href: '/global-data-products',
+            href: '/templates',
           },
         },
         {
-          Icon: HexagonAll,
-          id: 'data-catalog',
-          label: () => 'Data Catalog',
-          linkProps: {
-            href: '/global-data-products',
-          },
-        },
-        {
-          Icon: HexagonAll,
+          Icon: Analytics,
           id: 'data-lineage',
-          label: () => 'Data Lineage',
+          label: () => 'Data lineage',
+          linkProps: {
+            href: '/global-data-products',
+          },
+        },
+        {
+          Icon: NumberWithDecimalHash,
+          id: 'data-catalog',
+          label: () => 'Data catalog',
+          linkProps: {
+            href: '/global-data-products',
+          },
+        },
+        {
+          Icon: Quality,
+          id: 'data-quality',
+          label: () => 'Data quality',
           linkProps: {
             href: '/global-data-products',
           },

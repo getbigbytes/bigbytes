@@ -30,7 +30,7 @@ def get_log_directory(
     repo_path: Optional[str] = None,
 ) -> str:
     """
-    /root/.bigbytes_data/[project]
+    /root/.mage_data/[project]
         /system/metrics
             /pipelines/[pipeline_uuid]/[block_uuid]
     """

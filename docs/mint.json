@@ -45,21 +45,21 @@
   "topbarLinks": [
     {
       "name": "GitHub",
-      "url": "https://www.bigbytes.io/oss"
+      "url": "https://www.bigbytes.ai/oss"
     },
     {
       "name": "Community",
-      "url": "https://www.bigbytes.io/chat"
+      "url": "https://www.bigbytes.ai/chat"
     },
     {
-      "name": "Bigbytes Pro",
-      "url": "https://www.bigbytes.io/pro?source=documentation-header"
+      "name": "bigbytes Pro",
+      "url": "https://www.bigbytes.ai/pro?source=documentation-header"
     }
   ],
   "topbarCtaButton": {
     "type": "link",
     "name": "Demo playground",
-    "url": "https://www.bigbytes.io/demo",
+    "url": "https://www.bigbytes.ai/demo",
     "style": "pill",
     "arrow": true
   },
@@ -78,6 +78,10 @@
       "url": "production"
     },
     {
+      "name": "AI",
+      "url": "ai"
+    },
+    {
       "name": "Observability",
       "url": "observability"
     },
@@ -88,16 +92,12 @@
     {
       "name": "Extensibility",
       "url": "extensibility"
-    },
-    {
-      "name": "AI",
-      "url": "ai"
     }
   ],
   "footer": {
     "socials": {
       "github": "https://www.github.com/digitranslab",
-      "slack": "https://www.bigbytes.io/chat",
+      "slack": "https://www.bigbytes.ai/chat",
       "linkedin": "https://www.linkedin.com/company/digitrans",
       "twitter": "https://twitter.com/bigbytes"
     },
@@ -107,11 +107,11 @@
         "links": [
           {
             "label": "Code",
-            "url": "https://www.bigbytes.io.oss"
+            "url": "https://www.bigbytes.ai.oss"
           },
           {
             "label": "Demo playground",
-            "url": "https://www.bigbytes.io/demo"
+            "url": "https://www.bigbytes.ai/demo"
           }
         ]
       },
@@ -120,7 +120,7 @@
         "links": [
           {
             "label": "Get started for free",
-            "url": "https://www.bigbytes.io/pro"
+            "url": "https://www.bigbytes.ai/pro"
           }
         ]
       },
@@ -129,7 +129,7 @@
         "links": [
           {
             "label": "Chat",
-            "url": "https://www.bigbytes.io/chat"
+            "url": "https://www.bigbytes.ai/chat"
           },
           {
             "label": "Facebook",
@@ -145,7 +145,7 @@
           },
           {
             "label": "Medium",
-            "url": "https://m.bigbytes.io"
+            "url": "https://m.bigbytes.ai"
           }
         ]
       }
@@ -368,64 +368,51 @@
       "destination": "/production/developing-in-the-cloud/workspaces/overview"
     },
     {
-      "source": "/guides/streaming/destinations/amazon-s3",
-      "destination": "/streaming/destinations/amazon-s3"
+      "source": "/guides/streaming/destinations/amazon-s3"
     },
     {
-      "source": "/guides/streaming/destinations/elasticsearch",
-      "destination": "/streaming/destinations/elasticsearch"
+      "source": "/guides/streaming/destinations/elasticsearch"
     },
     {
       "source": "/guides/streaming/destinations/azure_data_lake",
       "destination": "/streaming/destinations/azure_data_lake"
     },
     {
-      "source": "/guides/streaming/destinations/dummy",
-      "destination": "/streaming/destinations/dummy"
+      "source": "/guides/streaming/destinations/dummy"
     },
     {
-      "source": "/guides/streaming/destinations/kafka",
-      "destination": "/streaming/destinations/kafka"
+      "source": "/guides/streaming/destinations/kafka"
     },
     {
-      "source": "/guides/streaming/destinations/kinesis",
-      "destination": "/streaming/destinations/kinesis"
+      "source": "/guides/streaming/destinations/kinesis"
     },
     {
-      "source": "/guides/streaming/destinations/mongodb",
-      "destination": "/streaming/destinations/mongodb"
+      "source": "/guides/streaming/destinations/mongodb"
     },
     {
-      "source": "/guides/streaming/destinations/opensearch",
-      "destination": "/streaming/destinations/opensearch"
+      "source": "/guides/streaming/destinations/opensearch"
     },
     {
-      "source": "/guides/streaming/destinations/redshift",
-      "destination": "/streaming/destinations/redshift"
+      "source": "/guides/streaming/destinations/redshift"
     },
     {
       "source": "/guides/streaming/overview",
       "destination": "/streaming/overview"
     },
     {
-      "source": "/guides/streaming/sources/amazon-sqs",
-      "destination": "/streaming/sources/amazon-sqs"
+      "source": "/guides/streaming/sources/amazon-sqs"
     },
     {
-      "source": "/guides/streaming/sources/azure-event-hub",
-      "destination": "/streaming/sources/azure-event-hub"
+      "source": "/guides/streaming/sources/azure-event-hub"
     },
     {
-      "source": "/guides/streaming/sources/google-cloud-pubsub",
-      "destination": "/streaming/sources/google-cloud-pubsub"
+      "source": "/guides/streaming/sources/google-cloud-pubsub"
     },
     {
-      "source": "/guides/streaming/sources/kafka",
-      "destination": "/streaming/sources/kafka"
+      "source": "/guides/streaming/sources/kafka"
     },
     {
-      "source": "/guides/streaming/sources/kinesis",
-      "destination": "/streaming/sources/kinesis"
+      "source": "/guides/streaming/sources/kinesis"
     },
     {
       "source": "/data-integrations/sources/adapt-existing-source",
@@ -442,6 +429,10 @@
     {
       "source": "/development/git/generate-an-ssh-token",
       "destination": "/development/git/configure#generate-ssh-token"
+    },
+    {
+      "source": "/development/git/configure",
+      "destination": "/guides/git/configure"
     },
     {
       "source": "/production/data-sync/github",
@@ -958,6 +949,12 @@
       ]
     },
     {
+      "group": "AI Sidekick",
+      "pages": [
+        "ai/sidekick/index"
+      ]
+    },
+    {
       "group": "Development",
       "icon": "microchip-ai",
       "pages": [
@@ -972,12 +969,6 @@
         "ai/ml/train-model",
         "ai/rag-pipeline",
         "ai/custom-resources"
-      ]
-    },
-    {
-      "group": "AI Sidekick",
-      "pages": [
-        "ai/sidekick"
       ]
     },
     {
@@ -1205,7 +1196,7 @@
   "metadata": {
     "og:image": "https://github.com/digitranslab/bigbytes/blob/master/docs/og.png?raw=True",
     "og:description": "The leading framework for transforming and integrating data.",
-    "og:site_name": "BigBytes Documentation",
+    "og:site_name": "Bigbytes Documentation",
     "twitter:site": "@bigbytes"
   }
 }

@@ -79,7 +79,7 @@ in this project. Example config:
   ```yaml
   k8s_executor_config:
     container_config:
-      image: bigbytes/bigbytes:0.9.7
+      image: digitranslab/bigbytes:0.9.7
       env:
       - name: USER_CODE_PATH
         value: /home/src/k8s_project
@@ -114,7 +114,7 @@ container:
       value: "default"
     - name: "secret_key"
       value: "somesecret"
-  image: "bigbytes/bigbytes:latest"
+  image: "digitranslab/bigbytes:latest"
   image_pull_policy: "IfNotPresent"
   resources:
     limits:

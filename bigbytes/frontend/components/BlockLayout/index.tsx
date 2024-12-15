@@ -1055,7 +1055,7 @@ function BlockLayout({ leftOffset, pageBlockLayoutTemplate, topOffset, uuid }: B
               Write code for custom data sources, parsing, etc. For more information on what is
               possible, please check out the{' '}
               <Link
-                href="https://docs.bigbytes.io/visualizations/dashboards#custom-code-for-chart"
+                href="https://docs.bigbytes.ai/visualizations/dashboards#custom-code-for-chart"
                 openNewWindow
               >
                 chart documentation

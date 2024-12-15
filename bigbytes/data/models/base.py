@@ -30,18 +30,18 @@ class BaseData:
     ):
         self.storage = storage
         """
-        ~/.bigbytes_data/[project_name]/pipelines/[pipeline_uuid]/.variables
+        ~/.mage_data/[project_name]/pipelines/[pipeline_uuid]/.variables
             /[pipeline_run.id]/[execution_partition]/[block.uuid]
-        ~/.bigbytes_data/unit_3_observability/pipelines/sklearn_training/.variables
+        ~/.mage_data/unit_3_observability/pipelines/sklearn_training/.variables
             /9/20240518T144726_954384/load_models
         """
         self.variable_dir_path = variable_dir_path
         """
-        ~/.bigbytes_data/[project_name]/pipelines/[pipeline_uuid]/.variables
+        ~/.mage_data/[project_name]/pipelines/[pipeline_uuid]/.variables
             /[pipeline_run.id]/[execution_partition]/[block.uuid]
             /[variable_name]
 
-        ~/.bigbytes_data/unit_3_observability/pipelines/sklearn_training/.variables
+        ~/.mage_data/unit_3_observability/pipelines/sklearn_training/.variables
             /9/20240518T144726_954384/load_models
             /output_0
         """

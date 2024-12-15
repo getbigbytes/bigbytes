@@ -6,11 +6,11 @@ test_project:
       host: host.docker.internal
       password: postgres
       port: 5432
-      schema: bigbytes_dbt
+      schema: mage_dbt
       type: postgres
       user: postgres
     bigquery:
-      dataset: bigbytes_test_dev
+      dataset: mage_test_dev
       keyfile: /home/src/test/secrets/credentials.json
       method: service-account
       project: test

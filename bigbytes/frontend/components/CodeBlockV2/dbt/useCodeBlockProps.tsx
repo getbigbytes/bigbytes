@@ -562,7 +562,7 @@ export default function useCodeBlockProps({
           beforeIcon: <Chat {...MENU_ICON_PROPS} />,
           uuid: 'Live chat 24/7',
           linkProps: {
-            href: 'https://bigbytes.io/chat',
+            href: 'https://bigbytes.ai/chat',
             openNewWindow: true,
           },
         },
@@ -570,7 +570,7 @@ export default function useCodeBlockProps({
           beforeIcon: <DocumentIcon {...MENU_ICON_PROPS} />,
           uuid: 'Developer documentation',
           linkProps: {
-            href: 'https://docs.bigbytes.io',
+            href: 'https://docs.bigbytes.ai',
             openNewWindow: true,
           },
         },

@@ -20,7 +20,7 @@ CURRENT_FILE_PATH = os.path.dirname(os.path.realpath(__file__))
 class ConfigurationOptionTest(AsyncDBTestCase):
     def setUp(self):
         super().setUp()
-        self.directory = os.path.join(self.repo_path, 'bigbytes_platform')
+        self.directory = os.path.join(self.repo_path, 'mage_platform')
 
         os.makedirs(os.path.join(self.directory, 'dir1'), exist_ok=True)
         os.makedirs(os.path.join(self.directory, 'dir2', 'dir3'), exist_ok=True)
@@ -98,7 +98,7 @@ class ConfigurationOptionTest(AsyncDBTestCase):
     async def test_fetch_with_resource_uuid(self):
         pipeline = create_pipeline_with_blocks(
             self.faker.unique.name(),
-            os.path.join(self.repo_path, 'bigbytes_platform'),
+            os.path.join(self.repo_path, 'mage_platform'),
         )
         block = DBTBlock.create(
             block_type='dbt',
@@ -137,7 +137,7 @@ class ConfigurationOptionTest(AsyncDBTestCase):
                 with patch('bigbytes.settings.repo.project_platform_activated', lambda: True):
                     pipeline = create_pipeline_with_blocks(
                         self.faker.unique.name(),
-                        os.path.join(self.repo_path, 'bigbytes_platform'),
+                        os.path.join(self.repo_path, 'mage_platform'),
                     )
                     block = DBTBlock.create(
                         block_type='dbt',

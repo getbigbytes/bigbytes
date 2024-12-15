@@ -290,7 +290,7 @@ function GreatExpectations({
             When a block in your pipeline runs, it’ll run any tests you define in its code.
             All associated extension blocks will also run during that phase.
             Learn more about the <Link
-              href="https://docs.bigbytes.io/development/testing/great-expectations"
+              href="https://docs.bigbytes.ai/development/testing/great-expectations"
               openNewWindow
             >
               Great Expectation power up

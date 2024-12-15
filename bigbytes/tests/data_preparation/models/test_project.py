@@ -39,9 +39,9 @@ class ProjectTest(ProjectPlatformMixin, AsyncDBTestCase):
                     root_project=False,
                 )
 
-        project = Project(repo_path=os.path.join(base_repo_path(), 'bigbytes_platform'))
-        self.assertEqual(project.name, 'bigbytes_platform')
-        self.assertEqual(project.repo_path, os.path.join(base_repo_path(), 'bigbytes_platform'))
+        project = Project(repo_path=os.path.join(base_repo_path(), 'mage_platform'))
+        self.assertEqual(project.name, 'mage_platform')
+        self.assertEqual(project.repo_path, os.path.join(base_repo_path(), 'mage_platform'))
 
         with patch(
             'bigbytes.data_preparation.models.project.get_repo_config',
@@ -72,13 +72,13 @@ class ProjectTest(ProjectPlatformMixin, AsyncDBTestCase):
                     ) as mock_get_repo_config:
                         project = Project(root_project=False)
 
-                        self.assertEqual(project.name, 'bigbytes_platform')
+                        self.assertEqual(project.name, 'mage_platform')
                         self.assertEqual(
-                            project.repo_path, os.path.join(base_repo_path(), 'bigbytes_platform'),
+                            project.repo_path, os.path.join(base_repo_path(), 'mage_platform'),
                         )
                         self.assertEqual(project.settings, dict(
                             active=True,
-                            uuid='bigbytes_platform',
+                            uuid='mage_platform',
                         ))
                         self.assertEqual(project.version, VERSION)
                         self.assertFalse(project.root_project)
@@ -94,7 +94,7 @@ class ProjectTest(ProjectPlatformMixin, AsyncDBTestCase):
                         self.assertEqual(
                             mock_get_repo_config.mock_calls[1],
                             call(
-                                repo_path=os.path.join(base_repo_path(), 'bigbytes_platform'),
+                                repo_path=os.path.join(base_repo_path(), 'mage_platform'),
                                 root_project=False,
                             ),
                         )
@@ -178,7 +178,7 @@ class ProjectTest(ProjectPlatformMixin, AsyncDBTestCase):
             Project().projects()
             mock_project_platform_settings.assert_called_with(
                 context_data=dict(),
-                bigbytes_projects_only=True,
+                mage_projects_only=True,
             )
 
     def test_is_feature_enabled(self):

@@ -79,8 +79,8 @@ from bigbytes.server.setup import initialize_globals
 from bigbytes.server.static.files import StaticFileHandler
 from bigbytes.server.subscriber import get_messages
 from bigbytes.server.terminal_server import (
-    BigbytesTermManager,
-    BigbytesUniqueTermManager,
+    MageTermManager,
+    MageUniqueTermManager,
     TerminalWebsocketServer,
 )
 from bigbytes.server.websocket_server import WebSocketServer
@@ -243,9 +243,9 @@ def make_app(
         shell_command = 'bash'
         if os.name == 'nt':
             shell_command = 'cmd'
-    term_klass = BigbytesTermManager
+    term_klass = MageTermManager
     if USE_UNIQUE_TERMINAL:
-        term_klass = BigbytesUniqueTermManager
+        term_klass = MageUniqueTermManager
     term_manager = term_klass(shell_command=[shell_command])
 
     if template_dir is None:

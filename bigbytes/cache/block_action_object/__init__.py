@@ -132,7 +132,7 @@ class BlockActionObjectCache(BaseCache):
 
         return ':'.join(arr)
 
-    def build_key_for_bigbytes_template(self, block_action_object: Dict) -> str:
+    def build_key_for_mage_template(self, block_action_object: Dict) -> str:
         arr = []
 
         # This is a specific order
@@ -264,13 +264,13 @@ class BlockActionObjectCache(BaseCache):
         }
 
         # Cache Bigbytes templates
-        bigbytes_templates = TEMPLATES + TEMPLATES_ONLY_FOR_V2
+        mage_templates = TEMPLATES + TEMPLATES_ONLY_FOR_V2
         project = project or Project()
         if project.is_feature_enabled(FeatureUUID.DATA_INTEGRATION_IN_BATCH_PIPELINE):
-            bigbytes_templates += get_templates_for_data_integrations()
+            mage_templates += get_templates_for_data_integrations()
 
-        for block_action_object in bigbytes_templates:
-            key = self.build_key_for_bigbytes_template(block_action_object)
+        for block_action_object in mage_templates:
+            key = self.build_key_for_mage_template(block_action_object)
             mapping[OBJECT_TYPE_BIGBYTES_TEMPLATE][key] = block_action_object
 
         # Cache custom block templates
@@ -287,7 +287,7 @@ class BlockActionObjectCache(BaseCache):
         # Cache block files
         paths_to_traverse = [dict(full_path=base_repo_path())]
         if project_platform_activated():
-            paths_to_traverse = build_repo_path_for_all_projects(bigbytes_projects_only=True).values()
+            paths_to_traverse = build_repo_path_for_all_projects(mage_projects_only=True).values()
 
         for path_dict in paths_to_traverse:
             repo_path = path_dict['full_path']

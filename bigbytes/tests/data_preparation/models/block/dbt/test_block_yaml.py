@@ -110,7 +110,7 @@
 #         self.dbt_block._execute_block(
 #             {},
 #             runtime_arguments={
-#                 '__bigbytes_variables': {
+#                 '__mage_variables': {
 #                     'blocks': {
 #                         'test_dbt_block_yaml': {
 #                             'configuration': {
@@ -217,7 +217,7 @@
 #         dbt_block._execute_block(
 #             outputs_from_input_vars,
 #             runtime_arguments={
-#                 '__bigbytes_variables': {
+#                 '__mage_variables': {
 #                     'blocks': {
 #                         'test_dbt_block_yaml': {
 #                             'configuration': {
@@ -282,8 +282,8 @@
 # class DBTBlockYAMLProjectPlatformTest(ProjectPlatformMixin, BlockWithProjectPlatformShared):
 #     def test_project_path(self):
 #         block = build_block(MagicMock(), '')
-#         block.configuration['dbt_project_name'] = 'bigbytes_data/dbt/demo'
-#         self.assertEqual(block.project_path, os.path.join(base_repo_path(), 'bigbytes_data/dbt/demo'))
+#         block.configuration['dbt_project_name'] = 'mage_data/dbt/demo'
+#         self.assertEqual(block.project_path, os.path.join(base_repo_path(), 'mage_data/dbt/demo'))
 
 #     @patch('bigbytes.data_preparation.models.block.dbt.block_yaml.Profiles')
 #     @patch('bigbytes.data_preparation.models.block.dbt.block_yaml.Project')

@@ -76,7 +76,7 @@ class Destination(BaseDestination):
         unique_constraints = self.unique_constraints.get(stream)
         unique_conflict_method = self.unique_conflict_methods.get(stream)
 
-        # Add _bigbytes_created_at and _bigbytes_updated_at columns
+        # Add _mage_created_at and _mage_updated_at columns
         for r in record_data:
             r['record'] = update_record_with_internal_columns(r['record'])
 

@@ -35,7 +35,7 @@ Find the Spark Master URL at the top of the web page.
 
 ### 2. Build Bigbytes docker image with Spark environment
 * Download the [Dockerfile template](https://github.com/digitranslab/bigbytes/blob/master/integrations/spark/Dockerfile) for Bigbytes with Spark environment.
-* Change the current directory to the directory that contains the `Dockerfile`. Build the docker image with the command `docker build -t bigbytes_spark .`
+* Change the current directory to the directory that contains the `Dockerfile`. Build the docker image with the command `docker build -t mage_spark .`
 
 ### 3. Run Bigbytes in Kubernetes cluster with the `SPARK_MASTER_HOST` environment variable
 * Use the docker image built from step 2 as the container image in your Kubernetes yaml file.
@@ -96,7 +96,7 @@ In other blocks, you can access the Spark session from the `kwargs` via `kwargs[
 
 ### 1. Build Bigbytes docker image with Spark environment
 * Download the [Dockerfile template](https://github.com/digitranslab/bigbytes/blob/master/integrations/spark/Dockerfile) for Bigbytes with Spark environment.
-* Change the current directory to the directory that contains the `Dockerfile`. Build the docker image with the command `docker build -t bigbytes_spark .`
+* Change the current directory to the directory that contains the `Dockerfile`. Build the docker image with the command `docker build -t mage_spark .`
 
 ### 2. Start Bigbytes with `SPARK_MASTER_HOST` environment variable
 Type this command in your terminal to start Bigbytes using docker
@@ -133,7 +133,7 @@ In other blocks, you can access the Spark session from the `kwargs` via `kwargs[
 
 ### 1. Build Bigbytes docker image with Spark environment
 * Download the [Dockerfile template](https://github.com/digitranslab/bigbytes/blob/master/integrations/spark/Dockerfile) for Bigbytes with Spark environment.
-* Build the docker image with the command `docker build -t bigbytes_spark .`
+* Build the docker image with the command `docker build -t mage_spark .`
 
 ### 2. Start Bigbytes using docker with the following command in your terminal
 
@@ -197,7 +197,7 @@ It is also possible to use different Spark Sessions in different pipelines under
 
 ### 1. Build Bigbytes docker image with Spark environment
 * Download the [Dockerfile template](https://github.com/digitranslab/bigbytes/blob/master/integrations/spark/Dockerfile) for Bigbytes with Spark environment.
-* Build the docker image with the command `docker build -t bigbytes_spark .`
+* Build the docker image with the command `docker build -t mage_spark .`
 
 ### 2. Start Bigbytes using docker with the following command in your terminal
 
@@ -278,7 +278,7 @@ It is also possible to create custom Spark ssesion using Python code. Here are t
 
 ### 1. Build Bigbytes docker image with a Hadoop Yarn environment
 * Download the [Dockerfile template](https://github.com/digitranslab/bigbytes/blob/master/integrations/hadoop/Dockerfile) for Bigbytes with Hadoop environment.
-* Build the docker image with the command `docker build -t bigbytes_hadoop .`
+* Build the docker image with the command `docker build -t mage_hadoop .`
 
 
 ### 2. Start Bigbytes with the following command in your terminal using docker
@@ -350,7 +350,7 @@ Here is an overview of the steps required to use Bigbytes locally with Spark in 
 8. [Clean up](#8-clean-up)
 
 If you get stuck, run into problems, or just want someone to walk you through
-these steps, please join our [Slack](https://www.bigbytes.io/chat)
+these steps, please join our [Slack](https://www.bigbytes.ai/chat)
 
 ### 1. Create an S3 bucket for Spark
 
@@ -373,7 +373,7 @@ Type this command in your terminal to start Bigbytes using docker (Note:
 want):
 
 ```bash
-docker run -it -p 6789:6789 -v $(pwd):/home/src bigbytes/bigbytes \
+docker run -it -p 6789:6789 -v $(pwd):/home/src digitranslab/bigbytes \
   /app/run_app.sh bigbytes start demo_project
 ```
 

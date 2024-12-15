@@ -27,7 +27,7 @@ class TestGithubBase(unittest.TestCase):
     OBEYS_START_DATE = "obey-start-date"
 
     def setUp(self):
-        missing_envs = [x for x in ["TAP_GITHUB_TOKEN"] if os.getenv(x) is None]
+        missing_envs = [x for x in ["DIGITRANS_GITHUB_TOKEN"] if os.getenv(x) is None]
         if missing_envs:
             raise Exception("Missing environment variables: {}".format(missing_envs))
 
@@ -56,7 +56,7 @@ class TestGithubBase(unittest.TestCase):
         return return_value
 
     def get_credentials(self):
-        return {"access_token": os.getenv("TAP_GITHUB_TOKEN")}
+        return {"access_token": os.getenv("DIGITRANS_GITHUB_TOKEN")}
 
     def expected_metadata(self):
         """The expected streams and metadata about the streams"""

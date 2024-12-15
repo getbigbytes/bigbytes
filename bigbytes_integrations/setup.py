@@ -17,8 +17,8 @@ with open('requirements.txt') as f:
 setuptools.setup(
     name='bigbytes-integrations',
     version='0.0.0',
-    author='Bigbytes',
-    author_email='eng@bigbytes.io',
+    author='Digitrans Inc',
+    author_email='eng@bigbytes.ai',
     description='',
     long_description=readme(),
     long_description_content_type='text/markdown',

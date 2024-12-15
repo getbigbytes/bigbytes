@@ -48,7 +48,7 @@ class DBTCliTest(TestCase):
             f.write(profiles_yaml)
 
         # create model.sql
-        self.model_full_path = str(Path(self.project_dir) / 'models' / 'bigbytes_test_model.sql')
+        self.model_full_path = str(Path(self.project_dir) / 'models' / 'mage_test_model.sql')
         model = r"{{ config(materialized='table') }}select 1 as id"
         with Path(self.model_full_path).open('w') as f:
             f.write(model)
@@ -58,7 +58,7 @@ class DBTCliTest(TestCase):
         schema = """
 version: 2
 models:
-  - name: bigbytes_test_model
+  - name: mage_test_model
     columns:
       - name: id
         tests:
@@ -77,7 +77,7 @@ models:
             'build',
             '--profiles-dir', self.project_dir,
             '--project-dir', self.project_dir,
-            '--select', 'bigbytes_test_model'
+            '--select', 'mage_test_model'
         ])
 
         # DBTCli().invoke([
@@ -92,14 +92,14 @@ models:
             'run',
             '--profiles-dir', self.project_dir,
             '--project-dir', self.project_dir,
-            '--select', 'bigbytes_test_model'
+            '--select', 'mage_test_model'
         ])
 
         res = cli.invoke([
             'show',
             '--profiles-dir', self.project_dir,
             '--project-dir', self.project_dir,
-            '--select', 'bigbytes_test_model',
+            '--select', 'mage_test_model',
             '--limit', '1'
         ])
 

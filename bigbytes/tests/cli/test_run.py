@@ -14,7 +14,7 @@ class RunTests(TestCase):
     @mock.patch('bigbytes.data_preparation.models.pipeline.Pipeline')
     @mock.patch('bigbytes.data_preparation.executors.executor_factory.ExecutorFactory')
     def test_run_with_arguments(self, mock_executor_factory, mock_pipeline):
-        result = runner.invoke(app, ['run', 'my_bigbytes_project', 'load_titanic'])
+        result = runner.invoke(app, ['run', 'my_mage_project', 'load_titanic'])
         mock_pipeline.assert_called_once()
         mock_executor_factory.get_pipeline_executor.return_value.execute.assert_called_once()
         assert result.exit_code == 0
@@ -23,7 +23,7 @@ class RunTests(TestCase):
     @mock.patch('bigbytes.data_preparation.models.pipeline.Pipeline')
     @mock.patch('bigbytes.data_preparation.executors.executor_factory.ExecutorFactory')
     def test_run_with_tests(self, mock_executor_factory, mock_pipeline):
-        result = runner.invoke(app, ['run', 'my_bigbytes_project', 'load_titanic', '--test'])
+        result = runner.invoke(app, ['run', 'my_mage_project', 'load_titanic', '--test'])
         mock_pipeline.assert_called_once()
         mock_executor_factory.get_pipeline_executor.return_value.execute.assert_called_once_with(
             analyze_outputs=mock.ANY,

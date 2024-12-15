@@ -3,7 +3,7 @@
     """
     Execute Transformer Action: ActionType.COUNT_DISTINCT
 
-    Docs: https://docs.bigbytes.io/guides/transformer-blocks#aggregation-actions
+    Docs: https://docs.bigbytes.ai/guides/transformer-blocks#aggregation-actions
     """
     action = build_transformer_action(
         df,

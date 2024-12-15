@@ -16,7 +16,7 @@ def load_data_from_mssql(*args, **kwargs):
     Specify your configuration settings in 'io_config.yaml'.
     Set the following in your io_config:
 
-    Docs: https://docs.bigbytes.io/integrations/databases/MicrosoftSQLServer
+    Docs: https://docs.bigbytes.ai/integrations/databases/MicrosoftSQLServer
     """
     query = 'Your MSSQL query'  # Specify your SQL query here
     config_path = path.join(get_repo_path(), 'io_config.yaml')

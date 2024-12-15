@@ -1,4 +1,4 @@
-name: Bigbytesr RAGer pipeline
+name: Bigbyter RAGer pipeline
 uuid: mager_rager_pipeline
 type: python
 execution_framework: rag

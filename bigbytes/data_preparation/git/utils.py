@@ -279,7 +279,7 @@ def execute_on_remote_branch(func: Callable, branch) -> None:
                             """
 Connecting to remote timed out, make sure your SSH key is set up properly
 and your repository host is added as a known host. More information
-here: https://docs.bigbytes.io/developing-in-the-cloud/setting-up-git#5-add-github-com-to-known-hosts
+here: https://docs.bigbytes.ai/developing-in-the-cloud/setting-up-git#5-add-github-com-to-known-hosts
 """
                         )
             return await func(*args, **kwargs)

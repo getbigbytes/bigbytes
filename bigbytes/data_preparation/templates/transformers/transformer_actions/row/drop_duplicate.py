@@ -3,7 +3,7 @@
     """
     Execute Transformer Action: ActionType.DROP_DUPLICATE
 
-    Docs: https://docs.bigbytes.io/guides/transformer-blocks#drop-duplicates
+    Docs: https://docs.bigbytes.ai/guides/transformer-blocks#drop-duplicates
     """
     action = build_transformer_action(
         df,

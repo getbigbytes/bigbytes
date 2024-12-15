@@ -85,10 +85,10 @@ class GitBranchResource(GenericResource):
             if include_remote_branches:
                 try:
                     git_manager.fetch()
-                    bigbytes_remote = git_manager.origin
+                    mage_remote = git_manager.origin
                     arr += [
                         dict(name=ref.name)
-                        for ref in bigbytes_remote.refs
+                        for ref in mage_remote.refs
                     ]
                 except Exception:
                     logger.warning('Failed to fetch remote branches')

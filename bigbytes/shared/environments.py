@@ -22,15 +22,15 @@ def is_dev():
     return os.getenv('ENV', None) == 'dev' or os.getenv('ENV', None) == 'development'
 
 
-def is_test_bigbytes():
+def is_test_mage():
     """
-    The "test_bigbytes" environment is used for running unit tests in the CI/CD pipeline.
+    The "test_mage" environment is used for running unit tests in the CI/CD pipeline.
     When running unit tests, a "test.db" sqlite database is temporarily created for
     storing test metadata. Refer to the bigbytes/orchestration/db/__init__.py file for
-    implementation details. The test_bigbytes environment is separate from the "test"
+    implementation details. The test_mage environment is separate from the "test"
     environment so that Bigbytes's unit tests don't affect a user's own testing metadata db.
     """
-    return os.getenv('ENV', None) == 'test_bigbytes' or any('unittest' in v for v in sys.argv)
+    return os.getenv('ENV', None) == 'test_mage' or any('unittest' in v for v in sys.argv)
 
 
 def is_test():
@@ -39,7 +39,7 @@ def is_test():
     their own specific tests that they want to run with their own test metadata db at a
     specific location.
     """
-    return os.getenv('ENV', None) == 'test' or is_test_bigbytes()
+    return os.getenv('ENV', None) == 'test' or is_test_mage()
 
 
 def is_production():
@@ -51,7 +51,7 @@ def is_staging():
 
 
 def get_env():
-    if is_test_bigbytes():
+    if is_test_mage():
         return ENV_TEST_BIGBYTES
     elif is_test():
         return ENV_TEST

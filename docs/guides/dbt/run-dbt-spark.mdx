@@ -10,7 +10,7 @@ The following procedure demonstrates how to run `dbt-spark` with a pySpark sessi
 
 2. Run the following command in your terminal to start Bigbytes using docker:
 ```bash
-docker run -it --name bigbytes_spark -p 6789:6789 -v $(pwd):/home/src bigbytes_spark \
+docker run -it --name bigbytes_spark -p 6789:6789 -v $(pwd):/home/src mage_spark \
   /app/run_app.sh bigbytes start demo_project
 ```
 

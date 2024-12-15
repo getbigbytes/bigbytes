@@ -363,7 +363,7 @@ function AddonBlock({
         <Spacing mt={1}>
           <Text default>
             Learn more about <Link
-              href={`https://docs.bigbytes.io/development/blocks/${lowercase(pluralize(displayBlockName, null))}/overview`}
+              href={`https://docs.bigbytes.ai/development/blocks/${lowercase(pluralize(displayBlockName, null))}/overview`}
               openNewWindow
             >
               {lowercase(pluralize(displayBlockName, null))}

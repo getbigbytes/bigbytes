@@ -60,7 +60,7 @@ class MemoryManager:
     @property
     def log_path(self) -> str:
         """
-        /root/.bigbytes_data/[project]
+        /root/.mage_data/[project]
             /system/metrics
                 /pipelines/[pipeline_uuid]/[block_uuid]
                     /[date]/[hour]

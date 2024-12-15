@@ -1,7 +1,7 @@
 ## Set up
 
 1. Pull the `bigbytes` repository and `cd` into it.
-2. Run Bigbytes in a development Docker container using `./scripts/dev.sh [PROJECT NAME]`. This starts Bigbytes and allows us to make changes in realtime. See [this page](https://docs.bigbytes.io/community/contributing) for more details.
+2. Run Bigbytes in a development Docker container using `./scripts/dev.sh [PROJECT NAME]`. This starts Bigbytes and allows us to make changes in realtime. See [this page](https://docs.bigbytes.ai/community/contributing) for more details.
 3. Open another terminal and run:
     ```bash
     docker exec -it bigbytes-server-1 bash
@@ -194,13 +194,13 @@ python3 bigbytes_integrations/sources/github/__init__.py \
   --debug
 ```
 
-## Test in the Bigbytes UI
+## Test in the bigbytes UI
 
-Once you've tested your tap in the terminal, it's time to test it in Bigbytes. 
+Once you've tested your tap in the terminal, it's time to test it in bigbytes. 
 
 First, return to your terminal and run `pip install -U bigbytes_integrations/` in your `bigbytes_integrations` directory. That will build our _new_ `bigbytes-integrations` package and make the changes you made available to the UI.
 
-Open up Bigbytes (`localhost:3000` in dev) and create a new data integration pipeline:
+Open up bigbytes (`localhost:3000` in dev) and create a new data integration pipeline:
 
 <div align="center">
 <img src="docs/media/adapt-existing-source/new-pipeline.png" width="50%"/>

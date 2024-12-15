@@ -28,7 +28,7 @@ import { getAllPipelineRunData } from '@components/PipelineRun/shared/utils';
 import { getDateRange } from '@utils/date';
 
 const GradientTextStyle = styled.div<any>`
-  background: linear-gradient(90deg, #00A99D 28.12%, #2AB2FE 100%);
+  background: linear-gradient(90deg, #7D55EC 28.12%, #2AB2FE 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

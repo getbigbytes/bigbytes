@@ -51,7 +51,7 @@ class PipelineScheduleProjectPlatformMixin:
             )
             for d in build_repo_path_for_all_projects(
                 context_data=context_data,
-                bigbytes_projects_only=True,
+                mage_projects_only=True,
             ).values()
         ])
 

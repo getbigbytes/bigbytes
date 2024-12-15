@@ -11,7 +11,7 @@ class K8sBlockExecutorTestCase(unittest.TestCase):
         self.pipeline = MagicMock()
         self.pipeline.uuid = 'pipeline_uuid'
         self.pipeline.repo_config = MagicMock()
-        self.pipeline.repo_config.variables_dir = os.path.join(os.getcwd(), 'bigbytes_data')
+        self.pipeline.repo_config.variables_dir = os.path.join(os.getcwd(), 'mage_data')
         self.block_uuid = 'block-uuid'
 
         self.logger_manager = MagicMock()

@@ -130,7 +130,7 @@ export const RootApplicationStyle = styled.div`
           ${transition()}
           box-shadow:
             0 0 0 8px #18181C,
-            0 0 0 32px #00a99d;
+            0 0 0 32px #2A60FE;
           cursor: pointer;
         }
 

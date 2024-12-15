@@ -41,7 +41,7 @@ SERVER_LOGGING_TEMPLATE=$'%(asctime)s\t[%(name)25.25s]\t%(levelname)5s: %(messag
     1. Use `export SERVER_LOGGING_TEMPLATE=$'%(asctime)s\t[%(name)25.25s]\t%(levelname)5s: %(message)s'` syntax for local
     python deployment or docker compose with exported env variables
     2. Use combination of `.env` file and `-e` flag for plain docker deployment
-    `docker run -d --env-file .env -e SERVER_LOGGING_TEMPLATE=$'%(asctime)s\t\t[%(name)25.25s]\t%(levelname)5s: %(message)s' bigbytes/bigbytes:latest`
+    `docker run -d --env-file .env -e SERVER_LOGGING_TEMPLATE=$'%(asctime)s\t\t[%(name)25.25s]\t%(levelname)5s: %(message)s' digitranslab/bigbytes:latest`
 </Warning>
 
 ### JSON format

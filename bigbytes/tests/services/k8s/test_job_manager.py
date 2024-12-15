@@ -344,7 +344,7 @@ class JobManagerTests(TestCase):
                     {'name': 'KUBE_NAMESPACE', 'value': 'default'},
                     {'name': 'secret_key', 'value': 'somesecret'}
                 ],
-                'image': 'bigbytes/bigbytes:0.9.26',
+                'image': 'digitranslab/bigbytes:0.9.26',
                 'image_pull_policy': 'Always',
                 'resources': {
                     'limits': {

@@ -772,30 +772,30 @@ class PipelineTest(AsyncDBTestCase):
 
         pipeline3 = Pipeline.create(
             self.faker.unique.name(),
-            repo_path=os.path.join(base_repo_path(), 'bigbytes_platform'),
+            repo_path=os.path.join(base_repo_path(), 'mage_platform'),
         )
         pipeline4 = Pipeline.create(
             self.faker.unique.name(),
-            repo_path=os.path.join(base_repo_path(), 'bigbytes_platform'),
+            repo_path=os.path.join(base_repo_path(), 'mage_platform'),
         )
-        pipelines = Pipeline.get_all_pipelines(os.path.join(base_repo_path(), 'bigbytes_platform'))
+        pipelines = Pipeline.get_all_pipelines(os.path.join(base_repo_path(), 'mage_platform'))
         self.assertTrue(all([uuid in pipelines for uuid in [pipeline3.uuid, pipeline4.uuid]]))
-        shutil.rmtree(os.path.join(base_repo_path(), 'bigbytes_platform'))
+        shutil.rmtree(os.path.join(base_repo_path(), 'mage_platform'))
 
     def test_get_all_pipelines_disable_pipelines_folder_creation(self):
-        os.mkdir(os.path.join(base_repo_path(), 'bigbytes_data1'))
-        self.assertFalse(os.path.exists(os.path.join(base_repo_path(), 'bigbytes_data1/pipelines')))
-        Pipeline.get_all_pipelines(os.path.join(base_repo_path(), 'bigbytes_data1'))
-        self.assertTrue(os.path.exists(os.path.join(base_repo_path(), 'bigbytes_data1/pipelines')))
+        os.mkdir(os.path.join(base_repo_path(), 'mage_data1'))
+        self.assertFalse(os.path.exists(os.path.join(base_repo_path(), 'mage_data1/pipelines')))
+        Pipeline.get_all_pipelines(os.path.join(base_repo_path(), 'mage_data1'))
+        self.assertTrue(os.path.exists(os.path.join(base_repo_path(), 'mage_data1/pipelines')))
 
-        self.assertFalse(os.path.exists(os.path.join(base_repo_path(), 'bigbytes_data2/pipelines')))
+        self.assertFalse(os.path.exists(os.path.join(base_repo_path(), 'mage_data2/pipelines')))
         Pipeline.get_all_pipelines(
-            os.path.join(base_repo_path(), 'bigbytes_data2'),
+            os.path.join(base_repo_path(), 'mage_data2'),
             disable_pipelines_folder_creation=True,
         )
-        self.assertFalse(os.path.exists(os.path.join(base_repo_path(), 'bigbytes_data2/pipelines')))
+        self.assertFalse(os.path.exists(os.path.join(base_repo_path(), 'mage_data2/pipelines')))
 
-        shutil.rmtree(os.path.join(base_repo_path(), 'bigbytes_data1'))
+        shutil.rmtree(os.path.join(base_repo_path(), 'mage_data1'))
 
     def test_config_path(self):
         pipeline = Pipeline.create(

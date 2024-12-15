@@ -10,7 +10,7 @@ def export_data_to_file(df: DataFrame, **kwargs) -> None:
     """
     Template for exporting data to filesystem.
 
-    Docs: https://docs.bigbytes.io/design/data-loading#fileio
+    Docs: https://docs.bigbytes.ai/design/data-loading#fileio
     """
     filepath = 'path/to/write/dataframe/to.csv'
     FileIO().export(df, filepath)

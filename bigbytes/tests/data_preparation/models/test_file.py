@@ -59,7 +59,7 @@ class FileProjectPlatformTest(ProjectPlatformMixin, AsyncDBTestCase):
         except FileNotFoundError:
             pass
         try:
-            shutil.rmtree(os.path.join(base_repo_path(), 'bigbytes_platform'))
+            shutil.rmtree(os.path.join(base_repo_path(), 'mage_platform'))
         except FileNotFoundError:
             pass
         super().tearDown()
@@ -179,7 +179,7 @@ class FileProjectPlatformTest(ProjectPlatformMixin, AsyncDBTestCase):
 
                 self.assertEqual(full_paths['name'], result['name'])
 
-                bigbytes_platform = find(lambda x: x['name'] == 'bigbytes_platform', full_paths['children'])
+                mage_platform = find(lambda x: x['name'] == 'bigbytes_platform', full_paths['children'])
 
                 for key in [
                     'data_exporters',
@@ -190,10 +190,10 @@ class FileProjectPlatformTest(ProjectPlatformMixin, AsyncDBTestCase):
                 ]:
                     self.assertIsNotNone(find(
                         lambda x, key=key: x['name'] == key,
-                        bigbytes_platform['children'],
+                        mage_platform['children'],
                     ))
 
-                demo = find(lambda x: x['name'] == 'demo', bigbytes_platform['children'])
+                demo = find(lambda x: x['name'] == 'demo', mage_platform['children'])
 
                 for key in [
                     'demo.sql',
@@ -204,7 +204,7 @@ class FileProjectPlatformTest(ProjectPlatformMixin, AsyncDBTestCase):
                         demo['children'],
                     ))
 
-                pipelines = find(lambda x: x['name'] == 'pipelines', bigbytes_platform['children'])
+                pipelines = find(lambda x: x['name'] == 'pipelines', mage_platform['children'])
 
                 for key in [
                     self.pipeline.uuid,

@@ -1,5 +1,5 @@
 # Install openssl 1.1.1 instead of the default openssl 3.0.9
-FROM bigbytes/bigbytes:latest
+FROM digitranslab/bigbytes:latest
 
 # (Install compiling library Make)
 RUN apt-get -y install make 

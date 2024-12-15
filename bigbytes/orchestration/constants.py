@@ -15,7 +15,7 @@ PG_DB_NAME = 'DB_NAME'
 
 # ================================================
 
-PIPELINE_RUN_BIGBYTES_VARIABLES_KEY = '__bigbytes_variables'
+PIPELINE_RUN_BIGBYTES_VARIABLES_KEY = '__mage_variables'
 
 
 class Entity(StrEnum):

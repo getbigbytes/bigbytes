@@ -118,7 +118,7 @@ function build(theme: ThemeType): IDEThemeType {
       // Color of error squiggles.
       'editorError.foreground': '#FF144D', // Red
       // Color of warning squiggles.
-      'editorWarning.foreground': '#FFCC19', // Yellow
+      'editorWarning.foreground': '#00a99d', // Yellow
       // Color of info squiggles.
       'editorInfo.foreground': '#0F4CFF', // Blue
       // Background color of a symbol during read-access.
@@ -283,15 +283,15 @@ function build(theme: ThemeType): IDEThemeType {
       // List/Tree background color for the selected item when the list/tree is active.
       'list.activeSelectionBackground': '#0000004D',
       // List/Tree foreground color for the selected item when the list/tree is active.
-      'list.activeSelectionForeground': '#FFCC19',
+      'list.activeSelectionForeground': '#00a99d',
       // // List/Tree icon foreground color for the selected item when the list/tree is active. An active list/tree has keyboard focus, an inactive does not.
-      'list.activeSelectionIconForeground': '#FFCC19',
+      'list.activeSelectionIconForeground': '#00a99d',
       //  // List/Tree drag and drop background when moving items around using the mouse.
       // 'list.dropBackground': '#000000',
       // // List/Tree background color for the focused item when the list/tree is active.
-      // 'list.focusBackground': '#FFCC19',
+      // 'list.focusBackground': '#00a99d',
       //  // List/Tree foreground color for the focused item when the list/tree is active. An active list/tree has keyboard focus, an inactive does not.
-      // 'list.focusForeground': '#FFCC19',
+      // 'list.focusForeground': '#00a99d',
       // // List/Tree foreground color of the match highlights on actively focused items when searching inside the list/tree.
       // 'list.focusHighlightForeground': '#000000',
       //  // List/Tree outline color for the focused item when the list/tree is active. An active list/tree has keyboard focus, an inactive does not.

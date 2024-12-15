@@ -23,7 +23,7 @@ which can cause circular import errors.
 if is_test():
     DEFAULT_BIGBYTES_DATA_DIR = '.'
 else:
-    DEFAULT_BIGBYTES_DATA_DIR = os.path.join('~', '.bigbytes_data')
+    DEFAULT_BIGBYTES_DATA_DIR = os.path.join('~', '.mage_data')
 BIGBYTES_DATA_DIR_ENV_VAR = 'BIGBYTES_DATA_DIR'
 
 

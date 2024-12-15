@@ -38,7 +38,7 @@ def reduce_output_from_block(
 
     output = []
 
-    # /.bigbytes_data/default_repo/pipelines/dynamic_reduce_all_levels
+    # /.mage_data/default_repo/pipelines/dynamic_reduce_all_levels
     # /.variables/415/20230930T135530/child_b_30
     variable_dir_path = variable_object_for_base_block.variable_dir_path
 
@@ -52,7 +52,7 @@ def reduce_output_from_block(
         if variable_uuid != dir_name:
             continue
 
-        # /.bigbytes_data/default_repo/pipelines/dynamic_reduce_all_levels
+        # /.mage_data/default_repo/pipelines/dynamic_reduce_all_levels
         # /.variables/415/20230930T135530/child_b_30/1/1
         dir_path_without_variable_uuid = os.path.dirname(dir_path)
 
@@ -92,7 +92,7 @@ def __all_variable_uuids_and_file_paths_for_reducing_block_output(
 
     variable_uuid_and_file_paths = []
 
-    # /.bigbytes_data/default_repo/pipelines/dynamic_reduce_all_levels
+    # /.mage_data/default_repo/pipelines/dynamic_reduce_all_levels
     # /.variables/415/20230930T135530/child_b_30
     variable_dir_path = variable_object_for_base_block.variable_dir_path
     for tup in os.walk(variable_dir_path):
@@ -102,7 +102,7 @@ def __all_variable_uuids_and_file_paths_for_reducing_block_output(
         # No subdirectories means its a leaf node with only files.
         if len(subdirs) == 0:
             # dir_path
-            # /.bigbytes_data/default_repo/pipelines/dynamic_reduce_all_levels
+            # /.mage_data/default_repo/pipelines/dynamic_reduce_all_levels
             # /.variables/415/20230930T135530/child_b_30/1/1/output_0
 
             # e.g. output_0

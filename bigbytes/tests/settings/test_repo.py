@@ -28,8 +28,8 @@ class RepoSettingsTest(DBTestCase):
     def test_get_repo_name(self):
         self.assertEqual(get_repo_name(), 'test')
         self.assertEqual(
-            get_repo_name(os.path.join(self.repo_path, 'bigbytes_platform')),
-            'bigbytes_platform',
+            get_repo_name(os.path.join(self.repo_path, 'mage_platform')),
+            'mage_platform',
         )
 
     def test_get_data_dir(self):

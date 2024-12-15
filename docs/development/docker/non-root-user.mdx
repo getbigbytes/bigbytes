@@ -12,7 +12,7 @@ Here is the Dockerfile template that you can use to build your custom docker ima
 ```dockerfile
 ARG VERSION
 
-FROM bigbytes/bigbytes:$VERSION
+FROM digitranslab/bigbytes:$VERSION
 
 # Add non-root user for Bigbytes service
 RUN adduser --disabled-password --gecos '' bigbytes && adduser bigbytes bigbytes

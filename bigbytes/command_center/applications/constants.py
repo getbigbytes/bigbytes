@@ -30,18 +30,6 @@ ITEMS = [
         path='/global-data-products',
     ),
     dict(
-        title='Sql Workspace',
-        path='/global-data-products',
-    ),
-    dict(
-        title='Data Catalog',
-        path='/global-data-products',
-    ),
-    dict(
-        title='Data Lineage',
-        path='/global-data-products',
-    ),
-    dict(
         title='Global hooks',
         path='/global-hooks',
         condition=lambda opts: opts['project'].is_feature_enabled(FeatureUUID.GLOBAL_HOOKS),

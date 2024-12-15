@@ -25,7 +25,7 @@ class DBLocks(enum.IntEnum):
     MIGRATIONS = enum.auto()
 
     def __str__(self):
-        return f'bigbytes_{self._name_}'
+        return f'mage_{self._name_}'
 
 
 @contextlib.contextmanager

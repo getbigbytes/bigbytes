@@ -3,7 +3,7 @@
     """
     Execute Transformer Action: ActionType.CLEAN_COLUMN_NAME
 
-    Docs: https://docs.bigbytes.io/guides/transformer-blocks#clean-column-names
+    Docs: https://docs.bigbytes.ai/guides/transformer-blocks#clean-column-names
     """
     action = build_transformer_action(
         df,

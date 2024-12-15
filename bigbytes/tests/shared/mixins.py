@@ -352,11 +352,11 @@ class GlobalHooksMixin(BaseApiTestCase):
 class ProjectPlatformMixin(AsyncDBTestCase):
     @classmethod
     def initialize_settings(self, settings: Dict = None):
-        self.platform_project_name = 'bigbytes_platform'
+        self.platform_project_name = 'mage_platform'
         content = yaml.dump(settings or dict(
             projects={
                 self.platform_project_name: {},
-                'bigbytes_data': {},
+                'mage_data': {},
             },
         ))
         safe_write(platform_settings_full_path(), content)
@@ -400,7 +400,7 @@ class ProjectPlatformMixin(AsyncDBTestCase):
                     self.repo_path,
                     return_blocks=True,
                 )
-                self.repo_paths = build_repo_path_for_all_projects(bigbytes_projects_only=True)
+                self.repo_paths = build_repo_path_for_all_projects(mage_projects_only=True)
 
     def teardown_final(self):
         with patch('bigbytes.settings.platform.project_platform_activated', lambda: True):

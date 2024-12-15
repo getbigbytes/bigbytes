@@ -1,4 +1,4 @@
-FROM bigbytes/bigbytes:latest
+FROM digitranslab/bigbytes:latest
 ARG PIP=pip3
 
 RUN apt-get update && \

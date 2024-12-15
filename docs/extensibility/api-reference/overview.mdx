@@ -31,7 +31,7 @@ You can read more about the components in the _Design_ section on the sidebar to
     To authenticate your session, we recommend using the `oauth_token` cookie. This can be done simply in Python requests with the following, where `token` is the value of the `token` key in the response payload:
 
     ```python
-    token = bigbytes_session.get('token')
+    token = mage_session.get('token')
     s.headers['Cookie'] = f'oauth_token={token}'
     ```
     </Accordion>

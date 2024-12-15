@@ -159,7 +159,7 @@ class DBTBlock(Block):
         """
         Materialize a dataframe for use with a DBTBlock.
         The df is materialized based on the dbt profile configuration as:
-        `"{default_database}"."{default_schema}"."bigbytes_{pipeline_uuid}_{block_uuid}"`
+        `"{default_database}"."{default_schema}"."mage_{pipeline_uuid}_{block_uuid}"`
 
         Args:
             df (pd.DataFrame): dataframe to materialize
@@ -175,8 +175,8 @@ class DBTBlock(Block):
             seed_path = Path(
                 project_path,
                 seed_dir_name,
-                f'bigbytes_{pipeline_uuid}',
-                f'bigbytes_{pipeline_uuid}_{block_uuid}.csv'
+                f'mage_{pipeline_uuid}',
+                f'mage_{pipeline_uuid}_{block_uuid}.csv'
             )
             seed_path.parent.mkdir(parents=True, exist_ok=True)
             df.to_csv(seed_path, quoting=csv.QUOTE_NONNUMERIC, index=False)
@@ -194,7 +194,7 @@ class DBTBlock(Block):
                     '--project-dir', project_path,
                     '--profiles-dir', profiles.profiles_dir,
                     '--target', target,
-                    '--select', f'bigbytes_{pipeline_uuid}_{block_uuid}',
+                    '--select', f'mage_{pipeline_uuid}_{block_uuid}',
                     '--vars', cls._variables_json(merge_dict(variables, template_vars)),
                     '--full-refresh'
                 ]
@@ -209,7 +209,7 @@ class DBTBlock(Block):
         variables: Optional[Dict[str, str]] = None
     ) -> None:
         """
-        Update the bigbytes_sources.yml for each dbt project in the pipeline based on the pipeline
+        Update the mage_sources.yml for each dbt project in the pipeline based on the pipeline
         blocks. Every non dbt block of langauge SQL, Python or R, which has a downstream
         dbt block will be added.
 

@@ -30,7 +30,7 @@ export const DEBUG = (func?: () => any): boolean => {
 };
 
 export function isDemo() {
-  return typeof window !== 'undefined' && window.location.hostname === 'demo.bigbytes.io';
+  return typeof window !== 'undefined' && window.location.hostname === 'demo.bigbytes.ai';
 }
 
 export function isPro() {

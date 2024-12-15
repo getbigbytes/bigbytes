@@ -25,7 +25,7 @@ clean-targets:
             f.write(project_yaml)
 
     def tearDown(self):
-        (Path(self.repo_path) / 'models' / 'bigbytes_sources.yml').unlink()
+        (Path(self.repo_path) / 'models' / 'mage_sources.yml').unlink()
         (Path(self.repo_path) / 'models').rmdir()
         Path(self.test_project_path).unlink()
         super().tearDown()
@@ -85,7 +85,7 @@ clean-targets:
     def test_add_block_overlapping(self):
         """
         Tests use cases
-        - correctly add block already available block in bigbytes_sources.yml
+        - correctly add block already available block in mage_sources.yml
         """
         sources = Sources(self.repo_path)
 
@@ -198,7 +198,7 @@ clean-targets:
     def test_cleanup_pipeline_empty(self):
         """
         Tests use cases
-        - cleanup non existing bigbytes_sources.yml create the file without any pipelines
+        - cleanup non existing mage_sources.yml create the file without any pipelines
         """
         sources = Sources(self.repo_path)
 
@@ -247,7 +247,7 @@ clean-targets:
     def test_cleanup_pipeline_non_overlapping(self):
         """
         Tests use cases
-        - correctly cleanup no block, as the blocks are not part of the bigbytes_sources.yml
+        - correctly cleanup no block, as the blocks are not part of the mage_sources.yml
         """
         sources = Sources(self.repo_path)
 

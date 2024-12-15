@@ -18,9 +18,9 @@ setuptools.setup(
     name='bigbytes',
     # NOTE: when you change this, change the value of VERSION in the following file:
     # bigbytes/server/constants.py
-    version='0.9.74',
+    version='0.9.75',
     author='Bigbytes',
-    author_email='eng@bigbytes.io',
+    author_email='eng@bigbytes.ai',
     description='Bigbytes is a tool for building and deploying data pipelines.',
     long_description=readme(),
     long_description_content_type='text/markdown',
@@ -86,7 +86,7 @@ setuptools.setup(
             "tables==3.10.1; python_version >= '3.11'",
         ],
         'mysql': [
-            "mysql-connector-python~=8.2.0; python_version < '3.11'",
+            "mysql-connector-python~=8.4.0; python_version < '3.11'",
             "mysql-connector-python~=9.0.0; python_version >= '3.11'",
         ],
         'oracle': [
@@ -112,7 +112,7 @@ setuptools.setup(
             'botocore==1.29.60',
         ],
         'snowflake': [
-            'snowflake-connector-python',
+            'snowflake-connector-python==3.7.1',
         ],
         'spark': [
             'boto3==1.26.60',
@@ -188,7 +188,7 @@ setuptools.setup(
             'pika==1.3.1',
             'pinotdb==5.1.0',
             'prometheus_client>=0.18.0',
-            'protobuf~=4.21.12',
+            'protobuf>=4.25.0',
             'psycopg2-binary==2.9.3',
             'psycopg2==2.9.3',
             'pyairtable==2.3.3',
@@ -199,7 +199,7 @@ setuptools.setup(
             'redshift-connector==2.0.915',
             'lxml==4.9.4',
             'requests_aws4auth==1.1.2',
-            'snowflake-connector-python==3.5.0',
+            'snowflake-connector-python==3.7.1',
             'sshtunnel==0.4.0',
             'stomp.py==8.1.0',
             'thefuzz[speedup]==0.19.0',

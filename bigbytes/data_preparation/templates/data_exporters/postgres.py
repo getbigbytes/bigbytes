@@ -14,7 +14,7 @@ def export_data_to_postgres(df: DataFrame, **kwargs) -> None:
     Template for exporting data to a PostgreSQL database.
     Specify your configuration settings in 'io_config.yaml'.
 
-    Docs: https://docs.bigbytes.io/design/data-loading#postgresql
+    Docs: https://docs.bigbytes.ai/design/data-loading#postgresql
     """
     schema_name = 'your_schema_name'  # Specify the name of the schema to export data to
     table_name = 'your_table_name'  # Specify the name of the table to export data to

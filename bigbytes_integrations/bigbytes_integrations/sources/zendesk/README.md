@@ -29,11 +29,11 @@ Example Admin Center URL: https://magesupport.zendesk.com/admin/home
 
 <b>Zendesk authorization page</b>
 
-https://magesupport.zendesk.com/oauth/authorizations/new?client_id=bigbytes&response_type=code&redirect_uri=https://www.bigbytes.io&scope=read
+https://magesupport.zendesk.com/oauth/authorizations/new?client_id=bigbytes&response_type=code&redirect_uri=https://www.bigbytes.ai&scope=read
 
 <b>Authorize redirect URL with code</b>
 
-https://www.bigbytes.io/?code=6b21972c79e12cbda37947df4ba22d4cb394da752e955c6dac81361d5f453695
+https://www.bigbytes.ai/?code=6b21972c79e12cbda37947df4ba22d4cb394da752e955c6dac81361d5f453695
 
 <b>Example cURL command to exchange code for access token</b>
 
@@ -46,7 +46,7 @@ curl --request POST \
   "code": "6b21972c79e12cbda37947df4ba22d4cb394da752e955c6dac81361d5f453695",
   "client_id": "bigbytes",
   "client_secret": "your_oauth_client_secret",
-  "redirect_uri": "https://www.bigbytes.io",
+  "redirect_uri": "https://www.bigbytes.ai",
   "scope": "read"
 }'
 ```

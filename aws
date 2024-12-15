@@ -6,8 +6,8 @@ import boto3
 import requests
 
 AWS_CREDENTIALS_FILE_PATH = os.path.expanduser('~/.aws/credentials')
-IAM_USER_NAME = 'BigbytesDeployer'
-IAM_USER_NAME_CICD = 'BigbytesContinuousIntegrationDeployer'
+IAM_USER_NAME = 'MageDeployer'
+IAM_USER_NAME_CICD = 'MageContinuousIntegrationDeployer'
 TERRAFORM_AWS_URL = 'https://raw.githubusercontent.com/digitranslab/bigbytes-terraform-templates/master/aws/policies'
 TERRAFORM_APPLY_URL = f'{TERRAFORM_AWS_URL}/TerraformApplyDeployBigbytes.json'
 TERRAFORM_DESTROY_URL = f'{TERRAFORM_AWS_URL}/TerraformDestroyDeleteResources.json'

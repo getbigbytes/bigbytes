@@ -10,7 +10,7 @@ icon: "list-check"
     locally: For example:
 
     ```bash
-    docker run -it -p 6789:6789 -v $(pwd):/home/src bigbytes/bigbytes \
+    docker run -it -p 6789:6789 -v $(pwd):/home/src digitranslab/bigbytes \
       /app/run_app.sh bigbytes start demo_project
     ```
 
@@ -25,10 +25,10 @@ icon: "list-check"
     contents of your `Dockerfile` are:
 
     ```dockerfile
-    FROM bigbytes/bigbytes:latest
+    FROM digitranslab/bigbytes:latest
 
     ARG PROJECT_NAME=[project_name]
-    ARG BIGBYTES_CODE_PATH=/home/bigbytes_code
+    ARG BIGBYTES_CODE_PATH=/home/mage_code
     ARG USER_CODE_PATH=${BIGBYTES_CODE_PATH}/${PROJECT_NAME}
 
     WORKDIR ${BIGBYTES_CODE_PATH}
@@ -46,7 +46,7 @@ icon: "list-check"
     # Install custom libraries within 3rd party libraries (e.g. dbt packages)
     RUN python3 /app/install_other_dependencies.py --path ${USER_CODE_PATH}
 
-    ENV PYTHONPATH="${PYTHONPATH}:/home/bigbytes_code"
+    ENV PYTHONPATH="${PYTHONPATH}:/home/mage_code"
 
     CMD ["/bin/sh", "-c", "/app/run_app.sh"]
     ```
@@ -57,7 +57,7 @@ icon: "list-check"
     |   demo_project/
     |   Dockerfile
     ```
-5.  Build a custom Docker image using `bigbytes/bigbytes:latest` as the base and
+5.  Build a custom Docker image using `digitranslab/bigbytes:latest` as the base and
     using the newly created Dockerfile as the additional set of instructions:
 
     ```
@@ -65,13 +65,13 @@ icon: "list-check"
     ```
 
     <Note>
-      Change `mageprod` to any other name. You’ll need this tag name when
+      Change `bigbytesprod` to any other name. You’ll need this tag name when
       deploying to production in the cloud.
     </Note>
 
 6.  To test the new image works, run the following command:
     ```bash
-    docker run -it -p 6789:6789 mageprod:latest /app/run_app.sh bigbytes start demo_project
+    docker run -it -p 6789:6789 bigbytesprod:latest /app/run_app.sh bigbytes start demo_project
     ```
 7.  Open your browser and go to http://localhost:6789/
     1. You should see all your pipelines there.
@@ -80,5 +80,5 @@ icon: "list-check"
        image (this is intentional).
 8.  The next steps depends on your deployment method. If you are using
     [Terraform](/production/deploying-to-cloud/using-terraform), then you’ll need to use the previously
-    tag name (e.g. `mageprod`) when pushing a Docker image to a remote Docker
+    tag name (e.g. `bigbytesprod`) when pushing a Docker image to a remote Docker
     registry.

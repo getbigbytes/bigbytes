@@ -113,7 +113,7 @@ class BigQuerySourceTests(unittest.TestCase):
     maxDiff = None
 
     def test_discover(self):
-        source = BigQuery(config=dict(project_id="bigbytes_test_project"))
+        source = BigQuery(config=dict(project_id="mage_test_project"))
         bigquery_connection = MagicMock()
         bigquery_connection.load.return_value = build_sample_bigquery_rows()
         with patch.object(source, 'build_discover_query') as mock_build_query:

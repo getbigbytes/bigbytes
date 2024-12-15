@@ -3,7 +3,7 @@
     """
     Execute Transformer Action: ActionType.REFORMAT
 
-    Docs: https://docs.bigbytes.io/guides/transformer-blocks#reformat-values
+    Docs: https://docs.bigbytes.ai/guides/transformer-blocks#reformat-values
     """
     action = build_transformer_action(
         df,

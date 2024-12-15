@@ -65,10 +65,10 @@ jobs:
         run: |
           sudo apt-get install freetds-dev
           python -m pip install --upgrade pip
-          pip install "git+https://github.com/mage-ai/sqlglot#egg=sqlglot"
+          pip install "git+https://github.com/digitranslab/sqlglot#egg=sqlglot"
           pip install -r requirements.txt
           pip install bigbytes_integrations/
-          pip install "git+https://github.com/mage-ai/singer-python.git#egg=singer-python"
+          pip install "git+https://github.com/digitranslab/singer-python.git#egg=singer-python"
       - name: Run unit tests
         run: |
           python3 -m unittest discover -s bigbytes --failfast
@@ -98,7 +98,7 @@ jobs:
           yarn playwright test -c playwright.config.ci.ts
         working-directory: bigbytes/frontend/
         env:
-          PYTHONPATH: ${{ env.pythonLocation }}:.
+          PYTHONPATH: ${{ env.pythonLocation }}:. # Playwright tests on CI depend on the Python web server
         if: matrix.python-version == '3.10'
       - uses: actions/upload-artifact@v3
         if: always()

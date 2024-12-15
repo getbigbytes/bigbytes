@@ -79,13 +79,13 @@ class UsageStatisticLogger():
             elif OBJECT_TYPE_CUSTOM_BLOCK_TEMPLATE == object_type:
                 created_from = 'custom_template'
             elif OBJECT_TYPE_BIGBYTES_TEMPLATE == object_type:
-                created_from = 'bigbytes_template'
+                created_from = 'mage_template'
         elif custom_template:
             created_from = 'custom_template'
         elif replicated_block:
             created_from = 'replicated_block'
         elif payload_config and payload_config.get('template_path'):
-            created_from = 'bigbytes_template'
+            created_from = 'mage_template'
         elif block.already_exists:
             created_from = 'existing_block'
 
@@ -116,8 +116,8 @@ class UsageStatisticLogger():
         ))
 
     @property
-    def help_improve_bigbytes(self) -> bool:
-        return self.project.help_improve_bigbytes
+    def help_improve_mage(self) -> bool:
+        return self.project.help_improve_mage
 
     async def chart_impression(self, chart_config: Dict) -> bool:
         return await self.__send_message(
@@ -152,7 +152,7 @@ class UsageStatisticLogger():
             event_properties,
         ))
 
-    async def project_deny_improve_bigbytes(self, project_uuid) -> bool:
+    async def project_deny_improve_mage(self, project_uuid) -> bool:
         return await self.__send_message(
             data=dict(
                 object=EventObjectType.PROJECT,
@@ -206,7 +206,7 @@ class UsageStatisticLogger():
         )
 
     async def project_impression(self) -> bool:
-        if not self.help_improve_bigbytes:
+        if not self.help_improve_mage:
             return False
 
         features = {}
@@ -231,7 +231,7 @@ class UsageStatisticLogger():
 
     @safe_db_query
     async def pipeline_runs_impression(self, count_func: Callable) -> bool:
-        if not self.help_improve_bigbytes:
+        if not self.help_improve_mage:
             return False
 
         return await self.__send_message(
@@ -276,7 +276,7 @@ class UsageStatisticLogger():
         ))
 
     async def pipelines_impression(self, count_func: Callable) -> bool:
-        if not self.help_improve_bigbytes:
+        if not self.help_improve_mage:
             return False
 
         return await self.__send_message(
@@ -289,7 +289,7 @@ class UsageStatisticLogger():
 
     @safe_db_query
     async def users_impression(self) -> bool:
-        if not self.help_improve_bigbytes:
+        if not self.help_improve_mage:
             return False
 
         return await self.__send_message(
@@ -311,7 +311,7 @@ class UsageStatisticLogger():
         Returns:
             bool: True if event was successfully uploaded
         """
-        if not self.help_improve_bigbytes:
+        if not self.help_improve_mage:
             return False
 
         pipeline = pipeline_run.pipeline
@@ -353,7 +353,7 @@ class UsageStatisticLogger():
 
     @safe_db_query
     async def block_run_ended(self, block_run: BlockRun) -> bool:
-        if not self.help_improve_bigbytes:
+        if not self.help_improve_mage:
             return False
 
         pipeline_run = block_run.pipeline_run
@@ -433,7 +433,7 @@ class UsageStatisticLogger():
             if is_test():
                 return False
 
-            if not self.help_improve_bigbytes:
+            if not self.help_improve_mage:
                 return False
 
         if data is None:

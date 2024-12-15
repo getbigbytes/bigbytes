@@ -91,8 +91,8 @@ class Project:
         return config
 
     @property
-    def help_improve_bigbytes(self) -> bool:
-        return self.repo_config.help_improve_bigbytes
+    def help_improve_mage(self) -> bool:
+        return self.repo_config.help_improve_mage
 
     @property
     def project_uuid(self) -> str:
@@ -191,7 +191,7 @@ class Project:
 
     def platform_settings(self) -> Dict:
         if project_platform_activated():
-            return platform_settings(bigbytes_projects_only=True)
+            return platform_settings(mage_projects_only=True)
 
     def repo_path_for_database_query(self, key: str) -> List[str]:
         if self.settings:
@@ -216,7 +216,7 @@ class Project:
     def projects(self) -> Dict:
         return project_platform_settings(
             context_data=self.context_data,
-            bigbytes_projects_only=True
+            mage_projects_only=True
         )
 
     def is_feature_enabled(self, feature_name: FeatureUUID) -> bool:

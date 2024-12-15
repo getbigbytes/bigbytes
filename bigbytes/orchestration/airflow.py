@@ -62,9 +62,9 @@ def create_dag(
         return operators
 
     if len(tasks) >= 1:
-        dag_id = f'bigbytes_pipeline_{pipeline_uuid}'
+        dag_id = f'mage_pipeline_{pipeline_uuid}'
         dag = dag_class(
-            f'bigbytes_pipeline_{pipeline_uuid}',
+            f'mage_pipeline_{pipeline_uuid}',
             **merge_dict(
                 dict(
                     start_date=datetime(2022, 7, 14),

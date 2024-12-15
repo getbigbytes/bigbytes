@@ -12,7 +12,7 @@ def execute_transformer_action(df: DataFrame, *args, **kwargs) -> DataFrame:
     """
     Execute Transformer Action: ActionType.MAX
 
-    Docs: https://docs.bigbytes.io/guides/transformer-blocks#aggregation-actions
+    Docs: https://docs.bigbytes.ai/guides/transformer-blocks#aggregation-actions
     """
     action = build_transformer_action(
         df,

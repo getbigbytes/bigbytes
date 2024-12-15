@@ -165,17 +165,17 @@ class JobManager():
         """
         container = self.merge_container_spec(pod_spec.containers[0], command)
         pod_spec.containers = [container]
-        bigbytes_server_pod_spec = self.pod_config.spec
-        pod_spec.volumes.extend(bigbytes_server_pod_spec.volumes)
+        mage_server_pod_spec = self.pod_config.spec
+        pod_spec.volumes.extend(mage_server_pod_spec.volumes)
         if not pod_spec.tolerations:
             # If there're no tolerations override, use server's tolerations
-            pod_spec.tolerations = bigbytes_server_pod_spec.tolerations
+            pod_spec.tolerations = mage_server_pod_spec.tolerations
         if not pod_spec.node_selector:
-            pod_spec.node_selector = bigbytes_server_pod_spec.node_selector
+            pod_spec.node_selector = mage_server_pod_spec.node_selector
         if not pod_spec.scheduler_name:
-            pod_spec.scheduler_name = bigbytes_server_pod_spec.scheduler_name
+            pod_spec.scheduler_name = mage_server_pod_spec.scheduler_name
         pod_spec.image_pull_secrets = pod_spec.image_pull_secrets if pod_spec.image_pull_secrets \
-            else bigbytes_server_pod_spec.image_pull_secrets
+            else mage_server_pod_spec.image_pull_secrets
         return pod_spec
 
     def merge_container_spec(self, container_spec: V1Container, command: str) -> V1Container:
@@ -189,21 +189,21 @@ class JobManager():
         Returns:
         - V1Container: The merged container specification.
         """
-        bigbytes_server_container_spec = self.get_bigbytes_server_container()
+        mage_server_container_spec = self.get_mage_server_container()
         container_spec.env = container_spec.env + \
-            [item for item in bigbytes_server_container_spec.env if item not in container_spec.env]
+            [item for item in mage_server_container_spec.env if item not in container_spec.env]
         container_spec.env_from = (container_spec.env_from or []) + \
-            [item for item in (bigbytes_server_container_spec.env_from or [])
+            [item for item in (mage_server_container_spec.env_from or [])
              if item not in (container_spec.env_from or [])]
         container_spec.volume_mounts = container_spec.volume_mounts + \
-            [item for item in bigbytes_server_container_spec.volume_mounts
+            [item for item in mage_server_container_spec.volume_mounts
                 if item not in container_spec.volume_mounts]
         container_spec.image = container_spec.image if container_spec.image else \
-            bigbytes_server_container_spec.image
+            mage_server_container_spec.image
         container_spec.command = command
         return container_spec
 
-    def get_bigbytes_server_container(self) -> V1Container:
+    def get_mage_server_container(self) -> V1Container:
         # If self.container_name is provided, search for the container
         if self.container_name:
             container = next(
