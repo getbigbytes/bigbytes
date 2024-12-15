@@ -58,7 +58,7 @@ COPY ./bigbytes/server/constants.py /tmp/constants.py
 RUN if [ -z "$FEATURE_BRANCH" ] || [ "$FEATURE_BRANCH" = "null" ] ; then \
   tag=$(tail -n 1 /tmp/constants.py) && \
   VERSION=$(echo "$tag" | tr -d "'") && \
-  pip3 install --no-cache-dir "bigbytes[all]==$VERSION"; \
+  pip3 install --no-cache-dir "bigbytes"; \
   else \
   pip3 install --no-cache-dir "git+https://github.com/digitranslab/bigbytes.git@$FEATURE_BRANCH#egg=bigbytes[all]"; \
   fi

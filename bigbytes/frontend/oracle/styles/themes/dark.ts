@@ -88,7 +88,7 @@ export default {
     blackTransparent: 'rgba(0, 0, 0, 0.6)',
     blackTransparentDark: 'rgba(0, 0, 0, 0.8)',
     chartBlock: '#2E3036',
-    codeArea: '#1E1F24',
+    codeArea: '#101827',
     codeTextarea: '#000000',
     content: '#1B1C20',
     danger: RED_XLIGHT,
@@ -100,8 +100,8 @@ export default {
     muted: SILVER,
     navigation: '#EDEDED',
     output: '#2E3036',
-    page: '#1E1F24',
-    panel: '#232429',
+    page: '#101827',
+    panel: '#101827',
     panelTransparent: 'rgba(35, 36, 41, 0.7)',
     popup: '#27292E',
     row: DARK_CONTENT_INVERTED,
@@ -111,7 +111,7 @@ export default {
     scrollbarTrack: '#2E3036', // defaultBackground
     success: LIME_DARK,
     successLight: LIME_TRASPARENT,
-    table: '#292A2F',
+    table: '#101827',
     tag: '#3A4550',
   },
   borders: {

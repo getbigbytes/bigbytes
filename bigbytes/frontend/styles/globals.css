@@ -116,7 +116,7 @@ a {
 }
 
 body {
-  background-color: #1E1F24;
+  background-color: #101827;
   line-height: 1;
 
   -webkit-font-smoothing: antialiased;
@@ -773,12 +773,12 @@ textarea {
 }
 
 .react-calendar__tile--now {
-  background: #232429;
+  background: #101827;
 }
 
 .react-calendar__tile--now:enabled:hover,
 .react-calendar__tile--now:enabled:focus {
-  background: #232429;
+  background: #101827;
 }
 
 .react-calendar__tile--hasActive {

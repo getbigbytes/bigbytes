@@ -28,7 +28,7 @@ export const PanelStyle = styled.div`
 	height: 75vh;
 	min-height: 300px;
 	width: 75vw;
-	backgroundColor: #232429;
+	backgroundColor: #101827;
 	// overflow-y: auto;
 	border-radius: ${BORDER_RADIUS}px;
 
