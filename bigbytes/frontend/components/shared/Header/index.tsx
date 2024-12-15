@@ -485,28 +485,28 @@ function Header({
               </Button>
             )}
 
-            {version && typeof(version) !== 'undefined' && (
-              <Spacing px={1}>
-                <Link
-                  href="https://www.bigbytes.ai/changelog"
-                  monospace
-                  noWrapping
-                  openNewWindow
-                  sameColorAsText
-                  small
-                >
-                  {`v${version}`}
-                </Link>
-              </Spacing>
-            )}
+            {/*{version && typeof(version) !== 'undefined' && (*/}
+            {/*  <Spacing px={1}>*/}
+            {/*    <Link*/}
+            {/*      href="https://www.bigbytes.ai/changelog"*/}
+            {/*      monospace*/}
+            {/*      noWrapping*/}
+            {/*      openNewWindow*/}
+            {/*      sameColorAsText*/}
+            {/*      small*/}
+            {/*    >*/}
+            {/*      {`v${version}`}*/}
+            {/*    </Link>*/}
+            {/*  </Spacing>*/}
+            {/*)}*/}
 
-            <Spacing ml={1}>
-              <ServerTimeDropdown
-                disableTimezoneToggle={projectPlatformOverrideFeaturesEnabled}
-                disabled={hideActions}
-                projectName={project?.name}
-              />
-            </Spacing>
+            {/*<Spacing ml={1}>*/}
+            {/*  <ServerTimeDropdown*/}
+            {/*    disableTimezoneToggle={projectPlatformOverrideFeaturesEnabled}*/}
+            {/*    disabled={hideActions}*/}
+            {/*    projectName={project?.name}*/}
+            {/*  />*/}
+            {/*</Spacing>*/}
 
             {/*<Spacing ml={1}>*/}
             {/*  <KeyboardShortcutButton*/}

@@ -17,7 +17,7 @@ Bigbytes is a hybrid framework for transforming and integrating data. It combine
 The recommended way to install the latest version of Bigbytes is through Docker with the following command:
 
 ```bash
-docker pull digitranslab/bigbytes:latest
+docker pull getbigbytes/bigbytes:latest
 ```
 
 You can also install Bigbytes using pip or conda, though this may cause dependency issues without the proper environment.
