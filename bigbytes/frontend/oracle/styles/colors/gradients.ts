@@ -14,7 +14,7 @@ import {
   WIND,
 } from './brand';
 
-export const CHART = 'linear-gradient(90deg, #4F49F1, #A260F5)';
+export const CHART = 'linear-gradient(90deg, #4F49F1, #4F49F1)';
 export const EARTH_LIGHTING = `linear-gradient(90deg, ${EARTH}, ${LIGHTNING})`;
 export const FIRE_PRIMARY = `linear-gradient(90deg, ${FIRE}, #C86DD7)`;
 export const ICE_WATER = `linear-gradient(90deg, ${ICE}, ${WATER})`;

@@ -468,22 +468,22 @@ const Colors = {
     [ModeEnum.MODE3]: '#9ECBFFB3',
   },
   yellow: {
-    [ModeEnum.DARK]: '#FFCC19',
-    [ModeEnum.LIGHT]: '#FFCC19',
-    [ModeEnum.MODE3]: '#FFCC19',
+    [ModeEnum.DARK]: '#00a99d',
+    [ModeEnum.LIGHT]: '#00a99d',
+    [ModeEnum.MODE3]: '#00a99d',
   },
   yellowHi: {
-    [ModeEnum.DARK]: '#FFCC19D9',
+    [ModeEnum.DARK]: '#00a99dD9',
     [ModeEnum.LIGHT]: '#E6B000D9',
     [ModeEnum.MODE3]: '#E6B000D9',
   },
   yellowLo: {
-    [ModeEnum.DARK]: '#FFCC1933',
+    [ModeEnum.DARK]: '#00a99d33',
     [ModeEnum.LIGHT]: '#E6B00033',
     [ModeEnum.MODE3]: '#E6B00033',
   },
   yellowMd: {
-    [ModeEnum.DARK]: '#FFCC19',
+    [ModeEnum.DARK]: '#00a99d',
     [ModeEnum.LIGHT]: '#E6B000',
     [ModeEnum.MODE3]: '#E6B000',
   },
@@ -835,9 +835,9 @@ const ColorsDerived = {
   },
   statuses: {
     success: {
-      [ModeEnum.DARK]: '#8ADE00',
-      [ModeEnum.LIGHT]: '#8ADE00',
-      [ModeEnum.MODE3]: '#8ADE00',
+      [ModeEnum.DARK]: '#00a99d',
+      [ModeEnum.LIGHT]: '#00a99d',
+      [ModeEnum.MODE3]: '#00a99d',
     },
     successHi: {
       [ModeEnum.DARK]: 'rgba(138, 222, 0, 0.3)',
