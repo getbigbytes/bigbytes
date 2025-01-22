@@ -2,8 +2,8 @@ export const UNIT: number = 8;
 export const PADDING: number = UNIT * 2;
 export const PADDING_SMALL: number = UNIT * 2;
 export const PADDING_LARGE: number = UNIT * 5;
-export const WIDTH_OF_SINGLE_CHARACTER = 10;
-export const WIDTH_OF_SINGLE_CHARACTER_SMALL = 9;
+export const WIDTH_OF_SINGLE_CHARACTER = 8;
+export const WIDTH_OF_SINGLE_CHARACTER_SMALL = 7;
 export const WIDTH_OF_SINGLE_CHARACTER_MONOSPACE = 8.7;
 
 export const CONTAINER_PADDING: number = UNIT * 3;

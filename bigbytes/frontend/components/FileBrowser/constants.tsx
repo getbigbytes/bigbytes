@@ -27,7 +27,7 @@ export const FILE_EXTENSION_ICON_MAPPING = {
 export const FILE_EXTENSION_COLOR_MAPPING = {
   [FileExtensionEnum.CSV]: '#C7CDDA', // Light grayish blue
   [FileExtensionEnum.JSON]: '#6B50D7', // Medium purple
-  [FileExtensionEnum.MD]: '#9B6CA7', // Medium lavender
+  [FileExtensionEnum.MD]: '#38b6ff', // Medium lavender
   [FileExtensionEnum.PY]: '#FFE873', // Light yellow
   [FileExtensionEnum.R]: '#FF144D', // Bright red
   [FileExtensionEnum.SH]: '#CBFE00', // Lime green

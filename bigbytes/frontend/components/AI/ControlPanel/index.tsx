@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import styled from 'styled-components';
 
 import Button from '@oracle/elements/Button';
 import FlexContainer from '@oracle/components/FlexContainer';
@@ -30,6 +31,20 @@ type ControlPanelProps = {
   isLoading?: boolean;
   onClose?: () => void;
 };
+
+// Define the styled button
+const NewPipelineButton = styled.button`
+  background-color: #FFA500; // Full orange color
+  color: #FFFFFF; // White text
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #FF8C00; // Darker orange on hover
+  }
+`;
 
 function ControlPanel({
   createPipeline,

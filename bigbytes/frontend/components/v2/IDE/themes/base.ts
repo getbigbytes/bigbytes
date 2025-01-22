@@ -50,7 +50,7 @@ function build(theme: ThemeType): IDEThemeType {
       // ???
       'editorRuler.foreground': '#FF9933', // Orange
       // Whitespace dots
-      'editorWhitespace.foreground': '#9B6CA780', // Dark gray
+      'editorWhitespace.foreground': '#38b6ff80', // Dark gray
       // ----------------------------------------------------------------------------------------------
       // ----------------------------------------------------------------------------------------------
       // Brackets
@@ -118,7 +118,7 @@ function build(theme: ThemeType): IDEThemeType {
       // Color of error squiggles.
       'editorError.foreground': '#FF144D', // Red
       // Color of warning squiggles.
-      'editorWarning.foreground': '#00a99d', // Yellow
+      'editorWarning.foreground': '#38b6ff', // Yellow
       // Color of info squiggles.
       'editorInfo.foreground': '#0F4CFF', // Blue
       // Background color of a symbol during read-access.
@@ -283,15 +283,15 @@ function build(theme: ThemeType): IDEThemeType {
       // List/Tree background color for the selected item when the list/tree is active.
       'list.activeSelectionBackground': '#0000004D',
       // List/Tree foreground color for the selected item when the list/tree is active.
-      'list.activeSelectionForeground': '#00a99d',
+      'list.activeSelectionForeground': '#38b6ff',
       // // List/Tree icon foreground color for the selected item when the list/tree is active. An active list/tree has keyboard focus, an inactive does not.
-      'list.activeSelectionIconForeground': '#00a99d',
+      'list.activeSelectionIconForeground': '#38b6ff',
       //  // List/Tree drag and drop background when moving items around using the mouse.
       // 'list.dropBackground': '#000000',
       // // List/Tree background color for the focused item when the list/tree is active.
-      // 'list.focusBackground': '#00a99d',
+      // 'list.focusBackground': '#38b6ff',
       //  // List/Tree foreground color for the focused item when the list/tree is active. An active list/tree has keyboard focus, an inactive does not.
-      // 'list.focusForeground': '#00a99d',
+      // 'list.focusForeground': '#38b6ff',
       // // List/Tree foreground color of the match highlights on actively focused items when searching inside the list/tree.
       // 'list.focusHighlightForeground': '#000000',
       //  // List/Tree outline color for the focused item when the list/tree is active. An active list/tree has keyboard focus, an inactive does not.

@@ -34,7 +34,7 @@ const Convert = ({
     />
     <defs>
       <linearGradient id="paint0_linear_1332_60037" x1="-.618557" y1="-.000001" x2="10.5709" y2=".83113" gradientUnits="userSpaceOnUse">
-        <stop stopColor="#00a99d" />
+        <stop stopColor="#38b6ff" />
         <stop offset=".585938" stopColor="#2ECDF7" />
         <stop offset="1" stopColor="#9E7BFF" />
       </linearGradient>

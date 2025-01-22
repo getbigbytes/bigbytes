@@ -6,17 +6,17 @@
 <path d="M258.507 7.45312H325.655V245.72H258.507V7.45312Z" fill="url(#paint2_linear_789_26)"/>
 <defs>
 <linearGradient id="paint0_linear_789_26" x1="-6.60498" y1="7.45307" x2="286.799" y2="36.3535" gradientUnits="userSpaceOnUse">
-<stop stop-color="#00a99d"/>
+<stop stop-color="#38b6ff"/>
 <stop offset="0.585938" stop-color="#2ECDF7"/>
 <stop offset="1" stop-color="#9E7BFF"/>
 </linearGradient>
 <linearGradient id="paint1_linear_789_26" x1="124.203" y1="7.45307" x2="303.17" y2="18.1404" gradientUnits="userSpaceOnUse">
-<stop stop-color="#00a99d"/>
+<stop stop-color="#38b6ff"/>
 <stop offset="0.585938" stop-color="#2ECDF7"/>
 <stop offset="1" stop-color="#9E7BFF"/>
 </linearGradient>
 <linearGradient id="paint2_linear_789_26" x1="-6.59917" y1="7.45302" x2="286.804" y2="36.3535" gradientUnits="userSpaceOnUse">
-<stop stop-color="#00a99d"/>
+<stop stop-color="#38b6ff"/>
 <stop offset="0.585938" stop-color="#2ECDF7"/>
 <stop offset="1" stop-color="#9E7BFF"/>
 </linearGradient>
